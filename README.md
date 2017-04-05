@@ -28,6 +28,6 @@ require('charity').startCluster({
 
 ## 联系我们
 
-QQ: 516908542  
+QQ: 516908542
 email: lixiaobin8878@gmail.com
 

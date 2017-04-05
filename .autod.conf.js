@@ -8,6 +8,7 @@ module.exports = {
     'benchmark',
   ],
   dep: [
+    'egg'
   ],
   devdep: [
     'egg-ci',
