@@ -1,0 +1,17 @@
+<html>
+
+<head>
+    <title>home</title>
+</head>
+
+<body>
+    <div class="news-view view">
+        <% list.forEach(function(item) { %>
+            <div class="item">
+                <a href="<%= item.url %>"><%= item.title %></a>
+            </div>
+        <%})%>
+    </div>
+</body>
+
+</html>
