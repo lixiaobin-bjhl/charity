@@ -1,12 +1,12 @@
 /**
- * @fileOverview charity-home-controller
+ * @fileOverview charity-cms-controller
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
 'use strict';
 
 module.exports = app => {
-	class HomeController extends app.Controller {
+	class AdminMainController extends app.Controller {
 		* index() {
 			const dataList = {
 				list: [
@@ -14,8 +14,8 @@ module.exports = app => {
 					{ id: 2, title: 'this is news 2', url: '/news/2' }
 				]
 			};
-			yield this.ctx.render('home.ejs', dataList);
+			yield this.ctx.render('/admin/main.ejs', dataList);
 		}
 	}
-	return HomeController;
+	return AdminMainController;
 };
