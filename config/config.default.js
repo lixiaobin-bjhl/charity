@@ -10,10 +10,10 @@ module.exports = appInfo => {
         'webpack'
     ];
     config.view = {
+        defaultViewEngine: 'nunjucks',
         mapping: {
-            '.ejs': 'ejs'
+            '.tpl': 'nunjucks'
         }
     };
-    config.ejs = {};
     return config;
 };

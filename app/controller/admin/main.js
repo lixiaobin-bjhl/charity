@@ -14,7 +14,7 @@ module.exports = app => {
 					{ id: 2, title: 'this is news 2', url: '/news/2' }
 				]
 			};
-			yield this.ctx.render('/admin/main.ejs', dataList);
+			yield this.ctx.render('/admin/main.tpl', dataList);
 		}
 	}
 	return AdminMainController;
