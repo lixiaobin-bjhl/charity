@@ -5,13 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <div class="news-view view">
-        {% for item in list %} 
-            <div>
-                {{ item.title }} 
-            </div>
-        {% endfor %}
-    </div>
+    {% for item in list %} 
+        <div>
+            {{ item.title }} 
+        </div>
+    {% endfor %}
 {% endblock %}
 
 <script src="/public/scripts/home.bundle.js"></script>

@@ -12,7 +12,8 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     entry: {
         'public/scripts/home': './app/public/scripts/home.js',
-        'public/scripts/main': './cms/admin/main.js'
+        'public/scripts/main': './cms/admin/main.js',
+        'public/scripts/vendor': './app/public/scripts/vendor.js'
     },
     output: {
         path: path.resolve(__dirname, '../public/scripts/'),

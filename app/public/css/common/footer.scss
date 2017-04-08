@@ -1,0 +1,19 @@
+/**
+ * @file 页角样式
+ * @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
+
+.footer {
+    position: absolute;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 56px;
+    bottom: 0;
+    box-sizing: border-box;
+    border-color: $gray-e9;
+    background-color: $gray-f0;
+    width: 100%;
+    .beian {
+        margin: 0 10px;
+    }
+}

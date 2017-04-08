@@ -14,8 +14,21 @@
 </head>
 
 <body>
-    {% block body %}
-    <div>base body</div>
+    <div class="site-content">
+        {% block body %}
+        please input site content
+        {% endblock %}
+    </div>
+
+    {% block footer %}
+        <div class="footer">
+            COPYRIGHT (©) 2017 菠萝蜜 网站模板 - 智能建站 - 企业建站 - CMS内空管理系统
+            <a class="beian" href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002492</a>
+        </div>
+    {% endblock  %}
+
+    {% block commonScript %}
+       <script src="/public/scripts/vendor.bundle.js"></script>
     {% endblock %}
 </body>
 
