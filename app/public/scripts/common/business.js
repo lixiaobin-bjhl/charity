@@ -6,5 +6,3 @@
 'ues strict';
 
 require('../../css/vendor.scss');
-
-console.log('home');

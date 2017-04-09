@@ -13,6 +13,7 @@ module.exports = {
     entry: {
         'public/scripts/home': './app/public/scripts/home.js',
         'public/scripts/main': './cms/admin/main.js',
+        'public/scripts/cmsLogin': './cms/admin/login.js',
         'public/scripts/vendor': './app/public/scripts/vendor.js'
     },
     output: {

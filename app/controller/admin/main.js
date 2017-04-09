@@ -7,7 +7,7 @@
 
 module.exports = app => {
 	class AdminMainController extends app.Controller {
-		* index() {
+		* index () {
 			const dataList = {
 				list: [
 					{ id: 1, title: 'this is news 1', url: '/news/1' },
@@ -15,6 +15,11 @@ module.exports = app => {
 				]
 			};
 			yield this.ctx.render('/admin/main.tpl', dataList);
+		}
+
+		* login () {
+			this.ctx.body = yield this.ctx.model.users.find({});
+			// yield this.ctx.render('/admin/login.tpl', {});
 		}
 	}
 	return AdminMainController;

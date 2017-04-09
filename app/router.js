@@ -3,4 +3,5 @@
 module.exports = app => {
     app.get('/', 'home.index');
     app.get('/admin/', 'admin.main.index');
+    app.get('/admin/login', 'admin.main.login');
 };
