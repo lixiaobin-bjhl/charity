@@ -5,9 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    login
+    <div id="main"></div>
     <script src="/public/scripts/cmsLogin.bundle.js"></script>
 {% endblock %}
-
 
 </html>

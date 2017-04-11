@@ -4,6 +4,8 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var utils = require('./utils');
+
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
@@ -29,6 +31,17 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                // include: [path.resolve(__dirname, '../tianxiao-common-frontend/dep/element/')],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
             },
@@ -51,5 +64,13 @@ module.exports = {
     },
     plugins: [
         extractSass
-    ]
+    ],
+    // vue: {
+    //     loaders: utils.cssLoaders(),
+    //     postcss: [
+    //         require('autoprefixer')({
+    //             browsers: ['last 2 versions']
+    //         })
+    //     ]
+    // }
 };

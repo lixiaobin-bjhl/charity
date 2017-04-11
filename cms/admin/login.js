@@ -5,4 +5,10 @@
 
 'use strict';
 
-console.log('login');
+import Vue from 'vue';
+import app from './login/app.vue';
+
+new Vue({
+   render: h => h(app)
+})
+.$mount('#main');

@@ -18,8 +18,8 @@ module.exports = app => {
 		}
 
 		* login () {
-			this.ctx.body = yield this.ctx.model.users.find({});
-			// yield this.ctx.render('/admin/login.tpl', {});
+			// this.ctx.body = yield this.ctx.model.users.find({});
+			yield this.ctx.render('/admin/login.tpl', {});
 		}
 	}
 	return AdminMainController;
