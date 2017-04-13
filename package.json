@@ -6,10 +6,12 @@
   "dependencies": {
     "egg": "^1.0.0",
     "egg-view-ejs": "^1.1.0",
-    "egg-view-nunjucks": "^2.0.0"
+    "egg-view-nunjucks": "^2.0.0",
+    "element-ui": "^1.2.8"
   },
   "devDependencies": {
     "autod": "^2.7.1",
+    "axios": "^0.16.1",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",

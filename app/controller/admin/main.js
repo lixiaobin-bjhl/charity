@@ -18,7 +18,9 @@ module.exports = app => {
 		}
 
 		* login () {
-			// this.ctx.body = yield this.ctx.model.users.find({});
+
+			// var userInfo = yield this.ctx.service.users.find();
+			// this.ctx.body = userInfo;
 			yield this.ctx.render('/admin/login.tpl', {});
 		}
 	}
