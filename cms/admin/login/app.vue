@@ -32,7 +32,12 @@
              * 登录 
              */
             onSubmit () {
-
+                var form = this.form;
+                var params = {
+                    name: form.name.trim(),
+                    password: form.password.trim(),
+                };
+                login(params);
             }
         }
     }

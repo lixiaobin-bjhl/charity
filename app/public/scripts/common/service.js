@@ -6,7 +6,17 @@
 'use strict';
 
 import axios from 'axios';
+var cookie = require('js-cookie');
 
+/**
+ * 添加ajax request interceptor
+ */
+axios.interceptors.request.use(function (config) {
+    config.headers['x-csrf-token'] = cookie.get('csrfToken');
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+});
 
 /**
  * 错误处理
@@ -28,8 +38,8 @@ function errorHandler(response) {
  * @param {boolean} sync 是否是同步请求
  * @return {Promise}
  */
-export function post (url, data={}, sync) {
-    return request(url, data, sync, 'post');
+export function post(url, data = {}, sync) {
+    return axios.post(url, data);
 }
 
 /**
@@ -40,7 +50,7 @@ export function post (url, data={}, sync) {
  * @param {string} method get|post
  * @return {Promise}
  */
-function request (url, data={}, sync, method) {
+function request(url, data = {}, sync, method) {
 
 }
 
@@ -52,7 +62,7 @@ function request (url, data={}, sync, method) {
  * @param {boolean} sync 是否是同步请求
  * @return {Promise}
  */
-export function get (url, data, sync) {
+export function get(url, data, sync) {
     return request(url, data, sync, 'get');
 }
 
