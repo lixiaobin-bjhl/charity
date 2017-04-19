@@ -8,11 +8,6 @@ exports.nunjucks = {
     package: 'egg-view-nunjucks',
 };
 
-exports.rest = {
-    enable: true,
-    package: 'egg-rest'
-};
-
 exports.mongoose = {
     enable: true,
     package: 'egg-mongoose',

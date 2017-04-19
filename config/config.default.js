@@ -11,12 +11,6 @@ module.exports = appInfo => {
         'webpack'
     ];
 
-    exports.rest = {
-        urlprefix: '/api/',
-        authRequest: null,
-        authIgnores: null
-    };
-
     config.view = {
         defaultViewEngine: 'nunjucks',
         mapping: {
