@@ -20,7 +20,12 @@ module.exports = app => {
 		* login () {
 			// var user = yield this.ctx.service.users.find();
 			// this.ctx.body = user;
-			yield this.ctx.render('/admin/login.tpl', {});
+
+			var user = this.ctx.session.user;
+
+			yield this.ctx.render('/admin/login.tpl', {
+				user
+			});
 		}
 	}
 	return AdminMainController;

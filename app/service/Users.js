@@ -14,17 +14,17 @@ module.exports = app => {
             return user;
         }
         /**
-         * 验证手机号和密码是否正确
+         * 根据手机号和密码获取用户信息
          * @param {numbser} mobile 手机号
          * @param {string} password 密码
-         * @return {boolean} 是否验证通过
+         * @return {Object}
          */
-        * validate(mobile, password) {
-            var count = yield this.ctx.model.users.find({
+        * getUser(mobile, password) {
+            var user = yield this.ctx.model.users.findOne({
                 mobile: +mobile,
                 password: password
-            }).count();
-            return count > 0;
+            });
+            return user;
         }
     }
     return Users;

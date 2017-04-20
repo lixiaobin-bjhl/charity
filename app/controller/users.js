@@ -7,10 +7,13 @@ exports.create = function* () {
 	var mobile = query.mobile;
 	var password = query.password;
 
-	var isValid = yield this.service.users.validate(mobile, password);
+	var user = yield this.service.users.getUser(mobile, password);
 
+	if (user) {
+		this.session.user = user;
+	}
 	this.body = {
-		isValid
+		data: user
 	};
 };
 
