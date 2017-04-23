@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    get model() {
+    getModel() {
         return this.app.model;
     }
 };

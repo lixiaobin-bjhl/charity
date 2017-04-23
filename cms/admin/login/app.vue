@@ -18,6 +18,7 @@
 
     import { login } from './request';
     import md5 from 'md5';
+    import redirect from '../../../app/public/scripts/function/redirect';
     
     export default {
         data() {
@@ -38,7 +39,15 @@
                     mobile: form.mobile.trim(),
                     password: md5(form.password.trim()),
                 };
-                login(params);
+                login(params)
+                    .then(()=> {
+                        redirect('/admin/');
+                    }, ()=> {
+                        this.$message({
+                            message: '用户名或密码错误',
+                            type: 'warning'
+                        });
+                    });
             }
         }
     }

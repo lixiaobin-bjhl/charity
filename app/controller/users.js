@@ -1,6 +1,5 @@
 'use strict';
 
-
 exports.create = function* () {
 
 	var query = this.request.body;
@@ -12,8 +11,8 @@ exports.create = function* () {
 	if (user) {
 		this.session.user = user;
 	}
-	this.body = {
-		data: user
-	};
+	this.body = this.helper.success({
+		user	
+	});
 };
 

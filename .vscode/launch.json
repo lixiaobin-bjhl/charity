@@ -1,0 +1,57 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+     {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${file}",
+            "sourceMaps": true,
+			"outFiles": [
+				"${workspaceRoot}/out/**/*.js"
+			],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "port": 5858
+        },
+    {
+      "name": "Launch Egg",
+      "type": "node",
+      "request": "launch",
+      "sourceMaps": true,
+      "protocol": "inspector",
+    //   "program": "${file}",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "debug"],
+      "port": 9229
+    },
+    {
+      "name": "Attach Agent",
+      "type": "node",
+      "request": "attach",
+      "sourceMaps": true,
+      "protocol": "inspector",
+      "port": 5856
+    },
+    {
+      "name": "Attach Worker",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "sourceMaps": true,
+      "protocol": "inspector",
+      "port": 10086
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Egg",
+      "configurations": ["Launch Egg", "Attach Agent", "Attach Worker"]
+    }
+  ]
+}
