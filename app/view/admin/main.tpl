@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main">admin</div>
+    <div id="main"></div>
+    <script src="/public/scripts/main.bundle.js"></script>
 {% endblock %}
 
 </html>

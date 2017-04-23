@@ -5,4 +5,13 @@
 
 'use strict';
 
-console.log('main');
+import Vue from 'vue';
+import app from './app.vue';
+import Element from 'element-ui'
+
+Vue.use(Element);
+
+new Vue({
+   render: h => h(app)
+})
+.$mount('#main');
