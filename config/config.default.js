@@ -7,6 +7,7 @@ module.exports = appInfo => {
     config.keys = appInfo.name + '_1491043715892_8663';
 
     config.middleware = [
+        'isAdmin',
         'responseTime',
         'webpack'
     ];
