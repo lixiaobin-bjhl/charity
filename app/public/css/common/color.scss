@@ -18,6 +18,7 @@ $gray-333: #333;
 
 // 链接色
 $link-color: $brand;
+$brand-hover: lighten($brand, 5%);
 
 // 链接悬浮色
 $link-color-hover: darken($link-color, 5%);

@@ -7,11 +7,11 @@
 
 import Vue from 'vue';
 import app from './login/app.vue';
-import Element from 'element-ui'
+import Element from 'element-ui';
 
 Vue.use(Element);
 
 new Vue({
    render: h => h(app)
 })
-.$mount('#main');
+.$mount('#app');

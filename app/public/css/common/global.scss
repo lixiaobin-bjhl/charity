@@ -24,3 +24,14 @@ a {
         color: $link-color-hover;
     }
 }
+
+.pointer {
+	cursor: pointer;
+}
+.middle {
+	vertical-align: middle;
+	display: inline-block;
+}
+.clearfix {
+    @include clearfix;
+}

@@ -1,0 +1,20 @@
+.breadcrumb {
+    border-bottom: 1px solid #e0e6ed;
+    .el-breadcrumb {
+        margin: 15px 19px;
+        font-size: 14px;
+        color: #475669;
+        .el-breadcrumb__item__inner:hover{
+            color: #1A91F2;
+            cursor: pointer;
+        }
+        .el-breadcrumb__separator {
+            margin: 0 8px;
+        }
+        .el-breadcrumb__item:last-child {
+            .el-breadcrumb__separator {
+                display: none;
+            }
+        }
+    }
+}

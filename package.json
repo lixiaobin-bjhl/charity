@@ -43,8 +43,10 @@
     "transform-runtime": "0.0.0",
     "vue": "^2.2.6",
     "vue-loader": "^11.3.4",
+    "vue-router": "^2.4.0",
     "vue-style-loader": "^3.0.0",
     "vue-template-compiler": "^2.2.6",
+    "vuex": "^2.1.2",
     "webpack": "^2.4.1",
     "webpack-merge": "^4.1.0",
     "webstorm-disable-index": "^1.1.2"

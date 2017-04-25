@@ -17,7 +17,7 @@
 
 <body>
     {% if user %}
-        <div class=“header“>
+        <div class="header">
             欢迎你：{{user.name}}<a href="/admin/logout">退出</a>
         </div>
     {% endif %}
