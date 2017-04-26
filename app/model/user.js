@@ -1,3 +1,7 @@
+/**
+ * @fileOverview charity-user-model
+ * @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
 
 'use strict';
 
@@ -6,5 +10,5 @@ module.exports = mongoose => {
         name: { type: String },
         password: { type: String }
     });
-    return mongoose.model('Users', UserSchema);
+    return mongoose.model('User', UserSchema, 'user');
 }   

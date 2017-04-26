@@ -12,6 +12,8 @@ import Vue from 'vue';
 
 Vue.use(vuex);
 
+import newsSubject from '../modules/newsSubject/store';
+
 export default new vuex.Store({
     state: {
 		breadCrumbs: []
@@ -19,6 +21,8 @@ export default new vuex.Store({
     strict: false,
 	mutations,
 	actions,
-	modules: {}
+	modules: {
+		newsSubject
+	}
 });
 

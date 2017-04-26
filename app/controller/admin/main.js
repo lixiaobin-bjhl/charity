@@ -27,7 +27,7 @@ module.exports = app => {
 		 * 登录页面 
 		 */
 		* login () {
-			// var user = yield this.ctx.service.users.find();
+			// var user = yield this.ctx.service.user.find();
 			// this.ctx.body = user;
 
 			var user = this.ctx.session.user;
