@@ -22,7 +22,13 @@ axios.interceptors.request.use(function (config) {
  * 添加ajax response interceptor
  */
 axios.interceptors.response.use(function (response) {
-    return response.data;
+    var data = response.data;
+    if (data.code === 0) {
+        return response.data;
+    } else {
+        toast(data.message || '系统异常', 'error');
+        return Promise.reject(data);
+    }
 }, function (error) {
     toast('系统异常', 'error');
     return Promise.reject(error);

@@ -11,5 +11,11 @@ module.exports = {
             code: 0,
             data: data
         };
+    },
+    error (code, message) {
+        return {
+            code: code,
+            message: message
+        }
     }
 }
