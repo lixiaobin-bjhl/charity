@@ -8,6 +8,7 @@ module.exports = appInfo => {
 
     config.middleware = [
         'isAdmin',
+        'gzip',
         'responseTime',
         'webpack'
     ];

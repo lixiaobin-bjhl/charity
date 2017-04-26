@@ -1,3 +1,7 @@
+/**
+ * @fileOverview charity-middleware-webpack
+ * @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
 
 'use strict';
 

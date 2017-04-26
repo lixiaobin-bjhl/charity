@@ -5,6 +5,8 @@
 
 'use strict';
 
+var mongoose = require('mongoose');
+
 module.exports = app => {
 
     class NewsSubject extends app.Service {
@@ -20,7 +22,7 @@ module.exports = app => {
                 name: name,
                 remark: remark
             });
-            newsSubject.save((err)=>{
+            newsSubject.save((err) => {
                 if (err) {
                     app.logger.error(err);
                 } else {
@@ -35,6 +37,23 @@ module.exports = app => {
         * list() {
             var list = yield this.ctx.model.newsSubject.find({});
             return list;
+        }
+        /**
+         * 删除新闻分类
+         * @param {string} id  分闻分类id
+         */
+        * del(id) {
+            var condition = {
+                _id: mongoose.Types.ObjectId(id)
+            }
+            var newsSubject = yield this.ctx.model.newsSubject.remove(condition, (err) => {
+                if (err) {
+                    app.logger.err(err);
+                } else {
+                    app.logger.info('delete newsSubject', newsSubject);
+                }
+            });
+            return newsSubject;
         }
     }
     return NewsSubject;

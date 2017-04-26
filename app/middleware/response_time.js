@@ -1,3 +1,8 @@
+/**
+ * @fileOverview charity-middleware-reponse_time
+ * @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
+
 'use strict';
 
 // just for showcase, egg had a build-in middleware to export `x-readtime` header

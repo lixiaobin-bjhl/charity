@@ -1,6 +1,9 @@
+/**
+ * @fileOverview charity-middleware-isAmdin
+ * @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
 
 'use strict';
-
 
 var optionalSessionAdminUrl = [
     '/admin/login'

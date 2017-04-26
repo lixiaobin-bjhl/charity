@@ -12,6 +12,14 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 import store from './store/index';
 
+import {
+    Message
+} from 'element-ui';
+
+
+// filter
+require('./common/filter/date');
+
 const router = new VueRouter({
     mode: 'history',
     routes
@@ -52,6 +60,14 @@ function clearState(module) {
 
 Vue.use(Element);
 Vue.use(VueRouter);
+
+window.toast = function(msg, type) {
+    var type = type || 'warning';
+    Message({
+        type: type,
+        message: msg
+    });
+}
 
 new Vue({
     router,

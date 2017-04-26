@@ -65,7 +65,9 @@
                             remark: form.remark
                         })
                         .then(()=> {
-                            console.log('success');
+                            toast('保存成功', 'success');
+                            this.$emit('save');
+                            this.cancel();
                         })
                         .catch(()=> {
                            this.submiting = false;

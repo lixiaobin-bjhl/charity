@@ -19,6 +19,16 @@ axios.interceptors.request.use(function (config) {
 });
 
 /**
+ * 添加ajax response interceptor
+ */
+axios.interceptors.response.use(function (response) {
+    return response.data;
+}, function (error) {
+    toast('系统异常', 'error');
+    return Promise.reject(error);
+});
+
+/**
  * 错误处理
  *
  * @inner
@@ -26,7 +36,6 @@ axios.interceptors.request.use(function (config) {
  * @return {Object}
  */
 function errorHandler(response) {
-
     var code = response.code;
 }
 
@@ -43,15 +52,15 @@ export function post(url, data = {}, sync) {
 }
 
 /**
- * 发送请求
+ * 发送 delete 请求
+ *
  * @param {string} url 请求 url
  * @param {Object} data 发送的数据
  * @param {boolean} sync 是否是同步请求
- * @param {string} method get|post
  * @return {Promise}
  */
-function request(url, data = {}, sync, method) {
-
+export function del(url, data = {}, sync) {
+    return axios.delete(url, data);
 }
 
 /**
@@ -62,21 +71,6 @@ function request(url, data = {}, sync, method) {
  * @param {boolean} sync 是否是同步请求
  * @return {Promise}
  */
-export function get(url, data, sync) {
-    return request(url, data, sync, 'get');
-}
-
-/**
- * 发送跨域的jsonp请求
- *
- * @param  {string} url
- * @param  {Object} data
- * @return {Promise}
- */
-export function getJsonp(url, data) {
-    return $.ajax({
-        url: url,
-        data: data,
-        dataType: 'jsonp'
-    });
+export function get(url, data = {}, sync) {
+    return axios.get(url, data);
 }
