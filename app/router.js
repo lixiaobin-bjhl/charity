@@ -8,5 +8,6 @@ module.exports = app => {
     app.get('/admin/logout', 'admin.main.logout');
 
     app.resources('user', '/api/user/', 'user');
+    app.resources('news', '/api/news/', 'news');
     app.resources('newsSubject', '/api/newsSubject/', 'newsSubject');
 };

@@ -20,7 +20,6 @@
         </span>
     </el-dialog>
 </template>
-
 <script>
 
     import { add, update } from '../request';

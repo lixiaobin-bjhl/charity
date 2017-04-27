@@ -78,7 +78,9 @@ export function del(url, data = {}, sync) {
  * @return {Promise}
  */
 export function get(url, data = {}, sync) {
-    return axios.get(url, data);
+    return axios.get(url, {
+        params: data
+    });
 }
 
 /**

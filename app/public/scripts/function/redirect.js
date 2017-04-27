@@ -1,3 +1,7 @@
+/**
+ * @fileOverview chairty-function-redirect
+ * @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
 
 'use strict';
 
