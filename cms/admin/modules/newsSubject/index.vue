@@ -65,8 +65,9 @@
             /**
              * 更新新闻分类
              */
-            modify () {
-
+            modify (row) {
+                this.$store.commit('SET_SUBJECT', row);
+                this.add();
             },
             /**
              * 刷新页面

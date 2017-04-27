@@ -12,8 +12,8 @@ exports.create = function* () {
     var query = this.request.body;
 	var name = query.name;
 	var remark = query.remark;
-
 	var newsSubject = yield this.service.newsSubject.add(name, remark);
+	
 	this.body = this.helper.success({
 		newsSubject	
 	});
@@ -31,7 +31,7 @@ exports.index = function* () {
 };
 
 /**
- * 删除资源
+ * 删除新闻分类
  */
 exports.destroy = function* () {
 	var id = this.params.id;
@@ -39,4 +39,22 @@ exports.destroy = function* () {
 	this.body = this.helper.success({
 		newsSubject	
 	});
-}
+};
+
+/**
+ * 编辑分类
+ */
+exports.update = function* () {
+
+	var id = this.params.id;
+	var query = this.request.body;
+	var update = {
+		updateTime: new Date(),
+		name: query.name,
+		remark: query.remark
+	};
+	var result = yield this.service.newsSubject.put(id, update);
+	this.body = this.helper.success(result);
+};
+
+

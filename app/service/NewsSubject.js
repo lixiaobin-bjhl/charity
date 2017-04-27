@@ -48,12 +48,32 @@ module.exports = app => {
             }
             var newsSubject = yield this.ctx.model.newsSubject.remove(condition, (err) => {
                 if (err) {
-                    app.logger.err(err);
+                    app.logger.error(err);
                 } else {
                     app.logger.info('delete newsSubject', newsSubject);
                 }
             });
             return newsSubject;
+        }
+        /**
+         * 更新新闻分类 
+         * @param {string} id 新闻分类id
+         * @param {Object} update 更新内容
+         */
+        * put (id, update) {
+            var condition = {
+                _id: mongoose.Types.ObjectId(id)
+            };
+            this.ctx.model.newsSubject.update(condition, update, {}, (err) => {
+                if (err) {
+                    app.logger.error(err);
+                } else {
+                    app.logger.info('update newsSubject ' + id, update);
+                }
+            });
+            return {
+                id
+            };
         }
     }
     return NewsSubject;

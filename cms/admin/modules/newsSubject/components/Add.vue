@@ -23,7 +23,7 @@
 
 <script>
 
-    import { add } from '../request';
+    import { add, update } from '../request';
 
     export default {
         data () {
@@ -46,6 +46,15 @@
                 return this.$store.state.newsSubject.subject || null;
             }
         },
+        created () {
+            var subject = this.subject;
+            if (subject) {
+                Object.assign(this.form, {
+                    name: subject.name,
+                    remark: subject.remark
+                });
+            }
+        },
         methods: {
             /**
              * 取消添加分类
@@ -60,10 +69,20 @@
                 this.$refs['form'].validate((valid) => {
 				    if (valid) {
                         var form = this.form;
-                        add({
+                        var subject = this.subject;
+                        var handler = null;
+                        var params = {
                             name: form.name,
                             remark: form.remark
-                        })
+                        };
+
+                        // 编辑
+                        if (subject) {
+                            handler = update.bind(null, subject._id, params);
+                        } else {
+                            handler = add.bind(null, params);
+                        }
+                        handler()
                         .then(()=> {
                             toast('保存成功', 'success');
                             this.$emit('save');

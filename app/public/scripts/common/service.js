@@ -80,3 +80,15 @@ export function del(url, data = {}, sync) {
 export function get(url, data = {}, sync) {
     return axios.get(url, data);
 }
+
+/**
+ * 发送 update 请求
+ *
+ * @param {string} url 请求 url
+ * @param {Object} data 发送的数据
+ * @param {boolean} sync 是否是同步请求
+ * @return {Promise}
+ */
+export function put(url, data = {}, sync) {
+    return axios.put(url, data);
+}

@@ -5,7 +5,7 @@
 
 'use strict';
 
-import { post, get, del } from '../../../../app/public/scripts/common/service';
+import { post, get, del, put } from '../../../../app/public/scripts/common/service';
 
 /**
  * 添加新闻分类 
@@ -31,4 +31,15 @@ export function list (params) {
 export function remove (id) {
     return del('/api/newsSubject/' + id);
 }
+
+/**
+ * 更新新闻分类
+ * @param {string} id 新闻分类id
+ * @param {string} params.name 分类名称
+ * @param {string} params.remark 分类备注
+ */
+export function update (id, params) {
+    return put('/api/newsSubject/' + id, params);
+}
+
 

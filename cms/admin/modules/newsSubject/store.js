@@ -17,3 +17,8 @@ const mutations = {
         state.subject = null;
     }
 };
+
+export default {
+    state,
+    mutations
+};
