@@ -12,8 +12,10 @@ import { post, get, del, put } from '../../../../app/public/scripts/common/servi
  */
 export function add (params) {
     return post('/api/news', {
-        name: params.name,
-        remark: params.remark
+        title: params.title,
+        summary: params.summary,
+        content: params.content,
+        newsSubjectId: params.newsSubjectId
     });
 }
 

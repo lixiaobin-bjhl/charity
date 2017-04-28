@@ -1,14 +1,15 @@
 <template>
     <div>
+        <div>
+            <el-button type="primary" @click="add">新增新闻</el-button>
+        </div>
         <el-form>
             <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                <el-option v-for="item in newsSubejctList"  :value="item._id" :label="item.name"></el-option>
+                <el-option v-for="item in newsSubejctList" :value="item._id" :label="item.name"></el-option>
             </el-select>
         </el-form>
         <el-table v-loading.body="loading" :data="list">
             <el-table-column prop="title" label="标题">
-            </el-table-column>
-            <el-table-column prop="summary" label="摘要">
             </el-table-column>
             <el-table-column inline-template label="分类">
                 <div>
@@ -28,7 +29,7 @@
                 </div>
             </el-table-column>
             <el-table-column inline-template label="创建人">
-                <div>
+                <div v-if="row.author">
                     {{row.author.name}} 
                 </div>
             </el-table-column>
@@ -48,18 +49,21 @@
             </div>
             </el-table-column>
         </el-table>
+        <add v-if="addState" @save="refresh"></add>
     </div>
 </template>
 
 <script>
     
     import * as newsSubejctRequest  from '../newsSubject/request';
-    import { list } from './request';
+    import { list, remove } from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
+    import Add from './components/Add.vue';
 
     export default {
         data () {
             return {
+                addState: false,
                 newsSubejctList: [],
                 list: [],
                 loading: false,
@@ -73,6 +77,34 @@
             this.getList();
         },
         methods: {
+            /**
+             * 新增新闻
+             */
+            add () {
+                this.addState = true;
+            },
+            /**
+             * 删除新闻
+             * @param {Object} item 新闻单元
+             */
+            del (item) {
+                this.$confirm('是否确认删除?', '提示', {
+                    type: 'warning'
+                })
+                .then(()=> {
+                    remove(item._id)
+                    .then((res)=> {
+                        toast('删除成功', 'success');
+                        this.refresh();
+                    });
+                });
+            },
+            /**
+             * 刷新页面
+             */
+            refresh () {
+                this.getList();
+            },
             /**
              * filter 发现变化，对列表数据进行筛选
              */
@@ -120,6 +152,9 @@
             newsSubjectList () {
                 this.adaptList();
             }
+        },
+        components: {
+            Add
         }
     }
 </script>

@@ -9,10 +9,8 @@
  * 添加新闻 
  */
 exports.create = function* () {
-    var query = this.request.body;
-	var name = query.name;
-	var remark = query.remark;
-	var news = yield this.service.news.add(name, remark);
+	var jquery = this.request.body;
+	var news = yield this.service.news.add(jquery);
 	
 	this.body = this.helper.success({
 		news	

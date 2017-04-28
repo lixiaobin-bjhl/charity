@@ -12,15 +12,23 @@ module.exports = app => {
     class News extends app.Service {
         /**
          * 添加新闻分类
-         * @param {string} name 分类名称
-         * @param {string} remark 分类备注信息
+         * @param {string} params.title 新闻标题
+         * @param {string} params.summary 新闻摘要
+         * @param {string} params.content 新闻内容
+         * @param {string} params.subjectId 新闻分类
          * @return {Object}
          */
-        * add(name, remark) {
+        * add(params) {
             var News = this.ctx.model.news;
+
+            console.log(this.ctx.session.user);
+            
             var news = new News({
-                name: name,
-                remark: remark
+                title: params.title,
+                summary: params.summary,
+                content: params.content,
+                author: this.ctx.session.user,
+                newsSubjectId: mongoose.Types.ObjectId(params.newsSubjectId)
             });
             news.save((err) => {
                 if (err) {
@@ -42,7 +50,7 @@ module.exports = app => {
             if (newsSubjectId) {
                 condition.newsSubjectId = mongoose.Types.ObjectId(newsSubjectId);
             } 
-            var list = yield this.ctx.model.news.find(condition);
+            var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});
             return list;
         }
         /**

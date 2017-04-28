@@ -13,6 +13,7 @@ import Vue from 'vue';
 Vue.use(vuex);
 
 import newsSubject from '../modules/newsSubject/store';
+import news from '../modules/news/store';
 
 export default new vuex.Store({
     state: {
@@ -22,7 +23,8 @@ export default new vuex.Store({
 	mutations,
 	actions,
 	modules: {
-		newsSubject
+		newsSubject,
+		news
 	}
 });
 

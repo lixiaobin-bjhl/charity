@@ -6,10 +6,17 @@
 'use strict';
 
 module.exports = mongoose => {
-    
+
+    var ObjectId = mongoose.Schema.Types.ObjectId;
+
     const newsSubjectSchema = new mongoose.Schema({
-        name: { type: String },
-        remark: { type: String },
+        title: { type: String },
+        content: { type: String },
+        summary: { type: String },
+        newsSubjectId: { type: ObjectId},
+        author: {
+            type: Object
+        },
         createTime: { 
             type: Date,
             default: Date.now
