@@ -66,7 +66,9 @@ export function post(url, data = {}, sync) {
  * @return {Promise}
  */
 export function del(url, data = {}, sync) {
-    return axios.delete(url, data);
+    return axios.delete(url, {
+        params: data
+    });
 }
 
 /**

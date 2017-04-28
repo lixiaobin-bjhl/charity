@@ -1,14 +1,17 @@
 <template>
     <div>
-        <div>
-            <el-button type="primary" @click="add">新增新闻</el-button>
-        </div>
         <el-form>
             <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
                 <el-option v-for="item in newsSubejctList" :value="item._id" :label="item.name"></el-option>
             </el-select>
         </el-form>
-        <el-table v-loading.body="loading" :data="list">
+        <div>
+            <el-button type="primary" @click="add">新增新闻</el-button>
+            <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
+            <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
+        </div>
+        <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
+            <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="title" label="标题">
             </el-table-column>
             <el-table-column inline-template label="分类">
@@ -56,7 +59,7 @@
 <script>
     
     import * as newsSubejctRequest  from '../newsSubject/request';
-    import { list, remove } from './request';
+    import { list, remove, batchRemove} from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import Add from './components/Add.vue';
 
@@ -65,6 +68,7 @@
             return {
                 addState: false,
                 newsSubejctList: [],
+                multipleSelection: [],
                 list: [],
                 loading: false,
                 filter: {
@@ -82,6 +86,21 @@
              */
             add () {
                 this.addState = true;
+            },
+            /**
+             * 批量删除新闻
+             */
+            batchDel () {
+                this.$confirm('是否确认批量删除?', '提示', {
+                    type: 'warning'
+                })
+                .then(()=> {
+                    batchRemove(this.multipleSelection)
+                    .then((res)=> {
+                        toast('删除成功', 'success');
+                        this.refresh();
+                    });
+                });
             },
             /**
              * 删除新闻
@@ -146,7 +165,13 @@
                     });
                 }
                 return data;
-            }
+            },
+            /**
+             * 选择表格中的news
+             */
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+            } 
         },
         watch: {
             newsSubjectList () {

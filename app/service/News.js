@@ -11,18 +11,15 @@ module.exports = app => {
 
     class News extends app.Service {
         /**
-         * 添加新闻分类
+         * 添加新闻
          * @param {string} params.title 新闻标题
          * @param {string} params.summary 新闻摘要
          * @param {string} params.content 新闻内容
-         * @param {string} params.subjectId 新闻分类
+         * @param {string} params.subjectId 新闻
          * @return {Object}
          */
         * add(params) {
             var News = this.ctx.model.news;
-
-            console.log(this.ctx.session.user);
-            
             var news = new News({
                 title: params.title,
                 summary: params.summary,
@@ -40,7 +37,7 @@ module.exports = app => {
             return news;
         }
         /**
-         * 查找新闻分类列表
+         * 查找新闻列表
          * @param {Object} condition 列表查询条件
          */
         * list(query = {}) {
@@ -54,7 +51,7 @@ module.exports = app => {
             return list;
         }
         /**
-         * 删除新闻分类
+         * 删除新闻
          * @param {string} id  分闻分类id
          */
         * del(id) {
@@ -71,8 +68,29 @@ module.exports = app => {
             return news;
         }
         /**
-         * 更新新闻分类 
-         * @param {string} id 新闻分类id
+         * 批量删除新闻
+         * @param {Array} ids  分闻分类ids
+         */
+        * batchDel(ids) {
+            var condition = {
+                _id: {
+                    $in: ids.map((id)=> {
+                        return mongoose.Types.ObjectId(id)
+                    })
+                }
+            }
+            var news = yield this.ctx.model.news.remove(condition, (err) => {
+                if (err) {
+                    app.logger.error(err);
+                } else {
+                    app.logger.info('batch delete news', news);
+                }
+            });
+            return news;
+        }
+        /**
+         * 更新新闻 
+         * @param {string} id 新闻id
          * @param {Object} update 更新内容
          */
         * put (id, update) {

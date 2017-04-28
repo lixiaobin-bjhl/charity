@@ -19,6 +19,7 @@
     import { login } from './request';
     import md5 from 'md5';
     import redirect from '../../../app/public/scripts/function/redirect';
+    require('element-ui/lib/theme-default/index.css');
     
     export default {
         data() {

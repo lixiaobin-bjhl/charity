@@ -32,8 +32,18 @@ exports.index = function* () {
  * 删除新闻
  */
 exports.destroy = function* () {
+
 	var id = this.params.id;
-	var news = yield this.service.news.del(id);
+	var query = this.query;
+	var ids = query.ids;
+	var news = null;
+
+	// 批量删除
+	if (ids) {
+		news = yield this.service.news.batchDel(ids.split(','));
+	} else {
+		news = yield this.service.news.del(id);
+	}
 	this.body = this.helper.success({
 		news	
 	});

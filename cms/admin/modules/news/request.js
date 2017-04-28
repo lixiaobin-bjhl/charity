@@ -37,6 +37,18 @@ export function remove (id) {
 }
 
 /**
+ * 批量删除新闻
+ * @param {string} ids 新闻ids
+ */
+export function batchRemove (ids) {
+    return del('/api/news/0', {
+        ids: ids.map((item)=> {
+            return item._id
+        }).join(',')
+    });
+}
+
+/**
  * 更新新闻
  * @param {string} id 新闻id
  * @param {string} params.name 分类名称

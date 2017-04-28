@@ -11,7 +11,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
 
 </head>
 
