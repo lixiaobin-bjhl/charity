@@ -1,8 +1,9 @@
 <html lang="zh">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> {% block title %}
-    <title>charity</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    {% block title %}
+        <title>charity</title>
     {% endblock %}
     <meta charset="utf-8">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
@@ -11,6 +12,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
+
+    {% block css %}
+    {% endblock %}
 
 </head>
 

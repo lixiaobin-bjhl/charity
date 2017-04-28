@@ -3,13 +3,7 @@
 
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 var utils = require('./utils');
-
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: process.env.NODE_ENV === "development"
-});
 
 module.exports = {
     entry: {
@@ -68,7 +62,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: extractSass.extract({
+                loader: ExtractTextPlugin.extract({
                     use: [
                         {
                             loader: "css-loader"
@@ -84,7 +78,11 @@ module.exports = {
         ]
     },
     plugins: [
-        extractSass
+         new ExtractTextPlugin({
+            filename: '[name].css',
+            allChunks: true,
+            disable: false 
+         }),
     ],
     // vue: {
     //     loaders: utils.cssLoaders(),
