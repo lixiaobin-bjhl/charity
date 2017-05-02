@@ -1,3 +1,8 @@
+<!--
+  @fileOverview charity-cms-news
+  @author XiaoBin Li(lixiaobin8878@gmail.com) 
+-->
+
 <template>
     <div>
         <el-form>
@@ -86,6 +91,13 @@
              */
             add () {
                 this.addState = true;
+            },
+            /**
+             * 更新新闻
+             */
+            modify (row) {
+                this.$store.commit('SET_NEWS', row);
+                this.add();
             },
             /**
              * 批量删除新闻

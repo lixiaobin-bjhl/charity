@@ -12,7 +12,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
-
+    
+    <link rel="stylesheet" href="/public/scripts/vendor.css"/>
     {% block css %}
     {% endblock %}
 
@@ -21,6 +22,7 @@
 <body>
     {% if user %}
         <div class="header">
+            <img class="logo" src="/public/img/logo.png">
             欢迎你：{{user.name}}<a href="/admin/logout">退出</a>
         </div>
     {% endif %}

@@ -1,5 +1,5 @@
 <!--
-  @fileOverview charity-cms-newsSubject 新闻分类管理
+  @fileOverview charity-cms-productSubject 新闻分类管理
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 

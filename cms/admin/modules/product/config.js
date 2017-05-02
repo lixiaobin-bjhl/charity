@@ -1,5 +1,5 @@
 /**
- * @fileOverview charity-cms-news config
+ * @fileOverview charity-cms-product config
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
@@ -19,7 +19,7 @@ export default  {
             required: true,
             message: '请选择新闻分类'
         },
-        editorContent: {
+        content: {
             required: true,
             message: '请输入新闻内容'
         }

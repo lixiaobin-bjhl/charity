@@ -1,5 +1,5 @@
 <!--
-  @fileOverview charity-cms-newsSubejct 添加新闻分类
+  @fileOverview charity-cms-productSubejct 添加新闻分类
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
@@ -42,7 +42,7 @@
         },
         computed: {
             subject () {
-                return this.$store.state.newsSubject.subject || null;
+                return this.$store.state.productSubject.subject || null;
             }
         },
         created () {

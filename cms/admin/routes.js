@@ -25,6 +25,10 @@ export default [
     {
         path: '/admin/newsSubject',
         component: require('./modules/newsSubject/index.vue')
+    },
+    {
+        path: '/admin/productSubject',
+        component: require('./modules/productSubject/index.vue')
     }
 ];
 

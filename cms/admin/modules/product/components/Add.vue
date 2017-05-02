@@ -1,10 +1,10 @@
 <!--
-  @fileOverview charity-cms-news 添加新闻
+  @fileOverview charity-cms-main 添加新闻
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
 <template>
-    <el-dialog :title="news ? '编辑新闻' : '新增新闻'" v-model="$parent.addState" size="large">
+    <el-dialog :title="product ? '编辑新闻' : '新增新闻'" v-model="$parent.addState" size="large">
         <el-form label-width="100px" :model="form" :rules="rules" ref="form">
             <el-form-item label="标题" required prop="title">
                 <el-input placeholder="请输入1-30字内的新闻标题" :maxlength="30" v-model="form.title"></el-input>
@@ -17,13 +17,13 @@
                     <el-option v-for="item in newsSubejctList"  :value="item._id" :label="item.name"></el-option>
                 </el-select>
             </el-form-item>
-             <el-form-item label="内容" required prop="editorContent">
+             <el-form-item label="内容" required prop="content">
                 <editor
+                    :input-content="form.content"
                     :upload-url="uploadURL"
-                    @change="changeContent"
                     v-model="form.content">
                 </editor>
-                <el-input type="hidden" v-model="form.editorContent"></el-input>
+                <el-input type="hidden" v-model="form.content"></el-input>
             </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
@@ -45,9 +45,7 @@
                 uploadURL: '',
                 form: {
                     title: '',
-                    summary: '',
                     newsSubjectId: '',
-                    editorContent: '',
                     content: ''
                 },
                 rules: config.addFormRule,
@@ -56,22 +54,19 @@
             };
         },
         computed: {
-            news () {
-                return this.$store.state.news.news || null;
+            product () {
+                return this.$store.state.product.product || null;
             }
         },
         created () {
-            var news = this.news;
+            var product = this.product;
             this.getNewsSubjectList();
             
-            if (news) {
+            if (product) {
                 Object.assign(this.form, {
-                    title: news.title,
-                    summary: news.summary,
-                    content: news.content,
-                    newsSubjectId: news.newsSubjectId
+                    name: product.name,
+                    remark: product.remark
                 });
-                this.editorContent = news.content;
             }
         },
         methods: {
@@ -83,12 +78,6 @@
                     .then((res)=> {
                         this.newsSubejctList = res.data.list;
                     });
-            },
-            /**
-             * 富文本框内容发生变化
-             */
-            changeContent (value) {
-                this.form.editorContent = value;
             },
             /**
              * 取消添加分类
@@ -103,18 +92,18 @@
                 this.$refs['form'].validate((valid) => {
 				    if (valid) {
                         var form = this.form;
-                        var news = this.news;
+                        var product = this.product;
                         var handler = null;
                         var params = {
                             title: form.title,
                             summary: form.summary,
-                            content: form.editorContent,
+                            content: form.content,
                             newsSubjectId: form.newsSubjectId
                         };
 
                         // 编辑
-                        if (news) {
-                            handler = update.bind(null, news._id, params);
+                        if (product) {
+                            handler = update.bind(null, product._id, params);
                         } else {
                             handler = add.bind(null, params);
                         }
@@ -132,7 +121,7 @@
             }
         },
         beforeDestroy() {
-            this.$store.commit('RESET_NEWS');
+            this.$store.commit('RESET_SUBJECT');
         },
         components: {
             Editor

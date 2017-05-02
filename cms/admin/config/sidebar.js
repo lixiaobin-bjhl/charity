@@ -33,6 +33,10 @@ export default [
             {
                 name: '新闻分类',
                 url: '/admin/newsSubject'
+            },
+            {
+                name: '产品分类',
+                url: '/admin/productSubject'
             }
         ]
     }

@@ -1,4 +1,4 @@
-{% extends "./common/base.tpl" %}
+{% extends "./common/layout.tpl" %}
 
 {% block title %}
     <title>home</title>

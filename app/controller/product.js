@@ -1,19 +1,19 @@
 /**
- * @fileOverview charity-news-api
+ * @fileOverview charity-product-api
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
 'use strict';
 
 /**
- * 添加新闻 
+ * 添加产品
  */
 exports.create = function* () {
 	var jquery = this.request.body;
-	var news = yield this.service.news.add(jquery);
+	var product = yield this.service.product.add(jquery);
 	
 	this.body = this.helper.success({
-		news	
+		product	
 	});
 };
 
@@ -22,7 +22,7 @@ exports.create = function* () {
  */
 exports.index = function* () {
     var query = this.query;
-	var list = yield this.service.news.list(query);
+	var list = yield this.service.product.list(query);
 	this.body = this.helper.success({
 		list
 	});
@@ -36,16 +36,16 @@ exports.destroy = function* () {
 	var id = this.params.id;
 	var query = this.query;
 	var ids = query.ids;
-	var news = null;
+	var product = null;
 
 	// 批量删除
 	if (ids) {
-		news = yield this.service.news.batchDel(ids.split(','));
+		product = yield this.service.product.batchDel(ids.split(','));
 	} else {
-		news = yield this.service.news.del(id);
+		product = yield this.service.product.del(id);
 	}
 	this.body = this.helper.success({
-		news	
+		product	
 	});
 };
 
@@ -58,12 +58,10 @@ exports.update = function* () {
 	var query = this.request.body;
 	var update = {
 		updateTime: new Date(),
-		content: query.content,
-		title: query.title,
-		summary: query.summary,
-		newsSubjectId: query.newsSubjectId
+		name: query.name,
+		remark: query.remark
 	};
-	var result = yield this.service.news.put(id, update);
+	var result = yield this.service.product.put(id, update);
 	this.body = this.helper.success(result);
 };
 
