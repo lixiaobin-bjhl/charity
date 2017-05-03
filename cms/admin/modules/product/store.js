@@ -10,8 +10,8 @@ const state = {
 };
 
 const mutations = {
-    'SET_PRODUCT' (state, subject) {
-        state.product = subject;
+    'SET_PRODUCT' (state, product) {
+        state.product = product;
     },
     'RESET_PRODUCT' (state) {
         state.product = null;

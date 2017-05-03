@@ -69,9 +69,9 @@
                     title: news.title,
                     summary: news.summary,
                     content: news.content,
-                    newsSubjectId: news.newsSubjectId
+                    newsSubjectId: news.newsSubjectId,
+                    editorContent: news.content
                 });
-                this.editorContent = news.content;
             }
         },
         methods: {

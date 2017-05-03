@@ -25,9 +25,10 @@ export default new vuex.Store({
 	mutations,
 	actions,
 	modules: {
+		news,
 		newsSubject,
-		productSubject,
-		news
+		product,
+		productSubject
 	}
 });
 

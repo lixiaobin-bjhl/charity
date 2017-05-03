@@ -31,11 +31,6 @@
                     {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
                 </div>
             </el-table-column>
-            <el-table-column inline-template label="创建时间">
-                <div>
-                    {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
-                </div>
-            </el-table-column>
             <el-table-column inline-template label="创建人">
                 <div v-if="row.author">
                     {{row.author.name}} 

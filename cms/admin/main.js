@@ -19,6 +19,7 @@ import {
 
 // filter
 require('./common/filter/date');
+require('./common/filter/currency');
 
 const router = new VueRouter({
     mode: 'history',

@@ -9,19 +9,23 @@ export default  {
     addFormRule: {
         title: {
             required: true,
-            message: '请输入新闻标题'
+            message: '请输入产品标题'
         },
         summary: {
             required: true,
-            message: '请输入新闻摘要'
+            message: '请输入产品摘要'
         },
-        newsSubjectId: {
+        productSubjectId: {
             required: true,
-            message: '请选择新闻分类'
+            message: '请选择产品分类'
         },
         content: {
             required: true,
-            message: '请输入新闻内容'
+            message: '请输入产品内容'
+        },
+        price: {
+            required: true,
+            message: '请输入产品价格'
         }
     }
 }

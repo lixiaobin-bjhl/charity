@@ -38,6 +38,7 @@
     "koa-webpack-dev-middleware": "^1.4.5",
     "md5": "^2.2.1",
     "node-sass": "^4.5.2",
+    "qiniu": "^6.1.13",
     "sass-loader": "^6.0.3",
     "scss-loader": "0.0.1",
     "style-loader": "^0.16.1",

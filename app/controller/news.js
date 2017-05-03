@@ -50,7 +50,7 @@ exports.destroy = function* () {
 };
 
 /**
- * 编辑分类
+ * 编辑新闻
  */
 exports.update = function* () {
 

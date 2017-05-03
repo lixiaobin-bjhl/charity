@@ -50,7 +50,7 @@ exports.destroy = function* () {
 };
 
 /**
- * 编辑分类
+ * 编辑产品
  */
 exports.update = function* () {
 
@@ -58,9 +58,13 @@ exports.update = function* () {
 	var query = this.request.body;
 	var update = {
 		updateTime: new Date(),
-		name: query.name,
-		remark: query.remark
+		title: query.title,
+		summary: query.summary,
+		productSubjectId: query.productSubjectId,
+		price: query.price,
+		discountPrice: query.discountPrice
 	};
+	console.log(update);
 	var result = yield this.service.product.put(id, update);
 	this.body = this.helper.success(result);
 };

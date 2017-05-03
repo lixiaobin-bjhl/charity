@@ -8,37 +8,37 @@
 import { post, get, del, put } from '../../../../app/public/scripts/common/service';
 
 /**
- * 添加新闻 
+ * 添加产品 
  */
 export function add (params) {
     return post('/api/product', {
         title: params.title,
         summary: params.summary,
         content: params.content,
-        newsSubjectId: params.newsSubjectId
+        productSubjectId: params.productSubjectId
     });
 }
 
 /**
- * 添加新闻
+ * 添加产品
  */
 export function list (params = {}) {
     return get('/api/product', {
-        newsSubjectId: params.newsSubjectId
+        productSubjectId: params.productSubjectId
     });
 }
 
 /**
- * 删除新闻
- * @param {string} id 新闻id
+ * 删除产品
+ * @param {string} id 产品id
  */
 export function remove (id) {
     return del('/api/product/' + id);
 }
 
 /**
- * 批量删除新闻
- * @param {string} ids 新闻ids
+ * 批量删除产品
+ * @param {string} ids 产品ids
  */
 export function batchRemove (ids) {
     return del('/api/product/0', {
@@ -49,13 +49,20 @@ export function batchRemove (ids) {
 }
 
 /**
- * 更新新闻
- * @param {string} id 新闻id
- * @param {string} params.name 分类名称
- * @param {string} params.remark 分类备注
+ * 更新产品
+ * @param {string} id 产品id
+ * @param {string} params.title 产品名称
+ * @param {string} params.summary 产品摘要
  */
 export function update (id, params) {
     return put('/api/product/' + id, params);
+}
+
+/** 
+ * 上传产品图片 
+ */
+export function uptoken () {
+    return get('/qiniu/uptoken');
 }
 
 

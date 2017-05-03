@@ -11,11 +11,16 @@ module.exports = mongoose => {
 
     const productSubjectSchema = new mongoose.Schema({
         title: { type: String },
-        content: { type: String },
         summary: { type: String },
         productSubjectId: { type: ObjectId},
         author: {
             type: Object
+        },
+        price: {
+           type: Number 
+        },
+        discountPrice: {
+            type: Number
         },
         createTime: { 
             type: Date,

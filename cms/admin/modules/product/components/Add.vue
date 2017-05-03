@@ -1,30 +1,40 @@
 <!--
-  @fileOverview charity-cms-main 添加新闻
+  @fileOverview charity-cms-main 添加产品
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
 <template>
-    <el-dialog :title="product ? '编辑新闻' : '新增新闻'" v-model="$parent.addState" size="large">
+    <el-dialog :title="product ? '编辑产品' : '新增产品'" v-model="$parent.addState" size="small">
         <el-form label-width="100px" :model="form" :rules="rules" ref="form">
             <el-form-item label="标题" required prop="title">
-                <el-input placeholder="请输入1-30字内的新闻标题" :maxlength="30" v-model="form.title"></el-input>
+                <el-input placeholder="请输入1-30字内的产品标题" :maxlength="30" v-model="form.title"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <upload @change="changeProductImage">
+                    <el-button type="primary">上传图片</el-button>
+                </upload>
             </el-form-item>
             <el-form-item label="摘要" required prop="summary">
-                <el-input placeholder="请输入新闻摘要" type="textarea" :maxlength="30" v-model="form.summary"></el-input>
+                <el-input placeholder="请输入产品摘要" type="textarea" :maxlength="30" v-model="form.summary"></el-input>
             </el-form-item>
-            <el-form-item label="分类" required prop="newsSubjectId">
-                <el-select v-model="form.newsSubjectId" placeholder="请选择分类" clearable>
-                    <el-option v-for="item in newsSubejctList"  :value="item._id" :label="item.name"></el-option>
+            <el-form-item label="分类" required prop="productSubjectId">
+                <el-select v-model="form.productSubjectId" placeholder="请选择分类" clearable>
+                    <el-option v-for="item in productSubejctList"  :value="item._id" :label="item.name"></el-option>
                 </el-select>
             </el-form-item>
-             <el-form-item label="内容" required prop="content">
-                <editor
-                    :input-content="form.content"
-                    :upload-url="uploadURL"
-                    v-model="form.content">
-                </editor>
-                <el-input type="hidden" v-model="form.content"></el-input>
+            <el-form-item label="价格(元)" required prop="price">
+                 <el-input placeholder="请输入产品价格" :maxlength="10" v-model="form.price"></el-input>
             </el-form-item>
+            <div class="el-form-item">
+                <label for="price" class="el-form-item__label" style="width: 100px;">
+                    优惠(元)&nbsp;<el-tooltip class="item" effect="dark" content="售卖价格等于原价减去优惠价格" placement="right">
+                    <span class="el-icon-warning"></span>
+                </el-tooltip>
+                </label>
+                <div class="el-form-item__content" style="margin-left: 100px;">
+                    <el-input placeholder="请输入优惠价格" :maxlength="10" v-model="form.discountPrice"></el-input>
+                </div> 
+            </div>
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="cancel">取消</el-button>
@@ -36,8 +46,9 @@
 
     import { add, update } from '../request';
     import config from '../config';
-    import * as newsSubejctRequest  from '../../newsSubject/request';
-    import Editor from '../../../common/components/Editor.vue';
+    import * as newsSubejctRequest  from '../../productSubject/request';
+    import Upload from '../../../common/components/Upload.vue';
+    import  { uptoken } from '../request';
 
     export default {
         data () {
@@ -45,11 +56,13 @@
                 uploadURL: '',
                 form: {
                     title: '',
-                    newsSubjectId: '',
-                    content: ''
+                    productSubjectId: '',
+                    summary: '',
+                    price: '',
+                    discountPrice: ''
                 },
                 rules: config.addFormRule,
-                newsSubejctList: [],
+                productSubejctList: [],
                 submiting: false
             };
         },
@@ -64,19 +77,38 @@
             
             if (product) {
                 Object.assign(this.form, {
-                    name: product.name,
-                    remark: product.remark
+                    title: product.title,
+                    summary: product.summary,
+                    price: product.price,
+                    discountPrice: product.discountPrice,
+                    productSubjectId: product.productSubjectId
                 });
             }
         },
         methods: {
             /**
-             * 获取新闻分类列表
+             * 改成产品图片
+             */
+            changeProductImage (files) {
+                if (!files) {
+                    return;
+                }
+                var file = files[0];
+                var fd = new FormData();
+                
+                fd.append('file', file);
+                uptoken()
+                    .then((res)=> {
+                        var token = res.data.token;
+                    });
+            },
+            /**
+             * 获取产品分类列表
              */
             getNewsSubjectList () {
                 newsSubejctRequest.list()
                     .then((res)=> {
-                        this.newsSubejctList = res.data.list;
+                        this.productSubejctList = res.data.list;
                     });
             },
             /**
@@ -97,8 +129,9 @@
                         var params = {
                             title: form.title,
                             summary: form.summary,
-                            content: form.content,
-                            newsSubjectId: form.newsSubjectId
+                            price: form.price,
+                            discountPrice: form.discountPrice,
+                            productSubjectId: form.productSubjectId
                         };
 
                         // 编辑
@@ -121,10 +154,10 @@
             }
         },
         beforeDestroy() {
-            this.$store.commit('RESET_SUBJECT');
+            this.$store.commit('RESET_PRODUCT');
         },
         components: {
-            Editor
+            Upload
         }
     };
 </script>

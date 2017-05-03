@@ -45,7 +45,6 @@ exports.destroy = function* () {
  * 编辑分类
  */
 exports.update = function* () {
-
 	var id = this.params.id;
 	var query = this.request.body;
 	var update = {

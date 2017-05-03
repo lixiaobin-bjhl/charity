@@ -6,12 +6,12 @@
 <template>
     <div>
         <el-form>
-            <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                <el-option v-for="item in newsSubejctList" :value="item._id" :label="item.name"></el-option>
+            <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
+                <el-option v-for="item in productSubejctList" :value="item._id" :label="item.name"></el-option>
             </el-select>
         </el-form>
         <div>
-            <el-button type="primary" @click="add">新增新闻</el-button>
+            <el-button type="primary" @click="add">新增产品</el-button>
             <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
             <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
         </div>
@@ -21,14 +21,23 @@
             </el-table-column>
             <el-table-column inline-template label="分类">
                 <div>
-                    <div v-if="row.newsSubject">
-                        {{row.newsSubject.name}}
+                    <div v-if="row.productSubject">
+                        {{row.productSubject.name}}
                     </div>
                 </div>
             </el-table-column>
-            <el-table-column inline-template label="创建时间">
+            <el-table-column inline-template label="价格">
                 <div>
-                    {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
+                    <div>
+                        {{row.price|currency}}
+                    </div>
+                </div>
+            </el-table-column>
+            <el-table-column inline-template label="优惠">
+                <div>
+                    <div>
+                        {{row.discountPrice|currency}}
+                    </div>
                 </div>
             </el-table-column>
             <el-table-column inline-template label="创建时间">
@@ -63,7 +72,7 @@
 
 <script>
     
-    import * as newsSubejctRequest  from '../newsSubject/request';
+    import * as newsSubejctRequest  from '../productSubject/request';
     import { list, remove, batchRemove} from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import Add from './components/Add.vue';
@@ -72,12 +81,12 @@
         data () {
             return {
                 addState: false,
-                newsSubejctList: [],
+                productSubejctList: [],
                 multipleSelection: [],
                 list: [],
                 loading: false,
                 filter: {
-                    newsSubjectId: ''
+                    productSubjectId: ''
                 } 
             };
         },
@@ -87,13 +96,20 @@
         },
         methods: {
             /**
-             * 新增新闻
+             * 新增产品
              */
             add () {
                 this.addState = true;
             },
             /**
-             * 批量删除新闻
+             * 更新产品
+             */
+            modify (row) {
+                this.$store.commit('SET_PRODUCT', row);
+                this.add();
+            },
+            /**
+             * 批量删除产品
              */
             batchDel () {
                 this.$confirm('是否确认批量删除?', '提示', {
@@ -108,8 +124,8 @@
                 });
             },
             /**
-             * 删除新闻
-             * @param {Object} item 新闻单元
+             * 删除产品
+             * @param {Object} item 产品单元
              */
             del (item) {
                 this.$confirm('是否确认删除?', '提示', {
@@ -136,7 +152,7 @@
                 this.getList();
             },
             /**
-             * 获取新闻列表
+             * 获取产品列表
              */
             getList () {
                 this.loading = true;
@@ -150,23 +166,23 @@
                     });
             },
             /**
-             * 获取新闻分类列表
+             * 获取产品分类列表
              */
             getNewsSubjectList () {
                 newsSubejctRequest.list()
                     .then((res)=> {
-                        this.newsSubejctList = res.data.list;
+                        this.productSubejctList = res.data.list;
                     });
             },
             /**
              * 扩展数据
              */
             adaptList (data) {
-                var newsSubejctList = this.newsSubejctList;
-                if (newsSubejctList.length) {
-                    var subjectMap = indexBy(newsSubejctList, '_id');
+                var productSubejctList = this.productSubejctList;
+                if (productSubejctList.length) {
+                    var subjectMap = indexBy(productSubejctList, '_id');
                     data.forEach((item)=> {
-                        this.$set(item, 'newsSubject', subjectMap[item.newsSubjectId]);
+                        this.$set(item, 'productSubject', subjectMap[item.productSubjectId]);
                     });
                 }
                 return data;
@@ -179,7 +195,7 @@
             } 
         },
         watch: {
-            newsSubjectList () {
+            productSubjectList () {
                 this.adaptList();
             }
         },
