@@ -31,8 +31,8 @@
 
 <script>
     import sidebarConfig from './config/sidebar';
-    require('./style.scss');
     require('element-ui/lib/theme-default/index.css');
+    require('./style.scss');
 
     export default {
         data () {

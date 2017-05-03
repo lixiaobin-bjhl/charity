@@ -1,5 +1,5 @@
 <!--
-  @fileOverview charity-cms-productSubject 新闻分类管理
+  @fileOverview charity-cms-productSubject 产品分类管理
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
@@ -7,7 +7,7 @@
     <div>
         <div>分类管理</div>
         <div>
-            <el-button type="primary" @click="add">新增新闻分类</el-button>
+            <el-button type="primary" @click="add">新增产品分类</el-button>
         </div>
         <el-table v-loading.body="loading" :data="list">
             <el-table-column prop="name" label="名称">
@@ -57,13 +57,13 @@
         },
         methods: {
             /**
-             * 新增新闻分类
+             * 新增产品分类
              */
             add () {
                 this.addState = true;
             },
             /**
-             * 更新新闻分类
+             * 更新产品分类
              */
             modify (row) {
                 this.$store.commit('SET_SUBJECT', row);
@@ -76,8 +76,8 @@
                 this.getList();
             },
             /**
-             * 删除新闻分类
-             * @param {Object} item 新闻分类单元
+             * 删除产品分类
+             * @param {Object} item 产品分类单元
              */
             del (item) {
                 this.$confirm('是否确认删除?', '提示', {
@@ -92,7 +92,7 @@
                 });
             },
             /**
-             * 获取新闻分类列表
+             * 获取产品分类列表
              */
             getList () {
                 this.loading = true;

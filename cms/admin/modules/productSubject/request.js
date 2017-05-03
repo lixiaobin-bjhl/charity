@@ -8,7 +8,7 @@
 import { post, get, del, put } from '../../../../app/public/scripts/common/service';
 
 /**
- * 添加新闻分类 
+ * 添加产品分类 
  */
 export function add (params) {
     return post('/api/productSubject', {
@@ -18,23 +18,23 @@ export function add (params) {
 }
 
 /**
- * 添加新闻分类
+ * 添加产品分类
  */
 export function list (params) {
     return get('/api/productSubject');
 }
 
 /**
- * 删除新闻分类
- * @param {string} id 新闻分类id
+ * 删除产品分类
+ * @param {string} id 产品分类id
  */
 export function remove (id) {
     return del('/api/productSubject/' + id);
 }
 
 /**
- * 更新新闻分类
- * @param {string} id 新闻分类id
+ * 更新产品分类
+ * @param {string} id 产品分类id
  * @param {string} params.name 分类名称
  * @param {string} params.remark 分类备注
  */

@@ -15,6 +15,7 @@ Vue.use(vuex);
 import newsSubject from '../modules/newsSubject/store';
 import news from '../modules/news/store';
 import product from '../modules/product/store';
+import productSubject from '../modules/productSubject/store';
 
 export default new vuex.Store({
     state: {
@@ -25,6 +26,7 @@ export default new vuex.Store({
 	actions,
 	modules: {
 		newsSubject,
+		productSubject,
 		news
 	}
 });
