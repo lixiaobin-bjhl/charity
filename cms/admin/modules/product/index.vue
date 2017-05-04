@@ -45,9 +45,9 @@
                     </div>
                 </div>
             </el-table-column>
-            <el-table-column inline-template label="创建时间">
+            <el-table-column inline-template label="状态">
                 <div>
-                    {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
+                    {{row.isNotSale ? '已下架' : '上架' }} 
                 </div>
             </el-table-column>
             <el-table-column inline-template label="创建人">
@@ -68,6 +68,8 @@
             <div>
                 <el-button @click="del(row)" type="text" size="small">删除</el-button>
                 <el-button @click="modify(row)" type="text" size="small">编辑</el-button>
+                <el-button @click="updateSaleStatus(row._id, 0)" v-if="row.isNotSale==1" type="text" size="small">上架</el-button>
+                <el-button @click="updateSaleStatus(row._id, 1)" v-else type="text" size="small">下架</el-button>
             </div>
             </el-table-column>
         </el-table>
@@ -78,7 +80,7 @@
 <script>
     
     import * as newsSubejctRequest  from '../productSubject/request';
-    import { list, remove, batchRemove} from './request';
+    import { list, remove, batchRemove, update } from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import Add from './components/Add.vue';
 
@@ -112,6 +114,26 @@
             modify (row) {
                 this.$store.commit('SET_PRODUCT', row);
                 this.add();
+            },
+            /**
+             * 产品上架/下架
+             * @param {string} id 产品id
+             * @param {number} isNotSale 产品更新状态，1为下架，0为上架
+             */
+            updateSaleStatus (id, status) {
+                var aciton = status === 1 ? "下架" : '上架';
+                this.$confirm('是否确认' + aciton + '?', '提示', {
+                    type: 'warning'
+                })
+                .then(()=> {
+                    update(id, {
+                        isNotSale: status
+                    })
+                    .then((res)=> {
+                        toast('更新成功', 'success');
+                        this.refresh();
+                    });
+                });
             },
             /**
              * 批量删除产品

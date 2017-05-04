@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
-    
+    <link rel="shortcut icon" href="http://opdjozubd.bkt.clouddn.com/favicon.ico" />
     <link rel="stylesheet" href="/public/scripts/vendor.css"/>
     {% block css %}
     {% endblock %}

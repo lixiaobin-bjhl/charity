@@ -25,6 +25,7 @@ module.exports = app => {
             var product = new Product({
                 title: params.title,
                 summary: params.summary,
+                author: this.ctx.session.user,
                 storageId: params.storageId,
                 productSubjectId: params.productSubjectId,
                 price: params.price,

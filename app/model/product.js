@@ -25,6 +25,9 @@ module.exports = mongoose => {
         discountPrice: {
             type: Number
         },
+        isNotSale: {
+            type: Number
+        },
         createTime: { 
             type: Date,
             default: Date.now

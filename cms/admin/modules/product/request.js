@@ -69,6 +69,8 @@ export function uptoken () {
 
 /**
  * 上传图片
+ * @param {string} params.token 上传token
+ * @param {Object} params.file 上传图片本身
  */
 export function upload (params) {
     return post('http://up-z2.qiniu.com', params)

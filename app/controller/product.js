@@ -56,16 +56,23 @@ exports.update = function* () {
 
 	var id = this.params.id;
 	var query = this.request.body;
-	var update = {
-		updateTime: new Date(),
-		title: query.title,
-		summary: query.summary,
-		storageId: query.storageId,
-		productSubjectId: query.productSubjectId,
-		price: query.price,
-		discountPrice: query.discountPrice
-	};
-	console.log(update);
+	var update = {};
+	//  更新上架下架状态
+	if (typeof query.isNotSale != 'undefined') {
+		update = {
+			isNotSale: query.isNotSale
+		}
+	} else {
+		update = {
+			updateTime: new Date(),
+			title: query.title,
+			summary: query.summary,
+			storageId: query.storageId,
+			productSubjectId: query.productSubjectId,
+			price: query.price,
+			discountPrice: query.discountPrice
+		};
+	}	
 	var result = yield this.service.product.put(id, update);
 	this.body = this.helper.success(result);
 };
