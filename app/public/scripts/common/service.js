@@ -23,8 +23,11 @@ axios.interceptors.request.use(function (config) {
  */
 axios.interceptors.response.use(function (response) {
     var data = response.data;
+    if (typeof data === 'string') {
+        data = JSON.parse(data);
+    }
     if (data.code === 0) {
-        return response.data;
+        return data;
     } else {
         toast(data.message || '系统异常', 'error');
         return Promise.reject(data);

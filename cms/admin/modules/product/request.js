@@ -13,9 +13,11 @@ import { post, get, del, put } from '../../../../app/public/scripts/common/servi
 export function add (params) {
     return post('/api/product', {
         title: params.title,
-        summary: params.summary,
-        content: params.content,
-        productSubjectId: params.productSubjectId
+		summary: params.summary,
+		storageId: params.storageId,
+		productSubjectId: params.productSubjectId,
+		price: params.price,
+		discountPrice: params.discountPrice
     });
 }
 
@@ -59,10 +61,17 @@ export function update (id, params) {
 }
 
 /** 
- * 上传产品图片 
+ * 获取上传产品token 
  */
 export function uptoken () {
     return get('/qiniu/uptoken');
+}
+
+/**
+ * 上传图片
+ */
+export function upload (params) {
+    return post('http://up-z2.qiniu.com', params)
 }
 
 

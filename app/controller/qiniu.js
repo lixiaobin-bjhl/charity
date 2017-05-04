@@ -14,12 +14,12 @@ module.exports = app => {
             qiniu.conf.SECRET_KEY = 'd0_mNHLUXwoa6e7MbPIA2h0f40Wxfrg5IxqInsbR';
             
             function uptoken(bucket) {
-                var putPolicy = new qiniu.rs.PutPolicy(bucket);
+                var putPolicy = new qiniu.rs.PutPolicy(bucket, null, null, null, '{"code": 0, "key": $(key), "hash": $(etag), "imageInfo": $(imageInfo)}');
                 return putPolicy.token();
             }
-            var token = uptoken('chairty');
+            var token = uptoken('charity');
             this.ctx.body = this.ctx.helper.success({
-		        token	
+		        token
 	        });
 		}
 	}

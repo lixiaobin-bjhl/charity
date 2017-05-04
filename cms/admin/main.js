@@ -20,6 +20,7 @@ import {
 // filter
 require('./common/filter/date');
 require('./common/filter/currency');
+require('./common/filter/compressImage');
 
 const router = new VueRouter({
     mode: 'history',

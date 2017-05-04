@@ -18,7 +18,7 @@ exports.create = function* () {
 };
 
 /**
- * 获取新闻列表
+ * 获取产品列表
  */
 exports.index = function* () {
     var query = this.query;
@@ -29,7 +29,7 @@ exports.index = function* () {
 };
 
 /**
- * 删除新闻
+ * 删除产品
  */
 exports.destroy = function* () {
 
@@ -60,6 +60,7 @@ exports.update = function* () {
 		updateTime: new Date(),
 		title: query.title,
 		summary: query.summary,
+		storageId: query.storageId,
 		productSubjectId: query.productSubjectId,
 		price: query.price,
 		discountPrice: query.discountPrice

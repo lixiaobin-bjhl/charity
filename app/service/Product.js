@@ -14,8 +14,10 @@ module.exports = app => {
          * 添加产品
          * @param {string} params.title 产品标题
          * @param {string} params.summary 产品摘要
-         * @param {string} params.content 产品内容
-         * @param {string} params.subjectId 产品
+         * @param {string} params.price 产品价格
+         * @param {string} params.productSubjectId 产品分类
+         * @param {string} params.discountPrice 产品折扣
+         * @param {string} params.storageId 产品图片存储id
          * @return {Object}
          */
         * add(params) {
@@ -23,9 +25,10 @@ module.exports = app => {
             var product = new Product({
                 title: params.title,
                 summary: params.summary,
-                content: params.content,
-                author: this.ctx.session.user,
-                productSubjectId: mongoose.Types.ObjectId(params.productSubjectId)
+                storageId: params.storageId,
+                productSubjectId: params.productSubjectId,
+                price: params.price,
+                discountPrice: params.discountPrice
             });
             product.save((err) => {
                 if (err) {

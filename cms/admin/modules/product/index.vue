@@ -19,6 +19,11 @@
             <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="title" label="标题">
             </el-table-column>
+            <el-table-column inline-template label="产品图片">
+                <div>
+                    <img width="60" height="60" :src="row.storageId|compressImage(60, 60)">
+                </div>
+            </el-table-column>
             <el-table-column inline-template label="分类">
                 <div>
                     <div v-if="row.productSubject">

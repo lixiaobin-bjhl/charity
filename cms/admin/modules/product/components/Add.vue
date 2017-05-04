@@ -5,14 +5,18 @@
 
 <template>
     <el-dialog :title="product ? '编辑产品' : '新增产品'" v-model="$parent.addState" size="small">
-        <el-form label-width="100px" :model="form" :rules="rules" ref="form">
+        <el-form label-width="100px" :model="form" :rules="rules" ref="form" v-loading="loading">
             <el-form-item label="标题" required prop="title">
                 <el-input placeholder="请输入1-30字内的产品标题" :maxlength="30" v-model="form.title"></el-input>
             </el-form-item>
-            <el-form-item>
+            <el-form-item prop="storageId">
                 <upload @change="changeProductImage">
-                    <el-button type="primary">上传图片</el-button>
+                    <el-button type="primary" v-text="form.storageId ? '修改图片' : '上传图片'"></el-button>
                 </upload>
+                <el-input type="hidden" v-model="form.storageId"></el-input>
+                <div v-if="form.storageId">
+                    <img width="100" height="100" :src="form.storageId|compressImage(100, 100)">
+                </div>
             </el-form-item>
             <el-form-item label="摘要" required prop="summary">
                 <el-input placeholder="请输入产品摘要" type="textarea" :maxlength="30" v-model="form.summary"></el-input>
@@ -48,7 +52,7 @@
     import config from '../config';
     import * as newsSubejctRequest  from '../../productSubject/request';
     import Upload from '../../../common/components/Upload.vue';
-    import  { uptoken } from '../request';
+    import  { uptoken, upload } from '../request';
 
     export default {
         data () {
@@ -57,10 +61,12 @@
                 form: {
                     title: '',
                     productSubjectId: '',
+                    storageId: '',
                     summary: '',
                     price: '',
                     discountPrice: ''
                 },
+                loading: false,
                 rules: config.addFormRule,
                 productSubejctList: [],
                 submiting: false
@@ -80,6 +86,7 @@
                     title: product.title,
                     summary: product.summary,
                     price: product.price,
+                    storageId: product.storageId,
                     discountPrice: product.discountPrice,
                     productSubjectId: product.productSubjectId
                 });
@@ -100,6 +107,17 @@
                 uptoken()
                     .then((res)=> {
                         var token = res.data.token;
+                        fd.append('token', token);
+                        this.loading = true;
+                        upload(fd)
+                            .then((res)=> {
+                                this.form.storageId = res.key;
+                                this.loading = false;
+                                toast('图片上传成功', 'success');
+                            })
+                            .catch(()=> {
+                                this.loading = false;
+                            });
                     });
             },
             /**
@@ -130,6 +148,7 @@
                             title: form.title,
                             summary: form.summary,
                             price: form.price,
+                            storageId: form.storageId,
                             discountPrice: form.discountPrice,
                             productSubjectId: form.productSubjectId
                         };

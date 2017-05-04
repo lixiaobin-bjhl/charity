@@ -23,6 +23,10 @@ export default  {
             required: true,
             message: '请输入产品内容'
         },
+        storageId: {
+            required: true,
+            message: '请上传产品图片'
+        },
         price: {
             required: true,
             message: '请输入产品价格'

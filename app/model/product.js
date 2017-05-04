@@ -13,6 +13,9 @@ module.exports = mongoose => {
         title: { type: String },
         summary: { type: String },
         productSubjectId: { type: ObjectId},
+        storageId: {
+            type: Object
+        },
         author: {
             type: Object
         },
