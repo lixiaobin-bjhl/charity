@@ -6,7 +6,8 @@
 'use strict';
 
 const state = {
-    product: null
+    product: null,
+    showDetailState: false
 };
 
 const mutations = {
@@ -14,6 +15,14 @@ const mutations = {
         state.product = product;
     },
     'RESET_PRODUCT' (state) {
+        state.product = null;
+    },
+    'SHOW_PRODUCT_DETAIL' (state, product) {
+        state.showDetailState = true;
+        state.product = product;
+    },
+    'HIDE_PRODUCT_DETAIL' (state) {
+        state.showDetailState = false;
         state.product = null;
     }
 };

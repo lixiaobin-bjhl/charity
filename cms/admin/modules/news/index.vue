@@ -1,19 +1,23 @@
 <!--
-  @fileOverview charity-cms-news
-  @author XiaoBin Li(lixiaobin8878@gmail.com) 
+    @fileOverview charity-cms-news
+    @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
 <template>
     <div>
-        <el-form>
-            <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                <el-option v-for="item in newsSubejctList" :value="item._id" :label="item.name"></el-option>
-            </el-select>
-        </el-form>
-        <div>
-            <el-button type="primary" @click="add">新增新闻</el-button>
-            <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
-            <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
+        <div class="list-header">
+            <el-form>
+                <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
+                    <el-option v-for="item in newsSubejctList" :value="item._id" :label="item.name"></el-option>
+                </el-select>
+            </el-form>
+            <div class="btn-group">
+                <div class="right">
+                    <el-button type="primary" @click="add">新增新闻</el-button>
+                </div>
+                <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
+                <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
+            </div>
         </div>
         <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55"></el-table-column>

@@ -1,5 +1,5 @@
 <!--
-  @fileOverview charity-cms-main 添加产品
+  @fileOverview charity-cms-product 添加产品
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 

@@ -5,9 +5,12 @@
 
 <template>
     <div>
-        <div>分类管理</div>
-        <div>
-            <el-button type="primary" @click="add">新增新闻分类</el-button>
+        <div class="list-header">
+            <div class="btn-group">
+                <div class="right">
+                    <el-button type="primary" @click="add">新增新闻分类</el-button>
+                </div>
+            </div>
         </div>
         <el-table v-loading.body="loading" :data="list">
             <el-table-column prop="name" label="名称">

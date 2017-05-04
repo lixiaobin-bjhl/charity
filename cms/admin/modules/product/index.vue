@@ -5,19 +5,27 @@
 
 <template>
     <div>
-        <el-form>
-            <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                <el-option v-for="item in productSubejctList" :value="item._id" :label="item.name"></el-option>
-            </el-select>
-        </el-form>
-        <div>
-            <el-button type="primary" @click="add">新增产品</el-button>
-            <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
-            <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
+        <transition name="slide-right" :appear="true" transition="transition">
+	        <detail v-if="$store.state.product.showDetailState"></detail>
+	    </transition>
+        <div class="list-header">
+            <el-form>
+                <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
+                    <el-option v-for="item in productSubejctList" :value="item._id" :label="item.name"></el-option>
+                </el-select>
+            </el-form>
+            <div class="btn-group">
+                <div class="right">
+                    <el-button type="primary" @click="add">新增产品</el-button>
+                </div>
+                <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
+                <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
+            </div>
         </div>
         <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="title" label="标题">
+            <el-table-column inline-template label="标题">
+                 <a href="javascript:;" @click="showDetail(row)">{{row.title}}</a>
             </el-table-column>
             <el-table-column inline-template label="产品图片">
                 <div>
@@ -80,6 +88,7 @@
 <script>
     
     import * as newsSubejctRequest  from '../productSubject/request';
+    import Detail from './components/Detail.vue';
     import { list, remove, batchRemove, update } from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import Add from './components/Add.vue';
@@ -107,6 +116,12 @@
              */
             add () {
                 this.addState = true;
+            },
+            /**
+             * 查看产品详情
+             */
+            showDetail (product) {
+                this.$store.commit('SHOW_PRODUCT_DETAIL', product);
             },
             /**
              * 更新产品
@@ -227,7 +242,8 @@
             }
         },
         components: {
-            Add
+            Add,
+            Detail
         }
     }
 </script>

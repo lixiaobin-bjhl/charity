@@ -1,0 +1,15 @@
+/**
+ *  @file 列表上方样式
+ *  @author XiaoBin Li(lixiaobin8878@gmail.com) 
+ */
+
+ .list-header {
+     margin: 10px 0;
+     .btn-group {
+         @include clearfix;
+         padding: 0 10px;
+     }
+     .right {
+        float: right;
+     }
+ }
