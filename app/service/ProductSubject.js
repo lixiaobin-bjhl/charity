@@ -31,6 +31,7 @@ module.exports = app => {
             });
             return productSubject;
         }
+
         /**
          * 查找新闻分类列表 
          */
@@ -38,6 +39,7 @@ module.exports = app => {
             var list = yield this.ctx.model.productSubject.find({});
             return list;
         }
+        
         /**
          * 删除新闻分类
          * @param {string} id  分闻分类id
@@ -55,6 +57,7 @@ module.exports = app => {
             });
             return productSubject;
         }
+        
         /**
          * 更新新闻分类 
          * @param {string} id 新闻分类id

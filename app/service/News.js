@@ -36,6 +36,7 @@ module.exports = app => {
             });
             return news;
         }
+
         /**
          * 查找新闻列表
          * @param {Object} condition 列表查询条件
@@ -50,6 +51,19 @@ module.exports = app => {
             var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});
             return list;
         }
+
+        /**
+         * 根据新闻分类id查找新闻数量
+         * @param {Object} newsSubjectId 新闻分类
+         */
+        * listBySubjectId(newsSubjectId) {
+            var condition = {
+                newsSubjectId: mongoose.Types.ObjectId(newsSubjectId)
+            };
+            var count = yield this.ctx.model.news.find(condition).count();
+            return count;
+        }
+
         /**
          * 删除新闻
          * @param {string} id  分闻分类id
@@ -67,6 +81,7 @@ module.exports = app => {
             });
             return news;
         }
+
         /**
          * 批量删除新闻
          * @param {Array} ids  分闻分类ids
@@ -88,6 +103,7 @@ module.exports = app => {
             });
             return news;
         }
+        
         /**
          * 更新新闻 
          * @param {string} id 新闻id

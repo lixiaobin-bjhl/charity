@@ -35,6 +35,12 @@ exports.index = function* () {
  */
 exports.destroy = function* () {
 	var id = this.params.id;
+	var newsCount = yield this.service.news.listBySubjectId(id);
+	
+	if (newsCount) {
+		this.body = this.helper.error(1, '该分类下已添加新闻不能删除');
+		return;
+	}
 	var newsSubject = yield this.service.newsSubject.del(id);
 	this.body = this.helper.success({
 		newsSubject	

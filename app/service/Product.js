@@ -40,6 +40,7 @@ module.exports = app => {
             });
             return product;
         }
+
         /**
          * 查找产品列表
          * @param {Object} condition 列表查询条件
@@ -54,6 +55,19 @@ module.exports = app => {
             var list = yield this.ctx.model.product.find(condition).sort({createTime: -1});
             return list;
         }
+
+        /**
+         * 查找产品数量
+         * @param {Object} productSubjectId 产品分类Id
+         */
+        * listBySubjectId(productSubjectId) {
+            var condition = {
+                productSubjectId: mongoose.Types.ObjectId(productSubjectId)
+            };
+            var count = yield this.ctx.model.product.find(condition).count();
+            return count;
+        }
+
         /**
          * 删除产品
          * @param {string} id  分闻分类id
@@ -71,6 +85,7 @@ module.exports = app => {
             });
             return product;
         }
+
         /**
          * 批量删除产品
          * @param {Array} ids  分闻分类ids
@@ -92,6 +107,7 @@ module.exports = app => {
             });
             return product;
         }
+
         /**
          * 更新产品 
          * @param {string} id 产品id

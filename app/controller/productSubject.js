@@ -35,6 +35,13 @@ exports.index = function* () {
  */
 exports.destroy = function* () {
 	var id = this.params.id;
+	var productCount = yield this.service.product.listBySubjectId(id);
+	
+	if (productCount) {
+		this.body = this.helper.error(1, '该分类下已添加产品不能删除');
+		return;
+	}
+
 	var productSubject = yield this.service.productSubject.del(id);
 	this.body = this.helper.success({
 		productSubject	
