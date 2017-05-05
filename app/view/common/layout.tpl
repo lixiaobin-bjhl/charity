@@ -23,7 +23,18 @@
     {% if user %}
         <div class="header">
             <img class="logo" src="/public/img/logo.png">
-            欢迎你：{{user.name}}<a href="/admin/logout">退出</a>
+             <div class="right">
+					<div class="name">
+						<div>
+                            <img width="25" height="25" src="{{user.headPic|compressImage(25,25)}}">
+							<span class="user">{{user.name}}</span>
+							<span class="icon-drop"></span>
+						</div>
+						<ul class="list">
+							<li><a href="/admin/logout">退出登录</a></li>
+						</ul>
+					</div>
+			</div>
         </div>
     {% endif %}
     <div class="site-content">

@@ -25,8 +25,15 @@ var compressImage = function (storageId, options) {
 
     width = Math.floor(width);
     height = Math.floor(height);
+    var devicePixelRatio = 1;
     
-    var devicePixelRatio = window.devicePixelRatio;
+    if (typeof(window) !== 'undefined') {
+        devicePixelRatio = window.devicePixelRatio;
+    } else {
+        // 后端渲染默认devicePixelRatio为2
+        devicePixelRatio = 2;
+    }
+
     // retina屏
     if (devicePixelRatio && devicePixelRatio > 1) {
         width = Math.floor(width * devicePixelRatio);

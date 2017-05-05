@@ -5,4 +5,50 @@
         width: 192px;
         height: 50px;
     }
+    .right {
+		img {
+			border-radius: 4px;
+			margin-left: 30px;
+			margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+		}
+		.name {
+			cursor: pointer;
+			.user {
+				display: inline-block;
+				margin-right: 20px;
+			}
+			.list {
+				transition: all .3s;
+				visibility: hidden;
+				-moz-transition: all .3s;
+				-webkit-transition: all .3s;
+				-o-transition: all .3s;
+				box-sizing: border-box;
+				position: absolute;
+				height: 0;
+				overflow: hidden;
+				top: 100%;
+				right: 5px;
+				z-index: 1000;
+				background-color: #fff;
+				width: 130px;
+				border: 1px solid #D3DCE6;
+				box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.12), 0px 0px 6px 0px rgba(0,0,0,0.04);
+				border-radius: 2px;
+				>li {
+					padding: 0 30px;
+					color: #475669;
+					line-height: 36px;
+				}
+			}
+			&:hover {
+				.list {
+					visibility: visible;
+					height: 36px;
+				}
+			}
+		}
+	}
 }
