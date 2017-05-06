@@ -48,10 +48,15 @@ module.exports = app => {
         * list(query = {}) {
             var condition = {};
             var productSubjectId = query.productSubjectId;
+            var key = query.key;
 
             if (productSubjectId) {
                 condition.productSubjectId = mongoose.Types.ObjectId(productSubjectId);
-            } 
+            }
+            if (key) {
+                condition.title = new RegExp(key);
+            }
+
             var list = yield this.ctx.model.product.find(condition).sort({createTime: -1});
             return list;
         }
@@ -60,11 +65,11 @@ module.exports = app => {
          * 查找产品数量
          * @param {Object} productSubjectId 产品分类Id
          */
-        * listBySubjectId(productSubjectId) {
+        * countBySubjectId(productSubjectId) {
             var condition = {
                 productSubjectId: mongoose.Types.ObjectId(productSubjectId)
             };
-            var count = yield this.ctx.model.product.find(condition).count();
+            var count = yield this.ctx.model.product.count(condition);
             return count;
         }
 

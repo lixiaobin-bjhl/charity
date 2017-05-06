@@ -56,11 +56,11 @@ module.exports = app => {
          * 根据新闻分类id查找新闻数量
          * @param {Object} newsSubjectId 新闻分类
          */
-        * listBySubjectId(newsSubjectId) {
+        * countBySubjectId(newsSubjectId) {
             var condition = {
                 newsSubjectId: mongoose.Types.ObjectId(newsSubjectId)
             };
-            var count = yield this.ctx.model.news.find(condition).count();
+            var count = yield this.ctx.model.news.count(condition);
             return count;
         }
 

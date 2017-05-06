@@ -6,6 +6,7 @@
         height: 50px;
     }
     .right {
+        float: right;
 		img {
 			border-radius: 4px;
 			margin-left: 30px;
@@ -41,12 +42,20 @@
 					padding: 0 30px;
 					color: #475669;
 					line-height: 36px;
+					a {
+						&:hover {
+							text-decoration: none;
+						}
+					}
+					&:hover {
+						background-color: #F2F2F2;
+					}
 				}
 			}
 			&:hover {
 				.list {
 					visibility: visible;
-					height: 36px;
+					height: 72px;
 				}
 			}
 		}

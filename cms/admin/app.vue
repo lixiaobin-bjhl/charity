@@ -73,7 +73,7 @@
         top: 0;
         left: 0;
         background: #eef1f6;
-        z-index: 1;
+        z-index: 6;
         float: left;
         width: 192px;
         height: 100%;

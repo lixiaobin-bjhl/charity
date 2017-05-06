@@ -22,7 +22,7 @@
 <body>
     {% if user %}
         <div class="header">
-            <img class="logo" src="/public/img/logo.png">
+             <a href="/admin"><img class="logo" src="/public/img/logo.png"></a>
              <div class="right">
 					<div class="name">
 						<div>
@@ -31,7 +31,8 @@
 							<span class="icon-drop"></span>
 						</div>
 						<ul class="list">
-							<li><a href="/admin/logout">退出登录</a></li>
+							<li><a href="/admin">主页预览</a></li>
+                            <li><a href="/admin/logout">退出登录</a></li>
 						</ul>
 					</div>
 			</div>

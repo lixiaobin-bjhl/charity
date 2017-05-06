@@ -4,15 +4,22 @@
 -->
 
 <template>
-    <div>
+    <div class="module-wrap">
         <transition name="slide-right" :appear="true" transition="transition">
 	        <detail v-if="$store.state.product.showDetailState"></detail>
 	    </transition>
         <div class="list-header">
-            <el-form>
-                <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                    <el-option v-for="item in productSubejctList" :value="item._id" :label="item.name"></el-option>
-                </el-select>
+            <el-form :inline="true" :model="filter" class="demo-form-inline">
+                <el-form-item>
+                    <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
+                        <el-option v-for="item in productSubejctList" :value="item._id" :label="item.name"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-input placeholder="输入产品名称" v-model="filter.key">
+                        <el-button slot="append" icon="search" @click="search"></el-button>
+                    </el-input>
+                </el-form-item>
             </el-form>
             <div class="btn-group">
                 <div class="right">
@@ -102,7 +109,8 @@
                 list: [],
                 loading: false,
                 filter: {
-                    productSubjectId: ''
+                    productSubjectId: '',
+                    key: ''
                 } 
             };
         },
@@ -186,6 +194,13 @@
              */
             refresh () {
                 this.getList();
+            },
+            /**
+             * 搜索
+             */
+            search () {
+                this.pageNum = 1;
+                this.refresh();
             },
             /**
              * filter 发现变化，对列表数据进行筛选

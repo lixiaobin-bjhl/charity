@@ -22,11 +22,14 @@ export function add (params) {
 }
 
 /**
- * 添加产品
+ * 获取产品列表
+ * @param {string=} params.productSubjectId 产品分类id
+ * @param {string=} params.key 产品搜索关键字
  */
 export function list (params = {}) {
     return get('/api/product', {
-        productSubjectId: params.productSubjectId
+        productSubjectId: params.productSubjectId,
+        key: params.key.trim()
     });
 }
 

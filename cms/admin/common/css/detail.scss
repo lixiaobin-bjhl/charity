@@ -1,0 +1,14 @@
+.detail {
+	position: absolute;
+	width: 100%;
+	z-index: 1005;
+	background: #FFF;
+	top: 0;
+	left: 0;
+	.top-tab {
+		margin-top: 30px;
+		border-top: 1px solid $gray-999;
+		padding: 10px 20px 0;
+	}
+	height: 100%;
+}
