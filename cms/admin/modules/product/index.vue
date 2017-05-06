@@ -6,7 +6,7 @@
 <template>
     <div class="module-wrap">
         <transition name="slide-right" :appear="true" transition="transition">
-	        <detail v-if="$store.state.product.showDetailState"></detail>
+	        <detail v-if="$store.state.product.showDetailState" :pid="pid"></detail>
 	    </transition>
         <div class="list-header">
             <el-form :inline="true" :model="filter" class="demo-form-inline">
@@ -107,6 +107,7 @@
                 productSubejctList: [],
                 multipleSelection: [],
                 list: [],
+                pid: null,
                 loading: false,
                 filter: {
                     productSubjectId: '',
@@ -125,12 +126,15 @@
             add () {
                 this.addState = true;
             },
+
             /**
              * 查看产品详情
              */
             showDetail (product) {
+                this.pid = product._id;
                 this.$store.commit('SHOW_PRODUCT_DETAIL', product);
             },
+
             /**
              * 更新产品
              */
@@ -138,6 +142,7 @@
                 this.$store.commit('SET_PRODUCT', row);
                 this.add();
             },
+
             /**
              * 产品上架/下架
              * @param {string} id 产品id
@@ -158,6 +163,7 @@
                     });
                 });
             },
+
             /**
              * 批量删除产品
              */
@@ -173,6 +179,7 @@
                     });
                 });
             },
+
             /**
              * 删除产品
              * @param {Object} item 产品单元
@@ -189,12 +196,14 @@
                     });
                 });
             },
+
             /**
              * 刷新页面
              */
             refresh () {
                 this.getList();
             },
+
             /**
              * 搜索
              */
@@ -202,12 +211,14 @@
                 this.pageNum = 1;
                 this.refresh();
             },
+
             /**
              * filter 发现变化，对列表数据进行筛选
              */
             filterChange () {
                 this.getList();
             },
+
             /**
              * 获取产品列表
              */
@@ -222,6 +233,7 @@
                        this.loading = true; 
                     });
             },
+
             /**
              * 获取产品分类列表
              */
@@ -231,6 +243,7 @@
                         this.productSubejctList = res.data.list;
                     });
             },
+
             /**
              * 扩展数据
              */
@@ -244,6 +257,7 @@
                 }
                 return data;
             },
+
             /**
              * 选择表格中的product
              */

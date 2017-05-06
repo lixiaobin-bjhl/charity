@@ -42,6 +42,21 @@ module.exports = app => {
         }
 
         /**
+         * 根据产品id找查产品  
+         */
+        * findById (id) {
+            var id = mongoose.Types.ObjectId(id);
+            var product = yield this.ctx.model.product.findById(id);
+            var productSubject = yield this.ctx.model.productSubject.findById(product.productSubjectId);
+            
+            product = product.toJSON();
+            Object.assign(product, {
+                productSubject: productSubject.toJSON()
+            });
+            return product;
+        }
+
+        /**
          * 查找产品列表
          * @param {Object} condition 列表查询条件
          */

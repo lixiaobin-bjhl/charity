@@ -6,7 +6,7 @@
 <template>
 	<div class="top-head_div">
 		<p class="title_p">{{title}}</p>
-		<span class="iconfont icon-times" @click="click"></span>
+		<span class="el-icon-close" @click="click"></span>
 	</div>
 </template>
 

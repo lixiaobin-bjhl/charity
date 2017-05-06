@@ -39,6 +39,15 @@ module.exports = app => {
             var list = yield this.ctx.model.productSubject.find({});
             return list;
         }
+
+        /**
+         * 根据分类id找查分类信息 
+         */
+        * findById (id) {
+            var id = mongoose.Types.ObjectId(id);
+            var product = yield this.ctx.model.productSubject.findById(id);
+            return productSubject;
+        }
         
         /**
          * 删除新闻分类

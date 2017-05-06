@@ -63,6 +63,14 @@ export function update (id, params) {
     return put('/api/product/' + id, params);
 }
 
+/**
+ * 查看产品详情
+ * @param {string} id 产品id
+ */
+export function show (id) {
+    return get('/api/product/' + id);
+}
+
 /** 
  * 获取上传产品token 
  */

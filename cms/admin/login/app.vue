@@ -2,10 +2,10 @@
     <div style="margin: 30px auto; width: 500px;">
         <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="手机">
-                <el-input v-model="form.mobile"></el-input>
+                <el-input v-model="form.mobile" placeholder="请输入手机号"></el-input>
             </el-form-item>
             <el-form-item label="密码">
-                <el-input type="password" v-model="form.password"></el-input>
+                <el-input type="password" placeholder="请输入密码" v-model="form.password"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">登录</el-button>

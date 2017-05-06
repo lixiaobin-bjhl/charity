@@ -50,6 +50,16 @@ exports.destroy = function* () {
 };
 
 /**
+ * 查看产品详情
+ */
+exports.show = function* () {
+	var id = this.params.id;
+	var product = yield this.service.product.findById(id);
+
+	this.body = this.helper.success(product);
+};
+
+/**
  * 编辑产品
  */
 exports.update = function* () {

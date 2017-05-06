@@ -28,11 +28,13 @@
 						<div>
                             <img width="25" height="25" src="{{user.headPic|compressImage(25,25)}}">
 							<span class="user">{{user.name}}</span>
-							<span class="icon-drop"></span>
+                            <span class="icon icon-angle-down"></span>
 						</div>
 						<ul class="list">
 							<li><a href="/admin">主页预览</a></li>
-                            <li><a href="/admin/logout">退出登录</a></li>
+                            <li>
+                                <a href="/admin/logout">退出登录</a>
+                            </li>
 						</ul>
 					</div>
 			</div>
