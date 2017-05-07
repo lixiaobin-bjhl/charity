@@ -21,7 +21,7 @@
 <body>
     {% if user %}
         <div class="header">
-             <a href="/admin"><img class="logo" src="/public/img/logo.png"></a>
+             <a href="/admin"><img class="logo" src="/public/img/charity.png"></a>
              <div class="right">
 					<div class="name">
 						<div>
