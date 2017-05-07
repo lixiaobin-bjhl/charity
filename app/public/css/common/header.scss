@@ -17,6 +17,16 @@
 		.name {
 			cursor: pointer;
 			margin-right: 10px;
+			.triangle {
+				display: inline-block;
+				position: relative;
+				transform: rotate(0deg);
+				transition: transform .3s ease-in-out;
+				border-top: 4px solid #333;
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				border-bottom: 4px solid transparent;
+			}
 			.list {
 				transition: all .3s;
 				visibility: hidden;
@@ -53,6 +63,9 @@
 				.list {
 					visibility: visible;
 					height: 72px;
+				}
+				.triangle {
+					 transform: rotate(180deg);
 				}
 			}
 		}

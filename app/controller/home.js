@@ -8,14 +8,15 @@
 module.exports = app => {
 	class HomeController extends app.Controller {
 		* index() {
-			const dataList = {
-				list: [
-					{ id: 1, title: 'this is news 1', url: '/news/1' },
-					{ id: 2, title: 'this is news 2', url: '/news/2' }
-				],
-				name: "xiaobin"
-			};
-			yield this.ctx.render('home.tpl', dataList);
+			// 获取产品分类列表
+			var productSubject = yield this.service.productSubject.list();
+			// 获取新闻分类列表
+			var newsSubject = yield this.service.newsSubject.list();
+
+			yield this.ctx.render('home.tpl', {
+				productSubject,
+				newsSubject
+			});
 		}
 	}
 	return HomeController;
