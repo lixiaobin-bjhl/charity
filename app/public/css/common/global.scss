@@ -37,3 +37,7 @@ a {
 .clearfix {
     @include clearfix;
 }
+
+.radius3 {
+    border-radius: 3px;
+}

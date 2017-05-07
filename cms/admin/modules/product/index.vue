@@ -29,15 +29,28 @@
                 <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
             </div>
         </div>
-        <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
+        <el-table v-loading.body="loading" ref="table" :data="list" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column inline-template label="标题">
                  <a href="javascript:;" @click="showDetail(row)">{{row.title}}</a>
             </el-table-column>
             <el-table-column inline-template label="产品图片">
-                <div>
-                    <img width="60" height="60" :src="row.storageId|compressImage(60, 60)">
-                </div>
+                    <div v-if="getImages(row).length">
+                        <vue-images
+                            :imgs="getImages(row)"
+                            :modalclose="modalclose"
+                            :keyinput="keyinput"
+                            :mousescroll="mousescroll"
+                            :showclosebutton="showclosebutton"
+                            :showcaption="showcaption"
+                            :imagecountseparator="imagecountseparator"
+                            :showimagecount="showimagecount"
+                            :showthumbnails="showthumbnails">
+                        </vue-images>
+                    </div>
+                    <!--
+                        <img class="radius3" :data-caption="row.title" :data-url="row.storageId|compressImage" width="60" height="60" :src="row.storageId|compressImage(60, 60)">
+                    -->
             </el-table-column>
             <el-table-column inline-template label="分类">
                 <div>
@@ -98,7 +111,9 @@
     import Detail from './components/Detail.vue';
     import { list, remove, batchRemove, update } from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
+    import compressImage from '../../../../app/public/scripts/function/compressImage';
     import Add from './components/Add.vue';
+    import vueImages from 'vue-images/dist/vue-images';
 
     export default {
         data () {
@@ -112,7 +127,16 @@
                 filter: {
                     productSubjectId: '',
                     key: ''
-                } 
+                },
+                images: [],
+                modalclose: true,
+                keyinput: true,
+                mousescroll: true,
+                showclosebutton: true,
+                showcaption: true,
+                imagecountseparator: 'of',
+                showimagecount: true,
+                showthumbnails: true
             };
         },
         created () {
@@ -198,6 +222,16 @@
             },
 
             /**
+             * 设置图片预览器需要的图片
+             */
+            getImages (item) {
+                return [].concat({
+                    imageUrl: compressImage(item.storageId),
+                    caption: item.title
+                });
+            },
+
+            /**
              * 刷新页面
              */
             refresh () {
@@ -271,6 +305,7 @@
             }
         },
         components: {
+            vueImages,
             Add,
             Detail
         }

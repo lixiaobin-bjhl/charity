@@ -8,7 +8,8 @@
     "egg-development-proxyworker": "^0.2.2",
     "egg-view-ejs": "^1.1.0",
     "egg-view-nunjucks": "^2.0.0",
-    "element-ui": "^1.2.8"
+    "element-ui": "^1.2.8",
+    "vue-images": "^1.0.6"
   },
   "devDependencies": {
     "autod": "^2.7.1",
