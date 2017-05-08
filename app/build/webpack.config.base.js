@@ -8,9 +8,17 @@ var utils = require('./utils');
 module.exports = {
     entry: {
         'public/scripts/home': './app/public/scripts/home.js',
+        'public/scripts/news': './app/public/scripts/news.js',
+        'public/scripts/join': './app/public/scripts/join.js',
+        'public/scripts/about': './app/public/scripts/about.js',
+        'public/scripts/case': './app/public/scripts/case.js',
+        'public/scripts/contact': './app/public/scripts/contact.js',
+        'public/scripts/product': './app/public/scripts/product.js',
+        'public/scripts/solution': './app/public/scripts/solution.js',
         'public/scripts/main': './cms/admin/main.js',
         'public/scripts/cmsLogin': './cms/admin/login.js',
-        'public/scripts/vendor': './app/public/scripts/vendor.js'
+        'public/scripts/vendor': './app/public/scripts/vendor.js',
+        'public/scripts/cvendor': './app/public/scripts/cvendor.js'
     },
     output: {
         path: path.resolve(__dirname, '../public/scripts/'),

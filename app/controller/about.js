@@ -1,5 +1,5 @@
 /**
- * @fileOverview charity-news-controller
+ * @fileOverview charity-about-controller
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
@@ -8,18 +8,18 @@
 var abstractController = require('./abstractController');
 
 module.exports = app => {
-	class NewsController extends abstractController(app) {
+	class AboutController extends abstractController(app) {
 		* index() {
 			// 获取产品分类列表
 			var productSubject = yield this.getProductSubject();
 			// 获取新闻分类列表
 			var newsSubject = yield this.getNewsSubject();
 
-			yield this.ctx.render('news.tpl', {
+			yield this.ctx.render('about.tpl', {
 				productSubject,
 				newsSubject
 			});
 		}
 	}
-	return NewsController;
+	return AboutController;
 };

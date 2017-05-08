@@ -46,7 +46,7 @@
     </div>
 
     {% block footer %}
-        <div class="footer">
+        <div class="bfooter">
             COPYRIGHT (©) 2017 菠萝蜜 网站模板 - 智能建站 - 企业建站 - CMS内空管理系统
             <a class="beian" href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002492</a>
         </div>

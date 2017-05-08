@@ -1,10 +1,8 @@
 /**
- * @fileOverview 公共业务 
+ * @fileOverview c端vendor
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
 'use strict';
 
-require('../../css/vendor.scss');
-
-
+require('./common/cbusiness');

@@ -12,6 +12,7 @@
     "vue-images": "^1.0.6"
   },
   "devDependencies": {
+    "amazeui": "^2.7.2",
     "autod": "^2.7.1",
     "axios": "^0.16.1",
     "babel-cli": "^6.24.0",
