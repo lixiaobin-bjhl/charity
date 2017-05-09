@@ -81,7 +81,7 @@
                 <li class="am-active">
                     <a href="[data-tab-panel-0] am-g">
                         <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
-                            <i class="am-icon-cog"></i>
+                            <i class="icon-cog"></i>
                         </div>
                         <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                             <strong class="promo_slider_nav--item_title">办公移动化</strong>
@@ -91,7 +91,7 @@
                 <li class="a">
                     <a href="[data-tab-panel-1] am-g">
                         <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
-                            <i class="am-icon-lightbulb-o"></i>
+                            <i class="icon-lightbulb-o"></i>
                         </div>
                         <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                             <strong class="promo_slider_nav--item_title">网站移动化</strong>
@@ -101,7 +101,7 @@
                 <li class="">
                     <a href="[data-tab-panel-2] am-g">
                         <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
-                            <i class="am-icon-line-chart"></i>
+                            <i class="icon-line-chart"></i>
                         </div>
                         <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                             <strong class="promo_slider_nav--item_title">HTML5移动开发</strong>
@@ -111,7 +111,7 @@
                 <li class="">
                     <a href="[data-tab-panel-3] am-g">
                         <div class="am-u-md-3 am-u-sm-3 am-padding-right-0">
-                            <i class="am-icon-hourglass-end"></i>
+                            <i class="icon-hourglass-end"></i>
                         </div>
                         <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                             <strong class="promo_slider_nav--item_title">How We Work</strong>
@@ -168,7 +168,7 @@
                     <ul class="promo_detailed--list">
                         <li class="promo_detailed--list_item">
                             <span class="promo_detailed--list_item_icon">
-                                <i class="am-icon-diamond"></i>
+                                <i class="icon-diamond"></i>
                             </span>
                             <dl>
                                 <dt>多层次的用户管理功能</dt>
@@ -176,7 +176,7 @@
                         </li>
                         <li class="promo_detailed--list_item">
                             <span class="promo_detailed--list_item_icon">
-                                <i class="am-icon-dollar" style="margin-left: 15px;"></i>
+                                <i class="icon-dollar" style="margin-left: 15px;"></i>
                             </span>
                             <dl>
                                 <dt>丰富的日志报表系统</dt>
@@ -184,7 +184,7 @@
                         </li>
                         <li class="promo_detailed--list_item">
                             <span class="promo_detailed--list_item_icon">
-                                <i class="am-icon-bank" style="margin-left: 10px;"></i>
+                                <i class="icon-bank" style="margin-left: 10px;"></i>
                             </span>
                             <dl>
                                 <dt>丰富的应用程序管理</dt>
@@ -219,7 +219,7 @@
             <div class="am-g">
                 <div class="am-u-md-3">
                     <div class="service_item">
-                        <i class="service_item--icon am-icon-diamond"></i>
+                        <i class="service_item--icon icon-diamond"></i>
                         <h3 class="service_item--title">多页面工作</h3>
                         <div class="service_item--text">
                             <p>标签栏可切换，不必为了新内容而被迫跳转界面，多项工作内容并行处理</p>
@@ -230,7 +230,7 @@
                 </div>
                 <div class="am-u-md-3">
                     <div class="service_item">
-                        <i class="service_item--icon am-icon-user"></i>
+                        <i class="service_item--icon icon-user"></i>
                         <h3 class="service_item--title">统一入口</h3>
                         <div class="service_item--text">
                             <p>集成企业内网所有资源，OA、CRM、ERP、邮件系统，单点登录，无需重复输入密码</p>
@@ -241,7 +241,7 @@
                 </div>
                 <div class="am-u-md-3">
                     <div class="service_item">
-                        <i class="service_item--icon am-icon-umbrella"></i>
+                        <i class="service_item--icon icon-umbrella"></i>
                         <h3 class="service_item--title">一键直达</h3>
                         <div class="service_item--text">
                             <p>办公流程太多，搜索框输入（或语音输入），可以快速找到核心内容</p>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="am-u-md-3">
                     <div class="service_item">
-                        <i class="service_item--icon am-icon-briefcase"></i>
+                        <i class="service_item--icon icon-briefcase"></i>
                         <h3 class="service_item--title">语音助手</h3>
                         <div class="service_item--text">
                             <p>不方便打字时，可以直接用语音输入想要的内容，使您的双手得到解放</p>
@@ -276,15 +276,15 @@
         <div class="pricing_compare">
             <ul class="pricing_compare--options">
                 <li class="pricing_compare--option">
-                    <i class="pricing_compare--option_icon am-icon-group"></i>Company Size</li>
+                    <i class="pricing_compare--option_icon icon-group"></i>Company Size</li>
                 <li class="pricing_compare--option">
-                    <i class="pricing_compare--option_icon am-icon-umbrella"></i>Insurance Coverage</li>
+                    <i class="pricing_compare--option_icon icon-umbrella"></i>Insurance Coverage</li>
                 <li class="pricing_compare--option">
-                    <i class="pricing_compare--option_icon am-icon-life-ring"></i>Number of Consultations</li>
+                    <i class="pricing_compare--option_icon icon-life-ring"></i>Number of Consultations</li>
                 <li class="pricing_compare--option">
-                    <i class="pricing_compare--option_icon am-icon-street-view"></i>Phone Support</li>
+                    <i class="pricing_compare--option_icon icon-street-view"></i>Phone Support</li>
                 <li class="pricing_compare--option">
-                    <i class="pricing_compare--option_icon am-icon-dollar"></i>Investments Protection</li>
+                    <i class="pricing_compare--option_icon icon-dollar"></i>Investments Protection</li>
             </ul>
             <div class="pricing_compare--plans">
                 <div class="pricing_plan">
@@ -416,7 +416,7 @@
             <div class="am-g">
                 <div class="am-u-md-4">
                     <div class="contact_card">
-                        <i style="color:#59bcdb" class="contact_card--icon am-icon-phone"></i>
+                        <i style="color:#59bcdb" class="contact_card--icon icon-phone"></i>
                         <strong class="contact_card--title">Contact Us</strong>
                         <p class="contact_card--text">Feel free to call us on
                             <br>
@@ -426,7 +426,7 @@
                 </div>
                 <div class="am-u-md-4">
                     <div class="contact_card">
-                        <i style="color:#59bcdb" class="contact_card--icon am-icon-envelope-o"></i>
+                        <i style="color:#59bcdb" class="contact_card--icon icon-envelope-o"></i>
                         <strong class="contact_card--title">Our Email</strong>
                         <p class="contact_card--text">Drop us a line anytime at
                             <br>
@@ -437,7 +437,7 @@
                 </div>
                 <div class="am-u-md-4">
                     <div class="contact_card">
-                        <i style="color:#59bcdb" class="contact_card--icon am-icon-map-marker"></i>
+                        <i style="color:#59bcdb" class="contact_card--icon icon-map-marker"></i>
                         <strong class="contact_card--title">Our Address</strong>
                         <p class="contact_card--text">Come visit us at
                             <br>

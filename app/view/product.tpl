@@ -9,7 +9,21 @@
 {% endblock %}
 
 {% block layoutContainer %}
-    <div style="margin: 100px 30px; color: #999">产品中心</div>
+    <div class="page-header">
+        <div class="am-container">
+            <h1 class="page-header-title">产品中心</h1>
+        </div>
+    </div>
+
+     <div class="breadcrumb-box">
+        <div class="am-container">
+            <ol class="am-breadcrumb">
+            <li><a href="/">首页</a></li>
+            <li class="am-active">产品中心</li>
+            </ol>
+        </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 {% endblock %}
 

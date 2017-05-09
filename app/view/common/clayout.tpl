@@ -27,10 +27,10 @@
                     <div class="am-g">
                         <div class="am-u-md-3">
                             <div class="topbar-left">
-                                <i class="am-icon-globe"></i>
+                                <i class="icon-globe"></i>
                                 <div class="am-dropdown" data-am-dropdown="">
                                     <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language
-                                        <span class="am-icon-caret-down"></span></button>
+                                        <span class="icon-caret-down"></span></button>
                                     <ul class="am-dropdown-content">
                                         <li>
                                             <a href="#">English</a></li>
@@ -43,14 +43,14 @@
                         </div>
                         <div class="am-u-md-9">
                             <div class="topbar-right am-text-right am-fr">Follow us
-                                <i class="am-icon-facebook"></i>
-                                <i class="am-icon-twitter"></i>
-                                <i class="am-icon-google-plus"></i>
-                                <i class="am-icon-pinterest"></i>
-                                <i class="am-icon-instagram"></i>
-                                <i class="am-icon-linkedin"></i>
-                                <i class="am-icon-youtube-play"></i>
-                                <i class="am-icon-rss"></i>
+                                <i class="icon-facebook"></i>
+                                <i class="icon-twitter"></i>
+                                <i class="icon-google-plus"></i>
+                                <i class="icon-pinterest"></i>
+                                <i class="icon-instagram"></i>
+                                <i class="icon-linkedin"></i>
+                                <i class="icon-youtube-play"></i>
+                                <i class="icon-rss"></i>
                                 <a href="/login">登录</a>
                                 <a href="/register">注册</a></div>
                         </div>
@@ -74,19 +74,19 @@
                                     <div class="header-contact">
                                         <div class="header_contacts--item">
                                             <div class="contact_mini">
-                                                <i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
+                                                <i style="color:#7c6aa6" class="contact-icon icon-phone"></i>
                                                 <strong>0 (855) 233-5385</strong>
                                                 <span>周一~周五, 8:00 - 20:00</span></div>
                                         </div>
                                         <div class="header_contacts--item">
                                             <div class="contact_mini">
-                                                <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
+                                                <i style="color:#7c6aa6" class="contact-icon icon-envelope-o"></i>
                                                 <strong>cn@yunshipei.com</strong>
                                                 <span>随时欢迎您的来信！</span></div>
                                         </div>
                                         <div class="header_contacts--item">
                                             <div class="contact_mini">
-                                                <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
+                                                <i style="color:#7c6aa6" class="contact-icon icon-map-marker"></i>
                                                 <strong>天使大厦,</strong>
                                                 <span>海淀区海淀大街27</span></div>
                                         </div>
@@ -139,7 +139,7 @@
                 <div class="am-u-sm-2">
                     <div class="menu-bars">
                         <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}">
-                            <i class="am-menu-toggle-icon am-icon-bars"></i>
+                            <i class="am-menu-toggle-icon icon-bars"></i>
                         </a>
                         <!-- 侧边栏内容 -->
                         <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas>
@@ -190,14 +190,14 @@
                                         </li>
                                         <li class="nav-share-contain">
                                             <div class="nav-share-links">
-                                                <i class="am-icon-facebook"></i>
-                                                <i class="am-icon-twitter"></i>
-                                                <i class="am-icon-google-plus"></i>
-                                                <i class="am-icon-pinterest"></i>
-                                                <i class="am-icon-instagram"></i>
-                                                <i class="am-icon-linkedin"></i>
-                                                <i class="am-icon-youtube-play"></i>
-                                                <i class="am-icon-rss"></i>
+                                                <i class="icon-facebook"></i>
+                                                <i class="icon-twitter"></i>
+                                                <i class="icon-google-plus"></i>
+                                                <i class="icon-pinterest"></i>
+                                                <i class="icon-instagram"></i>
+                                                <i class="icon-linkedin"></i>
+                                                <i class="icon-youtube-play"></i>
+                                                <i class="icon-rss"></i>
                                             </div>
                                         </li>
                                         <li class="">
@@ -280,16 +280,16 @@
                                             <strong class="footer_main--column_title">联系详情</strong>
                                             <ul class="footer_contact_info">
                                                 <li class="footer_contact_info--item">
-                                                    <i class="am-icon-phone"></i>
+                                                    <i class="icon-phone"></i>
                                                     <span>服务专线：400 069 0309</span></li>
                                                 <li class="footer_contact_info--item">
-                                                    <i class="am-icon-envelope-o"></i>
+                                                    <i class="icon-envelope-o"></i>
                                                     <span>yunshipei.com</span></li>
                                                 <li class="footer_contact_info--item">
-                                                    <i class="am-icon-map-marker"></i>
+                                                    <i class="icon-map-marker"></i>
                                                     <span>北京市海淀区海淀大街27号天使大厦（原亿景大厦）三层</span></li>
                                                 <li class="footer_contact_info--item">
-                                                    <i class="am-icon-clock-o"></i>
+                                                    <i class="icon-clock-o"></i>
                                                     <span>Monday - Friday, 9am - 6 pm;</span></li>
                                             </ul>
                                         </div>

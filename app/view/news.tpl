@@ -18,7 +18,7 @@
     <div class="breadcrumb-box">
         <div class="am-container">
             <ol class="am-breadcrumb">
-            <li><a href="../index.html">首页</a></li>
+            <li><a href="/">首页</a></li>
             <li class="am-active">公司动态</li>
             </ol>
         </div>
@@ -257,7 +257,7 @@
           <div class="am-g">
             <div class="am-u-md-4">
               <div class="contact_card">
-  							<i style="color:#59bcdb" class="contact_card--icon am-icon-phone"></i>
+  							<i style="color:#59bcdb" class="contact_card--icon icon-phone"></i>
   							<strong class="contact_card--title">Contact Us</strong>
   							<p class="contact_card--text">Feel free to call us on <br> <strong>0 (855) 233-5385</strong> <br> Monday - Friday, 8am - 7pm</p>
                 <button type="button" class="am-btn am-btn-secondary">Order a Call Back</button>
@@ -265,7 +265,7 @@
             </div>
             <div class="am-u-md-4">
               <div class="contact_card">
-  							<i style="color:#59bcdb" class="contact_card--icon am-icon-envelope-o"></i>
+  							<i style="color:#59bcdb" class="contact_card--icon icon-envelope-o"></i>
   							<strong class="contact_card--title">Our Email</strong>
   							<p class="contact_card--text">Drop us a line anytime at <br> <strong><a href="mailto:info@financed.com">info@financed.com</a>,</strong> <br> and we’ll get back soon.</p>
                 <button type="button" class="am-btn am-btn-secondary">Start Writing</button>
@@ -273,7 +273,7 @@
             </div>
             <div class="am-u-md-4">
               <div class="contact_card">
-  							<i style="color:#59bcdb" class="contact_card--icon am-icon-map-marker"></i>
+  							<i style="color:#59bcdb" class="contact_card--icon icon-map-marker"></i>
   							<strong class="contact_card--title">Our Address</strong>
   							<p class="contact_card--text">Come visit us at <br> <strong>Stock Building, New York,</strong> <br> NY 93459</p>
                 <button type="button" class="am-btn am-btn-secondary">See the Map</button>
