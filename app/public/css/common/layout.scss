@@ -328,15 +328,13 @@
 }
 .layout-footer .footer .footer_navigation--item::before {
 	position:absolute;
-	content:"\f054";
 	display:block;
 	right:10px;
 	top:50%;
 	transform:translate(0,-50%);
 	margin-top:3px;
 	color:#fff;
-	font-size:12px;
-	font-family:fontawesome
+	font-size:16px;
 }
 .layout-footer .footer .footer_navigation--link {
 	color:#fff;

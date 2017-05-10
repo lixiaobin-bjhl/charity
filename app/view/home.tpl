@@ -176,7 +176,7 @@
                         </li>
                         <li class="promo_detailed--list_item">
                             <span class="promo_detailed--list_item_icon">
-                                <i class="icon-dollar" style="margin-left: 15px;"></i>
+                                <i class="icon-rmb" style="margin-left: 15px;"></i>
                             </span>
                             <dl>
                                 <dt>丰富的日志报表系统</dt>
@@ -284,7 +284,7 @@
                 <li class="pricing_compare--option">
                     <i class="pricing_compare--option_icon icon-street-view"></i>Phone Support</li>
                 <li class="pricing_compare--option">
-                    <i class="pricing_compare--option_icon icon-dollar"></i>Investments Protection</li>
+                    <i class="pricing_compare--option_icon icon-rmb"></i>Investments Protection</li>
             </ul>
             <div class="pricing_compare--plans">
                 <div class="pricing_plan">
