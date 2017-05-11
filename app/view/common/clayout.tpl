@@ -27,32 +27,32 @@
                     <div class="am-g">
                         <div class="am-u-md-3">
                             <div class="topbar-left">
-                                <i class="icon-globe"></i>
+                                {#<i class="icon-globe"></i>#}
                                 <div class="am-dropdown" data-am-dropdown="">
-                                    <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language
-                                        <span class="icon-caret-down"></span></button>
-                                    <ul class="am-dropdown-content">
+                                    {#<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle="">Language#}
+                                        {#<span class="icon-caret-down"></span></button>#}
+                                    {#<ul class="am-dropdown-content">
                                         <li>
                                             <a href="#">English</a></li>
                                         <li class="am-divider"></li>
                                         <li>
                                             <a href="#">Chinese</a></li>
-                                    </ul>
+                                    </ul>#}
                                 </div>
                             </div>
                         </div>
                         <div class="am-u-md-9">
-                            <div class="topbar-right am-text-right am-fr">Follow us
-                                <i class="icon-facebook"></i>
+                            <div class="topbar-right am-text-right am-fr">
+                                {#<i class="icon-facebook"></i>
                                 <i class="icon-twitter"></i>
                                 <i class="icon-google-plus"></i>
                                 <i class="icon-pinterest"></i>
                                 <i class="icon-instagram"></i>
                                 <i class="icon-linkedin"></i>
                                 <i class="icon-youtube-play"></i>
-                                <i class="icon-rss"></i>
-                                <a href="/login">登录</a>
-                                <a href="/register">注册</a></div>
+                                <i class="icon-rss"></i>#}
+                                <a href="/admin/login">系统管理</a>
+                                {#<a href="/register">注册</a></div>#}
                         </div>
                     </div>
                 </div>

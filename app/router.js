@@ -20,6 +20,7 @@ module.exports = app => {
     app.get('/qiniu/uptoken', 'admin.qiniu.uptoken');
 
     app.resources('user', '/api/user/', 'admin.user');
+    app.resources('role', '/api/role/', 'admin.role');
     app.resources('news', '/api/news/', 'admin.news');
     app.resources('product', '/api/product/', 'admin.product');
     app.resources('newsSubject', '/api/newsSubject/', 'admin.newsSubject');

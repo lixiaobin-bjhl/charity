@@ -1,5 +1,7 @@
 'use strict';
 
+var modules = require('./modules');
+
 module.exports = appInfo => {
     const config = {};
 
@@ -30,6 +32,7 @@ module.exports = appInfo => {
             promiseLibrary: require('bluebird')
         }
     };
+    config.modules = modules;
 
     return config;
 };

@@ -37,6 +37,14 @@ export default [
             {
                 name: '产品分类',
                 url: '/admin/productSubject'
+            },
+            {
+                name: '角色管理',
+                url: '/admin/role'
+            },
+            {
+                name: '用户管理',
+                url: '/admin/user'
             }
         ]
     }

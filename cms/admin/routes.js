@@ -29,6 +29,14 @@ export default [
     {
         path: '/admin/productSubject',
         component: require('./modules/productSubject/index.vue')
+    },
+    {
+        path: '/admin/role',
+        component: require('./modules/role/index.vue')
+    },
+    {
+        path: '/admin/user',
+        component: require('./modules/user/index.vue')
     }
 ];
 

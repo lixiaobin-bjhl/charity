@@ -16,6 +16,8 @@ import newsSubject from '../modules/newsSubject/store';
 import news from '../modules/news/store';
 import product from '../modules/product/store';
 import productSubject from '../modules/productSubject/store';
+import user from '../modules/user/store';
+import role from '../modules/role/store';
 
 export default new vuex.Store({
     state: {
@@ -28,6 +30,8 @@ export default new vuex.Store({
 		news,
 		newsSubject,
 		product,
+		role,
+		user,
 		productSubject
 	}
 });
