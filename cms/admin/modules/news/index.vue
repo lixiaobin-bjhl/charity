@@ -8,7 +8,7 @@
         <div class="list-header">
             <el-form>
                 <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                    <el-option v-for="item in newsSubejctList" :value="item._id" :label="item.name"></el-option>
+                    <el-option v-for="item in newsSubejctList" :value="item._id" :key="item._id" :label="item.name"></el-option>
                 </el-select>
             </el-form>
             <div class="btn-group">

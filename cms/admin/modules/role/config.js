@@ -7,29 +7,23 @@
 
 export default  {
     addFormRule: {
-        title: {
+        name: {
             required: true,
-            message: '请输入角色标题'
+            message: '请输入角色名称'
         },
-        summary: {
+        remark: {
             required: true,
-            message: '请输入角色摘要'
+            message: '请输写备注'
         },
-        roleSubjectId: {
-            required: true,
-            message: '请选择角色分类'
-        },
-        content: {
-            required: true,
-            message: '请输入角色内容'
-        },
-        storageId: {
-            required: true,
-            message: '请上传角色图片'
-        },
-        price: {
-            required: true,
-            message: '请输入角色价格'
+        authority: {
+            validator (rule, value, callback) {
+                if (!value) {
+                     callback(new Error('请选择权限'));
+                } else {
+                    callback();
+                }
+            },
+            trigger: 'change'
         }
     }
 }

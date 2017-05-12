@@ -58,10 +58,9 @@ exports.update = function* () {
 	var query = this.request.body;
 	var update = {
 		updateTime: new Date(),
-		content: query.content,
-		title: query.title,
-		summary: query.summary,
-		roleSubjectId: query.roleSubjectId
+		name: query.name,
+		remark: query.remark,
+		authority: query.authority
 	};
 	var result = yield this.service.role.put(id, update);
 	this.body = this.helper.success(result);

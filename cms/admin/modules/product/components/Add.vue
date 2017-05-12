@@ -23,7 +23,7 @@
             </el-form-item>
             <el-form-item label="分类" required prop="productSubjectId">
                 <el-select v-model="form.productSubjectId" placeholder="请选择分类" clearable>
-                    <el-option v-for="item in productSubejctList"  :value="item._id" :label="item.name"></el-option>
+                    <el-option v-for="item in productSubejctList" :key="item._id"  :value="item._id" :label="item.name"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="价格(元)" required prop="price">

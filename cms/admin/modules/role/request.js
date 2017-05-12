@@ -8,16 +8,16 @@
 import { post, get, del, put } from '../../../../app/public/scripts/common/service';
 
 /**
- * 添加角色 
+ * 添加角色
+ * @param {string} params.name 角色名称
+ * @param {string} params.remark 备注
+ * @param {Object} params.authority 权限
  */
 export function add (params) {
     return post('/api/role', {
-        title: params.title,
-		summary: params.summary,
-		storageId: params.storageId,
-		roleSubjectId: params.roleSubjectId,
-		price: params.price,
-		discountPrice: params.discountPrice
+        name: params.name,
+		remark: params.remark,
+		authority: params.authority
     });
 }
 
@@ -56,8 +56,9 @@ export function batchRemove (ids) {
 /**
  * 更新角色
  * @param {string} id 角色id
- * @param {string} params.title 角色名称
- * @param {string} params.summary 角色摘要
+ * @param {string} params.name 角色名称
+ * @param {string} params.remark 角色摘要
+ * @param {Object} params.authority 角色权限
  */
 export function update (id, params) {
     return put('/api/role/' + id, params);

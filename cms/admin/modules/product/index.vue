@@ -12,7 +12,7 @@
             <el-form :inline="true" :model="filter" class="demo-form-inline">
                 <el-form-item>
                     <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                        <el-option v-for="item in productSubejctList" :value="item._id" :label="item.name"></el-option>
+                        <el-option v-for="item in productSubejctList" :value="item._id" :key="item._id" :label="item.name"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item>

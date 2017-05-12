@@ -14,7 +14,7 @@
             </el-form-item>
             <el-form-item label="分类" required prop="newsSubjectId">
                 <el-select v-model="form.newsSubjectId" placeholder="请选择分类" clearable>
-                    <el-option v-for="item in newsSubejctList"  :value="item._id" :label="item.name"></el-option>
+                    <el-option v-for="item in newsSubejctList" :key="item._id"  :value="item._id" :label="item.name"></el-option>
                 </el-select>
             </el-form-item>
              <el-form-item label="内容" required prop="editorContent">

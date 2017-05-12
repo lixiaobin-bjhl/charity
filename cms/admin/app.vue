@@ -2,7 +2,7 @@
    <div>
        <div class="side-bar">
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-                 <div v-for="(menu, index) in sidebarConfig">
+                 <div v-for="(menu, index) in sidebarConfig" :key="index">
                     <el-submenu :index="'' + index">
                         <template slot="title">
                             <i :class="menu.icon"></i>{{menu.name}}

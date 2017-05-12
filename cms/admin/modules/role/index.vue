@@ -15,8 +15,8 @@
         <el-table v-loading.body="loading" ref="table" :data="list">
             <el-table-column prop="name" label="角色名称">
             </el-table-column>
-            <el-table-column inline-template label="权限">
-                <div v-text="row.authority"></div>
+            <el-table-column inline-template label="拥有权限">
+                <div v-html="getAuthorityText(row)"></div>
             </el-table-column>
             <el-table-column inline-template label="创建时间">
                 <div>
@@ -50,6 +50,8 @@
     import { list, remove, batchRemove, update } from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import compressImage from '../../../../app/public/scripts/function/compressImage';
+    import modules from '../../../../config/modules';
+    import encodeHTML from '../../../../app/public/scripts/function/encodeHTML';
     import Add from './components/Add.vue';
     import vueImages from 'vue-images/dist/vue-images';
 
@@ -112,11 +114,23 @@
             },
 
             /**
-             * 搜索
+             * 获取权限文本
+             * @param {Object} row 角色信息
+             * @return {string} 权限文本
              */
-            search () {
-                this.pageNum = 1;
-                this.refresh();
+            getAuthorityText (row) {
+                var authority = row.authority;
+                // 这里暂不显示二级目录的权限
+                var result = [];
+                for (var key in modules) {
+                    if (modules.hasOwnProperty(key)) {
+                        var module = modules[key];
+                        if (authority[module.id]) {
+                            result.push(encodeHTML(module.name));
+                        }
+                    }
+                }
+                return result.join('<br>');
             },
 
             /**
