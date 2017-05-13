@@ -9,7 +9,7 @@
             <el-form-item label="角色名称" required prop="name">
                 <el-input placeholder="请输写角色名称" :maxlength="30" v-model="form.name"></el-input>
             </el-form-item>
-            <el-form-item label="备注" required prop="remark">
+            <el-form-item label="备注" prop="remark">
                 <el-input placeholder="请填写备注" type="textarea" :maxlength="100" v-model="form.remark"></el-input>
             </el-form-item>
             <el-form-item label="限权" required prop="authority">

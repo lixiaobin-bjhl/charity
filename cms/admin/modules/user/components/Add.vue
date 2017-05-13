@@ -1,44 +1,37 @@
 <!--
-  @fileOverview charity-cms-user 添加产品
+  @fileOverview charity-cms-user 添加用户
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
 <template>
-    <el-dialog :title="user ? '编辑产品' : '新增产品'" v-model="$parent.addState" size="small">
+    <el-dialog :title="user ? '编辑用户' : '新增用户'" v-model="$parent.addState" size="small">
         <el-form label-width="100px" :model="form" :rules="rules" ref="form" v-loading="loading">
-            <el-form-item label="标题" required prop="title">
-                <el-input placeholder="请输入1-30字内的产品标题" :maxlength="30" v-model="form.title"></el-input>
+            <el-form-item label="用户姓名" required prop="name">
+                <el-input placeholder="请输入1-10字内的用户姓名" :maxlength="10" v-model="form.name"></el-input>
             </el-form-item>
-            <el-form-item prop="storageId">
+            <el-form-item prop="headPic">
                 <upload @change="changeUserImage">
-                    <el-button type="primary" v-text="form.storageId ? '修改图片' : '上传图片'"></el-button>
+                    <el-button type="primary" v-text="form.headPic ? '修改头像' : '上传头像'"></el-button>
                 </upload>
-                <el-input type="hidden" v-model="form.storageId"></el-input>
-                <div v-if="form.storageId">
-                    <img width="100" height="100" :src="form.storageId|compressImage(100, 100)">
+                <el-input type="hidden" v-model="form.headPic"></el-input>
+                <div v-if="form.headPic" style="margin-top: 10px">
+                    <img width="100" height="100" :src="form.headPic|compressImage(100, 100)">
                 </div>
             </el-form-item>
-            <el-form-item label="摘要" required prop="summary">
-                <el-input placeholder="请输入产品摘要" type="textarea" :maxlength="30" v-model="form.summary"></el-input>
+            <el-form-item label="手机号" required prop="mobile">
+                <el-input placeholder="请输入用户密码" :maxlength="30" v-model="form.mobile"></el-input>
             </el-form-item>
-            <el-form-item label="分类" required prop="userSubjectId">
-                <el-select v-model="form.userSubjectId" placeholder="请选择分类" clearable>
-                    <el-option v-for="item in userSubejctList" :key="item._id" :value="item._id" :label="item.name"></el-option>
-                </el-select>
+            <el-form-item label="密码" v-if="!user" required prop="password">
+                <el-input placeholder="请输入用户密码" :maxlength="30" v-model="form.password"></el-input>
             </el-form-item>
-            <el-form-item label="价格(元)" required prop="price">
-                 <el-input placeholder="请输入产品价格" :maxlength="10" v-model="form.price"></el-input>
+            <el-form-item label="所属角色" required prop="roleId">
+                <el-radio-group v-model="form.roleId">
+                    <el-radio :label="item._id" v-for="item in roleList" :key="item._id">{{item.name}}</el-radio>
+                </el-radio-group>
             </el-form-item>
-            <div class="el-form-item">
-                <label for="price" class="el-form-item__label" style="width: 100px;">
-                    优惠(元)&nbsp;<el-tooltip class="item" effect="dark" content="售卖价格等于原价减去优惠价格" placement="right">
-                    <span class="el-icon-warning"></span>
-                </el-tooltip>
-                </label>
-                <div class="el-form-item__content" style="margin-left: 100px;">
-                    <el-input placeholder="请输入优惠价格" :maxlength="10" v-model="form.discountPrice"></el-input>
-                </div> 
-            </div>
+            <el-form-item label="备注" prop="remark">
+                <el-input placeholder="请输入用户摘要" type="textarea" :maxlength="100" v-model="form.remark"></el-input>
+            </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="cancel">取消</el-button>
@@ -52,22 +45,25 @@
     import config from '../config';
     import Upload from '../../../common/components/Upload.vue';
     import  { uptoken, upload } from '../request';
+    import * as roleRquest from '../../role/request';
+    import md5 from 'md5';
 
     export default {
         data () {
             return {
                 uploadURL: '',
                 form: {
-                    title: '',
-                    userSubjectId: '',
-                    storageId: '',
-                    summary: '',
-                    price: '',
-                    discountPrice: ''
+                    name: '',
+                    headPic: '',
+                    password: '',
+                    mobile: '',
+                    mobile: '',
+                    remark: '',
+                    roleId: ''
                 },
                 loading: false,
                 rules: config.addFormRule,
-                userSubejctList: [],
+                roleList: [],
                 submiting: false
             };
         },
@@ -78,22 +74,21 @@
         },
         created () {
             var user = this.user;
-            this.getNewsSubjectList();
+            this.getRoleList();
             
             if (user) {
                 Object.assign(this.form, {
-                    title: user.title,
-                    summary: user.summary,
-                    price: user.price,
-                    storageId: user.storageId,
-                    discountPrice: user.discountPrice,
-                    userSubjectId: user.userSubjectId
+                    name: user.name,
+                    remark: user.remark,
+                    headPic: user.headPic,
+                    mobile: user.mobile,
+                    roleId: user.roleId
                 });
             }
         },
         methods: {
             /**
-             * 改成产品图片
+             * 改成用户图片
              */
             changeUserImage (files) {
                 if (!files) {
@@ -110,7 +105,7 @@
                         this.loading = true;
                         upload(fd)
                             .then((res)=> {
-                                this.form.storageId = res.key;
+                                this.form.headPic = res.key;
                                 this.loading = false;
                                 toast('图片上传成功', 'success');
                             })
@@ -120,12 +115,12 @@
                     });
             },
             /**
-             * 获取产品分类列表
+             * 获取用户分类列表
              */
-            getNewsSubjectList () {
-                newsSubejctRequest.list()
+            getRoleList () {
+                roleRquest.list()
                     .then((res)=> {
-                        this.userSubejctList = res.data.list;
+                        this.roleList = res.data.list;
                     });
             },
             /**
@@ -144,18 +139,17 @@
                         var user = this.user;
                         var handler = null;
                         var params = {
-                            title: form.title,
-                            summary: form.summary,
-                            price: form.price,
-                            storageId: form.storageId,
-                            discountPrice: form.discountPrice,
-                            userSubjectId: form.userSubjectId
+                            name: form.name,
+                            mobile: form.mobile,
+                            remark: form.remark,
+                            headPic: form.headPic,
+                            roleId: form.roleId
                         };
-
                         // 编辑
                         if (user) {
                             handler = update.bind(null, user._id, params);
                         } else {
+                            params.password = md5(form.password.trim());
                             handler = add.bind(null, params);
                         }
                         handler()

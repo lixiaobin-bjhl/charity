@@ -13,11 +13,17 @@
             </div>
         </div>
         <el-table v-loading.body="loading" ref="table" :data="list">
-            <el-table-column prop="name" label="用户名称">
+            <el-table-column prop="name" label="用户姓名">
+            </el-table-column>
+            <el-table-column inline-template label="头像">
+                <img class="radius3" width="50" height="50" :src="row.headPic|compressImage(50, 50)">
+            </el-table-column>
+            <el-table-column prop="mobile" label="手机号">
             </el-table-column>
             <el-table-column inline-template label="角色">
                 <div v-text="row.role.name"></div>
             </el-table-column>
+            
             <el-table-column inline-template label="用户状态">
                 <div v-text="row.isForbidden ? '禁用' : '启用'"></div>
             </el-table-column>
@@ -32,10 +38,12 @@
             fixed="right"
             label="操作"
             inline-template
-            width="100">
+            width="130">
             <div>
                 <el-button @click="del(row)" type="text" size="small">删除</el-button>
                 <el-button @click="modify(row)" type="text" size="small">编辑</el-button>
+                <el-button @click="updateForbiddenStatus(row._id, 0)" v-if="row.isForbidden" type="text" size="small">启用</el-button>
+                <el-button @click="updateForbiddenStatus(row._id, 1)" v-if="!row.isForbidden" type="text" size="small">禁用</el-button>
             </div>
             </el-table-column>
         </el-table>
@@ -110,11 +118,22 @@
             },
 
             /**
-             * 搜索
+             * 更新订单禁用状态
              */
-            search () {
-                this.pageNum = 1;
-                this.refresh();
+            updateForbiddenStatus (id, status) {
+                var aciton = status === 1 ? "禁用" : '启用';
+                this.$confirm('是否确认' + aciton + '?', '提示', {
+                    type: 'warning'
+                })
+                .then(()=> {
+                    update(id, {
+                        isForbidden: status
+                    })
+                    .then((res)=> {
+                        toast('更新成功', 'success');
+                        this.refresh();
+                    });
+                });
             },
 
             /**

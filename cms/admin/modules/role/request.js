@@ -23,14 +23,9 @@ export function add (params) {
 
 /**
  * 获取角色列表
- * @param {string=} params.roleSubjectId 角色分类id
- * @param {string=} params.key 角色搜索关键字
  */
-export function list (params = {}) {
-    return get('/api/role', {
-        roleSubjectId: params.roleSubjectId,
-        key: params.key.trim()
-    });
+export function list () {
+    return get('/api/role', {});
 }
 
 /**

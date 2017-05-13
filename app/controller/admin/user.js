@@ -13,6 +13,24 @@ exports.create = function* () {
 	var query = this.request.body;
 	var mobile = query.mobile;
 	var password = query.password;
+	var roleId = query.roleId;
+
+	// 有角色id参数，就认为是创建用户
+	if (roleId) {
+		var user = yield this.service.user.getUser(mobile);
+		// 系统中已存在该手机号，不能再注册
+		if (user) {
+			this.body = this.helper.error(1, '该手机号在系统中已存在，不能再添加，你可以编辑或删除');
+			return;
+		} else {
+			user = yield this.service.user.add(query);
+			this.body = this.helper.success({
+				user	
+			});
+			return;	
+		}
+	}
+
 	var user = yield this.service.user.getUser(mobile, password);
 
 	if (user) {
@@ -79,13 +97,24 @@ exports.update = function* () {
 
 	var id = this.params.id;
 	var query = this.request.body;
-	var update = {
-		updateTime: new Date(),
-		content: query.content,
-		title: query.title,
-		summary: query.summary,
-		userSubjectId: query.userSubjectId
-	};
+	var isForbidden = query.isForbidden;
+	var update = {}; 
+
+	// 更新禁用状态
+	if (typeof isForbidden !== 'undefined') {
+		update = {
+			isForbidden: isForbidden
+		};
+	} else {
+		update = {
+			updateTime: new Date(),
+			name: query.name,
+			roleId: query.roleId,
+			mobile: query.mobile,
+			headPic: query.headPic,
+			remark: query.remark
+		};
+	}
 	var result = yield this.service.user.put(id, update);
 	this.body = this.helper.success(result);
 };

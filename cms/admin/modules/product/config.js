@@ -11,10 +11,6 @@ export default  {
             required: true,
             message: '请输入产品标题'
         },
-        summary: {
-            required: true,
-            message: '请输入产品摘要'
-        },
         productSubjectId: {
             required: true,
             message: '请选择产品分类'

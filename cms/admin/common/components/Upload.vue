@@ -20,7 +20,7 @@
         props: {
             accept: {
                 type: String,
-                default: 'image/*'
+                default: 'image/gif, image/jpg, image/jpeg, image/png'
             },
             multiple: {
                 type: Boolean,

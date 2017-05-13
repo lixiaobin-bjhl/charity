@@ -63,11 +63,7 @@
                 multipleSelection: [],
                 list: [],
                 pid: null,
-                loading: false,
-                filter: {
-                    roleSubjectId: '',
-                    key: ''
-                }
+                loading: false
             };
         },
         created () {
@@ -145,7 +141,7 @@
              */
             getList () {
                 this.loading = true;
-                list (this.filter)
+                list ()
                     .then((res)=> {
                         this.loading = false;
                         this.list = this.adaptList(res.data.list);

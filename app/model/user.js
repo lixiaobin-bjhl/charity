@@ -15,8 +15,12 @@ module.exports = mongoose => {
         mobile: {type: Number},
         headPic: {type: String},
         type: {type: Number},
-        isForbidden: { type: Number },
+        isForbidden: { 
+            type: Number, 
+            default: 0
+        },
         roleId: { type: ObjectId },
+        remark: { type: String },
         role: { type: Object },
         createTime: { 
             type: Date,

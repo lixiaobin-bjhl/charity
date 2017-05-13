@@ -5,6 +5,8 @@
 
 'use strict';
 
+var mongoose = require('mongoose');
+
 module.exports = app => {
 
     class User extends app.Service {
@@ -17,33 +19,39 @@ module.exports = app => {
         /**
          * 根据手机号和密码获取用户信息
          * @param {number} mobile 手机号
-         * @param {string} password 密码
+         * @param {string=} password 密码
          * @return {Object}
          */
         * getUser(mobile, password) {
-            var user = yield this.ctx.model.user.findOne({
-                mobile: +mobile,
-                password: password
-            });
+            var condition = {
+                mobile: +mobile
+            };
+            if (password) {
+                condition.password = password;
+            }
+            var user = yield this.ctx.model.user.findOne(condition);
             return user;
         }
 
         /**
          * 添加用户
-         * @param {string} params.title 用户标题
-         * @param {string} params.summary 用户摘要
-         * @param {string} params.content 用户内容
-         * @param {string} params.subjectId 用户
+         * @param {string} params.name 姓名
+         * @param {string} params.password 密码
+         * @param {string} params.remark 备注
+         * @param {string} params.mobile 手机
+         * @param {string} params.headPic 用户头像
+         * @param {string} params.roleId 用户角色
          * @return {Object}
          */
         * add(params) {
             var User = this.ctx.model.user;
             var user = new User({
-                title: params.title,
-                summary: params.summary,
-                content: params.content,
-                author: this.ctx.session.user,
-                userSubjectId: mongoose.Types.ObjectId(params.userSubjectId)
+                name: params.name,
+                password: params.password,
+                remark: params.remark,
+                mobile: params.mobile,
+                headPic: params.headPic,
+                roleId: mongoose.Types.ObjectId(params.roleId)
             });
             user.save((err) => {
                 if (err) {

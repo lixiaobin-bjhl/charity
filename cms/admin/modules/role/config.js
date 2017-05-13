@@ -11,10 +11,6 @@ export default  {
             required: true,
             message: '请输入角色名称'
         },
-        remark: {
-            required: true,
-            message: '请输写备注'
-        },
         authority: {
             validator (rule, value, callback) {
                 if (!value) {

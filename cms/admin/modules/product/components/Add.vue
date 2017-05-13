@@ -14,12 +14,12 @@
                     <el-button type="primary" v-text="form.storageId ? '修改图片' : '上传图片'"></el-button>
                 </upload>
                 <el-input type="hidden" v-model="form.storageId"></el-input>
-                <div v-if="form.storageId">
+                <div v-if="form.storageId" style="margin-top: 10px">
                     <img width="100" height="100" :src="form.storageId|compressImage(100, 100)">
                 </div>
             </el-form-item>
-            <el-form-item label="摘要" required prop="summary">
-                <el-input placeholder="请输入产品摘要" type="textarea" :maxlength="30" v-model="form.summary"></el-input>
+            <el-form-item label="摘要" prop="summary">
+                <el-input placeholder="请输入产品摘要" type="textarea" :maxlength="100" v-model="form.summary"></el-input>
             </el-form-item>
             <el-form-item label="分类" required prop="productSubjectId">
                 <el-select v-model="form.productSubjectId" placeholder="请选择分类" clearable>

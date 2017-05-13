@@ -7,29 +7,34 @@
 
 export default  {
     addFormRule: {
-        title: {
-            required: true,
-            message: '请输入产品标题'
-        },
-        summary: {
-            required: true,
-            message: '请输入产品摘要'
-        },
-        userSubjectId: {
-            required: true,
-            message: '请选择产品分类'
-        },
-        content: {
-            required: true,
-            message: '请输入产品内容'
-        },
-        storageId: {
-            required: true,
-            message: '请上传产品图片'
-        },
-        price: {
-            required: true,
-            message: '请输入产品价格'
-        }
+        name: [
+            {
+                required: true,
+                message: '请输入用户姓名'
+            }
+        ],
+        password: [
+            {
+                required: true,
+                message: '请输入用户姓名'
+            }
+        ],
+        roleId: [
+            {
+                required: true,
+                message: '请选择所属角色'
+            }
+        ],
+        mobile: [
+            {
+                required: true,
+                message: '请输入手机号'
+            },
+            {
+                pattern: /^1\d{10}$/,
+                message: '请输入正确的11位手机号',
+                trigger: 'blur'
+            }
+	    ]
     }
 }
