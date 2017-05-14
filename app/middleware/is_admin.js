@@ -5,6 +5,7 @@
 
 'use strict';
 
+// 不需要后端登录就能访问的admin API
 var optionalSessionAdminUrl = [
     '/admin/login'
 ];

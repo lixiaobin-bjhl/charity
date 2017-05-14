@@ -35,16 +35,20 @@ module.exports = app => {
         }
 
         /**
+         * 根据角色id找查角色 
+         */
+        * findById (id) {
+            var id = mongoose.Types.ObjectId(id);
+            var role = yield this.ctx.model.role.findById(id);
+            return role;
+        }
+
+        /**
          * 查找角色列表
          * @param {Object} condition 列表查询条件
          */
         * list(query = {}) {
             var condition = {};
-            var roleSubjectId = query.roleSubjectId;
-
-            if (roleSubjectId) {
-                condition.roleSubjectId = mongoose.Types.ObjectId(roleSubjectId);
-            } 
             var list = yield this.ctx.model.role.find(condition).sort({createTime: -1});
             return list;
         }

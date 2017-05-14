@@ -14,13 +14,13 @@ exports.create = function* () {
 	var mobile = query.mobile;
 	var password = query.password;
 	var roleId = query.roleId;
-
+	var user = yield this.service.user.getUser(mobile);
+		
 	// 有角色id参数，就认为是创建用户
 	if (roleId) {
-		var user = yield this.service.user.getUser(mobile);
 		// 系统中已存在该手机号，不能再注册
 		if (user) {
-			this.body = this.helper.error(1, '该手机号在系统中已存在，不能再添加，你可以编辑或删除');
+			this.body = this.helper.error('0011', '该手机号在系统中已存在，不能再添加，你可以编辑或删除');
 			return;
 		} else {
 			user = yield this.service.user.add(query);
@@ -31,8 +31,7 @@ exports.create = function* () {
 		}
 	}
 
-	var user = yield this.service.user.getUser(mobile, password);
-
+	// 登录
 	if (user) {
 		this.session.user = user;
 		this.body = this.helper.success({
@@ -40,7 +39,7 @@ exports.create = function* () {
 		});
 	// 用户名或密码不正确
 	} else {
-		this.body = this.helper.error(1, '用户名或密码不正确');
+		this.body = this.helper.error('0012', '用户名或密码不正确');
 	}
 };
 
@@ -86,7 +85,7 @@ exports.destroy = function* () {
 		user = yield this.service.user.del(id);
 	}
 	this.body = this.helper.success({
-		user	
+		user
 	});
 };
 

@@ -264,7 +264,7 @@
                         this.list = this.adaptList(res.data.list);
                     })
                     .catch(()=> {
-                       this.loading = true; 
+                       this.loading = false; 
                     });
             },
 

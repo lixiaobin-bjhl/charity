@@ -38,7 +38,7 @@ exports.destroy = function* () {
 	var productCount = yield this.service.product.countBySubjectId(id);
 	
 	if (productCount) {
-		this.body = this.helper.error(1, '该分类下已添加产品不能删除');
+		this.body = this.helper.error('0051', '该分类下已添加产品不能删除');
 		return;
 	}
 

@@ -113,7 +113,7 @@ module.exports = {
             }
         ]
     },
-    roe: {
+    role: {
         id: 6,
         name: "角色管理",
         children: [

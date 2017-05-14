@@ -10,6 +10,7 @@ module.exports = appInfo => {
 
     config.middleware = [
         'isAdmin',
+        'accessPermission',
         'gzip',
         'responseTime',
         'webpack'

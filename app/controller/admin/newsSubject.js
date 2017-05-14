@@ -38,7 +38,7 @@ exports.destroy = function* () {
 	var newsCount = yield this.service.news.countBySubjectId(id);
 	
 	if (newsCount) {
-		this.body = this.helper.error(1, '该分类下已添加新闻不能删除');
+		this.body = this.helper.error('0041', '该分类下已添加新闻不能删除');
 		return;
 	}
 	var newsSubject = yield this.service.newsSubject.del(id);
