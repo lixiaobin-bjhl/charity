@@ -142,11 +142,13 @@
                 for (var key in authority) {
                     if (authority.hasOwnProperty(key)) {
                         if (authority[key]) {
-                            result[key] = authority[key].reduce((a, b)=> {
-                                return a | b;
+                            var num = 0;
+                            authority[key].forEach((a)=> {
+                                num = num | (1 << a - 1);
                             });
+                            result[key] = num;
                         } else {
-                            result[key] = 0
+                            result[key] = 0;
                         } 
                     }
                 }

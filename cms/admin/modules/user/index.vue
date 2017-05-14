@@ -8,7 +8,7 @@
         <div class="list-header">
             <div class="btn-group">
                 <div class="right">
-                    <el-button type="primary" @click="add">新增用户</el-button>
+                    <el-button type="primary" v-if="hasAuth(1, 2)" @click="add">新增用户</el-button>
                 </div>
             </div>
         </div>
@@ -40,10 +40,10 @@
             inline-template
             width="130">
             <div>
-                <el-button @click="del(row)" type="text" size="small">删除</el-button>
-                <el-button @click="modify(row)" type="text" size="small">编辑</el-button>
-                <el-button @click="updateForbiddenStatus(row._id, 0)" v-if="row.isForbidden" type="text" size="small">启用</el-button>
-                <el-button @click="updateForbiddenStatus(row._id, 1)" v-if="!row.isForbidden" type="text" size="small">禁用</el-button>
+                <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(1, 4)">删除</el-button>
+                <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(1, 3)">编辑</el-button>
+                <el-button @click="updateForbiddenStatus(row._id, 0)" v-if="row.isForbidden && hasAuth(1, 3)" type="text" size="small">启用</el-button>
+                <el-button @click="updateForbiddenStatus(row._id, 1)" v-if="!row.isForbidden && hasAuth(1, 3)" type="text" size="small">禁用</el-button>
             </div>
             </el-table-column>
         </el-table>

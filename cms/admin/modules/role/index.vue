@@ -8,7 +8,7 @@
         <div class="list-header">
             <div class="btn-group">
                 <div class="right">
-                    <el-button type="primary" @click="add">新增角色</el-button>
+                    <el-button type="primary" @click="add"  v-if="hasAuth(6, 2)">新增角色</el-button>
                 </div>
             </div>
         </div>
@@ -36,8 +36,8 @@
             inline-template
             width="100">
             <div>
-                <el-button @click="del(row)" type="text" size="small">删除</el-button>
-                <el-button @click="modify(row)" type="text" size="small">编辑</el-button>
+                <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(6, 4)">删除</el-button>
+                <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(6, 3)">编辑</el-button>
             </div>
             </el-table-column>
         </el-table>

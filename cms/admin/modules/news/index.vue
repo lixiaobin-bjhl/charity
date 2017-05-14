@@ -13,7 +13,7 @@
             </el-form>
             <div class="btn-group">
                 <div class="right">
-                    <el-button type="primary" @click="add">新增新闻</el-button>
+                    <el-button type="primary" @click="add" v-if="hasAuth(3, 2)">新增新闻</el-button>
                 </div>
                 <span v-if="multipleSelection.length">共{{list.length}}条，已选{{multipleSelection.length}}条</span>
                 <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
@@ -51,8 +51,8 @@
             inline-template
             width="100">
             <div>
-                <el-button @click="del(row)" type="text" size="small">删除</el-button>
-                <el-button @click="modify(row)" type="text" size="small">编辑</el-button>
+                <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(3, 4)">删除</el-button>
+                <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(3, 3)">编辑</el-button>
             </div>
             </el-table-column>
         </el-table>

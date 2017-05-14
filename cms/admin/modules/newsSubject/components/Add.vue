@@ -9,7 +9,6 @@
             <el-form-item label="分类名称" required prop="name">
                 <el-input placeholder="请输入1-20字内的新闻分类名称" :maxlength="20" v-model="form.name"></el-input>
             </el-form-item>
-
             <el-form-item label="备注" prop="remark">
                 <el-input placeholder="请输入1-50字" :maxlength="50" v-model="form.remark"></el-input>
             </el-form-item>
