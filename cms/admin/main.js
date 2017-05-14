@@ -22,6 +22,9 @@ require('./common/filter/date');
 require('./common/filter/currency');
 require('./common/filter/compressImage');
 
+import auth from './common/plugin/auth';
+
+
 const router = new VueRouter({
     mode: 'history',
     routes
@@ -62,6 +65,7 @@ function clearState(module) {
 
 Vue.use(Element);
 Vue.use(VueRouter);
+Vue.use(auth);
 
 window.toast = function(msg, type) {
     var type = type || 'warning';

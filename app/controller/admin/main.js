@@ -12,8 +12,11 @@ module.exports = app => {
 		 */
 		* index () {
 			var user = this.ctx.session.user;
+			var authority = this.ctx.session.authority;
+			
 			yield this.ctx.render('/admin/main.tpl', {
-				user
+				user,
+				authority: JSON.stringify(authority)
 			});
 		}
 		/**
@@ -27,11 +30,7 @@ module.exports = app => {
 		 * 登录页面 
 		 */
 		* login () {
-			// var user = yield this.ctx.service.user.find();
-			// this.ctx.body = user;
-
 			var user = this.ctx.session.user;
-
 			yield this.ctx.render('/admin/login.tpl', {
 				user
 			});

@@ -38,6 +38,9 @@
 					</div>
 			</div>
         </div>
+       <script>
+            window.authority = {{authority|safe}}
+       </script> 
     {% endif %}
     <div class="site-content">
         {% block body %}

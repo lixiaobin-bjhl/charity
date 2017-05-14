@@ -34,6 +34,10 @@ exports.create = function* () {
 	// 登录
 	if (user) {
 		this.session.user = user;
+		var role = yield this.service.role.findById(user.roleId)
+		var authority = role.authority;
+		// TODO(lixiaobin) authority 存储到redis中	
+		this.session.authority = authority;
 		this.body = this.helper.success({
 			user	
 		});

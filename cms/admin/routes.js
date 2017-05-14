@@ -8,7 +8,11 @@
 export default [
     {
         path: '/admin',
-        redirect: '/admin/news'
+        redirect: '/admin/home'
+    },
+    {
+        path: '/admin/home',
+        component: require('./modules/home/index.vue')
     },
     {
         path: '/admin/news',

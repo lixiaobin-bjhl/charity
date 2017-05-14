@@ -43,13 +43,8 @@ module.exports = (options, app) => {
 
                 var moduleId = module.id;
 
-                // authority = this.app.redis.get('authority');
-
-                // if (authority) {
-                // } else {
-                var roleId = user.roleId;
-                var role = yield this.service.role.findById(roleId);
-                authority = role.authority;
+                // TODO(lixiaobin) authority 存储到redis中
+                authority = this.session.authority;
                 var authNumber = authority[moduleId];
                 
                 // 没有权限

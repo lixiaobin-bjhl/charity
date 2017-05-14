@@ -2,23 +2,32 @@
    <div>
        <div class="side-bar">
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-                 <div v-for="(menu, index) in sidebarConfig" :key="index">
+                 <div v-for="(menu, index) in sidebarConfig" :key="index" v-if="menu.children">
                     <el-submenu :index="'' + index">
                         <template slot="title">
                             <i :class="menu.icon"></i>{{menu.name}}
                         </template>
                         <el-menu-item-group v-if="menu.children && menu.children.length">
-                            <el-menu-item v-for="(item, i) in menu.children" :key="i" :index="index + '-' + i" @click.native="changeUrl(item.url)">
+                            <el-menu-item v-if="hasAuth(item.number, 1)" v-for="(item, i) in menu.children" :key="i" :index="index + '-' + i" @click.native="changeUrl(item.url)">
                                 {{item.name}}
                             </el-menu-item>
                         </el-menu-item-group>
+                    </el-submenu>
+                </div>
+                <div v-else>
+                    <el-submenu :index="'' + index">
+                        <template slot="title">
+                            <div @click="changeUrl(menu.url)">
+                                <i :class="menu.icon"></i>{{menu.name}}
+                            </div>
+                        </template>
                     </el-submenu>
                 </div>
             </el-menu>
         </div>
         <div class="main">
             <div class="breadcrumb">
-                <el-breadcrumb separator=".">
+                <el-breadcrumb separator="." v-if="$route.path!='/admin/home'">
                     <el-breadcrumb-item v-for="(item, index) in breadOptions" :key="index"  @click.native="changeBreadcrumb(item)">
                         {{item.name}}
                     </el-breadcrumb-item>
