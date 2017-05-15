@@ -19,10 +19,18 @@
                 </div>
             </el-form-item>
             <el-form-item label="手机号" required prop="mobile">
-                <el-input placeholder="请输入用户密码" :maxlength="30" v-model="form.mobile"></el-input>
+                <el-input placeholder="请输入用户密码" :maxlength="11" v-model="form.mobile"></el-input>
             </el-form-item>
             <el-form-item label="密码" v-if="!user" required prop="password">
                 <el-input placeholder="请输入用户密码" :maxlength="30" v-model="form.password"></el-input>
+            </el-form-item>
+            <el-form-item label="账号类型" required prop="type">
+                <el-radio-group v-model="form.type">
+                    <el-radio :label="item.id"  v-for="item in userTypeOption" :disabled="currentUser.type == 2 || (currentUser.type == 1 && item.type == 1) " :key="item.id">{{item.name}}</el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="主账号手机" required prop="masterMobile" v-if="form.type == 2">
+                 <el-input placeholder="请输入主账号手机" :disabled="currentUser.type == 1 " :maxlength="11" v-model="form.masterMobile"></el-input>
             </el-form-item>
             <el-form-item label="所属角色" required prop="roleId">
                 <el-radio-group v-model="form.roleId">
@@ -52,16 +60,20 @@
         data () {
             return {
                 uploadURL: '',
+                currentUser: window.user,
                 form: {
                     name: '',
                     headPic: '',
                     password: '',
                     mobile: '',
-                    mobile: '',
                     remark: '',
-                    roleId: ''
+                    roleId: '',
+                    type: '',
+                    // 如果当前账号是主账号，主账号就是他自己
+                    masterMobile: window.user.type == 1 ? window.user.mobile : ''
                 },
                 loading: false,
+                userTypeOption: config.userTypeOption,
                 rules: config.addFormRule,
                 roleList: [],
                 submiting: false
@@ -82,13 +94,15 @@
                     remark: user.remark,
                     headPic: user.headPic,
                     mobile: user.mobile,
+                    type: user.type,
+                    masterMobile: user.masterMobile,
                     roleId: user.roleId
                 });
             }
         },
         methods: {
             /**
-             * 改成用户图片
+             * 改变用户图片
              */
             changeUserImage (files) {
                 if (!files) {
@@ -141,7 +155,9 @@
                         var params = {
                             name: form.name,
                             mobile: form.mobile,
+                            type: form.type,
                             remark: form.remark,
+                            masterMobile: form.masterMobile,
                             headPic: form.headPic,
                             roleId: form.roleId
                         };
@@ -166,7 +182,7 @@
             }
         },
         beforeDestroy() {
-            this.$store.commit('RESET_ROLE');
+            this.$store.commit('RESET_USER');
         },
         components: {
             Upload

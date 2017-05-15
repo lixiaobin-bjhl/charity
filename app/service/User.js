@@ -17,14 +17,15 @@ module.exports = app => {
         }
 
         /**
-         * 根据手机号和密码获取用户信息
+         * 根据手机号和密码获取激活信息
          * @param {number} mobile 手机号
          * @param {string=} password 密码
          * @return {Object}
          */
         * getUser(mobile, password) {
             var condition = {
-                mobile: +mobile
+                mobile: +mobile,
+                isForbidden: 0
             };
             if (password) {
                 condition.password = password;
@@ -41,6 +42,9 @@ module.exports = app => {
          * @param {string} params.mobile 手机
          * @param {string} params.headPic 用户头像
          * @param {string} params.roleId 用户角色
+         * @param {string} params.masterMobile 主账号的手机号
+         * @param {number} params.type 账号类型  0超级账号，1为主账号， 2子账号
+         * 
          * @return {Object}
          */
         * add(params) {
@@ -51,6 +55,8 @@ module.exports = app => {
                 remark: params.remark,
                 mobile: params.mobile,
                 headPic: params.headPic,
+                type: params.type,
+                masterMobile: params.masterMobile,
                 roleId: mongoose.Types.ObjectId(params.roleId)
             });
             user.save((err) => {

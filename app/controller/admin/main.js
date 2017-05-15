@@ -16,7 +16,8 @@ module.exports = app => {
 			
 			yield this.ctx.render('/admin/main.tpl', {
 				user,
-				authority: JSON.stringify(authority)
+				authority: JSON.stringify(authority),
+				userStr: JSON.stringify(user)
 			});
 		}
 		/**

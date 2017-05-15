@@ -115,7 +115,9 @@ exports.update = function* () {
 			roleId: query.roleId,
 			mobile: query.mobile,
 			headPic: query.headPic,
-			remark: query.remark
+			remark: query.remark,
+			type: query.type,
+			masterMobile: query.masterMobile
 		};
 	}
 	var result = yield this.service.user.put(id, update);

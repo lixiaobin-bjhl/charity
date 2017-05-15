@@ -40,6 +40,7 @@
         </div>
        <script>
             window.authority = {{authority|safe}}
+            window.user = {{userStr|safe}}
        </script> 
     {% endif %}
     <div class="site-content">

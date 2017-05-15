@@ -14,7 +14,6 @@ module.exports = mongoose => {
         password: { type: String },
         mobile: {type: Number},
         headPic: {type: String},
-        type: {type: Number},
         isForbidden: { 
             type: Number, 
             default: 0
@@ -22,6 +21,11 @@ module.exports = mongoose => {
         roleId: { type: ObjectId },
         remark: { type: String },
         role: { type: Object },
+        type: { type: Number },
+        masterMobile: { 
+            type: Number,
+            default: ''
+        },
         createTime: { 
             type: Date,
             default: Date.now

@@ -11,17 +11,17 @@ const state = {
 };
 
 const mutations = {
-    'SET_ROLE' (state, user) {
+    'SET_USER' (state, user) {
         state.user = user;
     },
-    'RESET_ROLE' (state) {
+    'RESET_USER' (state) {
         state.user = null;
     },
-    'SHOW_ROLE_DETAIL' (state, user) {
+    'SHOW_USER_DETAIL' (state, user) {
         state.showDetailState = true;
         state.user = user;
     },
-    'HIDE_ROLE_DETAIL' (state) {
+    'HIDE_USER_DETAIL' (state) {
         state.showDetailState = false;
         state.user = null;
     }

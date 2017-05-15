@@ -17,6 +17,8 @@ export function add (params) {
 		headPic: params.headPic,
 		roleId: params.roleId,
 		mobile: params.mobile,
+        type: params.type,
+        masterMobile: params.masterMobile,
 		password: params.password
     });
 }

@@ -23,13 +23,14 @@
             <el-table-column inline-template label="角色">
                 <div v-text="row.role.name"></div>
             </el-table-column>
-            
             <el-table-column inline-template label="用户状态">
                 <div v-text="row.isForbidden ? '禁用' : '启用'"></div>
             </el-table-column>
-            <el-table-column inline-template label="更新时间">
+            <el-table-column inline-template label="账号类型">
                 <div>
-                    {{row.updateTime|date('yyyy-MM-dd HH:mm')}} 
+                   <span v-if="row.type === 0">超级用户</span>
+                   <span v-else-if="row.type === 1">公司主账号</span>
+                   <span v-else-if="row.type === 2">公司子账号</span>
                 </div>
             </el-table-column>
              <el-table-column prop="remark" label="备注">
@@ -89,7 +90,7 @@
              * 更新用户
              */
             modify (row) {
-                this.$store.commit('SET_ROLE', row);
+                this.$store.commit('SET_USER', row);
                 this.add();
             },
 
