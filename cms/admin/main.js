@@ -21,9 +21,9 @@ import {
 require('./common/filter/date');
 require('./common/filter/currency');
 require('./common/filter/compressImage');
+require('./common/filter/specification');
 
 import auth from './common/plugin/auth';
-
 
 const router = new VueRouter({
     mode: 'history',

@@ -77,9 +77,11 @@ exports.update = function* () {
 			updateTime: new Date(),
 			title: query.title,
 			summary: query.summary,
-			storageId: query.storageId,
+			storageIds: query.storageIds,
 			productSubjectId: query.productSubjectId,
 			price: query.price,
+			storeCount: query.storeCount,
+        	specifications: query.specifications,
 			discountPrice: query.discountPrice
 		};
 	}	

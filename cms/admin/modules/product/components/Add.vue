@@ -4,19 +4,22 @@
 -->
 
 <template>
-    <el-dialog :title="product ? '编辑产品' : '新增产品'" v-model="$parent.addState" size="small">
+    <el-dialog :title="product ? '编辑产品' : '新增产品'" v-model="$parent.addState" class="add-product-dialog" size="small">
         <el-form label-width="100px" :model="form" :rules="rules" ref="form" v-loading="loading">
             <el-form-item label="标题" required prop="title">
                 <el-input placeholder="请输入1-30字内的产品标题" :maxlength="30" v-model="form.title"></el-input>
             </el-form-item>
             <el-form-item prop="storageId">
                 <upload @change="changeProductImage">
-                    <el-button type="primary" v-text="form.storageId ? '修改图片' : '上传图片'"></el-button>
+                    <el-button type="primary">添加图片</el-button>
                 </upload>
                 <el-input type="hidden" v-model="form.storageId"></el-input>
-                <div v-if="form.storageId" style="margin-top: 10px">
-                    <img width="100" height="100" :src="form.storageId|compressImage(100, 100)">
-                </div>
+                <ul v-if="form.storageIds.length" class="product-imgs">
+                    <li v-for="(storageId, index) in form.storageIds">
+                        <i class="el-icon-circle-cross" @click="removeStorageId(index)"></i>
+                        <img width="50" height="50" :src="storageId|compressImage(50, 50)">
+                    </li>
+                </ul>
             </el-form-item>
             <el-form-item label="摘要" prop="summary">
                 <el-input placeholder="请输入产品摘要" type="textarea" :maxlength="100" v-model="form.summary"></el-input>
@@ -25,6 +28,28 @@
                 <el-select v-model="form.productSubjectId" placeholder="请选择分类" clearable>
                     <el-option v-for="item in productSubejctList" :key="item._id"  :value="item._id" :label="item.name"></el-option>
                 </el-select>
+            </el-form-item>
+
+            <el-form-item label="规格">
+                <div v-for="(item, index) in form.specifications" :key="index">
+                    <el-input placeholder="规格内容" class="specification-input" v-model="item.value">
+                        <el-select v-model="item.id" slot="prepend" placeholder="请选择规格">
+                            <el-option v-for="specification in specificationOption" 
+                                :key="specification.id" 
+                                :label="specification.name" 
+                                :value="specification.id">
+                            </el-option>
+                        </el-select>
+                        <span slot="append" class="icon el-icon-circle-cross" @click="removeSpecification(index)" title="删除任务"></span>
+                    </el-input>
+                </div>
+                <div>
+                    <span class="el-icon-plus icon-tianjia" @click="addSpecification">&nbsp;<a href="javascript:;">添加任务</a></span>
+                </div>
+            </el-form-item>
+
+            <el-form-item label="库存" prop="storeCount">
+                <el-input placeholder="请输入库存数" :maxlength="10" v-model="form.storeCount"></el-input>
             </el-form-item>
             <el-form-item label="价格(元)" required prop="price">
                  <el-input placeholder="请输入产品价格" :maxlength="10" v-model="form.price"></el-input>
@@ -61,13 +86,21 @@
                 form: {
                     title: '',
                     productSubjectId: '',
-                    storageId: '',
+                    storageIds: [],
                     summary: '',
                     price: '',
+                    storeCount: '',
+                    specifications: [
+                        {
+                            value: '',
+                            id: 0
+                        }
+                    ],
                     discountPrice: ''
                 },
                 loading: false,
                 rules: config.addFormRule,
+                specificationOption: config.specificationOption,
                 productSubejctList: [],
                 submiting: false
             };
@@ -86,10 +119,17 @@
                     title: product.title,
                     summary: product.summary,
                     price: product.price,
-                    storageId: product.storageId,
+                    storeCount: product.storeCount,
+                    storageIds: product.storageIds,
                     discountPrice: product.discountPrice,
                     productSubjectId: product.productSubjectId
                 });
+                var specifications = product.specifications;
+                if (specifications && specifications.length) {
+                    Object.assign({
+                        specifications: product.specifications
+                    });
+                }
             }
         },
         methods: {
@@ -111,7 +151,7 @@
                         this.loading = true;
                         upload(fd)
                             .then((res)=> {
-                                this.form.storageId = res.key;
+                                this.form.storageIds.push(res.key);
                                 this.loading = false;
                                 toast('图片上传成功', 'success');
                             })
@@ -129,12 +169,39 @@
                         this.productSubejctList = res.data.list;
                     });
             },
+            
+            /**
+             * 删除图片
+             * @param {number} index 图片的索引
+             */
+            removeStorageId (index) {
+                this.form.storageIds.splice(index, 1);
+            },
+
+            /**
+             * 添加规格
+             */
+            addSpecification () {
+                this.form.specifications.push({
+                    id: '',
+                    value: ''
+                })
+            },
+
+            /**
+             * 移出规格
+             */
+            removeSpecification (index) {
+                this.form.specifications.splice(index, 1);
+            },
+
             /**
              * 取消添加分类
              */
             cancel () {
                 this.$parent.addState = false;
             },
+
             /**
              * 提交数据
              */
@@ -148,9 +215,11 @@
                             title: form.title,
                             summary: form.summary,
                             price: form.price,
-                            storageId: form.storageId,
+                            storageIds: form.storageIds,
                             discountPrice: form.discountPrice,
-                            productSubjectId: form.productSubjectId
+                            productSubjectId: form.productSubjectId,
+                            specifications: form.specifications,
+                            storeCount: form.storeCount
                         };
 
                         // 编辑

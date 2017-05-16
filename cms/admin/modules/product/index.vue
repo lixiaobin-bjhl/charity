@@ -78,21 +78,15 @@
                     {{row.isNotSale ? '已下架' : '上架' }} 
                 </div>
             </el-table-column>
-            <el-table-column inline-template label="创建人">
-                <div v-if="row.author">
-                    {{row.author.name}} 
-                </div>
+            <el-table-column prop="storeCount" label="库存">
             </el-table-column>
-            <el-table-column inline-template label="更新时间">
-                <div>
-                    {{row.updateTime|date('yyyy-MM-dd HH:mm')}} 
-                </div>
+            <el-table-column prop="saleCount" label="销量">
             </el-table-column>
             <el-table-column
             fixed="right"
             label="操作"
             inline-template
-            width="100">
+            width="130">
             <div>
                 <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(2, 4)">删除</el-button>
                 <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(2, 3)">编辑</el-button>
@@ -225,10 +219,17 @@
              * 设置图片预览器需要的图片
              */
             getImages (item) {
-                return [].concat({
-                    imageUrl: compressImage(item.storageId),
-                    caption: item.title
-                });
+                var storageIds = item.storageIds;
+                var result = [];
+                if (storageIds && storageIds.length) {
+                    storageIds.forEach((storageId)=> {
+                        result.push({
+                            imageUrl: compressImage(storageId),
+                            caption: item.title
+                        })
+                    });
+                }
+                return result;
             },
 
             /**

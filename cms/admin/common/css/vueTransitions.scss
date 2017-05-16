@@ -173,3 +173,7 @@
     -webkit-animation-name: fadeOutLeft;
     animation-name: fadeOutLeft;
 }
+
+.el-input-group__append, .el-input-group__prepend {
+    min-width: 70px;
+} 

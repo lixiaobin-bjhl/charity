@@ -14,9 +14,11 @@ export function add (params) {
     return post('/api/product', {
         title: params.title,
 		summary: params.summary,
-		storageId: params.storageId,
+		storageIds: params.storageIds,
 		productSubjectId: params.productSubjectId,
 		price: params.price,
+        storeCount: params.storeCount,
+        specifications: params.specifications,
 		discountPrice: params.discountPrice
     });
 }

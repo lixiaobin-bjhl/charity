@@ -1,0 +1,23 @@
+
+@import './components/style';
+
+.product-imgs {
+    margin-top: 10px;
+    li {
+        position: relative;
+        list-style: none;
+        float: left;
+        padding: 10px 10px 10px 0;
+        background: #FFF;
+        > i {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            color: $brand;
+            &:hover {
+                color: $brand-hover;
+            }
+        }
+    }
+}

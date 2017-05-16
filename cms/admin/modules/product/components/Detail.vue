@@ -15,7 +15,8 @@
                     <label>产品摘要</label> {{info.summary}}
                 </el-col>
                 <el-col :span="8">
-                    <label>产品图片</label><img :src="info.storageId|compressImage(100, 100)">
+                    <label>产品图片</label>
+                    <img v-for="storageId in info.storageIds" :key="storageId" :src="storageId|compressImage(100, 100)">
                 </el-col>
                 <el-col :span="8">
                     <label>产品价格</label>{{info.price|currency}}
@@ -38,8 +39,20 @@
                     {{info.createTime | date('yyyy-MM-dd HH:ss')}}
                 </el-col>
                 <el-col :span="8">
-                    <label>更新时间</label>
+                    <label>最近更新时间</label>
                     {{info.updateTime | date('yyyy-MM-dd HH:ss')}}
+                </el-col>
+                <el-col :span="8">
+                    <label>库存</label>
+                    {{info.storeCount}}
+                </el-col>
+                <el-col :span="8">
+                    <label>规格</label>
+                    <span v-for="(item, index) in info.specifications" :key="index">
+                        <span>
+                        {{item.id|specification}} : {{item.value}}<br>
+                        </span>
+                    </span>
                 </el-col>
             </el-row>
         </div>

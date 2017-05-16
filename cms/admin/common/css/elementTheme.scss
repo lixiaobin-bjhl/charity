@@ -382,3 +382,17 @@
 ::-moz-placeholder { color: #99A9BF !important; }
 :-ms-input-placeholder { color: #99A9BF !important; }
 input:-moz-placeholder { color: #99A9BF !important; }
+
+.cell .gallery .wrapper img[data-src^='http'] {
+    width: 35px;
+    height: auto;
+    margin-bottom: 5px;
+}
+table .cell .gallery {
+    display: block;
+}
+
+table .cell .gallery .wrapper {
+    flex: none;
+    float: left;
+}

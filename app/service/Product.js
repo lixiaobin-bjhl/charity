@@ -17,7 +17,9 @@ module.exports = app => {
          * @param {string} params.price 产品价格
          * @param {string} params.productSubjectId 产品分类
          * @param {string} params.discountPrice 产品折扣
-         * @param {string} params.storageId 产品图片存储id
+         * @param {Array} params.storageIds 产品图片存储id
+         * @param {Array} params.specifications 产品规格
+         * @param {number} params.storeCount 产品库存
          * @return {Object}
          */
         * add(params) {
@@ -26,9 +28,11 @@ module.exports = app => {
                 title: params.title,
                 summary: params.summary,
                 author: this.ctx.session.user,
-                storageId: params.storageId,
+                storageIds: params.storageIds,
                 productSubjectId: params.productSubjectId,
                 price: params.price,
+                storeCount: params.storeCount,
+        	    specifications: params.specifications,
                 discountPrice: params.discountPrice
             });
             product.save((err) => {

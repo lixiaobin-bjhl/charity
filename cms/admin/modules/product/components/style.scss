@@ -1,0 +1,31 @@
+.add-product-dialog {
+    .icon-tianjia {
+        color: $link-color;
+        font-size: 14px;
+    }
+    .btn-delete-task {
+        cursor: pointer;
+        color: #ff9e86;
+        margin-top: 10px;
+        &:hover {
+            color: #f7937b;
+        }
+    }
+    .specification-input {
+        margin-bottom: 10px;
+        .el-input-group__append {
+            border: 0;
+            color: #ff9e86;
+            background: none;
+            .icon {
+                cursor: pointer;
+                &:hover {
+                    color: #f7937b;
+                }
+            }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
