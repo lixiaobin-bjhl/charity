@@ -22,6 +22,11 @@ exports.create = function* () {
  */
 exports.index = function* () {
     var query = this.query;
+    // 如果是微信来的，不要把下架的产品返回给用户
+	if (!this.helper.isajax()) {
+		query.isNotSale = 0;
+	}
+
 	var list = yield this.service.product.list(query);
 	this.body = this.helper.success({
 		list

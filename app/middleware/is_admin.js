@@ -12,7 +12,16 @@ var optionalSessionAdminUrl = [
 
 module.exports = (options, app) => {
    return function* (next) { 
-        var requestUrl = this.request.url;
+        var request = this.request;
+        var requestUrl = request.url;
+        var method = request.method.toLowerCase();
+
+        // 微信过来的api，并且是get请求，不走验证了
+        if (request.header['x-requested-with'] != 'XMLHttpRequest' && method == 'get') {
+            yield next;
+            return;
+        }
+
         if (requestUrl.indexOf('admin') > -1 
             && optionalSessionAdminUrl.indexOf(requestUrl) === -1) {
                 var user = this.session.user;

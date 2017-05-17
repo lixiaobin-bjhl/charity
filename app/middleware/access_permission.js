@@ -22,8 +22,15 @@ module.exports = (options, app) => {
    return function* (next) { 
         var request = this.request;
         var requestUrl = request.url;
-        var mothod = request.method.toLowerCase();
+        var method = request.method.toLowerCase();
         if (requestUrl.indexOf('api') > -1) {
+
+                // 微信过来的api，并且是get请求，不走验证了
+                if (request.header['x-requested-with'] != 'XMLHttpRequest' && method == 'get') {
+                    yield next;
+                    return;
+                }
+
                 var user = this.session.user;
                 // 没有登录，不需要判断类似于登录类的API
                 if (optionalNoAuthApiUrl.indexOf(requestUrl) > -1) {
@@ -48,7 +55,7 @@ module.exports = (options, app) => {
                 var authNumber = authority[moduleId];
                 
                 // 没有权限
-                if (!(authNumber && authNumber & acitonAuth[mothod])) {
+                if (!(authNumber && authNumber & acitonAuth[method])) {
                     this.body = this.helper.error(2, '没有权限访问');
                     return;
                 }

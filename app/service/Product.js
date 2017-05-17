@@ -68,9 +68,14 @@ module.exports = app => {
             var condition = {};
             var productSubjectId = query.productSubjectId;
             var key = query.key;
+            var isNotSale = query.isNotSale;
+            console.log(isNotSale);
 
             if (productSubjectId) {
                 condition.productSubjectId = mongoose.Types.ObjectId(productSubjectId);
+            }
+            if (typeof isNotSale != 'undefined') {
+                condition.isNotSale = isNotSale;
             }
             if (key) {
                 condition.title = new RegExp(key);

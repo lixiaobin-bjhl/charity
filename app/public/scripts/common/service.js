@@ -13,6 +13,7 @@ var cookie = require('js-cookie');
  */
 axios.interceptors.request.use(function (config) {
     config.headers['x-csrf-token'] = cookie.get('csrfToken');
+    config.headers['X-Requested-With'] = 'XMLHttpRequest';
     return config;
 }, function (error) {
     return Promise.reject(error);

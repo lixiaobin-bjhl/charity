@@ -13,5 +13,11 @@ module.exports = {
             code: code,
             message: message
         }
+    },
+    /**
+     * 判读当前请求是不是ajax请求 
+     */
+    isajax () {
+        return this.ctx.request.header['x-requested-with'] == 'XMLHttpRequest';
     }
 }
