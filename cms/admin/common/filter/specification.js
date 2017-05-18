@@ -5,15 +5,12 @@
 
 'use strict';
 
-import productConfig  from '../../modules/product/config';
-import indexBy from '../../../../app/public/scripts/function/indexBy';
+import specification from '../../../../app/public/scripts/function/specification';
 import Vue from 'vue';
 
 /**
  * 根据规格id，找到规格名称 
  */
 Vue.filter('specification', function (id) {
-
-    var obj = indexBy(productConfig.specificationOption, 'id');
-    return obj[id].name;
+    return specification(id);
 });

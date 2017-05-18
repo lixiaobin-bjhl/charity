@@ -5,7 +5,7 @@
 
 'use strict';
 
-export default function indexBy (array, key) {
+module.exports =  function indexBy (array, key) {
     var map = {};
     array.forEach(function (item, index) {
         map[item[key]] = item;

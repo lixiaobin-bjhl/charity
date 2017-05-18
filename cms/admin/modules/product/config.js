@@ -5,7 +5,7 @@
 
 'use strict';
 
-export default  {
+module.exports =  {
     addFormRule: {
         title: {
             required: true,

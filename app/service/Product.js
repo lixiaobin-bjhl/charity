@@ -6,6 +6,9 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var minus = require('../public/scripts/function/minus');
+var currency = require('../public/scripts/function/currency');
+var specification = require('../public/scripts/function/specification');
 
 module.exports = app => {
 
@@ -55,7 +58,17 @@ module.exports = app => {
             
             product = product.toJSON();
             Object.assign(product, {
-                productSubject: productSubject.toJSON()
+                productSubject: productSubject.toJSON(),
+                discoutPriceStr: currency(product.discountPrice),
+                priceStr: currency(product.price),
+                payPrice: currency(minus(product.price, product.discountPrice || 0)),
+                specifications: product.specifications.map((item)=> {
+                    return {
+                        id: item.id,
+                        name: specification(item.id),
+                        value: item.value
+                    }
+                })
             });
             return product;
         }
@@ -69,7 +82,6 @@ module.exports = app => {
             var productSubjectId = query.productSubjectId;
             var key = query.key;
             var isNotSale = query.isNotSale;
-            console.log(isNotSale);
 
             if (productSubjectId) {
                 condition.productSubjectId = mongoose.Types.ObjectId(productSubjectId);
