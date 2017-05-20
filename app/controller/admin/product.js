@@ -83,6 +83,7 @@ exports.update = function* () {
 			title: query.title,
 			summary: query.summary,
 			storageIds: query.storageIds,
+			remark: query.remark,
 			productSubjectId: query.productSubjectId,
 			price: query.price,
 			storeCount: query.storeCount,

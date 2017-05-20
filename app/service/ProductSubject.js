@@ -11,7 +11,7 @@ module.exports = app => {
 
     class ProductSubject extends app.Service {
         /**
-         * 添加新闻分类
+         * 添加产品分类
          * @param {string} name 分类名称
          * @param {string} remark 分类备注信息
          * @return {Object}
@@ -20,6 +20,7 @@ module.exports = app => {
             var ProductSubject = this.ctx.model.productSubject;
             var productSubject = new ProductSubject({
                 name: name,
+                author: this.ctx.session.user,
                 remark: remark
             });
             productSubject.save((err) => {
@@ -33,10 +34,14 @@ module.exports = app => {
         }
 
         /**
-         * 查找新闻分类列表 
+         * 查找产品分类列表 
          */
         * list() {
-            var list = yield this.ctx.model.productSubject.find({});
+            var compass = this.ctx.helper.compass();
+            var condition = {};
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.productSubject.find(condition)
+                .sort({createTime: -1});
             return list;
         }
 
@@ -50,7 +55,7 @@ module.exports = app => {
         }
         
         /**
-         * 删除新闻分类
+         * 删除产品分类
          * @param {string} id  分闻分类id
          */
         * del(id) {
@@ -68,8 +73,8 @@ module.exports = app => {
         }
         
         /**
-         * 更新新闻分类 
-         * @param {string} id 新闻分类id
+         * 更新产品分类 
+         * @param {string} id 产品分类id
          * @param {Object} update 更新内容
          */
         * put (id, update) {

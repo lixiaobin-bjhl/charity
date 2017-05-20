@@ -26,7 +26,7 @@
             </el-form-item>
             <el-form-item label="账号类型" required prop="type">
                 <el-radio-group v-model="form.type">
-                    <el-radio :label="item.id"  v-for="item in userTypeOption" :disabled="currentUser.type == 2 || (currentUser.type == 1 && item.type == 1) " :key="item.id">{{item.name}}</el-radio>
+                    <el-radio :label="item.id"  v-for="item in userTypeOption" :disabled="currentUser.type == 2 || (currentUser.type == 1 && item.id <= 1)" :key="item.id">{{item.name}}</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="主账号手机" required prop="masterMobile" v-if="form.type == 2">

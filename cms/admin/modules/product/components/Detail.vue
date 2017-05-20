@@ -54,6 +54,10 @@
                         </span>
                     </span>
                 </el-col>
+                <el-col :span="8">
+                    <label>备注</label>
+                    <pre>{{info.remark}}</pre>
+                </el-col>
             </el-row>
         </div>
     </div>

@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = app => {
-  require('./lib/mongoose')(app);
+    require('./lib/mongoose')(app);
 };
 

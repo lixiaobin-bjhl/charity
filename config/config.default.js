@@ -23,7 +23,14 @@ module.exports = appInfo => {
         }
     };
 
-    exports.proxyworker = {
+    config.security = {
+        csrf: {
+            // 默认为 false，当设置为 true 时，将会放过所有 content-type 为 `application/json` 的请求
+            ignoreJSON: true 
+        }
+    };
+
+    config.proxyworker = {
         port: 10086
     };
 

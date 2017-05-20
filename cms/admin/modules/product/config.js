@@ -66,12 +66,16 @@ module.exports =  {
             id: 7
         },
         {
-            name: '型号',
+            name: '净重',
             id: 8
         },
         {
-            name: '款式',
+            name: '型号',
             id: 9
+        },
+        {
+            name: '款式',
+            id: 10
         }
     ]
 }

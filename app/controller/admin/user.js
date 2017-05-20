@@ -38,9 +38,7 @@ exports.create = function* () {
 		var authority = role.authority;
 		// TODO(lixiaobin) authority 存储到redis中	
 		this.session.authority = authority;
-		this.body = this.helper.success({
-			user	
-		});
+		this.body = this.helper.success(user);
 	// 用户名或密码不正确
 	} else {
 		this.body = this.helper.error('0012', '用户名或密码不正确');

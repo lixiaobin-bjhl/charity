@@ -3,7 +3,6 @@
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
-
 'use strict';
 
 var compressImage = require('../public/scripts/function/compressImage');

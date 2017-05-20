@@ -44,7 +44,7 @@
                     </el-input>
                 </div>
                 <div>
-                    <span class="el-icon-plus icon-tianjia" @click="addSpecification">&nbsp;<a href="javascript:;">添加任务</a></span>
+                    <span class="el-icon-plus icon-tianjia" @click="addSpecification">&nbsp;<a href="javascript:;">添加规格</a></span>
                 </div>
             </el-form-item>
 
@@ -64,6 +64,9 @@
                     <el-input placeholder="请输入优惠价格" :maxlength="10" v-model="form.discountPrice"></el-input>
                 </div> 
             </div>
+            <el-form-item label="备注" prop="remark">
+                <el-input placeholder="请输入备注" type="textarea" :maxlength="100" v-model="form.remark"></el-input>
+            </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="cancel">取消</el-button>
@@ -90,6 +93,7 @@
                     summary: '',
                     price: '',
                     storeCount: '',
+                    remark: '',
                     specifications: [
                         {
                             value: '',
@@ -122,6 +126,9 @@
                     storeCount: product.storeCount,
                     storageIds: product.storageIds,
                     discountPrice: product.discountPrice,
+                    remark: product.remark,
+                    specifications: product.specifications,
+                    storeCount: product.storeCount,
                     productSubjectId: product.productSubjectId
                 });
                 var specifications = product.specifications;
@@ -215,6 +222,7 @@
                             title: form.title,
                             summary: form.summary,
                             price: form.price,
+                            remark: form.remark,
                             storageIds: form.storageIds,
                             discountPrice: form.discountPrice,
                             productSubjectId: form.productSubjectId,

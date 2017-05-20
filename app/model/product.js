@@ -12,6 +12,7 @@ module.exports = mongoose => {
     const productSubjectSchema = new mongoose.Schema({
         title: { type: String },
         summary: { type: String },
+        remark: { type: String },
         productSubjectId: { type: ObjectId},
         storageIds: {
             type: Array
@@ -35,7 +36,8 @@ module.exports = mongoose => {
             type: Number
         },
         isNotSale: {
-            type: Number
+            type: Number,
+            default: 0
         },
         createTime: { 
             type: Date,

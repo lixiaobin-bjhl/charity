@@ -23,6 +23,7 @@ module.exports = app => {
          * @param {Array} params.storageIds 产品图片存储id
          * @param {Array} params.specifications 产品规格
          * @param {number} params.storeCount 产品库存
+         * @param {number} params.remark 产品备注
          * @return {Object}
          */
         * add(params) {
@@ -36,7 +37,8 @@ module.exports = app => {
                 price: params.price,
                 storeCount: params.storeCount,
         	    specifications: params.specifications,
-                discountPrice: params.discountPrice
+                discountPrice: params.discountPrice,
+                remark: params.remark
             });
             product.save((err) => {
                 if (err) {
@@ -82,6 +84,7 @@ module.exports = app => {
             var productSubjectId = query.productSubjectId;
             var key = query.key;
             var isNotSale = query.isNotSale;
+            var compass = this.ctx.helper.compass();
 
             if (productSubjectId) {
                 condition.productSubjectId = mongoose.Types.ObjectId(productSubjectId);
@@ -92,7 +95,7 @@ module.exports = app => {
             if (key) {
                 condition.title = new RegExp(key);
             }
-
+            Object.assign(condition, compass);
             var list = yield this.ctx.model.product.find(condition).sort({createTime: -1});
             return list;
         }

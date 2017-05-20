@@ -14,6 +14,9 @@ module.exports = mongoose => {
             type: Date,
             default: Date.now
         },
+        author: {
+            type: Object
+        },
         updateTime: { 
             type: Date,
             default: Date.now
