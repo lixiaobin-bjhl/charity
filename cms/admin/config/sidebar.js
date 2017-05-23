@@ -48,6 +48,11 @@ export default [
                 url: '/admin/productSubject'
             },
             {
+                name: '产品自定义字段',
+                number: 7,
+                url: '/admin/customField'
+            },
+            {
                 name: '角色管理',
                 number: 6,
                 url: '/admin/role'

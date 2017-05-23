@@ -134,5 +134,27 @@ module.exports = {
                 id: 4
             }
         ]
+    },
+    customField: {
+        id: 7,
+        name: "自定义字段管理",
+        children: [
+            {
+                name: '自定义字段列表',
+                id: 1
+            },
+            {
+                name: '增加自定义字段',
+                id: 2
+            },
+            {
+                name: '编辑自定义字段',
+                id: 3
+            },
+            {
+                name: '删除自定义字段',
+                id: 4
+            }
+        ]
     }
 }

@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <el-dialog :title="product ? '编辑产品' : '新增产品'" v-model="$parent.addState" class="add-product-dialog" size="small">
+    <el-dialog :title="product ? '编辑产品' : '新增产品'" v-model="$parent.addState" class="add-dialog add-product-dialog" size="small">
         <el-form label-width="100px" :model="form" :rules="rules" ref="form" v-loading="loading">
             <el-form-item label="标题" required prop="title">
                 <el-input placeholder="请输入1-30字内的产品标题" :maxlength="30" v-model="form.title"></el-input>
@@ -32,7 +32,7 @@
 
             <el-form-item label="规格">
                 <div v-for="(item, index) in form.specifications" :key="index">
-                    <el-input placeholder="规格内容" class="specification-input" v-model="item.value">
+                    <el-input placeholder="规格内容" class="dynamic-input" v-model="item.value">
                         <el-select v-model="item.id" slot="prepend" placeholder="请选择规格">
                             <el-option v-for="specification in specificationOption" 
                                 :key="specification.id" 
@@ -40,7 +40,7 @@
                                 :value="specification.id">
                             </el-option>
                         </el-select>
-                        <span slot="append" class="icon el-icon-circle-cross" @click="removeSpecification(index)" title="删除任务"></span>
+                        <span slot="append" class="icon el-icon-circle-cross" @click="removeSpecification(index)" title="删除规格"></span>
                     </el-input>
                 </div>
                 <div>
@@ -64,6 +64,24 @@
                     <el-input placeholder="请输入优惠价格" :maxlength="10" v-model="form.discountPrice"></el-input>
                 </div> 
             </div>
+
+            <el-form-item label="自定义属性">
+                 <div v-for="(item, index) in form.specifications" :key="index">
+                    <el-input placeholder="规格内容" class="specification-input" v-model="item.value">
+                        <el-select v-model="item.id" slot="prepend" placeholder="请选择规格">
+                            <el-option v-for="specification in specificationOption" 
+                                :key="specification.id" 
+                                :label="specification.name" 
+                                :value="specification.id">
+                            </el-option>
+                        </el-select>
+                        <span slot="append" class="icon el-icon-circle-cross" @click="removeSpecification(index)" title="删除自定义属性"></span>
+                    </el-input>
+                    <div>
+                        <span class="el-icon-plus icon-tianjia" @click="addSpecification">&nbsp;<a href="javascript:;">添加自定义属性</a></span>
+                    </div>
+                </div>
+            </el-form-item>
             <el-form-item label="备注" prop="remark">
                 <el-input placeholder="请输入备注" type="textarea" :maxlength="100" v-model="form.remark"></el-input>
             </el-form-item>
@@ -102,6 +120,12 @@
                     ],
                     discountPrice: ''
                 },
+                userDefinedfields: [
+                    {
+                        name: '',
+                        value: ''
+                    }
+                ],
                 loading: false,
                 rules: config.addFormRule,
                 specificationOption: config.specificationOption,

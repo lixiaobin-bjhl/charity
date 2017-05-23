@@ -34,9 +34,12 @@ export function remove (id) {
 
 /**
  * 更新新闻分类
+ * 
  * @param {string} id 新闻分类id
  * @param {string} params.name 分类名称
  * @param {string} params.remark 分类备注
+ * 
+ * @return {promise}
  */
 export function update (id, params) {
     return put('/api/newsSubject/' + id, params);

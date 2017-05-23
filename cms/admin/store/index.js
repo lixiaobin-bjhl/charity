@@ -18,6 +18,7 @@ import product from '../modules/product/store';
 import productSubject from '../modules/productSubject/store';
 import user from '../modules/user/store';
 import role from '../modules/role/store';
+import customField from '../modules/customField/store';
 
 export default new vuex.Store({
     state: {
@@ -32,7 +33,8 @@ export default new vuex.Store({
 		product,
 		role,
 		user,
-		productSubject
+		productSubject,
+		customField
 	}
 });
 

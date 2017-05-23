@@ -41,6 +41,10 @@ export default [
     {
         path: '/admin/user',
         component: require('./modules/user/index.vue')
+    },
+    {
+        path: '/admin/customField',
+        component: require('./modules/customField/index.vue')
     }
 ];
 
