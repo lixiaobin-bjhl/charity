@@ -24,6 +24,7 @@ module.exports = app => {
          * @param {Array} params.specifications 产品规格
          * @param {number} params.storeCount 产品库存
          * @param {number} params.remark 产品备注
+         * @param {Array} params.customField 产品自定义字段
          * @return {Object}
          */
         * add(params) {
@@ -35,6 +36,7 @@ module.exports = app => {
                 storageIds: params.storageIds,
                 productSubjectId: params.productSubjectId,
                 price: params.price,
+                customField: params.customField,
                 storeCount: params.storeCount,
         	    specifications: params.specifications,
                 discountPrice: params.discountPrice,

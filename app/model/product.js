@@ -43,6 +43,10 @@ module.exports = mongoose => {
             type: Date,
             default: Date.now
         },
+        customField: {
+            type: Array,
+            default: []
+        },
         updateTime: { 
             type: Date,
             default: Date.now

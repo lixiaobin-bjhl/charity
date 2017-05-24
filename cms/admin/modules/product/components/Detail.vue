@@ -11,6 +11,10 @@
                 <el-col :span="8">
                     <label>产品名称</label> {{info.title}}
                 </el-col>
+                <el-col :span="8" v-if="info.customField && info.customField.length && item.value" v-for="(item, index) in info.customField" :key="index">
+                    <label>{{item.name}}</label>
+                    {{item.value}}
+                </el-col>
                 <el-col :span="8">
                     <label>产品摘要</label> {{info.summary}}
                 </el-col>

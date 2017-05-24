@@ -64,23 +64,11 @@
                     <el-input placeholder="请输入优惠价格" :maxlength="10" v-model="form.discountPrice"></el-input>
                 </div> 
             </div>
-
-            <el-form-item label="自定义属性">
-                 <div v-for="(item, index) in form.specifications" :key="index">
-                    <el-input placeholder="规格内容" class="specification-input" v-model="item.value">
-                        <el-select v-model="item.id" slot="prepend" placeholder="请选择规格">
-                            <el-option v-for="specification in specificationOption" 
-                                :key="specification.id" 
-                                :label="specification.name" 
-                                :value="specification.id">
-                            </el-option>
-                        </el-select>
-                        <span slot="append" class="icon el-icon-circle-cross" @click="removeSpecification(index)" title="删除自定义属性"></span>
-                    </el-input>
-                    <div>
-                        <span class="el-icon-plus icon-tianjia" @click="addSpecification">&nbsp;<a href="javascript:;">添加自定义属性</a></span>
-                    </div>
-                </div>
+            <el-form-item v-if="form.customField.length" v-for="(item, index) in form.customField" :key="item._id" :required="item.required" :prop="'customField[' + index + '].value'" :label="item.name">
+                <el-input v-if="item.type === 0 " v-model="item.value" :maxlength="30" :placeholder="'请输入' + item.name"></el-input>
+                <el-select v-else-if="item.type === 1" clearable :placeholder="'请选择' + item.name" v-model="item.value">
+                    <el-option v-for="(value, key) in item.options" :value="value" :label="value"></el-option>
+                </el-select>
             </el-form-item>
             <el-form-item label="备注" prop="remark">
                 <el-input placeholder="请输入备注" type="textarea" :maxlength="100" v-model="form.remark"></el-input>
@@ -97,6 +85,7 @@
     import { add, update } from '../request';
     import config from '../config';
     import * as newsSubejctRequest  from '../../productSubject/request';
+    import * as customFieldRequest from '../../customField/request';
     import Upload from '../../../common/components/Upload.vue';
     import  { uptoken, upload } from '../request';
 
@@ -112,20 +101,15 @@
                     price: '',
                     storeCount: '',
                     remark: '',
+                    discountPrice: '',
                     specifications: [
                         {
-                            value: '',
-                            id: 0
+                            id: '',
+                            value: ''
                         }
                     ],
-                    discountPrice: ''
+                    customField: []
                 },
-                userDefinedfields: [
-                    {
-                        name: '',
-                        value: ''
-                    }
-                ],
                 loading: false,
                 rules: config.addFormRule,
                 specificationOption: config.specificationOption,
@@ -141,7 +125,7 @@
         created () {
             var product = this.product;
             this.getNewsSubjectList();
-            
+
             if (product) {
                 Object.assign(this.form, {
                     title: product.title,
@@ -153,7 +137,8 @@
                     remark: product.remark,
                     specifications: product.specifications,
                     storeCount: product.storeCount,
-                    productSubjectId: product.productSubjectId
+                    productSubjectId: product.productSubjectId,
+                    customField: product.customField
                 });
                 var specifications = product.specifications;
                 if (specifications && specifications.length) {
@@ -161,6 +146,9 @@
                         specifications: product.specifications
                     });
                 }
+            } else {
+                // 新建产品，就新加载自定义字段了，自定义字段已经在product中 
+                this.getCustomField();
             }
         },
         methods: {
@@ -191,6 +179,7 @@
                             });
                     });
             },
+
             /**
              * 获取产品分类列表
              */
@@ -200,7 +189,28 @@
                         this.productSubejctList = res.data.list;
                     });
             },
-            
+
+            /**
+             * 获取自定义字段列表
+             */
+            getCustomField() {
+                customFieldRequest.list()
+                    .then((res) => {
+                        var list = res.data.list;
+                        list.forEach((item, index)=> {
+                            item.value = item.default;
+                            if (item.required) {
+                                this.rules['customField[' + index + '].value'] = 
+                                    {
+                                        required: true,
+                                        message: (item.type === 0 ? '请输入' : '请选择') + item.name
+                                    }
+                            }
+                        });
+                        this.form.customField = list;
+                    });
+            },
+
             /**
              * 删除图片
              * @param {number} index 图片的索引
@@ -216,7 +226,7 @@
                 this.form.specifications.push({
                     id: '',
                     value: ''
-                })
+                });
             },
 
             /**
@@ -251,7 +261,8 @@
                             discountPrice: form.discountPrice,
                             productSubjectId: form.productSubjectId,
                             specifications: form.specifications,
-                            storeCount: form.storeCount
+                            storeCount: form.storeCount,
+                            customField: form.customField
                         };
 
                         // 编辑

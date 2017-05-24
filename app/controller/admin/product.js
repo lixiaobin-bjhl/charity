@@ -88,6 +88,7 @@ exports.update = function* () {
 			price: query.price,
 			storeCount: query.storeCount,
         	specifications: query.specifications,
+			customField: query.customField,
 			discountPrice: query.discountPrice
 		};
 	}	

@@ -18,6 +18,7 @@ export function add (params) {
 		productSubjectId: params.productSubjectId,
 		price: params.price,
         storeCount: params.storeCount,
+        customField: params.customField,
         specifications: params.specifications,
 		discountPrice: params.discountPrice
     });

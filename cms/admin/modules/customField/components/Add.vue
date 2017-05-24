@@ -35,9 +35,9 @@
                 </div>
             </el-form-item>    
 
-            <el-form-item label="默认值" required prop="default" v-if="form.type !== ''">
+            <el-form-item label="默认值" prop="default" v-if="form.type !== ''">
                 <el-input v-if="form.type === 0" placeholder="请填写默认值" :maxlength="30" v-model="form.default"></el-input>
-                <el-select v-else-if="form.type === 1" placeholder="请选择默认值"  v-model="form.default">
+                <el-select v-else-if="form.type === 1" clearable placeholder="请选择默认值"  v-model="form.default">
                     <el-option v-for="(value, index) in form.options" :value="value"  :label="value" :key="index">
                     </el-option>
                 </el-select>
