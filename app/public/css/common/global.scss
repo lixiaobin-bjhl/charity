@@ -5,7 +5,6 @@
 
 body, 
 html { 
-    width: 100%; 
     height: 100%; 
     background: #fff; 
     color: $gray-333;
@@ -27,6 +26,9 @@ a {
     }
 }
 
+.brand {
+    color: $brand;
+}
 .pointer {
 	cursor: pointer;
 }

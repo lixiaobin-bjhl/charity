@@ -14,7 +14,7 @@ exports.create = function* () {
 	var mobile = query.mobile;
 	var password = query.password;
 	var roleId = query.roleId;
-	var user = yield this.service.user.getUser(mobile);
+	var user = yield this.service.user.getUser(mobile, password);
 		
 	// 有角色id参数，就认为是创建用户
 	if (roleId) {

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?k54v3m');
-  src:  url('fonts/icomoon.eot?k54v3m#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?k54v3m') format('truetype'),
-    url('fonts/icomoon.woff?k54v3m') format('woff'),
-    url('fonts/icomoon.svg?k54v3m#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?e46plc');
+  src:  url('fonts/icomoon.eot?e46plc#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?e46plc') format('truetype'),
+    url('fonts/icomoon.woff?e46plc') format('woff'),
+    url('fonts/icomoon.svg?e46plc#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -60,37 +60,39 @@
 .icon-life-ring:before {
   content: "\e90b";
 }
-.icon-map-marker:before {
+.icon-lock:before {
   content: "\e90c";
 }
-.icon-paper-plane:before {
+.icon-map-marker:before {
   content: "\e90d";
 }
-.icon-phone:before {
+.icon-paper-plane:before {
   content: "\e90e";
 }
-.icon-rmb:before {
+.icon-phone:before {
   content: "\e90f";
 }
-.icon-street-view:before {
+.icon-rmb:before {
   content: "\e910";
 }
-.icon-umbrella:before {
+.icon-street-view:before {
   content: "\e911";
 }
-.icon-user:before {
+.icon-umbrella:before {
   content: "\e912";
 }
-.icon-angle-down:before {
+.icon-user:before {
   content: "\e913";
 }
-.icon-angle-up:before {
+.icon-angle-down:before {
   content: "\e914";
 }
-.icon-angle-right:before {
+.icon-angle-up:before {
   content: "\e915";
 }
-.icon-angle-left:before {
+.icon-angle-right:before {
   content: "\e916";
 }
-
+.icon-angle-left:before {
+  content: "\e917";
+}

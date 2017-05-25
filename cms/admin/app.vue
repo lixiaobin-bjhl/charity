@@ -1,5 +1,6 @@
 <template>
    <div>
+       <main-header></main-header>
        <div class="side-bar">
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
                  <div v-for="(menu, index) in sidebarConfig" :key="index" v-if="menu.children">
@@ -40,6 +41,7 @@
 
 <script>
     import sidebarConfig from './config/sidebar';
+    import MainHeader from './common/components/MainHeader.vue';
     require('element-ui/lib/theme-default/index.css');
     require('./style.scss');
 
@@ -70,6 +72,9 @@
             handleClose(key, keyPath) {
                 // console.log(key, keyPath);
             }
+        },
+        components: {
+            MainHeader
         }
     }
 </script>

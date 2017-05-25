@@ -86,7 +86,7 @@
             fixed="right"
             label="操作"
             inline-template
-            width="130">
+            width="100">
             <div>
                 <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(2, 4)">删除</el-button>
                 <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(2, 3)">编辑</el-button>

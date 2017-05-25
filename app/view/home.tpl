@@ -10,7 +10,7 @@
 
 {% block layoutContainer %}
     
-    <div class="rollpic">
+    <div class="rollpic" style="min-height: 380px;">
         <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
             <ul class="am-slides">
                 <li><img src="public/img/hw_bg1.png"/></li>
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="am-container-1">
+<div class="am-container-1">
 	<div class="solutions part-all">
 		<div class="part-title">
 			<a href="solutions.html">

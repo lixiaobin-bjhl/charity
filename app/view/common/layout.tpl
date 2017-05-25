@@ -1,5 +1,5 @@
-<html lang="zh">
-
+<!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     {% block title %}
@@ -19,25 +19,7 @@
 </head>
 
 <body>
-    {% if user %}
-        <div class="header">
-             <a href="/admin"><img class="logo" src="/public/img/charity.png"></a>
-             <div class="right">
-					<div class="name">
-						<div>
-                            <img width="25" height="25" src="{{user.headPic|compressImage(25,25)}}">
-							<span class="user">{{user.name}}</span>
-                            <span class="triangle"></span>
-						</div>
-						<ul class="list">
-							<li><a href="/">主页预览</a></li>
-                            <li>
-                                <a href="/admin/logout">退出登录</a>
-                            </li>
-						</ul>
-					</div>
-			</div>
-        </div>
+    {% if userStr %}
        <script>
             window.authority = {{authority|safe}}
             window.user = {{userStr|safe}}
@@ -51,7 +33,7 @@
 
     {% block footer %}
         <div class="bfooter">
-            COPYRIGHT (©) 2017 乐部士 微信小程序平台 - CMS内空管理系统
+            COPYRIGHT (©) 2017 舍利课 微信小程序平台 - CMS内空管理系统
             <a class="beian" href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002492</a>
         </div>
     {% endblock  %}

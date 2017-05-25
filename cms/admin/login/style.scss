@@ -1,0 +1,116 @@
+@import '../../../app/public/css/common/color';
+@import '../../../app/public/css/common/mixin';
+@import '../../../app/public/css/common/global';
+
+body {
+	background: url(/public/img/login.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+    margin: 0;
+}
+.login {
+	opacity: 0.94;
+	background: #F5F5F5;
+	box-shadow: 0 2px 20px 0 rgba(0,0,0,0.15);
+	border-radius: 6px;
+	left: 50%;
+	margin-left: -210px;
+	position: absolute;
+	top: 100px;
+	width: 420px;
+	padding-bottom: 1px;
+	min-height: 393px;
+	&-logo {
+		padding-top: 35px;
+		padding-bottom: 44px;
+		text-align: center;
+		margin: 0 auto;
+		p {
+			font-size: 30px;
+			color: #4468c9;
+			text-align: center;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	input {
+		border: none;
+		outline: none;
+	}
+	input[type="text"] {
+		width: 400px;
+		height: 40px;
+		padding-left: 30px;
+		border-radius: 4px;
+		background-color: #ffffff;
+		border: solid 1px #d9d9d9;
+	}
+	input[type="password"] {
+		width: 400px;
+		height: 40px;
+		padding-left: 30px;
+		border-radius: 4px;
+		background-color: #ffffff;
+		border: solid 1px #d9d9d9;
+	}
+	input[type="checkbox"] {
+		width: 20px;
+		height: 20px;
+		-webkit-appearance: checkbox;
+		top: 6px;
+		margin-left: 0;
+		position: relative;
+	}
+	.form-li {
+		margin-bottom: 20px;
+		padding: 0 40px;
+		position: relative;
+        > span {
+			position: absolute;
+			left: 50px;
+			top: 13px;
+			color: #94989e;
+		}
+		.btn-submit {
+			width: 340px;
+			height: 40px;
+            color: #FFF;
+			border-radius: 100px;
+			margin: 0 auto;
+			font-size: 16px;
+			line-height: 0.9;
+			text-align: center;
+			cursor: pointer;
+		}
+	}
+}
+#username, #password{
+	width: 100%;
+	height: 40px;
+	padding: 10px 10px 10px 36px;
+	box-sizing: border-box;
+	background: #FFFFFF;
+	border: 1px solid #EEEEEE;
+	border-radius: 4px;
+	&.error {
+		border: 1px solid #f51e0b;
+	}
+	&::-webkit-input-placeholder { /* WebKit browsers */ 
+		color: #999; 
+		font-size: 14px;
+	} 
+	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+		color: #999; 
+		font-size: 14px;
+	} 
+	&::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+		color: #999; 
+		font-size: 14px;
+	} 
+	&:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+		color: #999; 
+		font-size: 14px;
+	} 
+}

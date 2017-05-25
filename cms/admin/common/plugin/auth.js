@@ -15,7 +15,11 @@ export default {
 		 * @return {Boolean} 是否具有该权限
 		 */
 		Vue.prototype.hasAuth = function (moduleNumber, funNum) {
-			return window.authority[moduleNumber] & funNum;
+			if (window.authority) {
+				return window.authority[moduleNumber] & funNum;
+			} else {
+				window.location.href = '/admin/login';
+			}
 		}
 	}
 }

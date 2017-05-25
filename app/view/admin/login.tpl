@@ -13,4 +13,7 @@
     <script src="/public/scripts/cmsLogin.bundle.js"></script>
 {% endblock %}
 
+ {% block footer %}
+ {% endblock %}
+
 </html>
