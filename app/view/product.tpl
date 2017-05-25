@@ -9,22 +9,36 @@
 {% endblock %}
 
 {% block layoutContainer %}
-    <div class="page-header">
-        <div class="am-container">
-            <h1 class="page-header-title">产品中心</h1>
-        </div>
-    </div>
+<div class="toppic">
+      <div class="am-container-1">
+          <div class="toppic-title left">
+              <i class="am-icon-paper-plane toppic-title-i">
+              </i>
+              <span class="toppic-title-span">
+                  产品中心
+              </span>
+              <p>
+                  About Us
+              </p>
+          </div>
+          <div class="right toppic-progress">
+              <span>
+                  <a href="/" class="w-white">
+                      首页
+                  </a>
+              </span>
+              <i class=" am-icon-arrow-circle-right w-white">
+              </i>
+              <span>
+                  <a href="/product" class="w-white">
+                      产品中心
+                  </a>
+              </span>
+          </div>
+      </div>
+</div>
 
-     <div class="breadcrumb-box">
-        <div class="am-container">
-            <ol class="am-breadcrumb">
-            <li><a href="/">首页</a></li>
-            <li class="am-active">产品中心</li>
-            </ol>
-        </div>
-    </div>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
+<div style="padding: 200px 100px; color: #999">产品中心</div> 
 {% endblock %}
 
 <script src="/public/scripts/product.bundle.js"></script>

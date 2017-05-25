@@ -17,7 +17,8 @@ module.exports = app => {
 
 			yield this.ctx.render('news.tpl', {
 				productSubject,
-				newsSubject
+				newsSubject,
+				page: 'news'
 			});
 		}
 	}

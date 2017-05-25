@@ -9,21 +9,37 @@
 {% endblock %}
 
 {% block layoutContainer %}
-    <div class="page-header">
-        <div class="am-container">
-            <h1 class="page-header-title">客户案例</h1>
-        </div>
-    </div>
+   
+    <div class="toppic">
+      <div class="am-container-1">
+          <div class="toppic-title left">
+              <i class="am-icon-paper-plane toppic-title-i">
+              </i>
+              <span class="toppic-title-span">
+                  客户案例
+              </span>
+              <p>
+                  About Us
+              </p>
+          </div>
+          <div class="right toppic-progress">
+              <span>
+                  <a href="/" class="w-white">
+                      首页
+                  </a>
+              </span>
+              <i class=" am-icon-arrow-circle-right w-white">
+              </i>
+              <span>
+                  <a href="/case" class="w-white">
+                      客户案例
+                  </a>
+              </span>
+          </div>
+      </div>
+  </div>
 
-     <div class="breadcrumb-box">
-        <div class="am-container">
-            <ol class="am-breadcrumb">
-            <li><a href="/">首页</a></li>
-            <li class="am-active">客户案例</li>
-            </ol>
-        </div>
-    </div>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+ <div style="padding: 200px 100px; color: #999">客户案例</div> 
 {% endblock %}
 
 <script src="/public/scripts/case.bundle.js"></script>
