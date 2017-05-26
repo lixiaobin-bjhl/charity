@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div style="height: 100%;">
        <main-header></main-header>
        <div class="side-bar">
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
@@ -26,9 +26,9 @@
                 </div>
             </el-menu>
         </div>
-        <div class="main">
-            <div class="breadcrumb">
-                <el-breadcrumb separator="." v-if="$route.path!='/admin/home'">
+        <div class="main" :class="{'home': $route.path == '/admin/home'}">
+            <div class="breadcrumb" v-if="$route.path!='/admin/home'">
+                <el-breadcrumb separator=".">
                     <el-breadcrumb-item v-for="(item, index) in breadOptions" :key="index"  @click.native="changeBreadcrumb(item)">
                         {{item.name}}
                     </el-breadcrumb-item>

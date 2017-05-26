@@ -36,10 +36,11 @@
                     <li><a href="/product"  {% if page=='product' %} class="hw-menu-active" {% endif %}>产品中心</a></li>
                     <li><a {% if page=='case' %} class="hw-menu-active" {% endif %} href="/case">客户案例</a></li>
                     {#<li><a href="service-center.html">服务中心 </a></li>#}
-                    <li><a {% if page=='news' %} class="hw-menu-active" {% endif %} href="/news">新闻中心</a></li>
+                    {#<li><a {% if page=='news' %} class="hw-menu-active" {% endif %} href="/new">新闻中心</a></li>#}
                     <li><a {% if page=='about' %} class="hw-menu-active" {% endif %} href="/about" >关于我们</a></li>
                     <li><a {% if page=='contact' %} class="hw-menu-active" {% endif %} href="/contact">联系我们</a></li>
                     <li><a {% if page=='join' %} class="hw-menu-active" {% endif %} href="/join">加入我们</a></li>
+                    <li><a href="/admin/login">管理后台</a></li>
                 </ul>
             </div>
         </div>
@@ -69,12 +70,12 @@
                     <div class="part-5-title">相关链接</div>
                     <div class="part-5-words2">
                         <ul class="part-5-words2-ul">
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="solutions.html">解决方案</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="product-show.html">产品展示</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="customer-case.html">客户案例</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="service-center.html">服务中心</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="about-us.html">关于我们</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="recruit.html">招贤纳士</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/solution">解决方案</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/product">产品中心</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/case">客户案例</a></li>
+                            {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="service-center.html">服务中心</a></li>#}
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/about">关于我们</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/join">加入我们</a></li>
                             <div class="clear"></div>
                         </ul>
                     </div>
