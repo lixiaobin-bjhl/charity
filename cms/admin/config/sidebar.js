@@ -53,6 +53,11 @@ export default [
                 url: '/admin/customField'
             },
             {
+                name: '模板中心',
+                number: 4,
+                url: '/admin/schema'
+            },
+            {
                 name: '角色管理',
                 number: 6,
                 url: '/admin/role'

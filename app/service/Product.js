@@ -99,7 +99,13 @@ module.exports = app => {
             }
             Object.assign(condition, compass);
             var list = yield this.ctx.model.product.find(condition).sort({createTime: -1});
-            return list;
+            var result = [];
+            list.forEach((item)=> {
+                item = item.toJSON();
+                item.payPrice = currency(minus(item.price, item.discountPrice || 0));
+                result.push(item);
+            });
+            return result;
         }
 
         /**
