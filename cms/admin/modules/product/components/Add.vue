@@ -67,7 +67,7 @@
             <el-form-item v-if="form.customField.length" v-for="(item, index) in form.customField" :key="item._id" :required="item.required" :prop="'customField[' + index + '].value'" :label="item.name">
                 <el-input v-if="item.type === 0 " v-model="item.value" :maxlength="30" :placeholder="'请输入' + item.name"></el-input>
                 <el-select v-else-if="item.type === 1" clearable :placeholder="'请选择' + item.name" v-model="item.value">
-                    <el-option v-for="(value, key) in item.options" :value="value" :label="value"></el-option>
+                    <el-option v-for="(value, key) in item.options" :key="key" :value="value" :label="value"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="备注" prop="remark">

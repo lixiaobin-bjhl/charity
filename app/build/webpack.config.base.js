@@ -7,6 +7,9 @@ var utils = require('./utils');
 
 module.exports = {
     entry: {
+        vendor: [
+            'vue', 'vuex', 'vue-router', 'element-ui', 'axios'
+        ],
         'public/scripts/home': './app/public/scripts/home.js',
         'public/scripts/news': './app/public/scripts/news.js',
         'public/scripts/join': './app/public/scripts/join.js',
@@ -17,15 +20,13 @@ module.exports = {
         'public/scripts/solution': './app/public/scripts/solution.js',
         'public/scripts/main': './cms/admin/main.js',
         'public/scripts/cmsLogin': './cms/admin/login.js',
-        'public/scripts/vendor': './app/public/scripts/vendor.js',
-        'public/scripts/cvendor': './app/public/scripts/cvendor.js'
+        'public/scripts/common': './app/public/scripts/common.js',
+        'public/scripts/ccommon': './app/public/scripts/ccommon.js'
     },
-    output: {
-        path: path.resolve(__dirname, '../public/scripts/'),
-        publicPath: '/',
-        filename: '[name].bundle.js'
+    resolve:{
+        extensions:[".vue", ".js"],
+        modules: [path.join(__dirname, '../../node_modules')]
     },
-    watch: true,
     module: {
         loaders: [
             {
@@ -91,7 +92,7 @@ module.exports = {
             filename: '[name].css',
             allChunks: true,
             disable: false 
-         }),
+         })
     ],
     // vue: {
     //     loaders: utils.cssLoaders(),

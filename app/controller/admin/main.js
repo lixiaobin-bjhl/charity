@@ -13,9 +13,9 @@ module.exports = app => {
 		* index () {
 			var user = this.ctx.session.user;
 			var authority = this.ctx.session.authority;
-			
 			yield this.ctx.render('/admin/main.tpl', {
 				user,
+				env: process.env.NODE_ENV,
 				authority: JSON.stringify(authority),
 				userStr: JSON.stringify(user)
 			});

@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
     <link rel="shortcut icon" href="http://opdjozubd.bkt.clouddn.com/favicon.ico" />
-    <link rel="stylesheet" href="/public/scripts/cvendor.css"/>
+    <link rel="stylesheet" href="/public/scripts/ccommon.css"/>
     {% block css %}
     {% endblock %}
 </head>
@@ -84,7 +84,7 @@
         </footer> 
     {% endblock %}
     {% block commonScript %}
-       <script src="/public/scripts/cvendor.bundle.js"></script>
+       <script src="/public/scripts/ccommon.bundle.js"></script>
     {% endblock %}
 </body>
 
