@@ -84,7 +84,15 @@
         </footer> 
     {% endblock %}
     {% block commonScript %}
-       <script src="/public/scripts/ccommon.bundle.js"></script>
+        {% if env === 'production' %}
+            <script src="/public/cvendor.js"></script>
+        {% else %}
+            <script src="/public/scripts/cvendor.dll.js"></script>
+        {% endif %}
+        <script src="/public/scripts/ccommon.bundle.js"></script>
+    {% endblock %}
+
+    {% block script %}
     {% endblock %}
 </body>
 

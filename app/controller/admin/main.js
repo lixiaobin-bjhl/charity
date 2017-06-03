@@ -15,7 +15,7 @@ module.exports = app => {
 			var authority = this.ctx.session.authority;
 			yield this.ctx.render('/admin/main.tpl', {
 				user,
-				env: process.env.NODE_ENV,
+				env: this.ctx.helper.env(),
 				authority: JSON.stringify(authority),
 				userStr: JSON.stringify(user)
 			});
@@ -33,7 +33,8 @@ module.exports = app => {
 		* login () {
 			var user = this.ctx.session.user;
 			yield this.ctx.render('/admin/login.tpl', {
-				user
+				user,
+				env: this.ctx.helper.env()
 			});
 		}
 	}

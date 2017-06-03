@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/home_d77e7a620c.css"/>
+     <link rel="stylesheet" href="/public/scripts/home_d41d8cd98f.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -202,7 +202,8 @@
 
 {% endblock %}
 
-
-<script src="/public/scripts/home_a92e2e0726.js"></script>
+{% block script %}
+<script src="/public/scripts/home_6823e1a1df.js"></script>
+{% endblock %}
 
 </html>

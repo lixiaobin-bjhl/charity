@@ -10,7 +10,10 @@
 
 {% block body %}
     <div id="app"></div>
-    <script src="/public/scripts/cmsLogin.bundle.js"></script>
+{% endblock %}
+
+{% block script %}
+     <script src="/public/scripts/cmsLogin.bundle.js"></script>
 {% endblock %}
 
  {% block footer %}

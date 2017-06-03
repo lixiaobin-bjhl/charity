@@ -169,10 +169,9 @@
           </div>
       </div>
   </div>
-
-
 {% endblock %}
 
+{% block script %}
 <script src="/public/scripts/solution.bundle.js"></script>
-
+{% endblock %}
 </html>

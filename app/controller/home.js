@@ -18,7 +18,8 @@ module.exports = app => {
 			yield this.ctx.render('home.tpl', {
 				productSubject,
 				newsSubject,
-				page: 'home'
+				page: 'home',
+				env: this.ctx.helper.env()
 			});
 		}
 	}

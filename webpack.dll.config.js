@@ -7,6 +7,9 @@ module.exports = {
     entry: {
         vendor: [
             'vue', 'vuex', 'vue-router', 'element-ui', 'axios'
+        ],
+        cvendor: [
+           'jquery', 'amazeui', 'axios'
         ]
     },
     output: {

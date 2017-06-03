@@ -39,8 +39,16 @@
     {% endblock  %}
 
     {% block commonScript %}
-       <script src="/public/scripts/common.bundle.js"></script>
+        {% if env === 'production' %}
+            <script src="/public/vendor.js"></script>
+        {% else %}
+            <script src="/public/scripts/vendor.dll.js"></script>
+        {% endif %}
+        <script src="/public/scripts/common.bundle.js"></script>
     {% endblock %}
+    {% block script %}
+    {% endblock %}
+</body>
 </body>
 
 </html>

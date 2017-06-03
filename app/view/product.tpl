@@ -41,6 +41,7 @@
 <div style="padding: 200px 100px; color: #999">产品中心</div> 
 {% endblock %}
 
+{% block script %}
 <script src="/public/scripts/product.bundle.js"></script>
-
+{% endblock %}
 </html>

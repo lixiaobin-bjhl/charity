@@ -5,12 +5,15 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/main_e4237b6754.css"/>
+     <link rel="stylesheet" href="/public/scripts/main_ccc7d6defa.css"/>
 {% endblock %}
 
 {% block body %}
     <div id="app"></div>
-    <script src="/public/scripts/main_594d613da2.js"></script>
+{% endblock %}
+
+{% block script %}
+    <script src="/public/scripts/main_b4f3ab1665.js"></script>
 {% endblock %}
 
 </html>

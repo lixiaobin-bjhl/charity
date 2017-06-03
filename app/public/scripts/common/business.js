@@ -5,6 +5,6 @@
 
 'use strict';
 
-require('../../css/vendor.scss');
+require('../../css/common.scss');
 
 

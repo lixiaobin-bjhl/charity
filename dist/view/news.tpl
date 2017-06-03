@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/news_2a73fc7d35.css"/>
+     <link rel="stylesheet" href="/public/scripts/news_45d5d1239a.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -39,7 +39,8 @@
 </div>
  <div style="padding: 200px 100px; color: #999">新闻中心</div> 
 {% endblock %}
-
-<script src="/public/scripts/news_a8c078cc51.js"></script>
+{% block script %}
+<script src="/public/scripts/news_066fe593a4.js"></script>
+{% endblock %}
 
 </html>

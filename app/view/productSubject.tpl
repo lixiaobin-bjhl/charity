@@ -14,7 +14,7 @@
     </div>
 
 {% endblock %}
-
+{% block script %}
 <script src="/public/scripts/product.bundle.js"></script>
-
+{% endblock %}
 </html>

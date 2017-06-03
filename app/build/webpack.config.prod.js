@@ -22,9 +22,33 @@ var plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-        filename: "vendor.js"
-    }),
+            name: 'vendor',
+            minChunks: function(module, count) {
+                // any required modules inside node_modules are extracted to vendor
+                return (
+                    module.resource &&
+                    /\.js$/.test(module.resource) &&
+                    module.resource.indexOf(
+                        path.join(__dirname, '../node_modules')
+                    ) === 0
+                )
+            },
+            chunks: ["public/scripts/main"]
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'cvendor',
+            minChunks: function(module, count) {
+                // any required modules inside node_modules are extracted to vendor
+                return (
+                    module.resource &&
+                    /\.js$/.test(module.resource) &&
+                    module.resource.indexOf(
+                        path.join(__dirname, '../node_modules')
+                    ) === 0
+                )
+            },
+            chunks: ["public/scripts/home"]
+        }),
     new OptimizeCSSPlugin({
         cssProcessorOptions: {
             safe: true

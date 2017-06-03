@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/case_d77e7a620c.css"/>
+     <link rel="stylesheet" href="/public/scripts/case_d41d8cd98f.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -42,6 +42,8 @@
  <div style="padding: 200px 100px; color: #999">客户案例</div> 
 {% endblock %}
 
-<script src="/public/scripts/case_ca7a44b272.js"></script>
+{% block script %}
+<script src="/public/scripts/case_8890d61520.js"></script>
+{% endblock %}
 
 </html>

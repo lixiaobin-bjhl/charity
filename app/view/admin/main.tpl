@@ -10,6 +10,9 @@
 
 {% block body %}
     <div id="app"></div>
+{% endblock %}
+
+{% block script %}
     <script src="/public/scripts/main.bundle.js"></script>
 {% endblock %}
 

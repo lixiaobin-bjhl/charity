@@ -42,7 +42,6 @@
 <script>
     import sidebarConfig from './config/sidebar';
     import MainHeader from './common/components/MainHeader.vue';
-    require('element-ui/lib/theme-default/index.css');
     require('./style.scss');
 
     export default {

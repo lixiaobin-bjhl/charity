@@ -19,22 +19,7 @@ gulp.task('md5:css', ['view'], function () {
         .pipe(gulp.dest('dist/public'));
 });
 
-gulp.task('md5:img', ['md5:css', 'view'], function() {
-    return gulp
-        .src([
-            'app/public/img/**/*.png',
-            'app/public/img/**/*.jpg'
-        ])
-        .pipe(md5(10, [
-            'dist/public/**/*.css',
-            'dist/view/**/*.tpl',
-        ], {
-            dirLevel: 1
-        }))
-        .pipe(gulp.dest('dist/public/img'));
-});
-
-gulp.task('md5:script', ['view'], function(cb) {
+gulp.task('md5:script', ['view', 'vendor'], function(cb) {
     gulp.src([
        'dist/public/**/*.js',
     ])
@@ -44,10 +29,26 @@ gulp.task('md5:script', ['view'], function(cb) {
     .pipe(gulp.dest('dist/public'));
 });
 
+gulp.task('md5:img', ['md5:css', 'view'], function() {
+    return gulp
+        .src([
+            'app/public/img/**/*.png',
+            'app/public/img/**/*.jpg'
+        ])
+        .pipe(md5(10, [
+            'dist/public/**/*.css',
+            'dist/public/**/*.js',
+            'dist/view/**/*.tpl'
+        ], {
+            dirLevel: 1
+        }))
+        .pipe(gulp.dest('dist/public/img'));
+});
+
 gulp.task('md5', [
     'md5:css',
+    'md5:script',
     'md5:img',
-    'md5:script'
 ], function (cb) {
     console.log('md5 success');
     cb();

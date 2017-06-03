@@ -43,6 +43,8 @@
 
 {% endblock %}
 
+{% block script %}
 <script src="/public/scripts/about.bundle.js"></script>
+{% endblock %}
 
 </html>

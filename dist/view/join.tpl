@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/join_b2add752f3.css"/>
+     <link rel="stylesheet" href="/public/scripts/join_dc026e6052.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -41,7 +41,7 @@
 <div style="padding: 200px 100px; color: #999">加入我们</div> 
 
 {% endblock %}
-
-<script src="/public/scripts/join_57def993f3.js"></script>
-
+{% block script %}
+<script src="/public/scripts/join_4aa4a4075a.js"></script>
+{% endblock %}
 </html>

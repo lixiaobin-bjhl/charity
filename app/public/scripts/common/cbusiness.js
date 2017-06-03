@@ -5,7 +5,7 @@
 
 'use strict';
 
-require('../../css/vendor.scss');
+require('../../css/ccommon.scss');
 
 var $ = require('jquery');
 var amazeui = require('amazeui');

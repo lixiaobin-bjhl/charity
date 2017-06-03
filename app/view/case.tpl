@@ -42,6 +42,8 @@
  <div style="padding: 200px 100px; color: #999">客户案例</div> 
 {% endblock %}
 
+{% block script %}
 <script src="/public/scripts/case.bundle.js"></script>
+{% endblock %}
 
 </html>

@@ -10,6 +10,9 @@ module.exports = {
         vendor: [
             'vue', 'vuex', 'vue-router', 'element-ui', 'axios'
         ],
+        cvendor: [
+            'jquery', 'amazeui', 'axios'
+        ],
         'public/scripts/home': './app/public/scripts/home.js',
         'public/scripts/news': './app/public/scripts/news.js',
         'public/scripts/join': './app/public/scripts/join.js',
@@ -46,8 +49,8 @@ module.exports = {
                 options: {
                     loaders: {
                         scss: 'style-loader!css-loader!sass-loader'
-                }
-            },
+                    }
+                },
                 exclude: /node_modules/
             },
             {

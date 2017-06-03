@@ -18,7 +18,8 @@ module.exports = app => {
 			yield this.ctx.render('join.tpl', {
 				productSubject,
 				newsSubject,
-				page: 'join'
+				page: 'join',
+				env: this.ctx.helper.env()
 			});
 		}
 	}

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/contact_d77e7a620c.css"/>
+     <link rel="stylesheet" href="/public/scripts/contact_d41d8cd98f.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -41,6 +41,7 @@
  <div style="padding: 200px 100px; color: #999">联系我们</div> 
 {% endblock %}
 
-<script src="/public/scripts/contact_589c2e027c.js"></script>
-
+{% block script %}
+<script src="/public/scripts/contact_ee1e1cfb5f.js"></script>
+{% endblock %}
 </html>

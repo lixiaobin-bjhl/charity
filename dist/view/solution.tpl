@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/solution_d77e7a620c.css"/>
+     <link rel="stylesheet" href="/public/scripts/solution_d41d8cd98f.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -169,10 +169,9 @@
           </div>
       </div>
   </div>
-
-
 {% endblock %}
 
-<script src="/public/scripts/solution_cf6c2e0862.js"></script>
-
+{% block script %}
+<script src="/public/scripts/solution_4e07352227.js"></script>
+{% endblock %}
 </html>

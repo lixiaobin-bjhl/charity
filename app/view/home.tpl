@@ -202,7 +202,8 @@
 
 {% endblock %}
 
-
+{% block script %}
 <script src="/public/scripts/home.bundle.js"></script>
+{% endblock %}
 
 </html>

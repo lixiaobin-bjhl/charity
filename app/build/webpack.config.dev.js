@@ -10,7 +10,6 @@ var plugins = [
     new webpack.NoErrorsPlugin()
 ];
 
-
 module.exports = merge(baseWebpackConfig, {
     output: {
         path: path.resolve(__dirname, '../public/scripts/'),

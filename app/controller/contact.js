@@ -19,7 +19,8 @@ module.exports = app => {
 			yield this.ctx.render('contact.tpl', {
 				productSubject,
 				newsSubject,
-				page: 'contact'
+				page: 'contact',
+				env: this.ctx.helper.env()
 			});
 		}
 	}

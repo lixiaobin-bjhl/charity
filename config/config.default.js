@@ -1,9 +1,13 @@
 'use strict';
 
 var modules = require('./modules');
+const path = require('path');
 
 module.exports = appInfo => {
     const config = {};
+    var env = process.env.NODE_ENV;
+    var viewPath = env === 'production' ? 'dist/view' : 'app/view';
+    var staticPath = env === 'production' ? 'dist/public' : 'app/public';
 
     // should change to your own
     config.keys = appInfo.name + '_1491043715892_8663';
@@ -17,10 +21,17 @@ module.exports = appInfo => {
     ];
 
     config.view = {
+        root: [
+            path.join(appInfo.baseDir, viewPath),
+        ].join(','),
         defaultViewEngine: 'nunjucks',
         mapping: {
             '.tpl': 'nunjucks'
         }
+    };
+
+    config.static = {
+        dir: path.join(appInfo.baseDir, staticPath)
     };
 
     config.security = {

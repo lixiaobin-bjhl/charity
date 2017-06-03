@@ -41,7 +41,7 @@
 <div style="padding: 200px 100px; color: #999">加入我们</div> 
 
 {% endblock %}
-
+{% block script %}
 <script src="/public/scripts/join.bundle.js"></script>
-
+{% endblock %}
 </html>

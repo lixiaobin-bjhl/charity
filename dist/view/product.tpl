@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/product_d77e7a620c.css"/>
+     <link rel="stylesheet" href="/public/scripts/product_d41d8cd98f.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -41,6 +41,7 @@
 <div style="padding: 200px 100px; color: #999">产品中心</div> 
 {% endblock %}
 
-<script src="/public/scripts/product_0797ca9369.js"></script>
-
+{% block script %}
+<script src="/public/scripts/product_01527f789f.js"></script>
+{% endblock %}
 </html>
