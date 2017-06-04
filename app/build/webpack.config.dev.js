@@ -7,7 +7,11 @@ var webpack = require('webpack');
 var path = require('path');
 
 var plugins = [
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DllReferencePlugin({
+        context: path.resolve(__dirname, '../public/scripts/'),
+        manifest: require('../public/scripts/cvendor-manifest.json'),
+    })
 ];
 
 module.exports = merge(baseWebpackConfig, {

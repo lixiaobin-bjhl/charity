@@ -24,7 +24,7 @@
     <header class="am-topbar header">
         <div class="am-container-1">
             <div class="left hw-logo">
-               <img src="public/img/logo.png" width="200" alt="logo"> 
+               <a href="/"><img src="public/img/logo.png" width="200" alt="logo"></a>
             </div>
             <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
                 data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span

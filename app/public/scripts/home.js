@@ -7,4 +7,4 @@
 
 require('../css/home.scss');
 
-console.log('home');
+console.log('home page');

@@ -7,9 +7,6 @@
 
 require('../../css/ccommon.scss');
 
-var $ = require('jquery');
-var amazeui = require('amazeui');
-
 (function () {
     $('.customer-logo').find('.customer-box').each(function () {
         $(this).hover(function () {

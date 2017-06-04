@@ -4,6 +4,7 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var utils = require('./utils');
+var webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -95,6 +96,10 @@ module.exports = {
             filename: '[name].css',
             allChunks: true,
             disable: false 
+         }),
+         new webpack.ProvidePlugin({
+            $: 'jquery',
+            amazeui: 'amazeui'
          })
     ],
     // vue: {
