@@ -2,7 +2,7 @@
     <div class="login-wrap">
         <div class="login">
             <div class="login-logo">
-                <img src="/public/img/charity.png">
+                <img src="/public/img/logo.png" style="width:250px; height:auto;" alt="logo">
             </div>
             <el-form ref="form" :model="form" label-width="80px">
                 <div class="form-li">
@@ -44,9 +44,28 @@
              */
             onSubmit () {
                 var form = this.form;
+                var mobile = form.mobile.trim();
+                var password = form.password.trim();
+                
+                if (!mobile) {
+                    this.$message({
+                        message: '请输入手机号',
+                        type: 'warning'
+                    });
+                    return;
+                }
+
+                if (!password) {
+                     this.$message({
+                            message: '请输入密码',
+                            type: 'warning'
+                        });
+                    return;
+                }
+
                 var params = {
-                    mobile: form.mobile.trim(),
-                    password: md5(form.password.trim()),
+                    mobile: mobile,
+                    password: md5(password)
                 };
                 login(params)
                     .then(()=> {

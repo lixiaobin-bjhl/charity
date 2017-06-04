@@ -6,6 +6,8 @@
         <title>舍利果</title>
     {% endblock %}
     <meta charset="utf-8">
+    <meta name="description" content="舍利果微信小程序生成平台">
+    <meta name="keywords" content="舍利果,微信小程序">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
@@ -21,8 +23,8 @@
 <body>
     <header class="am-topbar header">
         <div class="am-container-1">
-            <div class="left hw-logo" style="font-weight: bold; font-size: 24px; color: #3399ff;">
-                舍利果   
+            <div class="left hw-logo">
+               <img src="public/img/logo.png" width="200" alt="logo"> 
             </div>
             <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
                 data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
@@ -59,11 +61,10 @@
                 <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 part-5-li2">
                     <div class="part-5-title">联系我们</div>
                     <div class="part-5-words2">
-                        <span>地址:武汉市洪山区街道口鹏程国际B座2511</span>
-                        <span>电话:18238765101</span>
-                        <span>传真:(123) 456-7890</span>
-                        <span>邮箱:support@vectorlab.com</span>
-                        <span><i class="am-icon-phone"></i><em >027-82671661</em></span>
+                        <span>地址:武汉市洪山区南湖大道53号南湖创业园</span>
+                        <span>电话:18610720740</span>
+                        <span>邮箱:lixiaobin8878@gmail.com</span>
+                        <!--<span><i class="am-icon-phone"></i><em >027-82671661</em></span>-->
                     </div>
                 </li>
                 <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 ">
