@@ -48,7 +48,9 @@ module.exports = appInfo => {
     config.mongoose = {
         url: 'mongodb://127.0.0.1:27017/charity',
         options: {
-            promiseLibrary: require('bluebird')
+            promiseLibrary: require('bluebird'),
+            auto_reconnect: true,
+            poolSize: 10
         }
     };
     config.modules = modules;

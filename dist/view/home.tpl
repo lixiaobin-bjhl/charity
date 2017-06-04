@@ -1,7 +1,7 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>首页</title>
+    <title>舍利果</title>
 {% endblock %}
 
 {% block css %}
@@ -10,10 +10,10 @@
 
 {% block layoutContainer %}
     
-    <div class="rollpic" style="min-height: 380px;">
-        <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
+    <div class="rollpic" style="min-height: 50px;">
+        <div data-am-widget="slider" height="100" class="am-slider am-slider-default" data-am-slider='{}' >
             <ul class="am-slides">
-                <li><img src="public/img/hw_bg1_1bdacbacc5.png"/></li>
+                <li><img src="public/img/hw_bg3_3b3f06547b.jpg"/></li>
                 <li><img src="public/img/hw_bg_b7437fbea2.png"/></li>  	
                 <li><img src="public/img/hw_bg3_d58951deb3.png"/></li>
             </ul>

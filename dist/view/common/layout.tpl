@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
     <link rel="shortcut icon" href="http://opdjozubd.bkt.clouddn.com/favicon.ico" />
-    <link rel="stylesheet" href="/public/scripts/common_2694f27e0f.css"/>
+    <link rel="stylesheet" href="/public/scripts/common_2454aee125.css"/>
     {% block css %}
     {% endblock %}
 </head>
@@ -40,7 +40,7 @@
 
     {% block commonScript %}
         {% if env === 'production' %}
-            <script src="/public/vendor_5063101692.js"></script>
+            <script src="/public/vendor_88d4d0a774.js"></script>
         {% else %}
             <script src="/public/scripts/vendor.dll.js"></script>
         {% endif %}
