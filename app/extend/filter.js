@@ -6,7 +6,7 @@
 'use strict';
 
 var compressImage = require('../public/scripts/function/compressImage');
-var Nunjucks = require('Nunjucks');
+var Nunjucks = require('nunjucks');
 
 /**
  * 压缩图片 
