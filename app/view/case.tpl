@@ -19,7 +19,7 @@
                   客户案例
               </span>
               <p>
-                  About Us
+                  Case
               </p>
           </div>
           <div class="right toppic-progress">

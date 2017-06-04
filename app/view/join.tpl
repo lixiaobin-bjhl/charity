@@ -18,7 +18,7 @@
                   加入我们
               </span>
               <p>
-                  About Us
+                  Join Us
               </p>
           </div>
           <div class="right toppic-progress">

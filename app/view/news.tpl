@@ -18,7 +18,7 @@
                   新闻中心
               </span>
               <p>
-                  About Us
+                News
               </p>
           </div>
           <div class="right toppic-progress">

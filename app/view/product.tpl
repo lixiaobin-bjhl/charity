@@ -18,7 +18,7 @@
                   产品中心
               </span>
               <p>
-                  About Us
+                Product
               </p>
           </div>
           <div class="right toppic-progress">

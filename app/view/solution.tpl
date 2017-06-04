@@ -18,7 +18,7 @@
                   解决方案
               </span>
               <p>
-                  About Us
+                Solution
               </p>
           </div>
           <div class="right toppic-progress">

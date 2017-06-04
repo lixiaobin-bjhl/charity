@@ -18,7 +18,7 @@
                   联系我们
               </span>
               <p>
-                  About Us
+                  Contact Us
               </p>
           </div>
           <div class="right toppic-progress">
@@ -38,7 +38,37 @@
       </div>
   </div>
 
- <div style="padding: 200px 100px; color: #999">联系我们</div> 
+ <div class=" am-container-1">
+	<div class="part-title part-title-mar">
+			<a href="customer-case.html">
+			<i class=" am-icon-comments-o part-title-i"></i>
+			<span class="part-title-span">联系我们</span>
+			<p>Contact Us</p>
+			</a>
+		</div>
+</div>
+<div class="gray-li">
+<div class=" am-container-1">
+	<div class="contact-us">
+		 <div class="am-u-lg-6 am-u-md-6 am-u-sm-12">
+		 	<img src="public/img/map.jpg" />
+		 </div>
+		 <div class="am-u-lg-6 am-u-md-6 am-u-sm-12">
+		 	 <ul class="contact-add">
+		 	 	<li>
+		 	 		<div><i class=" am-icon-map-marker"></i><span class="contact-add-1">武汉市洪山区南湖大道南湖创业园</span></div>
+		 	 	</li>
+		 	 	<li>
+		 	 		<div><i class=" am-icon-mobile mobile"></i><span>18610720740</span></div>	 	 		
+		 	 	</li>
+		 	 	<li>
+		 	 		<div><i class=" am-icon-envelope-o"></i><span>lixiaobin8878@gmail.com</span></div>		 	 		
+		 	 	</li>
+		 	 </ul>	 	
+		 </div>
+		 <div class="clear"></div>
+	</div>
+</div>
 {% endblock %}
 
 {% block script %}
