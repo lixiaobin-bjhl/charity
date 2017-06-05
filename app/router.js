@@ -7,6 +7,7 @@ module.exports = app => {
     app.get('/case', 'case.index');
     app.get('/contact', 'contact.index');
     app.get('/join', 'join.index');
+    app.get('/team', 'team.index');
     app.get('/product', 'product.index');
     app.get('/product/subject/:subjectId', 'product.subject');
     app.get('/product/:id', 'product.detail');

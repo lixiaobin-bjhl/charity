@@ -17,6 +17,7 @@ module.exports = {
         'public/scripts/home': './app/public/scripts/home.js',
         'public/scripts/news': './app/public/scripts/news.js',
         'public/scripts/join': './app/public/scripts/join.js',
+        'public/scripts/team': './app/public/scripts/team.js',
         'public/scripts/about': './app/public/scripts/about.js',
         'public/scripts/case': './app/public/scripts/case.js',
         'public/scripts/contact': './app/public/scripts/contact.js',

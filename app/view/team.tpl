@@ -1,11 +1,11 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>舍利果-加入我们</title>
+    <title>舍利果-团队介绍</title>
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/join.css"/>
+     <link rel="stylesheet" href="/public/scripts/team.css"/>
 {% endblock %}
 
 {% block layoutContainer %}
@@ -15,10 +15,10 @@
               <i class="am-icon-street-view toppic-title-i">
               </i>
               <span class="toppic-title-span">
-                  加入我们
+                  团队介绍
               </span>
               <p>
-                  Join Us
+                  Team
               </p>
           </div>
           <div class="right toppic-progress">
@@ -30,8 +30,8 @@
               <i class=" am-icon-arrow-circle-right w-white">
               </i>
               <span>
-                  <a href="/join" class="w-white">
-                      加入我们
+                  <a href="/team" class="w-white">
+                      团队介绍
                   </a>
               </span>
           </div>
@@ -41,8 +41,8 @@
 <div class=" am-container-1">
 	<div class="part-title part-title-mar">
 			<i class=" am-icon-street-view part-title-i"></i>
-			<span class="part-title-span">加入我们</span>
-			<p>Join US</p>
+			<span class="part-title-span">团队介绍</span>
+			<p>Team</p>
 		</div>
 </div>
 
@@ -50,6 +50,6 @@
 
 {% endblock %}
 {% block script %}
-<script src="/public/scripts/join.bundle.js"></script>
+<script src="/public/scripts/team.bundle.js"></script>
 {% endblock %}
 </html>

@@ -41,7 +41,7 @@
                     {#<li><a {% if page=='news' %} class="hw-menu-active" {% endif %} href="/new">新闻中心</a></li>#}
                     <li><a {% if page=='about' %} class="hw-menu-active" {% endif %} href="/about" >关于我们</a></li>
                     <li><a {% if page=='contact' %} class="hw-menu-active" {% endif %} href="/contact">联系我们</a></li>
-                    <li><a {% if page=='join' %} class="hw-menu-active" {% endif %} href="/join">加入我们</a></li>
+                    <li><a {% if page=='team' %} class="hw-menu-active" {% endif %} href="/team">团队介绍</a></li>
                     <li><a href="/admin/login">舍利果</a></li>
                 </ul>
             </div>
