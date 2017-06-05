@@ -1,7 +1,7 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>客户案例</title>
+    <title>舍利果-客户案例</title>
 {% endblock %}
 
 {% block css %}

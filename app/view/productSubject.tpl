@@ -1,7 +1,7 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>产品中心-产品分类</title>
+    <title>舍利果-产品中心-产品分类</title>
 {% endblock %}
 
 {% block css %}

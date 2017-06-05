@@ -1,7 +1,7 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>新闻中心</title>
+    <title>舍利果-新闻中心</title>
 {% endblock %}
 
 {% block css %}
