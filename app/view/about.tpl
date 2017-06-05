@@ -58,7 +58,7 @@
 
 <div class="craftsman-space clearfix">
     <div class="cam-u-lg-4 am-u-md-4 am-u-sm-4">
-        <a href="public/img/carftsman1.jpg">
+        <a href="public/img/carftsman1.jpeg">
             <img src="public/img/carftsman1.jpeg" alt="老罗" />
         </a>
         <div class="mark">图（1）老罗</div>
