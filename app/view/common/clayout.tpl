@@ -71,11 +71,13 @@
                     <div class="part-5-words2">
                         <ul class="part-5-words2-ul">
                             <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/solution">解决方案</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/product">产品中心</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/case">客户案例</a></li>
+                            {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/product">产品中心</a></li>#}
+                            {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/case">客户案例</a></li>#}
                             {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="service-center.html">服务中心</a></li>#}
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/team">团队介绍</a></li>
                             <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/about">关于我们</a></li>
                             <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/join">加入我们</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/admin/">舍利果</a></li>
                             <div class="clear"></div>
                         </ul>
                     </div>
