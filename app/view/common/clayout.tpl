@@ -35,14 +35,14 @@
                 <ul class="am-nav am-nav-pills am-topbar-nav hw-menu">
                     <li><a {% if page=='home' %} class="hw-menu-active" {% endif %} href="/">首页</a></li>
                     <li><a href="/solution" {% if page=='solution' %} class="hw-menu-active" {% endif %}>解决方案</a></li>
-                    <li><a href="/product"  {% if page=='product' %} class="hw-menu-active" {% endif %}>产品中心</a></li>
-                    <li><a {% if page=='case' %} class="hw-menu-active" {% endif %} href="/case">客户案例</a></li>
+                    {#<li><a href="/product"  {% if page=='product' %} class="hw-menu-active" {% endif %}>产品中心</a></li>#}
+                    {#<li><a {% if page=='case' %} class="hw-menu-active" {% endif %} href="/case">客户案例</a></li>#}
                     {#<li><a href="service-center.html">服务中心 </a></li>#}
                     {#<li><a {% if page=='news' %} class="hw-menu-active" {% endif %} href="/new">新闻中心</a></li>#}
                     <li><a {% if page=='about' %} class="hw-menu-active" {% endif %} href="/about" >关于我们</a></li>
                     <li><a {% if page=='contact' %} class="hw-menu-active" {% endif %} href="/contact">联系我们</a></li>
                     <li><a {% if page=='join' %} class="hw-menu-active" {% endif %} href="/join">加入我们</a></li>
-                    <li><a href="/admin/login">管理后台</a></li>
+                    <li><a href="/admin/login">舍利果</a></li>
                 </ul>
             </div>
         </div>
@@ -61,10 +61,9 @@
                 <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 part-5-li2">
                     <div class="part-5-title">联系我们</div>
                     <div class="part-5-words2">
-                        <span>地址:武汉市洪山区南湖大道53号南湖创业园</span>
-                        <span>电话:18610720740</span>
-                        <span>邮箱:lixiaobin8878@gmail.com</span>
-                        <!--<span><i class="am-icon-phone"></i><em >027-82671661</em></span>-->
+                        <span>地址：武汉市洪山区南湖大道53号南湖创业园</span>
+                        <span>电话：18610720740</span>
+                        <span>邮箱：lixiaobin8878@gmail.com</span>
                     </div>
                 </li>
                 <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 ">

@@ -12,7 +12,7 @@
   <div class="toppic">
       <div class="am-container-1">
           <div class="toppic-title left">
-              <i class="am-icon-paper-plane toppic-title-i">
+              <i class="am-icon-street-view toppic-title-i">
               </i>
               <span class="toppic-title-span">
                   加入我们
@@ -38,7 +38,15 @@
       </div>
 </div>
 
-<div style="padding: 200px 100px; color: #999">加入我们</div> 
+<div class=" am-container-1">
+	<div class="part-title part-title-mar">
+			<i class=" am-icon-street-view part-title-i"></i>
+			<span class="part-title-span">加入我们</span>
+			<p>Join US</p>
+		</div>
+</div>
+
+ <div style="padding: 50px; color: #999">团队介绍……</div> 
 
 {% endblock %}
 {% block script %}

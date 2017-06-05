@@ -275,6 +275,9 @@ a {
 
 .footer ul li {
 	color: #fff;
+	a:hover {
+		text-decoration: underline;
+	}
 }
 
 .part-5-words2 p {
@@ -1366,8 +1369,10 @@ margin-bottom: 10px;}
 
 
 /*关于我们*/
-.part-title-mar{padding-top: 30px;
-padding-bottom: 25px;}
+.part-title-mar{
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
 .company-intro {
 	margin: 0 22%;
 	text-align: center;

@@ -12,7 +12,7 @@
   <div class="toppic">
       <div class="am-container-1">
           <div class="toppic-title left">
-              <i class="am-icon-paper-plane toppic-title-i">
+              <i class="am-icon-comments-o toppic-title-i">
               </i>
               <span class="toppic-title-span">
                   联系我们
@@ -40,11 +40,9 @@
 
  <div class=" am-container-1">
 	<div class="part-title part-title-mar">
-			<a href="customer-case.html">
 			<i class=" am-icon-comments-o part-title-i"></i>
 			<span class="part-title-span">联系我们</span>
 			<p>Contact Us</p>
-			</a>
 		</div>
 </div>
 <div class="gray-li">

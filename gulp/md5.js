@@ -33,7 +33,8 @@ gulp.task('md5:img', ['md5:css', 'view'], function() {
     return gulp
         .src([
             'app/public/img/**/*.png',
-            'app/public/img/**/*.jpg'
+            'app/public/img/**/*.jpg',
+            'app/public/img/**/*.jpeg'
         ])
         .pipe(md5(10, [
             'dist/public/**/*.css',
