@@ -4,7 +4,7 @@
             <div class="login-logo">
                 <img src="/public/img/logo.png" style="width:250px; height:auto;" alt="logo">
             </div>
-            <el-form ref="form" :model="form" label-width="80px">
+            <form ref="form" @keyup.enter="onSubmit" :model="form" label-width="80px">
                 <div class="form-li">
                     <span class="icon-user"></span>
                     <input type="text" id="username" name="username" placeholder="请输入手机号" v-model="form.mobile">
@@ -15,9 +15,9 @@
                     <input type="password" id="password" name="password" placeholder="请输入密码" v-model="form.password">
                 </div>
                 <div class="form-li">
-                    <el-button class="btn-submit" type="primary" @click="onSubmit">登录</el-button>
+                    <input class="btn-submit" name="commit" type="button" value="登录" @click="onSubmit">
                 </div> 
-            </el-form>
+            </form>
         </div>
     </div>
 </template>
