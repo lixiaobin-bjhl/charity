@@ -12,6 +12,8 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 import store from './store/index';
 
+window.store = store;
+
 import {
     Message
 } from 'element-ui';

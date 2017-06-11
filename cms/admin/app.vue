@@ -1,7 +1,8 @@
 <template>
    <div style="height: 100%;">
-       <main-header></main-header>
-       <div class="side-bar">
+        <loading-progress :shown="$store.state.loadingProgressState"></loading-progress>
+        <main-header></main-header>
+        <div class="side-bar">
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
                  <div v-for="(menu, index) in sidebarConfig" :key="index" v-if="menu.children">
                     <el-submenu :index="'' + index">
@@ -42,6 +43,8 @@
 <script>
     import sidebarConfig from './config/sidebar';
     import MainHeader from './common/components/MainHeader.vue';
+    import LoadingProgress from './common/components/LoadingProgress.vue';
+
     require('./style.scss');
 
     export default {
@@ -73,7 +76,8 @@
             }
         },
         components: {
-            MainHeader
+            MainHeader,
+            LoadingProgress
         }
     }
 </script>

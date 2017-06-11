@@ -73,7 +73,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+                loader: ExtractTextPlugin.extract({ 
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader']
+                })
             },
             {
                 test: /\.scss$/,
@@ -97,10 +100,6 @@ module.exports = {
             filename: '[name].css',
             allChunks: true,
             disable: false 
-         }),
-         new webpack.ProvidePlugin({
-            $: 'jquery',
-            amazeui: 'amazeui'
          })
     ],
     // vue: {

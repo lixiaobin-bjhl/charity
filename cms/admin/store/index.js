@@ -22,7 +22,8 @@ import customField from '../modules/customField/store';
 
 export default new vuex.Store({
     state: {
-		breadCrumbs: []
+		breadCrumbs: [],
+		loadingProgressState: false
 	},
     strict: false,
 	mutations,

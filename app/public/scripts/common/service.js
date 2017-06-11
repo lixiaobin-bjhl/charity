@@ -14,6 +14,9 @@ var cookie = require('js-cookie');
 axios.interceptors.request.use(function (config) {
     config.headers['x-csrf-token'] = cookie.get('csrfToken');
     config.headers['X-Requested-With'] = 'XMLHttpRequest';
+    if (window.store) {
+        store.commit('SHOW_LOADING_PREGROESS');
+    }
     return config;
 }, function (error) {
     return Promise.reject(error);
@@ -24,6 +27,9 @@ axios.interceptors.request.use(function (config) {
  */
 axios.interceptors.response.use(function (response) {
     var data = response.data;
+    if (window.store) {
+        store.commit('HIDE_LOADING_PREGROESS');
+    }
     if (typeof data === 'string') {
         data = JSON.parse(data);
     }
