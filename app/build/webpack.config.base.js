@@ -100,7 +100,10 @@ module.exports = {
             filename: '[name].css',
             allChunks: true,
             disable: false 
-         })
+         }),
+        new webpack.ProvidePlugin({
+            $: 'jquery'
+        })
     ],
     // vue: {
     //     loaders: utils.cssLoaders(),
