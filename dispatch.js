@@ -8,6 +8,7 @@ env.NODE_ENV = 'production';
 egg.startCluster({
     baseDir: __dirname,
     https: true,
+    workers: 2,
     key: './7479d459-1a34-4550-a4b9-75cd10a9e3af.key',
     cert: './server.pem'
 });
