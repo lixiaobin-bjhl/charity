@@ -26,6 +26,7 @@
     "compression-webpack-plugin": "^0.4.0",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.0",
+    "egg": "^1.5.0",
     "egg-bin": "^3.1.0",
     "egg-ci": "^1.5.0",
     "egg-development-proxyworker": "^0.2.2",

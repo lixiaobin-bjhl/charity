@@ -21,7 +21,7 @@ module.exports = app => {
     app.get('/qiniu/uptoken', 'admin.qiniu.uptoken');
     app.get('/token', 'token.index');
 
-    app.get('/purchase/repayid', 'admin.purchase.getPrepayId');
+    app.get('/purchase/prepayid', 'admin.purchase.getPrepayId');
 
     app.resources('user', '/api/user/', 'admin.user');
     app.resources('customField', '/api/customField/', 'admin.customField');
