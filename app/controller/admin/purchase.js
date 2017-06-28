@@ -8,6 +8,7 @@
 var request = require('request');
 var Promise = require("bluebird");
 var getMd5Sign = require('../../public/scripts/function/getMd5Sign');
+var parser = require('xml2json');
 
 /**
  * 通用微信API 获取unifiedorder 预交易id 
@@ -20,7 +21,7 @@ function getUnifiedorder (formData) {
             body: formData  
         }, function (err, response, body) {
             if (!err && response.statusCode == 200) { 
-                resolve(body);
+                resolve(parser.toJson(body));
             } else {
                 reject('');
             }
@@ -51,10 +52,17 @@ module.exports = app => {
             formData += '<spbill_create_ip>' +  query.spbill_create_ip + '</spbill_create_ip>';
             formData += '</xml>';
 
-            console.log(formData);
-            
             var res = yield getUnifiedorder(formData);
-            this.ctx.body = res; 
+            this.ctx.body = res;
+        }
+
+        /**
+         * 支付成功后通知
+         */
+        notice () {
+            var query = this.ctx.request.body;
+            console.log(query);
+            this.ctx.body = 123;
         }
     }
 

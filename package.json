@@ -73,7 +73,8 @@
     "webpack-md5-hash": "0.0.5",
     "webpack-merge": "^4.1.0",
     "webpack-parallel-uglify-plugin": "^0.4.1",
-    "webstorm-disable-index": "^1.1.2"
+    "webstorm-disable-index": "^1.1.2",
+    "xml2json": "^0.11.0"
   },
   "engines": {
     "node": ">=6.0.0"
