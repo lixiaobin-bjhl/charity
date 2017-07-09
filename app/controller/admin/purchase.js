@@ -61,9 +61,8 @@ module.exports = app => {
          */
         notice () {
             var query = this.ctx.request.body;
-            this.ctx.app.logger.info('purchase notice', this.ctx.request);
-            console.log(this.ctx.params);
-            console.log(query);
+            this.ctx.app.logger.info('purchase notice params', this.ctx.params);
+            this.ctx.app.logger.info('purchase notice body', this.ctx.request.body);
             this.ctx.body = 123;
         }
     }
