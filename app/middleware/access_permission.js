@@ -14,10 +14,10 @@ module.exports = (options, app) => {
       'delete': 4 
    };
 
-   // 不需要判断权限的 API
+    // 不需要判断权限的 API
     var optionalNoAuthApiUrl = [
         '/api/user',
-        '/purchase/notice'
+        '/api/purchase/notice'
     ];
 
    return function* (next) { 
