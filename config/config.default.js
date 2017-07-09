@@ -36,6 +36,12 @@ module.exports = appInfo => {
 
     config.security = {
         csrf: {
+            ignore: (ctx) => {
+                // 支付回调不要校验csrf
+                if (ctx.request.url.indexOf('purchase/notice')) {
+                    return true;
+                }
+            },
             // 默认为 false，当设置为 true 时，将会放过所有 content-type 为 `application/json` 的请求
             ignoreJSON: true 
         }

@@ -22,7 +22,7 @@ module.exports = app => {
     app.get('/token', 'token.index');
 
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
-    app.get('/api/purchase/notice', 'admin.purchase.notice');
+    app.post('/purchase/notice', 'admin.purchase.notice');
 
     app.resources('user', '/api/user/', 'admin.user');
     app.resources('customField', '/api/customField/', 'admin.customField');
