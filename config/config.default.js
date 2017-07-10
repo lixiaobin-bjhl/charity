@@ -37,7 +37,6 @@ module.exports = appInfo => {
     config.security = {
         csrf: {
             ignore: (ctx) => {
-                // 支付回调不要校验csrf
                 if (ctx.request.url.indexOf('purchase/notice')) {
                     return true;
                 }
@@ -49,6 +48,10 @@ module.exports = appInfo => {
 
     config.proxyworker = {
         port: 10086
+    };
+
+    config.bodyParser = {
+        ignore: /notice/
     };
 
     config.mongoose = {
