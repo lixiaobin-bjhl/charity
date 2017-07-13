@@ -10,6 +10,7 @@ var Promise = require("bluebird");
 var getMd5Sign = require('../../public/scripts/function/getMd5Sign');
 var parser = require('xml2json');
 
+
 /**
  * 通用微信API 获取unifiedorder 预交易id 
  */
@@ -59,13 +60,10 @@ module.exports = app => {
         /**
          * 支付成功后通知
          */
-        notice () {
-            var query = this.ctx.request.body;
-            this.ctx.app.logger.info('purchase notice stream', this.ctx.request.stream);
-            this.ctx.app.logger.info('purchase notice body', this.ctx.request.body);
-            this.ctx.app.logger.info('purchase notice rawBody', this.ctx.request.rawBody);
-            console.log(678, this.ctx.request.rawBody);   
-            this.ctx.body = 'success';
+        * notice () {
+            var postBody = yield this.ctx.getPostStreamBody(this.ctx);
+            this.ctx.app.logger.info('purchase notice body', postBody);
+            this.ctx.body = '<xml><return_code>SUCCESS</return_code><return_msg>OK</return_msg></xml>';
         }
     }
 
