@@ -17,7 +17,7 @@ module.exports = (options, app) => {
     // 不需要判断权限的 API
     var optionalNoAuthApiUrl = [
         '/api/user',
-        '/api/purchase/notice'
+        '/api/card'
     ];
 
    return function* (next) { 

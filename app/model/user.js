@@ -9,7 +9,7 @@ module.exports = mongoose => {
 
     var ObjectId = mongoose.Schema.Types.ObjectId;
     
-    const UserSchema = new mongoose.Schema({
+    const userSchema = new mongoose.Schema({
         name: { type: String },
         password: { type: String },
         mobile: {type: Number},
@@ -35,5 +35,5 @@ module.exports = mongoose => {
             default: Date.now
         }
     });
-    return mongoose.model('User', UserSchema, 'user');
+    return mongoose.model('User', userSchema, 'user');
 }   

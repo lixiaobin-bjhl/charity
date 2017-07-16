@@ -7,7 +7,7 @@
 
 module.exports = mongoose => {
     
-    const NewsSubjectSchema = new mongoose.Schema({
+    const newsSubjectSchema = new mongoose.Schema({
         name: { type: String },
         remark: { type: String },
         createTime: { 
@@ -22,5 +22,5 @@ module.exports = mongoose => {
             default: Date.now
         }
     });
-    return mongoose.model('newsSubject', NewsSubjectSchema, 'newsSubject');
+    return mongoose.model('newsSubject', newsSubjectSchema, 'newsSubject');
 }   

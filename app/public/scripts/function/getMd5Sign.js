@@ -9,6 +9,7 @@ var md5 =  require('./md5');
 
 module.exports =  function (params) {
     var stringA = 'appid=' + params.appid 
+        + '&attach=' + params.attach 
         + '&body='
         + params.body
         + '&mch_id='

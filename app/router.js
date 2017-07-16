@@ -27,6 +27,7 @@ module.exports = app => {
     app.resources('user', '/api/user/', 'admin.user');
     app.resources('customField', '/api/customField/', 'admin.customField');
     app.resources('role', '/api/role/', 'admin.role');
+    app.resources('card', '/api/card/', 'admin.card');
     app.resources('news', '/api/news/', 'admin.news');
     app.resources('product', '/api/product/', 'admin.product');
     app.resources('newsSubject', '/api/newsSubject/', 'admin.newsSubject');
