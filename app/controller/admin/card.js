@@ -14,7 +14,21 @@ exports.create = function* () {
     
 	this.body = this.helper.success({
 		card	
-	});
+    });
+}
+
+/**
+ * 根据openid查找购物车 
+ */
+exports.getByOpenid = function * () {
+    var params = this.params;
+    var opendid = params.id;
+
+    var list = yield this.service.card.getByOpenid(opendid);
+
+    this.body = this.helper.success({
+        list: list
+    });
 }
 
 

@@ -24,6 +24,7 @@ module.exports = app => {
 
             var card = new Card({
                 openid: params.openid,
+                count: params.count,
                 summary: params.summary,
                 mobile: params.mobile,
                 product: params.product
@@ -39,6 +40,18 @@ module.exports = app => {
         }
 
         /**
+         * 根据openid 查找购物车数据 
+         */
+        * getByOpenid (openid) {
+            var list = yield this.ctx.model.card.find({
+                openid: openid
+            })
+            .populate('product')
+
+            return list;
+        }
+
+        /**
          * 查找新闻列表
          * @param {Object} condition 列表查询条件
          */
@@ -50,6 +63,7 @@ module.exports = app => {
                 condition.newsSubjectId = mongoose.Types.ObjectId(newsSubjectId);
             } 
             var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});
+           
             return list;
         }
 

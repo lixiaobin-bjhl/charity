@@ -21,6 +21,9 @@ module.exports = app => {
     app.get('/qiniu/uptoken', 'admin.qiniu.uptoken');
     app.get('/token', 'token.index');
 
+
+    app.get('/api/card/openid/:id', 'admin.card.getByOpenid');
+
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');
 
