@@ -6,6 +6,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var minus = require('../public/scripts/function/minus');
+var currency = require('../public/scripts/function/currency');
 
 module.exports = app => {
 
@@ -42,14 +44,32 @@ module.exports = app => {
         /**
          * 根据openid 查找购物车数据 
          */
-        * getByOpenid (openid) {
+        * getListByOpenid (openid) {
             var list = yield this.ctx.model.card.find({
                 openid: openid
             })
-            .populate('product')
+            .sort({createTime: -1})
+            .populate('product', '', null);
 
-            return list;
+            var result = [];
+            list.forEach((item)=> {
+                item = item.toJSON();
+                item.product.payPrice = currency(minus(item.product.price, item.product.discountPrice || 0));
+                result.push(item);
+            });
+            return result;
         }
+
+        /**
+         * 根据openid 查找购物车数据 
+         */
+        * getCountByOpenid (openid) {
+            var result = yield this.ctx.model.card.count({
+                openid: openid
+            });
+            return result;
+        }
+
 
         /**
          * 查找新闻列表

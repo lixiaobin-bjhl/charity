@@ -20,14 +20,28 @@ exports.create = function* () {
 /**
  * 根据openid查找购物车 
  */
-exports.getByOpenid = function * () {
+exports.getListByOpenid = function * () {
     var params = this.params;
     var opendid = params.id;
 
-    var list = yield this.service.card.getByOpenid(opendid);
+    var list = yield this.service.card.getListByOpenid(opendid);
 
     this.body = this.helper.success({
         list: list
+    });
+}
+
+/**
+ * 查找用户购物车的数量
+ */
+exports.getCountByOpenid = function * () {
+    var params = this.params;
+    var opendid = params.id;
+
+    var count = yield this.service.card.getCountByOpenid(opendid);
+
+    this.body = this.helper.success({
+        count
     });
 }
 

@@ -22,7 +22,8 @@ module.exports = app => {
     app.get('/token', 'token.index');
 
 
-    app.get('/api/card/openid/:id', 'admin.card.getByOpenid');
+    app.get('/api/card/openid/:id', 'admin.card.getListByOpenid');
+    app.get('/api/card/count/:id', 'admin.card.getCountByOpenid');
 
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');
