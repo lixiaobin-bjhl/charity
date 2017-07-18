@@ -70,7 +70,6 @@ module.exports = app => {
             return result;
         }
 
-
         /**
          * 查找新闻列表
          * @param {Object} condition 列表查询条件
@@ -107,14 +106,14 @@ module.exports = app => {
             var condition = {
                 _id: mongoose.Types.ObjectId(id)
             }
-            var news = yield this.ctx.model.news.remove(condition, (err) => {
+            var card = yield this.ctx.model.card.remove(condition, (err) => {
                 if (err) {
                     app.logger.error(err);
                 } else {
-                    app.logger.info('delete news', news);
+                    app.logger.info('delete card', news);
                 }
             });
-            return news;
+            return card;
         }
 
         /**

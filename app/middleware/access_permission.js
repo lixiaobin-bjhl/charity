@@ -35,7 +35,13 @@ module.exports = (options, app) => {
 
                 var user = this.session.user;
                 // 没有登录，不需要判断类似于登录类的API
-                if (optionalNoAuthApiUrl.indexOf(requestUrl) > -1) {
+                if (optionalNoAuthApiUrl
+                    .some((item)=>{
+                        if (requestUrl.indexOf(item) > -1) {
+                            return true;
+                        }
+                    })
+                ) {
                     yield next;
                     return;
                 }

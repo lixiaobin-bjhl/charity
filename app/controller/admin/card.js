@@ -18,6 +18,20 @@ exports.create = function* () {
 }
 
 /**
+ * 删除购物车信息 
+ */
+exports.destroy = function *() {
+    var id = this.params.id;
+
+    var card = yield this.service.card.del(id);
+    
+	this.body = this.helper.success({
+		card	
+	});
+}
+
+
+/**
  * 根据openid查找购物车 
  */
 exports.getListByOpenid = function * () {
