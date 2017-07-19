@@ -110,7 +110,7 @@ module.exports = app => {
                 if (err) {
                     app.logger.error(err);
                 } else {
-                    app.logger.info('delete card', news);
+                    app.logger.info('delete card', card);
                 }
             });
             return card;
