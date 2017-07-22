@@ -61,11 +61,13 @@ module.exports = app => {
             var productSubject = yield this.ctx.model.productSubject.findById(product.productSubjectId);
             
             product = product.toJSON();
+            var payPrice = minus(product.price, product.discountPrice || 0);
+
             Object.assign(product, {
                 productSubject: productSubject.toJSON(),
                 discoutPriceStr: currency(product.discountPrice),
-                priceStr: currency(product.price),
-                payPrice: currency(minus(product.price, product.discountPrice || 0)),
+                priceStr: currency(payPrice),
+                payPrice: payPrice,
                 specifications: product.specifications.map((item)=> {
                     return {
                         id: item.id,
@@ -102,10 +104,27 @@ module.exports = app => {
             var result = [];
             list.forEach((item)=> {
                 item = item.toJSON();
-                item.payPrice = currency(minus(item.price, item.discountPrice || 0));
+                var payPrice = minus(item.price, item.discountPrice || 0);
+                item.priceStr = currency(payPrice);
+                item.payPrice = payPrice;
                 result.push(item);
             });
             return result;
+        }
+
+        /**
+         * 根据产品ids 获取产品集合
+         */
+        * listByIds (ids) {
+            var condition = {
+                _id: {
+                    $in: ids.map((id)=> {
+                        return mongoose.Types.ObjectId(id)
+                    })
+                }
+            }
+            var list = yield this.ctx.model.product.find(condition);
+            return list;
         }
 
         /**

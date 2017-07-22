@@ -54,7 +54,9 @@ module.exports = app => {
             var result = [];
             list.forEach((item)=> {
                 item = item.toJSON();
-                item.product.payPrice = currency(minus(item.product.price, item.product.discountPrice || 0));
+                var payPrice = minus(item.product.price, item.product.discountPrice || 0);
+                item.product.priceStr = currency(payPrice);
+                item.product.payPrice = payPrice;
                 result.push(item);
             });
             return result;

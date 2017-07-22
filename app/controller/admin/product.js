@@ -5,6 +5,10 @@
 
 'use strict';
 
+
+var minus = require('../../public/scripts/function/minus');
+var currency = require('../../public/scripts/function/currency');
+
 /**
  * 添加产品
  */
@@ -34,10 +38,44 @@ exports.index = function* () {
 };
 
 /**
+ * 根据产品ids获取产品信息 
+ */
+exports.listByids = function* () {
+
+	var products = this.request.body.products;
+	
+	var list = yield this.service.product.listByIds(products.map((item)=> {
+		return item.id
+	}));
+
+	var result = [];
+	// 把用户购买的数量回填上
+	list.forEach((item) => {
+		item = item.toJSON();
+		var count = 1;
+		products.some((buyItem)=> {
+			if (item._id == buyItem.id) {
+				count = buyItem.count;
+				return true;
+			}
+		});
+		var payPrice = minus(item.price, item.discountPrice || 0);
+		item.payPrice = payPrice;
+		item.priceStr = currency(payPrice);
+		item.count = count;
+    	result.push(item);
+	});
+
+
+	this.body = this.helper.success({
+		list: result
+	});
+};
+
+/**
  * 删除产品
  */
 exports.destroy = function* () {
-
 	var id = this.params.id;
 	var query = this.query;
 	var ids = query.ids;
