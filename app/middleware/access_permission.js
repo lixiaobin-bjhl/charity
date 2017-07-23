@@ -18,7 +18,8 @@ module.exports = (options, app) => {
     var optionalNoAuthApiUrl = [
         '/api/user',
         '/api/card',
-        '/api/product'
+        '/api/product',
+        '/api/shippingAddress'
     ];
 
    return function* (next) { 
