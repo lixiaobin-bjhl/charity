@@ -26,11 +26,10 @@ module.exports = app => {
     app.get('/api/card/count/:id', 'admin.card.getCountByOpenid');
     app.post('/api/product/l', 'admin.product.listByids');
 
-    app.get('/api/shippingAddress/openid/:openid', 'admin.shippingAddress.queryByOpenid');
+    app.post('/api/shippingAddress/openid', 'admin.shippingAddress.listByOpenid');
 
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');
-
 
     app.resources('shippingAddress', '/api/shippingAddress/', 'admin.shippingAddress');
     app.resources('user', '/api/user/', 'admin.user');

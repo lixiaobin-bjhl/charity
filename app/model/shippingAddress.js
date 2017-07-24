@@ -10,12 +10,16 @@ module.exports = mongoose => {
     const shippingAddressSchema = new mongoose.Schema({
         name: { type: String },
         mobile: { type: String },
-        province: { type: String },
-        city: { type: String },
-        contry: { type: String },
-        address: { type: String },
+        region: { type: Array },
+        address: { 
+            type: String,
+            default: ''
+        },
         openid: { type: String },
-        isDefault: { type: String },
+        isDefault: { 
+            type: Boolean,
+            default: false
+        },
         remark: { type: String },
         createTime: { 
             type: Date,

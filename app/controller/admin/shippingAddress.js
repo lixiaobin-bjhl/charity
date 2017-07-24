@@ -10,9 +10,7 @@
  */
 exports.create = function* () {
     var query = this.request.body;
-	var name = query.name;
-	var remark = query.remark;
-	var shippingAddress = yield this.service.shippingAddress.add(name, remark);
+	var shippingAddress = yield this.service.shippingAddress.add(query);
 	
 	this.body = this.helper.success({
 		shippingAddress	
@@ -22,52 +20,58 @@ exports.create = function* () {
 /**
  * 根据openid 找查收货地址信息
  */
-exports.queryByOpenid = function* () {
-    console.log(13123123);
-    this.body = 'queryByOpenid';
-};
-
-/**
- * 获取新闻分类列表
- */
-exports.index = function* () {
-    var query = this.request.body;
-	var list = yield this.service.newsSubject.list();
-	this.body = this.helper.success({
-		list
+exports.listByOpenid = function* () {
+    var openid = this.request.body.openid;
+    var list = yield this.service.shippingAddress.listByOpenid(openid);
+    this.body = this.helper.success({
+		list	
 	});
 };
 
 /**
- * 删除新闻分类
+ * 查看地址详情
+ */
+exports.show = function* () {
+	var id = this.params.id;
+	var shippingAddress = yield this.service.shippingAddress.findById(id);
+    this.body = this.helper.success(shippingAddress);
+    
+};
+
+/**
+ * 删除配送地址
  */
 exports.destroy = function* () {
 	var id = this.params.id;
-	var newsCount = yield this.service.news.countBySubjectId(id);
-	
-	if (newsCount) {
-		this.body = this.helper.error('0041', '该分类下已添加新闻不能删除');
-		return;
-	}
-	var newsSubject = yield this.service.newsSubject.del(id);
+	var shippingAddress = yield this.service.shippingAddress.del(id);
 	this.body = this.helper.success({
-		newsSubject	
+		shippingAddress	
 	});
 };
 
 /**
- * 编辑分类
+ * 编辑配送地址
  */
 exports.update = function* () {
-
 	var id = this.params.id;
-	var query = this.request.body;
-	var update = {
-		updateTime: new Date(),
-		name: query.name,
-		remark: query.remark
-	};
-	var result = yield this.service.newsSubject.put(id, update);
+    var query = this.request.body;
+    var update = {
+		updateTime: new Date()
+    }
+
+    if (query.name) {
+        Object.assign(update, {
+            name: query.name,
+            mobile: query.mobile,
+            address: query.address,
+            region: query.region
+        });
+    } else {
+        Object.assign(update, {
+            isDefault: query.isDefault
+        });
+    }
+	var result = yield this.service.shippingAddress.put(id, update);
 	this.body = this.helper.success(result);
 };
 
