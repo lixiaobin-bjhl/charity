@@ -19,7 +19,8 @@ module.exports = (options, app) => {
         '/api/user',
         '/api/card',
         '/api/product',
-        '/api/shippingAddress'
+        '/api/shippingAddress',
+        '/api/order'
     ];
 
    return function* (next) { 
