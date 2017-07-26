@@ -51,6 +51,21 @@ module.exports = app => {
             });
             return order;
         }
+
+        /**
+         * 根据opendId找到订单信息
+         */ 
+        * listByOpenid (openid) {
+            var condition = {
+                openid: openid
+            };
+            var list = yield this.ctx.model.order.find(condition)
+            .sort({createTime: -1})
+            .populate('shippingAddress', '', null)
+            .populate('products.product', '', null);
+            
+            return list; 
+        }
     }
     return Order;
 };

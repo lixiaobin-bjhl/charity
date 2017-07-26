@@ -9,18 +9,19 @@ var request = require('request');
 var Promise = require("bluebird");
 var getMd5Sign = require('../../public/scripts/function/getMd5Sign');
 var parser = require('xml2json');
+var iconv = require('iconv');
 
 /**
  * 通用微信API 获取unifiedorder 预交易id 
  */
-function getUnifiedorder (formData) {
+function getUnifiedorder(formData) {
     return new Promise(function (resolve, reject) {
         request({
             url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-            method: 'POST', 
-            body: formData  
+            method: 'POST',
+            body: formData
         }, function (err, response, body) {
-            if (!err && response.statusCode == 200) { 
+            if (!err && response.statusCode == 200) {
                 resolve(parser.toJson(body));
             } else {
                 reject('');
@@ -30,27 +31,31 @@ function getUnifiedorder (formData) {
 }
 
 module.exports = app => {
-	class PurchaseController extends app.Controller {
+    class PurchaseController extends app.Controller {
         /**
          * 生成预支付交易单 
-         */ 
-        * getPrepayId () {
+         */
+        * getPrepayId() {
             var query = this.ctx.request.body;
+            var ic = new iconv.Iconv('iso-8859-1', 'utf-8');
+            var buf = ic.convert(query.body);
+            query.body = buf;
+            console.log('body', query.body);
             var sign = getMd5Sign(query);
-            
+
             var formData = '<xml>';
             formData += '<appid>' + query.appid + '</appid>';
-            formData += '<attach>' + query.attach + '</attach>' 
-            formData += '<body>' + query.body + '</body>';
+            formData += '<attach>' + query.attach + '</attach>'
+            formData += '<body><![CDATA[' + query.body + ']]></body>';
             formData += '<mch_id>' + query.mch_id + '</mch_id>';
             formData += '<nonce_str>' + query.nonce_str + '</nonce_str>';
             formData += '<sign>' + sign + '</sign>';
             formData += '<notify_url>' + query.notify_url + '</notify_url>';
             formData += '<openid>' + query.openid + '</openid>';
-            formData += '<out_trade_no>' +  query.out_trade_no + '</out_trade_no>';
-            formData += '<total_fee>' +  query.total_fee + '</total_fee>';
+            formData += '<out_trade_no>' + query.out_trade_no + '</out_trade_no>';
+            formData += '<total_fee>' + query.total_fee + '</total_fee>';
             formData += '<trade_type>' + query.trade_type + '</trade_type>';
-            formData += '<spbill_create_ip>' +  query.spbill_create_ip + '</spbill_create_ip>';
+            formData += '<spbill_create_ip>' + query.spbill_create_ip + '</spbill_create_ip>';
             formData += '</xml>';
 
             var res = yield getUnifiedorder(formData);
@@ -60,7 +65,7 @@ module.exports = app => {
         /**
          * 支付成功后通知
          */
-        * notice () {
+        * notice() {
             var postBody = yield this.ctx.getPostStreamBody(this.ctx);
             var data = parser.toJson(postBody, {
                 object: true

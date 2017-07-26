@@ -43,6 +43,7 @@
     "gulp": "^3.9.1",
     "gulp-md5-plus": "^1.0.3",
     "gulp-replace": "^0.5.4",
+    "iconv": "^2.3.0",
     "js-cookie": "^2.1.4",
     "jsonfile": "^3.0.0",
     "koa-is-json": "^1.0.0",

@@ -27,7 +27,8 @@ module.exports = app => {
     app.post('/api/product/l', 'admin.product.listByids');
 
     app.post('/api/shippingAddress/openid', 'admin.shippingAddress.listByOpenid');
-
+    app.post('/api/order/openid', 'admin.order.listByOpenid');
+    
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');
 
