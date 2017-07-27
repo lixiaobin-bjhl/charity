@@ -5,7 +5,7 @@
 
 'use strict';
 
-var md5 =  require('./md5');
+var crypto = require('crypto');
 
 module.exports =  function (params) {
     var stringA = 'appid=' + params.appid 
@@ -31,6 +31,6 @@ module.exports =  function (params) {
 
     var stringSignTemp = stringA + '&key=' + params.key;
     
-    return md5(stringSignTemp).toUpperCase();
+    return crypto.createHash('md5').update(stringSignTemp, 'utf8').digest('hex').toUpperCase();
 
 }

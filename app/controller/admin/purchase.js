@@ -9,7 +9,6 @@ var request = require('request');
 var Promise = require("bluebird");
 var getMd5Sign = require('../../public/scripts/function/getMd5Sign');
 var parser = require('xml2json');
-var iconv = require('iconv');
 
 /**
  * 通用微信API 获取unifiedorder 预交易id 
@@ -37,10 +36,7 @@ module.exports = app => {
          */
         * getPrepayId() {
             var query = this.ctx.request.body;
-            var ic = new iconv.Iconv('iso-8859-1', 'utf-8');
-            var buf = ic.convert(query.body);
-            query.body = buf;
-            console.log('body', query.body);
+            query.body = query.body.toString("utf-8");
             var sign = getMd5Sign(query);
 
             var formData = '<xml>';
