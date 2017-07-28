@@ -66,7 +66,20 @@ module.exports = app => {
             var data = parser.toJson(postBody, {
                 object: true
             });
-            this.ctx.app.logger.info('purchase notice body', data.xml);
+            data = data.xml;
+            this.ctx.app.logger.info('purchase notice body', data);
+            // 更新一下订单信息
+            yield this.ctx.service.order.put(data.attach, {
+                updateTime: new Date(),
+                status: 1,
+                transactionId: data.transaction_id,
+                bankType: data.bank_type,
+                feeType: data.fee_type,
+                tradeType: data.trade_type,
+                payTime: data.time_end,
+                cashFee: data.cash_fee
+            });
+
             this.ctx.body = '<xml><return_code>SUCCESS</return_code><return_msg>OK</return_msg></xml>';
         }
     }

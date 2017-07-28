@@ -22,3 +22,23 @@ exports.listByOpenid = function* () {
     var list = yield this.service.order.listByOpenid(openid);
     this.body = this.helper.success(list);
 };
+
+/**
+ * 编辑订单信息
+ */
+exports.update = function* () {
+	var id =  this.params.id;
+	var query = this.request.body;
+	var update = {
+		updateTime: new Date(),
+        status: query.status,
+        transactionId: query.transactionId,
+        bankType: query.bankType,
+        feeType: query.feeType,
+        tradeType: query.tradeType,
+        payTime: query.timeEnd,
+        cashFee: query.cashFee
+	};
+	var result = yield this.service.order.put(id, update);
+	this.body = this.helper.success(result);
+};

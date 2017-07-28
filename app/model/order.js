@@ -37,14 +37,16 @@ module.exports = mongoose => {
             }
         ],
         freightCharge: {
-            type: Number
+            type: Number,
+            default: 0
         },
         discountMoney: {
             type: Number,
             default: 0
         },
         status: {
-            type: Number
+            type: Number,
+            required: true
         },
         remark: {
             type: String,
@@ -55,22 +57,23 @@ module.exports = mongoose => {
             default: ''
         },
         outTradeNo: {
-            type: String
+            type: String,
+            required: true
         },
         transactionId: {
-            type: String
+            type: String,
+            default: ''
         },
         tradeType: {
-            type: String
+            type: String,
+            default: ''
         },
-        timeEnd: {
-            type: Date
+        payTime: {
+            default: ''
         },
         bankType: {
-            type: String
-        },
-        attach: {
-            type: String
+            type: String,
+            default: ''
         },
         feeType: {
             type: String,
@@ -84,12 +87,13 @@ module.exports = mongoose => {
             type: String,
             default: ''
         },
-        exporessType: {
+        expressType: {
             type: Number,
             default: 1
         },
         totalFee: {
-            type: Number
+            type: Number,
+            required: true
         },
         createTime: { 
             type: Date,
