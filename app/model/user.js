@@ -12,7 +12,10 @@ module.exports = mongoose => {
     const userSchema = new mongoose.Schema({
         name: { type: String },
         password: { type: String },
-        mobile: {type: Number},
+        author: { 
+            type: Object,
+            required: true
+        },
         headPic: {type: String},
         isForbidden: { 
             type: Number, 

@@ -38,7 +38,9 @@ module.exports = app => {
                 discountMoney: params.discountMoney,
                 status: params.status,
                 mchId: params.mchId,
-                mobile: params.mobile,
+                author: {
+                    mobile: params.mobile,
+                },
                 outTradeNo: params.outTradeNo,
                 totalFee: params.totalFee
             });

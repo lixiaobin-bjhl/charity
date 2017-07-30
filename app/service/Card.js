@@ -28,7 +28,9 @@ module.exports = app => {
                 openid: params.openid,
                 count: params.count,
                 summary: params.summary,
-                mobile: params.mobile,
+                author: {
+                    mobile: params.mobile,
+                },
                 product: params.product
             });
             card.save((err) => {

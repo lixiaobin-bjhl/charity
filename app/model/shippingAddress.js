@@ -9,7 +9,10 @@ module.exports = mongoose => {
     
     const shippingAddressSchema = new mongoose.Schema({
         name: { type: String },
-        mobile: { type: String },
+        author: { 
+            type: Object,
+            required: true
+        },
         region: { type: Array },
         address: { 
             type: String,

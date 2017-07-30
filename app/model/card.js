@@ -10,7 +10,10 @@ module.exports = mongoose => {
     var ObjectId = mongoose.Schema.Types.ObjectId;
 
     const cardSchema = new mongoose.Schema({
-        mobile: { type: Number },
+        author: { 
+            type: Object,
+            required: true
+        },
         openid: { type: String },
         product: { 
             type: ObjectId,

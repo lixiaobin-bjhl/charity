@@ -19,8 +19,8 @@ module.exports = mongoose => {
             ref: 'shippingAddress',
             required: true
         },
-        mobile: {
-            type: String,
+        author: { 
+            type: Object,
             required: true
         },
         products: [

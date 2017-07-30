@@ -25,7 +25,9 @@ module.exports = app => {
             var ShippingAddress = this.ctx.model.shippingAddress;
             var shippingAddress = new ShippingAddress({
                 name: params.name,
-                mobile: params.mobile,
+                author: {
+                    mobile: params.mobile,
+                },
                 address: params.address,
                 openid: params.openid,
                 region: params.region
