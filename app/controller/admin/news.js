@@ -61,7 +61,7 @@ exports.update = function* () {
 		content: query.content,
 		title: query.title,
 		summary: query.summary,
-		newsSubjectId: query.newsSubjectId
+		newsSubject: query.newsSubjectId
 	};
 	var result = yield this.service.news.put(id, update);
 	this.body = this.helper.success(result);

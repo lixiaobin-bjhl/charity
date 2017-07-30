@@ -27,6 +27,21 @@ export default [
                 url: '/admin/product'
             },
             {
+                name: '订单管理',
+                number: 2,
+                url: '/admin/product'
+            },
+            {
+                name: '购物车管理',
+                number: 2,
+                url: '/admin/product'
+            },
+            {
+                name: '用户管理',
+                number: 2,
+                url: '/admin/product'
+            },
+            {
                 name: '客户案例',
                 url: '/admin/case'
             }
@@ -63,7 +78,7 @@ export default [
                 url: '/admin/role'
             },
             {
-                name: '用户管理',
+                name: '帐号管理',
                 number: 1,
                 url: '/admin/user'
             }

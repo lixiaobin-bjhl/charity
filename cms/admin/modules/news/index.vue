@@ -168,13 +168,13 @@
              * 扩展数据
              */
             adaptList (data) {
-                var newsSubejctList = this.newsSubejctList;
-                if (newsSubejctList.length) {
-                    var subjectMap = indexBy(newsSubejctList, '_id');
-                    data.forEach((item)=> {
-                        this.$set(item, 'newsSubject', subjectMap[item.newsSubjectId]);
-                    });
-                }
+                // var newsSubejctList = this.newsSubejctList;
+                // if (newsSubejctList.length) {
+                //     var subjectMap = indexBy(newsSubejctList, '_id');
+                //     data.forEach((item)=> {
+                //         this.$set(item, 'newsSubject', subjectMap[item.newsSubjectId]);
+                //     });
+                // }
                 return data;
             },
             /**

@@ -25,7 +25,7 @@ module.exports = app => {
                 summary: params.summary,
                 content: params.content,
                 author: this.ctx.session.user,
-                newsSubjectId: mongoose.Types.ObjectId(params.newsSubjectId)
+                newsSubject: mongoose.Types.ObjectId(params.newsSubjectId)
             });
             news.save((err) => {
                 if (err) {
@@ -46,9 +46,12 @@ module.exports = app => {
             var newsSubjectId = query.newsSubjectId;
 
             if (newsSubjectId) {
-                condition.newsSubjectId = mongoose.Types.ObjectId(newsSubjectId);
+                condition.newsSubject = mongoose.Types.ObjectId(newsSubjectId);
             } 
-            var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});
+            var list = yield this.ctx.model.news.find(condition)
+                .sort({createTime: -1})
+                .populate('newsSubject', '', null);
+
             return list;
         }
 

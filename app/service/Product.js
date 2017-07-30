@@ -34,7 +34,7 @@ module.exports = app => {
                 summary: params.summary,
                 author: this.ctx.session.user,
                 storageIds: params.storageIds,
-                productSubjectId: params.productSubjectId,
+                productSubject: params.productSubjectId,
                 price: params.price,
                 customField: params.customField,
                 storeCount: params.storeCount,
@@ -57,14 +57,14 @@ module.exports = app => {
          */
         * findById (id) {
             var id = mongoose.Types.ObjectId(id);
-            var product = yield this.ctx.model.product.findById(id);
-            var productSubject = yield this.ctx.model.productSubject.findById(product.productSubjectId);
+            var product = yield this.ctx.model.product
+                .findById(id)
+                .populate('productSubject', '', null);
             
             product = product.toJSON();
             var payPrice = minus(product.price, product.discountPrice || 0);
 
             Object.assign(product, {
-                productSubject: productSubject.toJSON(),
                 discoutPriceStr: currency(product.discountPrice),
                 priceStr: currency(payPrice),
                 payPrice: payPrice,
@@ -91,7 +91,7 @@ module.exports = app => {
             var compass = this.ctx.helper.compass();
 
             if (productSubjectId) {
-                condition.productSubjectId = mongoose.Types.ObjectId(productSubjectId);
+                condition.productSubject = mongoose.Types.ObjectId(productSubjectId);
             }
             if (typeof isNotSale != 'undefined') {
                 condition.isNotSale = isNotSale;
@@ -100,7 +100,10 @@ module.exports = app => {
                 condition.title = new RegExp(key);
             }
             Object.assign(condition, compass);
-            var list = yield this.ctx.model.product.find(condition).sort({createTime: -1});
+            var list = yield this.ctx.model.product.find(condition)
+                .sort({createTime: -1})
+                .populate('productSubject', '', null);
+
             var result = [];
             list.forEach((item)=> {
                 item = item.toJSON();

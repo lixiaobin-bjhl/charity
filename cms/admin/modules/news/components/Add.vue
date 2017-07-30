@@ -69,7 +69,7 @@
                     title: news.title,
                     summary: news.summary,
                     content: news.content,
-                    newsSubjectId: news.newsSubjectId,
+                    newsSubjectId: news.newsSubject._id,
                     editorContent: news.content
                 });
             }

@@ -283,13 +283,6 @@
              * 扩展数据
              */
             adaptList (data) {
-                var productSubejctList = this.productSubejctList;
-                if (productSubejctList.length) {
-                    var subjectMap = indexBy(productSubejctList, '_id');
-                    data.forEach((item)=> {
-                        this.$set(item, 'productSubject', subjectMap[item.productSubjectId]);
-                    });
-                }
                 return data;
             },
 

@@ -44,7 +44,7 @@
                     </el-input>
                 </div>
                 <div>
-                    <span class="el-icon-plus icon-tianjia" @click="addSpecification">&nbsp;<a href="javascript:;">添加规格</a></span>
+                    <span class="tianjia el-icon-plus" @click="addSpecification">&nbsp;<a href="javascript:;">添加规格</a></span>
                 </div>
             </el-form-item>
 
@@ -137,7 +137,7 @@
                     remark: product.remark,
                     specifications: product.specifications,
                     storeCount: product.storeCount,
-                    productSubjectId: product.productSubjectId,
+                    productSubjectId: product.productSubject._id,
                     customField: product.customField
                 });
                 var specifications = product.specifications;

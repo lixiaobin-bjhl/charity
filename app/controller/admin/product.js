@@ -30,7 +30,6 @@ exports.index = function* () {
 	if (!this.helper.isajax()) {
 		query.isNotSale = 0;
 	}
-
 	var list = yield this.service.product.list(query);
 	this.body = this.helper.success({
 		list
@@ -133,7 +132,7 @@ exports.update = function* () {
 			summary: query.summary,
 			storageIds: query.storageIds,
 			remark: query.remark,
-			productSubjectId: query.productSubjectId,
+			productSubject: query.productSubjectId,
 			price: query.price,
 			storeCount: query.storeCount,
         	specifications: query.specifications,

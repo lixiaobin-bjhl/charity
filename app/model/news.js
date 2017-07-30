@@ -13,7 +13,10 @@ module.exports = mongoose => {
         title: { type: String },
         content: { type: String },
         summary: { type: String },
-        newsSubjectId: { type: ObjectId},
+        newsSubject: { 
+            type: ObjectId,
+            ref: 'newsSubject'
+        },
         author: {
             type: Object
         },

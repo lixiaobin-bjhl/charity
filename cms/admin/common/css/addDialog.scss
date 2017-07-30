@@ -1,7 +1,10 @@
 .add-dialog {
-    .icon-tianjia {
+    .tianjia {
         color: $link-color;
         font-size: 14px;
+        a {
+            font-family: 'Arial';
+        }
     }
     .btn-delete  {
         cursor: pointer;
