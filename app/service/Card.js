@@ -73,6 +73,29 @@ module.exports = app => {
         }
 
         /**
+         * 删除购物车中的产品ids
+         */
+        * delByPids (openid, pids) {
+            var condition = {
+                openid: openid,
+                product: {
+                    $in: pids.map((id)=> {
+                        return mongoose.Types.ObjectId(id)
+                    })
+                }
+            };
+
+            var card = yield this.ctx.model.card.remove(condition, (err) => {
+                if (err) {
+                    app.logger.error(err);
+                } else {
+                    app.logger.info('delete ' + openid + 'cards', card);
+                }
+            });
+            return card;
+        }
+
+        /**
          * 查找新闻列表
          * @param {Object} condition 列表查询条件
          */

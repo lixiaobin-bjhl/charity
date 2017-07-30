@@ -59,5 +59,17 @@ exports.getCountByOpenid = function * () {
     });
 }
 
+/**
+ * 把购物车中移除产品移除 
+ */
+exports.delByPids = function* () {
+    var openid = this.params.openid;
+	var query = this.request.body;
+    var pids = query.pids;
+	var result = yield this.service.card.delByPids(openid, pids);
+	this.body = this.helper.success(result);
+}
+
+
 
 

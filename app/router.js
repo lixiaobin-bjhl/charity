@@ -21,13 +21,13 @@ module.exports = app => {
     app.get('/qiniu/uptoken', 'admin.qiniu.uptoken');
     app.get('/token', 'token.index');
 
-
     app.get('/api/card/openid/:id', 'admin.card.getListByOpenid');
     app.get('/api/card/count/:id', 'admin.card.getCountByOpenid');
     app.post('/api/product/l', 'admin.product.listByids');
 
     app.post('/api/shippingAddress/openid', 'admin.shippingAddress.listByOpenid');
     app.post('/api/order/openid', 'admin.order.listByOpenid');
+    app.delete('/api/card/pids/:openid', 'admin.card.delByPids');
     
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');

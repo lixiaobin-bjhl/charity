@@ -43,17 +43,29 @@ exports.index = function* () {
 exports.listByids = function* () {
 
 	var products = this.request.body.products;
-	
-	var list = yield this.service.product.listByIds(products.map((item)=> {
-		return item.id
-	}));
-
+	var pids = [];
+	var ps = [];
+	products.forEach((item)=> {
+		if (pids.indexOf(item.id) == -1) {
+			pids.push(item.id);
+			ps.push(item);
+		} else {
+			// 有重复的商品，有重复的合并一下
+			ps.some((product)=> {
+				if (product.id == item.id) {
+					product.count += item.count;
+					return true;
+				}
+			});
+		}
+	});
+	var list = yield this.service.product.listByIds(pids);
 	var result = [];
 	// 把用户购买的数量回填上
 	list.forEach((item) => {
 		item = item.toJSON();
 		var count = 1;
-		products.some((buyItem)=> {
+		ps.some((buyItem)=> {
 			if (item._id == buyItem.id) {
 				count = buyItem.count;
 				return true;
@@ -65,7 +77,6 @@ exports.listByids = function* () {
 		item.count = count;
     	result.push(item);
 	});
-
 
 	this.body = this.helper.success({
 		list: result
