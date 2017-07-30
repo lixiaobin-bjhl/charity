@@ -32,7 +32,7 @@ module.exports = app => {
             var product = new Product({
                 title: params.title,
                 summary: params.summary,
-                author: this.ctx.session.user,
+                author: this.ctx.session.account,
                 storageIds: params.storageIds,
                 productSubject: params.productSubjectId,
                 price: params.price,

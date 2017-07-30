@@ -24,7 +24,7 @@ module.exports = app => {
                 title: params.title,
                 summary: params.summary,
                 content: params.content,
-                author: this.ctx.session.user,
+                author: this.ctx.session.account,
                 newsSubject: mongoose.Types.ObjectId(params.newsSubjectId)
             });
             news.save((err) => {

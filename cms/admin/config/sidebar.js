@@ -80,7 +80,7 @@ export default [
             {
                 name: '帐号管理',
                 number: 1,
-                url: '/admin/user'
+                url: '/admin/account'
             }
         ]
     }

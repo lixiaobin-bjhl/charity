@@ -64,13 +64,13 @@
         data () {
             return {
                 addState: false,
-                userSubejctList: [],
+                accountSubejctList: [],
                 multipleSelection: [],
                 list: [],
                 pid: null,
                 loading: false,
                 filter: {
-                    userSubjectId: '',
+                    accountSubjectId: '',
                     key: ''
                 }
             };
@@ -90,7 +90,7 @@
              * 更新用户
              */
             modify (row) {
-                this.$store.commit('SET_USER', row);
+                this.$store.commit('SET_ACCOUNT', row);
                 this.add();
             },
 
@@ -165,7 +165,7 @@
             getNewsSubjectList () {
                 newsSubejctRequest.list()
                     .then((res)=> {
-                        this.userSubejctList = res.data.list;
+                        this.accountSubejctList = res.data.list;
                     });
             },
 
@@ -173,18 +173,18 @@
              * 扩展数据
              */
             adaptList (data) {
-                var userSubejctList = this.userSubejctList;
-                if (userSubejctList.length) {
-                    var subjectMap = indexBy(userSubejctList, '_id');
+                var accountSubejctList = this.accountSubejctList;
+                if (accountSubejctList.length) {
+                    var subjectMap = indexBy(accountSubejctList, '_id');
                     data.forEach((item)=> {
-                        this.$set(item, 'userSubject', subjectMap[item.userSubjectId]);
+                        this.$set(item, 'accountSubject', subjectMap[item.accountSubjectId]);
                     });
                 }
                 return data;
             },
 
             /**
-             * 选择表格中的user
+             * 选择表格中的account
              */
             handleSelectionChange(val) {
                 this.multipleSelection = val;

@@ -1,5 +1,5 @@
 <!--
-  @fileOverview charity-cms-user 产品详情
+  @fileOverview charity-cms-account 产品详情
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
@@ -27,7 +27,7 @@
                     <label>创建人</label>{{info.author.name}}
                 </el-col>
                 <el-col :span="8">
-                    <label>产品分类</label>{{info.userSubject.name}}
+                    <label>产品分类</label>{{info.accountSubject.name}}
                 </el-col>
                 <el-col :span="8">
                     <label>产品折扣</label>

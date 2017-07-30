@@ -1,12 +1,12 @@
 /**
- * @fileOverview charity-user-api
+ * @fileOverview charity-account-api
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
 'use strict';
 
 /**
- * 用户登录 
+ * 帐号登录 
  */
 exports.create = function* () {
 
@@ -14,44 +14,44 @@ exports.create = function* () {
 	var mobile = query.mobile;
 	var password = query.password;
 	var roleId = query.roleId;
-	var user = yield this.service.user.getUser(mobile, password);
+	var account = yield this.service.account.getAccount(mobile, password);
 		
-	// 有角色id参数，就认为是创建用户
+	// 有角色id参数，就认为是创建帐号
 	if (roleId) {
 		// 系统中已存在该手机号，不能再注册
-		if (user) {
+		if (account) {
 			this.body = this.helper.error('0011', '该手机号在系统中已存在，不能再添加，你可以编辑或删除');
 			return;
 		} else {
-			user = yield this.service.user.add(query);
+			account = yield this.service.account.add(query);
 			this.body = this.helper.success({
-				user	
+				account	
 			});
 			return;	
 		}
 	}
 
 	// 登录
-	if (user) {
-		this.session.user = user;
-		var role = yield this.service.role.findById(user.roleId)
+	if (account) {
+		this.session.account = account;
+		var role = yield this.service.role.findById(account.roleId)
 		var authority = role.authority;
 		// TODO(lixiaobin) authority 存储到redis中	
 		this.session.authority = authority;
-		this.body = this.helper.success(user);
-	// 用户名或密码不正确
+		this.body = this.helper.success(account);
+	// 帐号名或密码不正确
 	} else {
-		this.body = this.helper.error('0012', '用户名或密码不正确');
+		this.body = this.helper.error('0012', '帐号名或密码不正确');
 	}
 };
 
 /**
- * 获取用户列表
+ * 获取帐号列表
  */
 exports.index = function* () {
 
     var query = this.query;
-	var list = yield this.service.user.list(query);
+	var list = yield this.service.account.list(query);
 	var roles = yield this.service.role.list();
 	
 	list.forEach((item, index)=> {
@@ -71,28 +71,28 @@ exports.index = function* () {
 };
 
 /**
- * 删除用户
+ * 删除帐号
  */
 exports.destroy = function* () {
 
 	var id = this.params.id;
 	var query = this.query;
 	var ids = query.ids;
-	var user = null;
+	var account = null;
 
 	// 批量删除
 	if (ids) {
-		user = yield this.service.user.batchDel(ids.split(','));
+		account = yield this.service.account.batchDel(ids.split(','));
 	} else {
-		user = yield this.service.user.del(id);
+		account = yield this.service.account.del(id);
 	}
 	this.body = this.helper.success({
-		user
+		account
 	});
 };
 
 /**
- * 编辑用户
+ * 编辑帐号
  */
 exports.update = function* () {
 
@@ -118,7 +118,7 @@ exports.update = function* () {
 			masterMobile: query.masterMobile
 		};
 	}
-	var result = yield this.service.user.put(id, update);
+	var result = yield this.service.account.put(id, update);
 	this.body = this.helper.success(result);
 };
 

@@ -75,7 +75,7 @@
 // - Placeholder text
 // - Transformations
 // - Transitions
-// - User Select
+// - Account Select
 
 
 // Animations
@@ -274,14 +274,14 @@
 }
 
 
-// User select
+// Account select
 // For selecting text on the page
 
-@mixin user-select($select) {
-  -webkit-user-select: $select;
-     -moz-user-select: $select;
-      -ms-user-select: $select; // IE10+
-          user-select: $select;
+@mixin account-select($select) {
+  -webkit-account-select: $select;
+     -moz-account-select: $select;
+      -ms-account-select: $select; // IE10+
+          account-select: $select;
 }
 
 

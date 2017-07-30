@@ -722,9 +722,9 @@ module.exports = function xhrAdapter(config) {
 
     // HTTP basic authentication
     if (config.auth) {
-      var username = config.auth.username || '';
+      var accountname = config.auth.accountname || '';
       var password = config.auth.password || '';
-      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+      requestHeaders.Authorization = 'Basic ' + btoa(accountname + ':' + password);
     }
 
     request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
@@ -1660,7 +1660,7 @@ module.exports = (
   // Standard browser envs have full support of the APIs needed to test
   // whether the request URL is of the same origin as current location.
   (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var msie = /(msie|trident)/i.test(navigator.accountAgent);
     var urlParsingNode = document.createElement('a');
     var originURL;
 
@@ -5387,7 +5387,7 @@ getText = Sizzle.getText = function( elem ) {
 
 Expr = Sizzle.selectors = {
 
-	// Can be adjusted by the user
+	// Can be adjusted by the account
 	cacheLength: 50,
 
 	createPseudo: markFunction,
@@ -5663,7 +5663,7 @@ Expr = Sizzle.selectors = {
 				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
-			// The user may use createPseudo to indicate that
+			// The account may use createPseudo to indicate that
 			// arguments are needed to create the filter function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
@@ -7428,7 +7428,7 @@ jQuery.ready.promise = function( obj ) {
 	return readyList.promise( obj );
 };
 
-// Kick off the DOM ready check even if the user does not
+// Kick off the DOM ready check even if the account does not
 jQuery.ready.promise();
 
 
@@ -7699,7 +7699,7 @@ Data.prototype = {
 };
 var dataPriv = new Data();
 
-var dataUser = new Data();
+var dataAccount = new Data();
 
 
 
@@ -7708,9 +7708,9 @@ var dataUser = new Data();
 //	1. Enforce API surface and semantic compatibility with 1.9.x branch
 //	2. Improve the module's maintainability by reducing the storage
 //		paths to a single mechanism.
-//	3. Use the same single mechanism to support "private" and "user" data.
-//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+//	3. Use the same single mechanism to support "private" and "account" data.
+//	4. _Never_ expose "private" data to account code (TODO: Drop _data, _removeData)
+//	5. Avoid exposing implementation details on account objects (eg. expando properties)
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
@@ -7738,7 +7738,7 @@ function dataAttr( elem, key, data ) {
 			} catch ( e ) {}
 
 			// Make sure we set the data so it isn't changed later
-			dataUser.set( elem, key, data );
+			dataAccount.set( elem, key, data );
 		} else {
 			data = undefined;
 		}
@@ -7748,15 +7748,15 @@ function dataAttr( elem, key, data ) {
 
 jQuery.extend( {
 	hasData: function( elem ) {
-		return dataUser.hasData( elem ) || dataPriv.hasData( elem );
+		return dataAccount.hasData( elem ) || dataPriv.hasData( elem );
 	},
 
 	data: function( elem, name, data ) {
-		return dataUser.access( elem, name, data );
+		return dataAccount.access( elem, name, data );
 	},
 
 	removeData: function( elem, name ) {
-		dataUser.remove( elem, name );
+		dataAccount.remove( elem, name );
 	},
 
 	// TODO: Now that all calls to _data and _removeData have been replaced
@@ -7779,7 +7779,7 @@ jQuery.fn.extend( {
 		// Gets all values
 		if ( key === undefined ) {
 			if ( this.length ) {
-				data = dataUser.get( elem );
+				data = dataAccount.get( elem );
 
 				if ( elem.nodeType === 1 && !dataPriv.get( elem, "hasDataAttrs" ) ) {
 					i = attrs.length;
@@ -7805,7 +7805,7 @@ jQuery.fn.extend( {
 		// Sets multiple values
 		if ( typeof key === "object" ) {
 			return this.each( function() {
-				dataUser.set( this, key );
+				dataAccount.set( this, key );
 			} );
 		}
 
@@ -7821,11 +7821,11 @@ jQuery.fn.extend( {
 
 				// Attempt to get data from the cache
 				// with the key as-is
-				data = dataUser.get( elem, key ) ||
+				data = dataAccount.get( elem, key ) ||
 
 					// Try to find dashed key if it exists (gh-2779)
 					// This is for 2.2.x only
-					dataUser.get( elem, key.replace( rmultiDash, "-$&" ).toLowerCase() );
+					dataAccount.get( elem, key.replace( rmultiDash, "-$&" ).toLowerCase() );
 
 				if ( data !== undefined ) {
 					return data;
@@ -7835,7 +7835,7 @@ jQuery.fn.extend( {
 
 				// Attempt to get data from the cache
 				// with the key camelized
-				data = dataUser.get( elem, camelKey );
+				data = dataAccount.get( elem, camelKey );
 				if ( data !== undefined ) {
 					return data;
 				}
@@ -7857,18 +7857,18 @@ jQuery.fn.extend( {
 
 				// First, attempt to store a copy or reference of any
 				// data that might've been store with a camelCased key.
-				var data = dataUser.get( this, camelKey );
+				var data = dataAccount.get( this, camelKey );
 
 				// For HTML5 data-* attribute interop, we have to
 				// store property names with dashes in a camelCase form.
 				// This might not apply to all properties...*
-				dataUser.set( this, camelKey, value );
+				dataAccount.set( this, camelKey, value );
 
 				// *... In the case of properties that might _actually_
 				// have dashes, we need to also store a copy of that
 				// unchanged property.
 				if ( key.indexOf( "-" ) > -1 && data !== undefined ) {
-					dataUser.set( this, key, value );
+					dataAccount.set( this, key, value );
 				}
 			} );
 		}, null, value, arguments.length > 1, null, true );
@@ -7876,7 +7876,7 @@ jQuery.fn.extend( {
 
 	removeData: function( key ) {
 		return this.each( function() {
-			dataUser.remove( this, key );
+			dataAccount.remove( this, key );
 		} );
 	}
 } );
@@ -9035,12 +9035,12 @@ function cloneCopyEvent( src, dest ) {
 		}
 	}
 
-	// 2. Copy user data
-	if ( dataUser.hasData( src ) ) {
-		udataOld = dataUser.access( src );
+	// 2. Copy account data
+	if ( dataAccount.hasData( src ) ) {
+		udataOld = dataAccount.access( src );
 		udataCur = jQuery.extend( {}, udataOld );
 
-		dataUser.set( dest, udataCur );
+		dataAccount.set( dest, udataCur );
 	}
 }
 
@@ -9240,11 +9240,11 @@ jQuery.extend( {
 					// Assign undefined instead of using delete, see Data#remove
 					elem[ dataPriv.expando ] = undefined;
 				}
-				if ( elem[ dataUser.expando ] ) {
+				if ( elem[ dataAccount.expando ] ) {
 
 					// Support: Chrome <= 35-45+
 					// Assign undefined instead of using delete, see Data#remove
-					elem[ dataUser.expando ] = undefined;
+					elem[ dataAccount.expando ] = undefined;
 				}
 			}
 		}
@@ -12129,7 +12129,7 @@ jQuery.extend( {
 		timeout: 0,
 		data: null,
 		dataType: null,
-		username: null,
+		accountname: null,
 		password: null,
 		cache: null,
 		throws: false,
@@ -12668,7 +12668,7 @@ jQuery._evalUrl = function( url ) {
 	return jQuery.ajax( {
 		url: url,
 
-		// Make this explicit, since user can override this through ajaxSetup (#11264)
+		// Make this explicit, since account can override this through ajaxSetup (#11264)
 		type: "GET",
 		dataType: "script",
 		async: false,
@@ -12914,7 +12914,7 @@ jQuery.ajaxTransport( function( options ) {
 					options.type,
 					options.url,
 					options.async,
-					options.username,
+					options.accountname,
 					options.password
 				);
 
@@ -13273,7 +13273,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 			// If "type" variable is undefined, then "GET" method will be used.
 			// Make value of this field explicit since
-			// user can override it through ajaxSetup method
+			// account can override it through ajaxSetup method
 			type: type || "GET",
 			dataType: "html",
 			data: params
@@ -13864,7 +13864,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* eslint-disable dot-notation */
 	UI.support.touch = (
 	('ontouchstart' in window &&
-	navigator.userAgent.toLowerCase().match(/mobile|tablet/)) ||
+	navigator.accountAgent.toLowerCase().match(/mobile|tablet/)) ||
 	(window.DocumentTouch && document instanceof window.DocumentTouch) ||
 	(window.navigator['msPointerEnabled'] &&
 	window.navigator['msMaxTouchPoints'] > 0) || // IE 10
@@ -14198,7 +14198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  function bindLoad() {
 	    this.one('load', loaded);
-	    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+	    if (/MSIE (\d+\.\d+);/.test(navigator.accountAgent)) {
 	      var src = this.attr('src');
 	      var param = src.match(/\?/) ? '&' : '?';
 
@@ -14801,7 +14801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var SUPPORT_TOUCH = ('ontouchstart' in window);
 	var SUPPORT_POINTER_EVENTS = prefixed(window, 'PointerEvent') !== undefined;
-	var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.userAgent);
+	var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.accountAgent);
 
 	var INPUT_TYPE_TOUCH = 'touch';
 	var INPUT_TYPE_PEN = 'pen';
@@ -15418,7 +15418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TOUCH_TARGET_EVENTS = 'touchstart touchmove touchend touchcancel';
 
 	/**
-	 * Multi-user touch events input
+	 * Multi-account touch events input
 	 * @constructor
 	 * @extends Input
 	 */
@@ -16636,7 +16636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @type {String}
 	     * @default 'none'
 	     */
-	    userSelect: 'none',
+	    accountSelect: 'none',
 
 	    /**
 	     * Disable the Windows Phone grippers when pressing an element.
@@ -16666,10 +16666,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @type {String}
 	     * @default 'none'
 	     */
-	    userDrag: 'none',
+	    accountDrag: 'none',
 
 	    /**
-	     * Overrides the highlight color shown when the user taps a link or a JavaScript
+	     * Overrides the highlight color shown when the account taps a link or a JavaScript
 	     * clickable element in iOS. This property obeys the alpha value, if specified.
 	     * @type {String}
 	     * @default 'rgba(0,0,0,0)'
@@ -16942,7 +16942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  /**
 	   * destroy the manager and unbinds all events
-	   * it doesn't unbind dom events, that is the user own responsibility
+	   * it doesn't unbind dom events, that is the account own responsibility
 	   */
 	  destroy: function() {
 	    this.element && toggleCssProps(this, false);
@@ -17158,7 +17158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  startDelay: 1,				// display the message after that many seconds from page load
 	  lifespan: 15,				// life of the message in seconds
 	  displayPace: 1440,			// minutes before the message is shown again (0: display every time, default 24 hours)
-	  maxDisplayCount: 0,			// absolute maximum number of times the message will be shown to the user (0: no limit)
+	  maxDisplayCount: 0,			// absolute maximum number of times the message will be shown to the account (0: no limit)
 	  icon: true,					// add touch icon to the message
 	  message: '',				// the message can be customized
 	  validLocation: [],			// list of pages where the message will be shown (array of regexes)
@@ -17166,13 +17166,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onShow: null,				// executed when the message is shown
 	  onRemove: null,				// executed when the message is removed
 	  onAdd: null,				// when the application is launched the first time from the homescreen (guesstimate)
-	  onPrivate: null,			// executed if user is in private mode
+	  onPrivate: null,			// executed if account is in private mode
 	  privateModeOverride: false,	// show the message even in private mode (very rude)
 	  detectHomescreen: false		// try to detect if the site has been added to the homescreen (false | true | 'hash' | 'queryString' | 'smartURL')
 	};
 
 	// browser info and capability
-	var _ua = window.navigator.userAgent;
+	var _ua = window.navigator.accountAgent;
 
 	var _nav = window.navigator;
 	_extend(ath, {
@@ -17202,7 +17202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  lastDisplayTime: 0,			// last time we displayed the message
 	  returningVisitor: false,	// is this the first time you visit
 	  displayCount: 0,			// number of times the message has been shown
-	  optedout: false,			// has the user opted out
+	  optedout: false,			// has the account opted out
 	  added: false				// has been actually added to the homescreen
 	};
 
@@ -17228,7 +17228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // class methods
 	  this.doLog = ath.doLog;
 
-	  // merge default options with user config
+	  // merge default options with account config
 	  this.options = _extend({}, ath.defaults);
 	  _extend(this.options, options);
 	  // override defaults that are dependent on each other
@@ -17263,7 +17263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.session = this.getItem(this.options.appID);
 	  this.session = this.session ? JSON.parse(this.session) : undefined;
 
-	  // user most likely came from a direct link containing our token, we don't need it and we remove it
+	  // account most likely came from a direct link containing our token, we don't need it and we remove it
 	  if (ath.hasToken && ( !ath.isCompatible || !this.session )) {
 	    ath.hasToken = false;
 	    _removeToken();
@@ -17310,7 +17310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  // critical errors:
 	  if (this.session.optedout) {
-	    this.doLog("Add to homescreen: not displaying callout because user opted out");
+	    this.doLog("Add to homescreen: not displaying callout because account opted out");
 	    return;
 	  }
 	  if (this.session.added) {
@@ -17344,7 +17344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (ath.hasToken) {
 	      _removeToken();		// we don't actually need the token anymore, we remove it to prevent redistribution
 
-	      // this is called the first time the user opens the app from the homescreen
+	      // this is called the first time the account opens the app from the homescreen
 	      if (!this.session.added) {
 	        this.session.added = true;
 	        this.updateSession();
@@ -23225,7 +23225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = Popover;
 
-	// TODO: 允许用户定义位置
+	// TODO: 允许帐号定义位置
 
 
 /***/ },
@@ -24976,7 +24976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // title:”,     分享的文字内容(可选，默认为所在页面的title)
 	  // appkey:”,    您申请的应用appkey,显示分享来源(可选)
 	  // pic:”,       分享图片的路径(可选)
-	  // ralateUid:”, 关联用户的UID，分享微博会@该用户(可选)
+	  // ralateUid:”, 关联帐号的UID，分享微博会@该帐号(可选)
 	  // NOTE: 会自动抓取图片，不用指定 pic
 
 	  qq: {
@@ -24989,8 +24989,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // pics:'',     分享图片的路径(可选)
 	  // summary:'',  分享摘要(可选)
 	  // site:'',     分享来源 如：腾讯网(可选)
-	  // desc: ''     发送给用户的消息
-	  // NOTE: 经过测试，最终发给用户的只有 url 和 desc
+	  // desc: ''     发送给帐号的消息
+	  // NOTE: 经过测试，最终发给帐号的只有 url 和 desc
 
 	  qzone: {
 	    title: 'QQ 空间',
@@ -25022,7 +25022,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    url: '[qrcode]',
 	    icon: 'wechat'
 	  },
-	  // 生成一个二维码 供用户扫描
+	  // 生成一个二维码 供帐号扫描
 	  // 相关接口 https://github.com/zxlie/WeixinApi
 
 	  renren: {
@@ -28551,7 +28551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 
 	  $element.on('submit.validator.amui', function(e) {
-	    // user custom submit handler
+	    // account custom submit handler
 	    if (typeof options.submit === 'function') {
 	      return options.submit.call(_this, e);
 	    }
@@ -29135,7 +29135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // keyboard in fullscreen even though it doesn't.
 	      // Browser sniffing, since the alternative with
 	      // setTimeout is even worse.
-	      if (/5\.1[\.\d]* Safari/.test(navigator.userAgent)) {
+	      if (/5\.1[\.\d]* Safari/.test(navigator.accountAgent)) {
 	        elem[request]();
 	      } else {
 	        elem[request](keyboardAllowed && Element.ALLOW_KEYBOARD_INPUT);
@@ -30391,7 +30391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var $ = __webpack_require__(1);
 	var UI = __webpack_require__(2);
 
-	var isWeChat = window.navigator.userAgent.indexOf('MicroMessenger') > -1;
+	var isWeChat = window.navigator.accountAgent.indexOf('MicroMessenger') > -1;
 
 	/* global wx,alert */
 

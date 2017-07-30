@@ -1,5 +1,5 @@
 /**
- * @fileOverview charity-user-model
+ * @fileOverview charity-account-model
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
@@ -9,7 +9,7 @@ module.exports = mongoose => {
 
     var ObjectId = mongoose.Schema.Types.ObjectId;
     
-    const userSchema = new mongoose.Schema({
+    const accountSchema = new mongoose.Schema({
         name: { type: String },
         password: { type: String },
         author: { 
@@ -38,5 +38,5 @@ module.exports = mongoose => {
             default: Date.now
         }
     });
-    return mongoose.model('User', userSchema, 'user');
+    return mongoose.model('Account', accountSchema, 'account');
 }   

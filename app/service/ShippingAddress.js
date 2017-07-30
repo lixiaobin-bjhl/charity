@@ -16,7 +16,7 @@ module.exports = app => {
          * @param {string} params.name 收件人姓名
          * @param {string} params.mobile 收件人手机号
          * @param {string} params.address 收件地址
-         * @param {string} params.openid 购买用户
+         * @param {string} params.openid 购买帐号
          * @param {Array} params.region 地域信息
          * 
          * @reutrn {Object}

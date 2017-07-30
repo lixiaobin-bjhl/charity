@@ -16,7 +16,7 @@ module.exports = (options, app) => {
 
     // 不需要判断权限的 API
     var optionalNoAuthApiUrl = [
-        '/api/user',
+        '/api/account',
         '/api/card',
         '/api/product',
         '/api/shippingAddress',
@@ -36,7 +36,7 @@ module.exports = (options, app) => {
                     return;
                 }
 
-                var user = this.session.user;
+                var account = this.session.account;
                 // 没有登录，不需要判断类似于登录类的API
                 if (optionalNoAuthApiUrl
                     .some((item)=>{

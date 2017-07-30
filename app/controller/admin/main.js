@@ -11,13 +11,13 @@ module.exports = app => {
 		 * 后台管理 
 		 */
 		* index () {
-			var user = this.ctx.session.user;
+			var account = this.ctx.session.account;
 			var authority = this.ctx.session.authority;
 			yield this.ctx.render('/admin/main.tpl', {
-				user,
+				account,
 				env: this.ctx.helper.env(),
 				authority: JSON.stringify(authority),
-				userStr: JSON.stringify(user)
+				accountStr: JSON.stringify(account)
 			});
 		}
 		/**
@@ -31,9 +31,9 @@ module.exports = app => {
 		 * 登录页面 
 		 */
 		* login () {
-			var user = this.ctx.session.user;
+			var account = this.ctx.session.account;
 			yield this.ctx.render('/admin/login.tpl', {
-				user,
+				account,
 				env: this.ctx.helper.env()
 			});
 		}

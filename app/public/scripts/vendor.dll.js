@@ -913,7 +913,7 @@ var config = {
   ignoredElements: [],
 
   /**
-   * Custom user key aliases for v-on
+   * Custom account key aliases for v-on
    */
   keyCodes: Object.create(null),
 
@@ -1026,7 +1026,7 @@ var hasProto = '__proto__' in {};
 
 // Browser environment sniffing
 var inBrowser = typeof window !== 'undefined';
-var UA = inBrowser && window.navigator.userAgent.toLowerCase();
+var UA = inBrowser && window.navigator.accountAgent.toLowerCase();
 var isIE = UA && /msie|trident/.test(UA);
 var isIE9 = UA && UA.indexOf('msie 9.0') > 0;
 var isEdge = UA && UA.indexOf('edge/') > 0;
@@ -2378,7 +2378,7 @@ function simpleNormalizeChildren (children) {
 }
 
 // 2. When the children contains constructs that always generated nested Arrays,
-// e.g. <template>, <slot>, v-for, or when the children is provided by user
+// e.g. <template>, <slot>, v-for, or when the children is provided by account
 // with hand-written render functions / JSX. In such cases a full normalization
 // is needed to cater to all possible types of children values.
 function normalizeChildren (children) {
@@ -2939,8 +2939,8 @@ function flushSchedulerQueue () {
   // This ensures that:
   // 1. Components are updated from parent to child. (because parent is always
   //    created before the child)
-  // 2. A component's user watchers are run before its render watcher (because
-  //    user watchers are created before the render watcher)
+  // 2. A component's account watchers are run before its render watcher (because
+  //    account watchers are created before the render watcher)
   // 3. If a component is destroyed during a parent component's watcher run,
   //    its watchers can be skipped.
   queue.sort(function (a, b) { return a.id - b.id; });
@@ -2958,7 +2958,7 @@ function flushSchedulerQueue () {
       if (circular[id] > config._maxUpdateCount) {
         warn(
           'You may have an infinite update loop ' + (
-            watcher.user
+            watcher.account
               ? ("in watcher with expression \"" + (watcher.expression) + "\"")
               : "in a component render function."
           ),
@@ -3038,11 +3038,11 @@ var Watcher = function Watcher (
   // options
   if (options) {
     this.deep = !!options.deep;
-    this.user = !!options.user;
+    this.account = !!options.account;
     this.lazy = !!options.lazy;
     this.sync = !!options.sync;
   } else {
-    this.deep = this.user = this.lazy = this.sync = false;
+    this.deep = this.account = this.lazy = this.sync = false;
   }
   this.cb = cb;
   this.id = ++uid$2; // uid for batching
@@ -3082,7 +3082,7 @@ Watcher.prototype.get = function get () {
   pushTarget(this);
   var value;
   var vm = this.vm;
-  if (this.user) {
+  if (this.account) {
     try {
       value = this.getter.call(vm, vm);
     } catch (e) {
@@ -3171,7 +3171,7 @@ Watcher.prototype.run = function run () {
       // set new value
       var oldValue = this.value;
       this.value = value;
-      if (this.user) {
+      if (this.account) {
         try {
           this.cb.call(this.vm, value, oldValue);
         } catch (e) {
@@ -3388,8 +3388,8 @@ function initComputed (vm, computed) {
   var watchers = vm._computedWatchers = Object.create(null);
 
   for (var key in computed) {
-    var userDef = computed[key];
-    var getter = typeof userDef === 'function' ? userDef : userDef.get;
+    var accountDef = computed[key];
+    var getter = typeof accountDef === 'function' ? accountDef : accountDef.get;
     if (process.env.NODE_ENV !== 'production') {
       if (getter === undefined) {
         warn(
@@ -3406,23 +3406,23 @@ function initComputed (vm, computed) {
     // component prototype. We only need to define computed properties defined
     // at instantiation here.
     if (!(key in vm)) {
-      defineComputed(vm, key, userDef);
+      defineComputed(vm, key, accountDef);
     }
   }
 }
 
-function defineComputed (target, key, userDef) {
-  if (typeof userDef === 'function') {
+function defineComputed (target, key, accountDef) {
+  if (typeof accountDef === 'function') {
     sharedPropertyDefinition.get = createComputedGetter(key);
     sharedPropertyDefinition.set = noop;
   } else {
-    sharedPropertyDefinition.get = userDef.get
-      ? userDef.cache !== false
+    sharedPropertyDefinition.get = accountDef.get
+      ? accountDef.cache !== false
         ? createComputedGetter(key)
-        : userDef.get
+        : accountDef.get
       : noop;
-    sharedPropertyDefinition.set = userDef.set
-      ? userDef.set
+    sharedPropertyDefinition.set = accountDef.set
+      ? accountDef.set
       : noop;
   }
   Object.defineProperty(target, key, sharedPropertyDefinition);
@@ -3523,7 +3523,7 @@ function stateMixin (Vue) {
   ) {
     var vm = this;
     options = options || {};
-    options.user = true;
+    options.account = true;
     var watcher = new Watcher(vm, expOrFn, cb, options);
     if (options.immediate) {
       cb.call(vm, watcher.value);
@@ -4195,7 +4195,7 @@ function initRender (vm) {
   // internal version is used by render functions compiled from templates
   vm._c = function (a, b, c, d) { return createElement(vm, a, b, c, d, false); };
   // normalization is always applied for the public version, used in
-  // user-written render functions.
+  // account-written render functions.
   vm.$createElement = function (a, b, c, d) { return createElement(vm, a, b, c, d, true); };
 }
 
@@ -5873,7 +5873,7 @@ function updateAttrs (oldVnode, vnode) {
   var elm = vnode.elm;
   var oldAttrs = oldVnode.data.attrs || {};
   var attrs = vnode.data.attrs || {};
-  // clone observed objects, as the user probably wants to mutate it
+  // clone observed objects, as the account probably wants to mutate it
   if (attrs.__ob__) {
     attrs = vnode.data.attrs = extend({}, attrs);
   }
@@ -6024,7 +6024,7 @@ var CHECKBOX_RADIO_TOKEN = '__c';
 // normalize v-model event tokens that can only be determined at runtime.
 // it's important to place the event as the first in the array because
 // the whole point is ensuring the v-model callback gets called before
-// user-attached handlers.
+// account-attached handlers.
 function normalizeEvents (on) {
   var event;
   /* istanbul ignore if */
@@ -6100,7 +6100,7 @@ function updateDOMProps (oldVnode, vnode) {
   var elm = vnode.elm;
   var oldProps = oldVnode.data.domProps || {};
   var props = vnode.data.domProps || {};
-  // clone observed objects, as the user probably wants to mutate it
+  // clone observed objects, as the account probably wants to mutate it
   if (props.__ob__) {
     props = vnode.data.domProps = extend({}, props);
   }
@@ -6631,7 +6631,7 @@ function enter (vnode, toggleDisplay) {
   }
 
   var expectsCSS = css !== false && !isIE9;
-  var userWantsControl = getHookArgumentsLength(enterHook);
+  var accountWantsControl = getHookArgumentsLength(enterHook);
 
   var cb = el._enterCb = once(function () {
     if (expectsCSS) {
@@ -6671,7 +6671,7 @@ function enter (vnode, toggleDisplay) {
     nextFrame(function () {
       addTransitionClass(el, toClass);
       removeTransitionClass(el, startClass);
-      if (!cb.cancelled && !userWantsControl) {
+      if (!cb.cancelled && !accountWantsControl) {
         if (isValidDuration(explicitEnterDuration)) {
           setTimeout(cb, explicitEnterDuration);
         } else {
@@ -6686,7 +6686,7 @@ function enter (vnode, toggleDisplay) {
     enterHook && enterHook(el, cb);
   }
 
-  if (!expectsCSS && !userWantsControl) {
+  if (!expectsCSS && !accountWantsControl) {
     cb();
   }
 }
@@ -6723,7 +6723,7 @@ function leave (vnode, rm) {
   var duration = data.duration;
 
   var expectsCSS = css !== false && !isIE9;
-  var userWantsControl = getHookArgumentsLength(leave);
+  var accountWantsControl = getHookArgumentsLength(leave);
 
   var explicitLeaveDuration = toNumber(
     isObject(duration)
@@ -6777,7 +6777,7 @@ function leave (vnode, rm) {
       nextFrame(function () {
         addTransitionClass(el, leaveToClass);
         removeTransitionClass(el, leaveClass);
-        if (!cb.cancelled && !userWantsControl) {
+        if (!cb.cancelled && !accountWantsControl) {
           if (isValidDuration(explicitLeaveDuration)) {
             setTimeout(cb, explicitLeaveDuration);
           } else {
@@ -6787,7 +6787,7 @@ function leave (vnode, rm) {
       });
     }
     leave && leave(el, cb);
-    if (!expectsCSS && !userWantsControl) {
+    if (!expectsCSS && !accountWantsControl) {
       cb();
     }
   }
@@ -8029,9 +8029,9 @@ module.exports = function xhrAdapter(config) {
 
     // HTTP basic authentication
     if (config.auth) {
-      var username = config.auth.username || '';
+      var accountname = config.auth.accountname || '';
       var password = config.auth.password || '';
-      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+      requestHeaders.Authorization = 'Basic ' + btoa(accountname + ':' + password);
     }
 
     request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
@@ -9035,7 +9035,7 @@ module.exports = (
   // Standard browser envs have full support of the APIs needed to test
   // whether the request URL is of the same origin as current location.
   (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var msie = /(msie|trident)/i.test(navigator.accountAgent);
     var urlParsingNode = document.createElement('a');
     var originURL;
 
@@ -21179,7 +21179,7 @@ module.exports =
 	  return null;
 	};
 
-	var isFirefox = typeof navigator !== 'undefined' && navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+	var isFirefox = typeof navigator !== 'undefined' && navigator.accountAgent.toLowerCase().indexOf('firefox') > -1;
 
 	var mousewheel = exports.mousewheel = function mousewheel(element, callback) {
 	  if (element && element.addEventListener) {
@@ -30826,7 +30826,7 @@ module.exports =
 	    if (props && typeof props.isLeaf !== 'undefined') {
 	      var isLeaf = getPropertyFromData(this, 'isLeaf');
 	      if (typeof isLeaf === 'boolean') {
-	        this.isLeafByUser = isLeaf;
+	        this.isLeafByAccount = isLeaf;
 	      }
 	    }
 
@@ -30987,8 +30987,8 @@ module.exports =
 	  };
 
 	  Node.prototype.updateLeafState = function updateLeafState() {
-	    if (this.store.lazy === true && this.loaded !== true && typeof this.isLeafByUser !== 'undefined') {
-	      this.isLeaf = this.isLeafByUser;
+	    if (this.store.lazy === true && this.loaded !== true && typeof this.isLeafByAccount !== 'undefined') {
+	      this.isLeaf = this.isLeafByAccount;
 	      return;
 	    }
 	    var childNodes = this.childNodes;
@@ -31304,7 +31304,7 @@ module.exports =
 	        this.$emit('node-expand', this.node.data, this.node, this);
 	      }
 	    },
-	    handleUserClick: function handleUserClick() {
+	    handleAccountClick: function handleAccountClick() {
 	      if (this.node.indeterminate) {
 	        this.node.setChecked(this.node.checked, !this.tree.checkStrictly);
 	      }
@@ -31466,7 +31466,7 @@ module.exports =
 	    nativeOn: {
 	      "click": function($event) {
 	        $event.stopPropagation();
-	        _vm.handleUserClick($event)
+	        _vm.handleAccountClick($event)
 	      }
 	    }
 	  }) : _vm._e(), (_vm.node.loading) ? _c('span', {
@@ -31744,11 +31744,11 @@ module.exports =
 	var Notification = function Notification(options) {
 	  if (_vue2.default.prototype.$isServer) return;
 	  options = options || {};
-	  var userOnClose = options.onClose;
+	  var accountOnClose = options.onClose;
 	  var id = 'notification_' + seed++;
 
 	  options.onClose = function () {
-	    Notification.close(id, userOnClose);
+	    Notification.close(id, accountOnClose);
 	  };
 
 	  instance = new NotificationConstructor({
@@ -31789,13 +31789,13 @@ module.exports =
 	  };
 	});
 
-	Notification.close = function (id, userOnClose) {
+	Notification.close = function (id, accountOnClose) {
 	  var index = void 0;
 	  var removedHeight = void 0;
 	  for (var i = 0, len = instances.length; i < len; i++) {
 	    if (id === instances[i].id) {
-	      if (typeof userOnClose === 'function') {
-	        userOnClose(instances[i]);
+	      if (typeof accountOnClose === 'function') {
+	        accountOnClose(instances[i]);
 	      }
 	      index = i;
 	      removedHeight = instances[i].dom.offsetHeight;
@@ -34839,11 +34839,11 @@ module.exports =
 	      message: options
 	    };
 	  }
-	  var userOnClose = options.onClose;
+	  var accountOnClose = options.onClose;
 	  var id = 'message_' + seed++;
 
 	  options.onClose = function () {
-	    Message.close(id, userOnClose);
+	    Message.close(id, accountOnClose);
 	  };
 
 	  instance = new MessageConstructor({
@@ -34871,11 +34871,11 @@ module.exports =
 	  };
 	});
 
-	Message.close = function (id, userOnClose) {
+	Message.close = function (id, accountOnClose) {
 	  for (var i = 0, len = instances.length; i < len; i++) {
 	    if (id === instances[i].id) {
-	      if (typeof userOnClose === 'function') {
-	        userOnClose(instances[i]);
+	      if (typeof accountOnClose === 'function') {
+	        accountOnClose(instances[i]);
 	      }
 	      instances.splice(i, 1);
 	      break;
@@ -39898,7 +39898,7 @@ function addRouteRecord (
 
   if (route.children) {
     // Warn if route is named and has a default child route.
-    // If users navigate to this route by name, the default child will
+    // If accounts navigate to this route by name, the default child will
     // not be rendered (GH Issue #629)
     if (process.env.NODE_ENV !== 'production') {
       if (route.name && route.children.some(function (child) { return /^\/?$/.test(child.path); })) {
@@ -39984,7 +39984,7 @@ var tokensToRegExp_1 = tokensToRegExp;
  */
 var PATH_REGEXP = new RegExp([
   // Match escaped characters that would otherwise appear in future matches.
-  // This allows the user to escape special characters that won't transform.
+  // This allows the account to escape special characters that won't transform.
   '(\\\\.)',
   // Match Express-style parameters and un-named parameters with a prefix
   // and optional suffixes. Matches appear as:
@@ -40366,7 +40366,7 @@ function tokensToRegExp (tokens, keys, options) {
  * Normalize the given path string, returning a regular expression.
  *
  * An empty array can be passed in for the keys, which will hold the
- * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * placeholder key descriptions. For example, using `/account/:id`, `keys` will
  * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
  *
  * @param  {(string|RegExp|Array)} path
@@ -40798,7 +40798,7 @@ function isNumber (v) {
 /*  */
 
 var supportsPushState = inBrowser && (function () {
-  var ua = window.navigator.userAgent;
+  var ua = window.navigator.accountAgent;
 
   if (
     (ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) &&
@@ -40812,7 +40812,7 @@ var supportsPushState = inBrowser && (function () {
   return window.history && 'pushState' in window.history
 })();
 
-// use User Timing api (if present) for more accurate key precision
+// use Account Timing api (if present) for more accurate key precision
 var Time = inBrowser && window.performance && window.performance.now
   ? window.performance
   : Date;
@@ -41239,7 +41239,7 @@ function flatten (arr) {
 
 // in Webpack 2, require.ensure now also returns a Promise
 // so the resolve/reject functions may get called an extra time
-// if the user uses an arrow function shorthand that happens to
+// if the account uses an arrow function shorthand that happens to
 // return that Promise.
 function once (fn) {
   var called = false;
@@ -42242,7 +42242,7 @@ function resetStoreVM (store, state, hot) {
   });
 
   // use a Vue instance to store the state tree
-  // suppress warnings just in case the user has added
+  // suppress warnings just in case the account has added
   // some funky global mixins
   var silent = Vue.config.silent;
   Vue.config.silent = true;
@@ -48713,7 +48713,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this._popper.style[getSupportedPropertyName('transform')] = '';
         this._removeEventListeners();
 
-        // remove the popper if user explicity asked for the deletion on destroy
+        // remove the popper if account explicity asked for the deletion on destroy
         if (this._options.removeOnDestroy) {
             this._popper.remove();
         }
@@ -49654,7 +49654,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var rect = element.getBoundingClientRect();
 
         // whether the IE version is lower than 11
-        var isIE = navigator.userAgent.indexOf("MSIE") != -1;
+        var isIE = navigator.accountAgent.indexOf("MSIE") != -1;
 
         // fix ie document bounding top always 0 bug
         var rectTop = isIE && element.tagName === 'HTML' ? -element.scrollTop : rect.top;

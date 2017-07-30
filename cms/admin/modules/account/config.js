@@ -1,5 +1,5 @@
 /**
- * @fileOverview charity-cms-user config
+ * @fileOverview charity-cms-account config
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
@@ -55,7 +55,7 @@ export default  {
             }
 	    ]
     },
-    userTypeOption: [
+    accountTypeOption: [
         {
             id: 0,
             name: '超级用户'

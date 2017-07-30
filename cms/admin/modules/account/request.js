@@ -1,5 +1,5 @@
 /**
- * @fileOverview charity-cms-user request
+ * @fileOverview charity-cms-account request
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
@@ -11,7 +11,7 @@ import { post, get, del, put } from '../../../../app/public/scripts/common/servi
  * 添加产品 
  */
 export function add (params) {
-    return post('/api/user', {
+    return post('/api/account', {
         name: params.name,
 		remark: params.remark,
 		headPic: params.headPic,
@@ -25,12 +25,12 @@ export function add (params) {
 
 /**
  * 获取产品列表
- * @param {string=} params.userSubjectId 产品分类id
+ * @param {string=} params.accountSubjectId 产品分类id
  * @param {string=} params.key 产品搜索关键字
  */
 export function list (params = {}) {
-    return get('/api/user', {
-        userSubjectId: params.userSubjectId,
+    return get('/api/account', {
+        accountSubjectId: params.accountSubjectId,
         key: params.key.trim()
     });
 }
@@ -40,7 +40,7 @@ export function list (params = {}) {
  * @param {string} id 产品id
  */
 export function remove (id) {
-    return del('/api/user/' + id);
+    return del('/api/account/' + id);
 }
 
 /**
@@ -48,7 +48,7 @@ export function remove (id) {
  * @param {string} ids 产品ids
  */
 export function batchRemove (ids) {
-    return del('/api/user/0', {
+    return del('/api/account/0', {
         ids: ids.map((item)=> {
             return item._id
         }).join(',')
@@ -62,7 +62,7 @@ export function batchRemove (ids) {
  * @param {string} params.summary 产品摘要
  */
 export function update (id, params) {
-    return put('/api/user/' + id, params);
+    return put('/api/account/' + id, params);
 }
 
 /**
@@ -70,7 +70,7 @@ export function update (id, params) {
  * @param {string} id 产品id
  */
 export function show (id) {
-    return get('/api/user/' + id);
+    return get('/api/account/' + id);
 }
 
 /** 

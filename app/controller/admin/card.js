@@ -46,7 +46,7 @@ exports.getListByOpenid = function * () {
 }
 
 /**
- * 查找用户购物车的数量
+ * 查找帐号购物车的数量
  */
 exports.getCountByOpenid = function * () {
     var params = this.params;

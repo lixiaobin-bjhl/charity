@@ -24,23 +24,23 @@ module.exports = {
      * 获取当前主账号，分账号对应的唯一手机号 
      */
     mobile () {
-        var user = this.ctx.session.user;
+        var account = this.ctx.session.account;
 
-        // session中没有用户，就在request header中找（比如下微信小程序）
-        if (!user) {
-            user = {
+        // session中没有帐号，就在request header中找（比如下微信小程序）
+        if (!account) {
+            account = {
                 type: 1,
                 mobile: +this.ctx.request.header.mobile
             }     
         }
         
         // 如果是超管账号，或者公司主账号type为0或1 对应的就是mobile
-        if (user.type === 0 || user.type === 1) {
-            return user.mobile;
+        if (account.type === 0 || account.type === 1) {
+            return account.mobile;
         }
         // 如果公司分账号，就是对应的masterMobile
-        if (user.type == 2) {
-            return user.masterMobile;
+        if (account.type == 2) {
+            return account.masterMobile;
         }
         return 0;
     },

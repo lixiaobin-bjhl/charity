@@ -16,7 +16,7 @@ import newsSubject from '../modules/newsSubject/store';
 import news from '../modules/news/store';
 import product from '../modules/product/store';
 import productSubject from '../modules/productSubject/store';
-import user from '../modules/user/store';
+import account from '../modules/account/store';
 import role from '../modules/role/store';
 import customField from '../modules/customField/store';
 
@@ -33,7 +33,7 @@ export default new vuex.Store({
 		newsSubject,
 		product,
 		role,
-		user,
+		account,
 		productSubject,
 		customField
 	}

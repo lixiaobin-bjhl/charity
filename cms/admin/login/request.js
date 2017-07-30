@@ -12,5 +12,5 @@ import { post } from '../../../app/public/scripts/common/service';
  * @param {string} params.password 登录密码
  */
 export function login (params) {
-    return post('/api/user', params);
+    return post('/api/account', params);
 }

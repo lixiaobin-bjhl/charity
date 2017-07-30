@@ -263,7 +263,7 @@
     display: none !important;
 }
 .el-autocomplete__suggestions li {
-    @include user-select(none);
+    @include account-select(none);
 }
 .el-autocomplete__suggestions li.highlighted, .el-autocomplete__suggestions li:hover {
     background-color: $brand-hover;

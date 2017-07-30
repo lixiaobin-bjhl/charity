@@ -1,16 +1,16 @@
 <!--
-  @fileOverview charity-cms-user 添加用户
+  @fileOverview charity-cms-account 添加用户
   @author XiaoBin Li(lixiaobin8878@gmail.com) 
 -->
 
 <template>
-    <el-dialog :title="user ? '编辑用户' : '新增用户'" v-model="$parent.addState" size="small">
+    <el-dialog :title="account ? '编辑用户' : '新增用户'" v-model="$parent.addState" size="small">
         <el-form label-width="100px" :model="form" :rules="rules" ref="form" v-loading="loading">
             <el-form-item label="用户姓名" required prop="name">
                 <el-input placeholder="请输入1-10字内的用户姓名" :maxlength="10" v-model="form.name"></el-input>
             </el-form-item>
             <el-form-item prop="headPic">
-                <upload @change="changeUserImage">
+                <upload @change="changeAccountImage">
                     <el-button type="primary" v-text="form.headPic ? '修改头像' : '上传头像'"></el-button>
                 </upload>
                 <el-input type="hidden" v-model="form.headPic"></el-input>
@@ -19,18 +19,18 @@
                 </div>
             </el-form-item>
             <el-form-item label="手机号" required prop="mobile">
-                <el-input placeholder="请输入用户密码" :disabled="user" :maxlength="11" v-model="form.mobile"></el-input>
+                <el-input placeholder="请输入用户密码" :disabled="account" :maxlength="11" v-model="form.mobile"></el-input>
             </el-form-item>
-            <el-form-item label="密码" v-if="!user" required prop="password">
+            <el-form-item label="密码" v-if="!account" required prop="password">
                 <el-input placeholder="请输入用户密码" :maxlength="30" v-model="form.password"></el-input>
             </el-form-item>
             <el-form-item label="账号类型" required prop="type">
                 <el-radio-group v-model="form.type">
-                    <el-radio :label="item.id"  v-for="item in userTypeOption" :disabled="currentUser.type == 2 || (currentUser.type == 1 && item.id <= 1)" :key="item.id">{{item.name}}</el-radio>
+                    <el-radio :label="item.id"  v-for="item in accountTypeOption" :disabled="currentAccount.type == 2 || (currentAccount.type == 1 && item.id <= 1)" :key="item.id">{{item.name}}</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="主账号手机" required prop="masterMobile" v-if="form.type == 2">
-                 <el-input placeholder="请输入主账号手机" :disabled="currentUser.type == 1 " :maxlength="11" v-model="form.masterMobile"></el-input>
+                 <el-input placeholder="请输入主账号手机" :disabled="currentAccount.type == 1 " :maxlength="11" v-model="form.masterMobile"></el-input>
             </el-form-item>
             <el-form-item label="所属角色" required prop="roleId">
                 <el-radio-group v-model="form.roleId">
@@ -60,7 +60,7 @@
         data () {
             return {
                 uploadURL: '',
-                currentUser: window.user,
+                currentAccount: window.account,
                 form: {
                     name: '',
                     headPic: '',
@@ -70,33 +70,33 @@
                     roleId: '',
                     type: '',
                     // 如果当前账号是主账号，主账号就是他自己
-                    masterMobile: window.user.type == 1 ? window.user.mobile : ''
+                    masterMobile: window.account.type == 1 ? window.account.mobile : ''
                 },
                 loading: false,
-                userTypeOption: config.userTypeOption,
+                accountTypeOption: config.accountTypeOption,
                 rules: config.addFormRule,
                 roleList: [],
                 submiting: false
             };
         },
         computed: {
-            user () {
-                return this.$store.state.user.user || null;
+            account () {
+                return this.$store.state.account.account || null;
             }
         },
         created () {
-            var user = this.user;
+            var account = this.account;
             this.getRoleList();
             
-            if (user) {
+            if (account) {
                 Object.assign(this.form, {
-                    name: user.name,
-                    remark: user.remark,
-                    headPic: user.headPic,
-                    mobile: user.mobile,
-                    type: user.type,
-                    masterMobile: user.masterMobile,
-                    roleId: user.roleId
+                    name: account.name,
+                    remark: account.remark,
+                    headPic: account.headPic,
+                    mobile: account.mobile,
+                    type: account.type,
+                    masterMobile: account.masterMobile,
+                    roleId: account.roleId
                 });
             }
         },
@@ -104,7 +104,7 @@
             /**
              * 改变用户图片
              */
-            changeUserImage (files) {
+            changeAccountImage (files) {
                 if (!files) {
                     return;
                 }
@@ -150,7 +150,7 @@
                 this.$refs['form'].validate((valid) => {
 				    if (valid) {
                         var form = this.form;
-                        var user = this.user;
+                        var account = this.account;
                         var handler = null;
                         var params = {
                             name: form.name,
@@ -162,8 +162,8 @@
                             roleId: form.roleId
                         };
                         // 编辑
-                        if (user) {
-                            handler = update.bind(null, user._id, params);
+                        if (account) {
+                            handler = update.bind(null, account._id, params);
                         } else {
                             params.password = md5(form.password.trim());
                             handler = add.bind(null, params);
@@ -182,7 +182,7 @@
             }
         },
         beforeDestroy() {
-            this.$store.commit('RESET_USER');
+            this.$store.commit('RESET_ACCOUNT');
         },
         components: {
             Upload

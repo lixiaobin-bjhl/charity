@@ -7,9 +7,9 @@
                 <div class="name">
                      <el-dropdown>
                         <div>
-                            <img width="25" height="25" :src="user.headPic|compressImage(25,25)">
-                            <span class="user el-dropdown-link">
-                                {{user.name}}<i class="el-icon-caret-bottom el-icon--right triangle"></i>
+                            <img width="25" height="25" :src="account.headPic|compressImage(25,25)">
+                            <span class="account el-dropdown-link">
+                                {{account.name}}<i class="el-icon-caret-bottom el-icon--right triangle"></i>
                             </span>
                         </div>
                         <el-dropdown-menu slot="dropdown">
@@ -35,7 +35,7 @@
     export default {
         data () {
             return {
-                user: window.user
+                account: window.account
             };
         },
         methods: {

@@ -26,7 +26,7 @@ body {
 
 /**
  * 1. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ *    account zoom.
  *    https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust
  */
 html {
@@ -1376,10 +1376,10 @@ pre code {
   cursor: pointer;
   outline: none;
   -webkit-appearance: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-account-select: none;
+  -moz-account-select: none;
+  -ms-account-select: none;
+  account-select: none;
   -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
   transition: background-color 300ms ease-out, border-color 300ms ease-out; }
 
@@ -4357,7 +4357,7 @@ a.am-close:hover {
 .am-icon-star-o:before {
   content: "\F006"; }
 
-.am-icon-user:before {
+.am-icon-account:before {
   content: "\F007"; }
 
 .am-icon-film:before {
@@ -4855,7 +4855,7 @@ a.am-close:hover {
   content: "\F0B2"; }
 
 .am-icon-group:before,
-.am-icon-users:before {
+.am-icon-accounts:before {
   content: "\F0C0"; }
 
 .am-icon-chain:before,
@@ -5004,7 +5004,7 @@ a.am-close:hover {
 .am-icon-cloud-upload:before {
   content: "\F0EE"; }
 
-.am-icon-user-md:before {
+.am-icon-account-md:before {
   content: "\F0F0"; }
 
 .am-icon-stethoscope:before {
@@ -5887,7 +5887,7 @@ a.am-close:hover {
 .am-icon-ship:before {
   content: "\F21A"; }
 
-.am-icon-user-secret:before {
+.am-icon-account-secret:before {
   content: "\F21B"; }
 
 .am-icon-motorcycle:before {
@@ -5951,10 +5951,10 @@ a.am-close:hover {
 .am-icon-server:before {
   content: "\F233"; }
 
-.am-icon-user-plus:before {
+.am-icon-account-plus:before {
   content: "\F234"; }
 
-.am-icon-user-times:before {
+.am-icon-account-times:before {
   content: "\F235"; }
 
 .am-icon-hotel:before,
@@ -9120,7 +9120,7 @@ ul.am-dropdown-content > .am-disabled > a:focus {
   transform: translateX(-100%); }
 
 .am-tabs-bd .am-tab-panel * {
-  -webkit-user-drag: none; }
+  -webkit-account-drag: none; }
 
 .am-tabs-bd .am-tab-panel.am-active {
   position: relative;
@@ -9394,7 +9394,7 @@ ul.am-dropdown-content > .am-disabled > a:focus {
   max-height: 100%;
   opacity: 0;
   z-index: 200;
-  -webkit-user-drag: none;
+  -webkit-account-drag: none;
   -webkit-transition: opacity 0.2s ease-in;
   transition: opacity 0.2s ease-in; }
 
@@ -9556,10 +9556,10 @@ ul.am-dropdown-content > .am-disabled > a:focus {
   pointer-events: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-account-select: none;
+  -moz-account-select: none;
+  -ms-account-select: none;
+  account-select: none;
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
   text-size-adjust: none; }
@@ -15239,7 +15239,7 @@ i.am-icon-tasks {
 .money {
   color: #fff !important; }
 
-.user-secret {
+.account-secret {
   font-size: 45px !important;
   margin-top: -10px !important; }
 
@@ -15581,7 +15581,7 @@ i.am-icon-tasks {
     width: 70% !important; }
   .daiyu-content-1 {
     width: 100%; }
-  .user-secret {
+  .account-secret {
     font-size: 35px !important;
     margin-top: -10px !important; }
   .daiyu-title-ul {
@@ -15727,7 +15727,7 @@ i.am-icon-tasks {
   padding: 0 0 0 80px;
   list-style: none; }
 
-.news-section .container .comments .comment .comment--userpic {
+.news-section .container .comments .comment .comment--accountpic {
   position: absolute;
   left: -13px;
   top: -8px;
@@ -15736,7 +15736,7 @@ i.am-icon-tasks {
   height: 60px;
   border-radius: 60px; }
 
-.news-section .container .comments .comment .comment--username a {
+.news-section .container .comments .comment .comment--accountname a {
   display: block;
   font-size: 16px;
   font-weight: 600;
@@ -15859,7 +15859,7 @@ i.am-icon-tasks {
     line-height: 50px; }
   .news-section .container .article .article--content {
     font-size: 14px; }
-  .comment--userpic {
+  .comment--accountpic {
     position: relative !important; }
   .news-section .container .comments {
     margin: 0; }

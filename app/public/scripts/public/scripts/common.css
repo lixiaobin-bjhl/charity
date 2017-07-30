@@ -81,7 +81,7 @@
 .icon-umbrella:before {
   content: "\E912";
 }
-.icon-user:before {
+.icon-account:before {
   content: "\E913";
 }
 .icon-angle-down:before {
@@ -136,7 +136,7 @@ a {
 .pointer {
   cursor: pointer; }
 
-.middle, .header .right .name .user {
+.middle, .header .right .name .account {
   vertical-align: middle;
   display: inline-block; }
 
@@ -181,9 +181,9 @@ a {
     .header .right .name {
       cursor: pointer;
       margin-right: 10px; }
-      .header .right .name .user {
+      .header .right .name .account {
         color: #00c0ff; }
-        .header .right .name .user .triangle {
+        .header .right .name .account .triangle {
           font-size: 12px; }
 
 /**

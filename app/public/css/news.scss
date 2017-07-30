@@ -146,7 +146,7 @@
 	list-style: none
 }
 
-.news-section .container .comments .comment .comment--userpic {
+.news-section .container .comments .comment .comment--accountpic {
 	position: absolute;
 	left: -13px;
 	top: -8px;
@@ -156,7 +156,7 @@
 	border-radius: 60px
 }
 
-.news-section .container .comments .comment .comment--username a {
+.news-section .container .comments .comment .comment--accountname a {
 	display: block;
 	font-size: 16px;
 	font-weight: 600;
@@ -306,7 +306,7 @@
 		font-size: 14px
 	}
 
-	.comment--userpic {
+	.comment--accountpic {
 		position: relative!important
 	}
 

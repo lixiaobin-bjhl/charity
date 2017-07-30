@@ -7,7 +7,7 @@
     {% endblock %}
     <meta charset="utf-8">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
-    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, account-scalable=no">
     <meta name="HandheldFriendly" content="true">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,10 +19,10 @@
 </head>
 
 <body>
-    {% if userStr %}
+    {% if accountStr %}
        <script>
             window.authority = {{authority|safe}}
-            window.user = {{userStr|safe}}
+            window.account = {{accountStr|safe}}
        </script> 
     {% endif %}
     <div class="site-content">

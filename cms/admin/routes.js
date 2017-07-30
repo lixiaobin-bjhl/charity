@@ -39,8 +39,8 @@ export default [
         component: require('./modules/role/index.vue')
     },
     {
-        path: '/admin/user',
-        component: require('./modules/user/index.vue')
+        path: '/admin/account',
+        component: require('./modules/account/index.vue')
     },
     {
         path: '/admin/customField',

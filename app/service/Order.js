@@ -15,7 +15,7 @@ module.exports = app => {
          * 
          * @param {string} params.openid 操作人
          * @param {Array} params.products 商品信息
-         * @param {string} params.shippingAddress 用户收件地址
+         * @param {string} params.shippingAddress 帐号收件地址
          * @param {number} params.discountMoney 折扣信息
          * @param {number} params.status 支付状态 0 未支付  1支付成功 2 待发货 3 待收货 4交易完成
          * @param {string} params.remark 备注信息

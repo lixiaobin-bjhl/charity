@@ -3,7 +3,7 @@
 'use strict';
 
 module.exports = {
-    user: {
+    account: {
         id: 1,
         name: "用户管理",
         children: [

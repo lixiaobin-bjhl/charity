@@ -27,7 +27,7 @@ module.exports = app => {
             var CustomField = this.ctx.model.customField;
             var customField = new CustomField({
                 name: query.name,
-                author: this.ctx.session.user,
+                author: this.ctx.session.account,
                 remark: query.remark,
                 default: query.default,
 		        required: query.required,

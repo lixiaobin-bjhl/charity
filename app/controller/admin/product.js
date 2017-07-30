@@ -26,7 +26,7 @@ exports.create = function* () {
  */
 exports.index = function* () {
     var query = this.query;
-    // 如果是微信来的，不要把下架的产品返回给用户
+    // 如果是微信来的，不要把下架的产品返回给帐号
 	if (!this.helper.isajax()) {
 		query.isNotSale = 0;
 	}
@@ -60,7 +60,7 @@ exports.listByids = function* () {
 	});
 	var list = yield this.service.product.listByIds(pids);
 	var result = [];
-	// 把用户购买的数量回填上
+	// 把帐号购买的数量回填上
 	list.forEach((item) => {
 		item = item.toJSON();
 		var count = 1;

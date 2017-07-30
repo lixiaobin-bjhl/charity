@@ -24,9 +24,9 @@ module.exports = (options, app) => {
 
         if (requestUrl.indexOf('admin') > -1 
             && optionalSessionAdminUrl.indexOf(requestUrl) === -1) {
-                var user = this.session.user;
+                var account = this.session.account;
                 // 没有登录，就跳到登录页
-                if (!user) {
+                if (!account) {
                     this.redirect('/admin/login');
                     return;
                 }

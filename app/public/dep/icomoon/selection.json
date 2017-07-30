@@ -564,7 +564,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "user"
+          "account"
         ]
       },
       "attrs": [
@@ -573,7 +573,7 @@
       "properties": {
         "order": 95,
         "id": 4,
-        "name": "user",
+        "name": "account",
         "prevSize": 32,
         "code": 59667
       },

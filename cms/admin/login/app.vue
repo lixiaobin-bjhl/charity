@@ -6,8 +6,8 @@
             </div>
             <form ref="form" @keyup.enter="onSubmit" :model="form" label-width="80px">
                 <div class="form-li">
-                    <span class="icon-user"></span>
-                    <input type="text" id="username" name="username" placeholder="请输入手机号" v-model="form.mobile">
+                    <span class="icon-account"></span>
+                    <input type="text" id="accountname" name="accountname" placeholder="请输入手机号" v-model="form.mobile">
                 </div>
                 
                 <div class="form-li">

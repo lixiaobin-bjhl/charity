@@ -20,7 +20,7 @@ module.exports = app => {
             var NewsSubject = this.ctx.model.newsSubject;
             var newsSubject = new NewsSubject({
                 name: name,
-                author: this.ctx.session.user,
+                author: this.ctx.session.account,
                 remark: remark
             });
             newsSubject.save((err) => {
