@@ -44,6 +44,11 @@ export default [
             {
                 name: '客户案例',
                 url: '/admin/case'
+            },
+            {
+                name: '收货地址管理',
+                number: 2,
+                url: '/admin/case'
             }
         ]
     },

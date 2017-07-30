@@ -10,7 +10,10 @@ module.exports = mongoose => {
     var ObjectId = mongoose.Schema.Types.ObjectId;
     
     const accountSchema = new mongoose.Schema({
-        name: { type: String },
+        name: { 
+            type: String,
+            required: true
+        },
         password: { type: String },
         author: { 
             type: Object,
@@ -21,10 +24,15 @@ module.exports = mongoose => {
             type: Number, 
             default: 0
         },
-        roleId: { type: ObjectId },
+        roleId: { 
+            type: ObjectId 
+        },
         remark: { type: String },
         role: { type: Object },
-        type: { type: Number },
+        type: { 
+            type: Number,
+            required: true
+        },
         masterMobile: { 
             type: Number,
             default: ''

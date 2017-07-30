@@ -14,7 +14,10 @@ module.exports = mongoose => {
             type: Object,
             required: true
         },
-        openid: { type: String },
+        openid: { 
+            type: String,
+            required: true
+        },
         product: { 
             type: ObjectId,
             ref: 'product'

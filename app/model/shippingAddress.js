@@ -18,7 +18,10 @@ module.exports = mongoose => {
             type: String,
             default: ''
         },
-        openid: { type: String },
+        openid: { 
+            type: String,
+            required: true
+        },
         isDefault: { 
             type: Boolean,
             default: false

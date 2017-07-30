@@ -17,13 +17,14 @@ module.exports = (options, app) => {
     // 不需要判断权限的 API
     var optionalNoAuthApiUrl = [
         '/api/account',
+        '/api/user',
         '/api/card',
         '/api/product',
         '/api/shippingAddress',
         '/api/order'
     ];
 
-   return function* (next) { 
+    return function* (next) { 
         var request = this.request;
         var requestUrl = request.url;
         var method = request.method.toLowerCase();

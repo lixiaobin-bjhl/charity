@@ -31,10 +31,11 @@ module.exports = app => {
     
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');
-
+    
     app.resources('shippingAddress', '/api/shippingAddress/', 'admin.shippingAddress');
     app.resources('order', '/api/order/', 'admin.order');
     app.resources('account', '/api/account/', 'admin.account');
+    app.resources('user', '/api/user/', 'admin.user');
     app.resources('customField', '/api/customField/', 'admin.customField');
     app.resources('role', '/api/role/', 'admin.role');
     app.resources('card', '/api/card/', 'admin.card');
