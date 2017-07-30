@@ -29,17 +29,17 @@ export default [
             {
                 name: '订单管理',
                 number: 2,
-                url: '/admin/product'
+                url: '/admin/order'
             },
             {
                 name: '购物车管理',
                 number: 2,
-                url: '/admin/product'
+                url: '/admin/card'
             },
             {
-                name: '用户管理',
+                name: '帐号管理',
                 number: 2,
-                url: '/admin/product'
+                url: '/admin/user'
             },
             {
                 name: '客户案例',
@@ -48,7 +48,7 @@ export default [
             {
                 name: '收货地址管理',
                 number: 2,
-                url: '/admin/case'
+                url: '/admin/shippingAddress'
             }
         ]
     },

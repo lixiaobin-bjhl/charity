@@ -49,6 +49,22 @@ export default [
     {
         path: '/admin/schema',
         component: require('./modules/schema/index.vue')
+    },
+    {
+        path: '/admin/user',
+        component: require('./modules/user/index.vue')
+    },
+    {
+        path: '/admin/order',
+        component: require('./modules/order/index.vue')
+    },
+    {
+        path: '/admin/card',
+        component: require('./modules/card/index.vue')
+    },
+    {
+        path: '/admin/shipingAddress',
+        component: require('./modules/shippingAddress/index.vue')
     }
 ];
 

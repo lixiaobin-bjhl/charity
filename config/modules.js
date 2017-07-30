@@ -5,22 +5,22 @@
 module.exports = {
     account: {
         id: 1,
-        name: "用户管理",
+        name: "帐户管理",
         children: [
             {
-                name: '用户列表',
+                name: '帐户列表',
                 id: 1
             },
             {
-                name: '增加用户',
+                name: '增加帐户',
                 id: 2
             },
             {
-                name: '编辑用户',
+                name: '编辑帐户',
                 id: 3
             },
             {
-                name: '删除用户',
+                name: '删除帐户',
                 id: 4
             }
         ]
@@ -154,6 +154,16 @@ module.exports = {
             {
                 name: '删除自定义字段',
                 id: 4
+            }
+        ]
+    },
+    user: {
+        id: 7,
+        name: "用户信息",
+        children: [
+            {
+                name: '用户列表',
+                id: 1
             }
         ]
     }

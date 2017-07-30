@@ -9,7 +9,7 @@
     <meta name="description" content="舍利果微信小程序生成平台">
     <meta name="keywords" content="舍利果,微信小程序">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
-    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, account-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
