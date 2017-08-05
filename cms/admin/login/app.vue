@@ -1,12 +1,12 @@
 <template>
     <div class="login-wrap">
         <div class="login">
-            <div class="login-logo">
-                <img src="/public/img/logo.png" style="width:250px; height:auto;" alt="logo">
+            <div class="logo">
+                <span class="icon icon-moon middle"></span><span class="middle">AppMoon</span>
             </div>
             <form ref="form" @keyup.enter="onSubmit" :model="form" label-width="80px">
                 <div class="form-li">
-                    <span class="icon-account"></span>
+                    <span class="icon-user"></span>
                     <input type="text" id="accountname" name="accountname" placeholder="请输入手机号" v-model="form.mobile">
                 </div>
                 

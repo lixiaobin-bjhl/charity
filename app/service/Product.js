@@ -110,6 +110,13 @@ module.exports = app => {
                 var payPrice = minus(item.price, item.discountPrice || 0);
                 item.priceStr = currency(payPrice);
                 item.payPrice = payPrice;
+                item.specifications = item.specifications.map((item)=> {
+                    return {
+                        id: item.id,
+                        name: specification(item.id),
+                        value: item.value
+                    }
+                });
                 result.push(item);
             });
             return result;

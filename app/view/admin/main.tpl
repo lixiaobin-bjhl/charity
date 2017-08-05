@@ -1,7 +1,7 @@
 {% extends "../common/layout.tpl" %}
 
 {% block title %}
-    <title>charity管理</title>
+    <title>AppMoon后台管理系统</title>
 {% endblock %}
 
 {% block css %}

@@ -40,9 +40,7 @@ exports.getListByOpenid = function * () {
 
     var list = yield this.service.card.getListByOpenid(opendid);
 
-    this.body = this.helper.success({
-        list: list
-    });
+    this.body = this.helper.success(list);
 }
 
 /**

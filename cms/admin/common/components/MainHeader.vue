@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-            <a href="/admin">
-                <img class="logo" src="/public/img/logo.png" style="width:130px; height:auto; margin:10px 0 0 10px;" alt="logo">
+            <a href="/admin" class="logo">
+                 <span class="icon icon-moon"></span><span>AppMoon</span>
             </a>
             <div class="right">
                 <div class="name">

@@ -8,12 +8,12 @@
 export default [
     {
         name: '首页',
-        icon: 'el-icon-message',
+        icon: 'icon-home',
         url: '/admin/home',
     },
     {
         name: '内容管理',
-        icon: 'el-icon-message',
+        icon: 'icon-content',
         url: '/admin/news',
         children: [
             {

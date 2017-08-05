@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     {% block title %}
-        <title>charity</title>
+        <title>AppMoon</title>
     {% endblock %}
     <meta charset="utf-8">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
-    <link rel="shortcut icon" href="http://opdjozubd.bkt.clouddn.com/favicon.ico" />
+    <link rel="shortcut icon" href="http://otzuzbqja.bkt.clouddn.com/favicon.ico" />
     <link rel="stylesheet" href="/public/scripts/common.css"/>
     {% block css %}
     {% endblock %}
@@ -33,7 +33,7 @@
 
     {% block footer %}
         <div class="bfooter">
-            COPYRIGHT (©) 2017 舍利果 微信小程序平台 - CMS内空管理系统
+            COPYRIGHT (©) 2017 AppMoon 微信小程序平台 - CMS内空管理系统
             <a class="beian" href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002492</a>
         </div>
     {% endblock  %}

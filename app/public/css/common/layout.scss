@@ -84,7 +84,6 @@ video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-family: "Microsoft YaHei";
 }
 
 
@@ -224,15 +223,6 @@ a {
 	height: 80px;
 }
 
-.hw-menu-active {
-	/*background-color: #0086da;
-	border-radius: 5px;*/
-	border-bottom: 4px solid #0086da;
-}
-
-.hw-menu-active a {
-	color: #0086da;
-}
 
 .hw-menu li:hover {
 	border-bottom: 4px solid #f0eeed;

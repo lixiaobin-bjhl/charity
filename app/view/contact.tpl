@@ -1,7 +1,7 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>舍利果-联系我们</title>
+    <title>AppMoon-联系我们</title>
 {% endblock %}
 
 {% block css %}

@@ -3,18 +3,18 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     {% block title %}
-        <title>舍利果</title>
+        <title>AppMoon</title>
     {% endblock %}
     <meta charset="utf-8">
-    <meta name="description" content="舍利果微信小程序生成平台">
-    <meta name="keywords" content="舍利果,微信小程序">
+    <meta name="description" content="AppMoon微信小程序生成平台">
+    <meta name="keywords" content="AppMoon,微信小程序">
     <meta name="robots" content="NOINDEX,NOFOLLOW">
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
-    <link rel="shortcut icon" href="http://opdjozubd.bkt.clouddn.com/favicon.ico" />
+    <link rel="shortcut icon" href="http://otzuzbqja.bkt.clouddn.com/favicon.ico" />
     <link rel="stylesheet" href="/public/scripts/ccommon.css"/>
     {% block css %}
     {% endblock %}
@@ -22,9 +22,11 @@
 
 <body>
     <header class="am-topbar header">
-        <div class="am-container-1">
+        <div>
             <div class="left hw-logo">
-               <a href="/"><img src="public/img/logo.png" width="200" alt="logo"></a>
+               <a href="/" class="logo">
+                     <span class="icon icon-moon"></span><span>AppMoon</span>
+               </a>
             </div>
             <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
                 data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
@@ -42,7 +44,7 @@
                     <li><a {% if page=='about' %} class="hw-menu-active" {% endif %} href="/about" >关于我们</a></li>
                     <li><a {% if page=='contact' %} class="hw-menu-active" {% endif %} href="/contact">联系我们</a></li>
                     <li><a {% if page=='team' %} class="hw-menu-active" {% endif %} href="/team">团队介绍</a></li>
-                    <li><a href="/admin/login">舍利果</a></li>
+                    <li><a href="/admin/login">AppMoon</a></li>
                 </ul>
             </div>
         </div>
@@ -77,7 +79,7 @@
                             <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/team">团队介绍</a></li>
                             <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/about">关于我们</a></li>
                             <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/join">加入我们</a></li>
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/admin/">舍利果</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/admin/">AppMoon</a></li>
                             <div class="clear"></div>
                         </ul>
                     </div>

@@ -1,0 +1,16 @@
+.hw-menu-active {
+    border-bottom: 4px solid $brand;
+}
+
+.hw-menu-active a {
+	color: $brand;
+}
+
+.header{
+    .logo {
+        margin: 15px 0 0 15px;
+        background: transparent;
+        color: $brand;
+    }
+    
+}

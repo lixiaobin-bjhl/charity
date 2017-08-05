@@ -1,7 +1,7 @@
 {% extends "./common/clayout.tpl" %}
 
 {% block title %}
-    <title>舍利果</title>
+    <title>AppMoon</title>
 {% endblock %}
 
 {% block css %}

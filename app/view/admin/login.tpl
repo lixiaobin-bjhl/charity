@@ -1,7 +1,7 @@
 {% extends "../common/layout.tpl" %}
 
 {% block title %}
-    <title>login</title>
+    <title>AppMoon登录</title>
 {% endblock %}
 
 {% block css %}

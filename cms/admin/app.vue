@@ -3,14 +3,14 @@
         <loading-progress :shown="$store.state.loadingProgressState"></loading-progress>
         <main-header></main-header>
         <div class="side-bar">
-            <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+            <el-menu default-active="1-0" :default-openeds="openids" class="sidebar-menu" @open="handleOpen" @close="handleClose">
                  <div v-for="(menu, index) in sidebarConfig" :key="index" v-if="menu.children">
                     <el-submenu :index="'' + index">
                         <template slot="title">
-                            <i :class="menu.icon"></i>{{menu.name}}
+                            <i class="el-icon-f" :class="menu.icon"></i>{{menu.name}}
                         </template>
                         <el-menu-item-group v-if="menu.children && menu.children.length">
-                            <el-menu-item v-if="hasAuth(item.number, 1)" v-for="(item, i) in menu.children" :key="i" :index="index + '-' + i" @click.native="changeUrl(item.url)">
+                            <el-menu-item v-if="hasAuth(item.number, 1)" v-for="(item, i) in menu.children" :key="item.number" :index="index + '-' + i" @click.native="changeUrl(item.url)">
                                 {{item.name}}
                             </el-menu-item>
                         </el-menu-item-group>
@@ -20,7 +20,7 @@
                     <el-submenu :index="'' + index">
                         <template slot="title">
                             <div @click="changeUrl(menu.url)">
-                                <i :class="menu.icon"></i>{{menu.name}}
+                                <i class="el-icon-f" :class="menu.icon"></i>{{menu.name}}
                             </div>
                         </template>
                     </el-submenu>
@@ -50,6 +50,7 @@
     export default {
         data () {
             return {
+                openids: [],
                 sidebarConfig
             };
         },
@@ -84,17 +85,51 @@
 
 <style lang="scss">
     .side-bar {
-        width: 200px;
         position: fixed;
         padding-top: 50px;
         top: 0;
         left: 0;
-        background: #eef1f6;
+        bottom: 0;
+        background: #333;
         z-index: 6;
         float: left;
-        width: 192px;
+        width: 182px;
         height: 100%;
         overflow: hidden;
         overflow-y: auto;
+        .el-menu {
+            background: transparent;
+            > div {
+                &:first-of-type {
+                    .el-submenu__icon-arrow {
+                        display: none;
+                    }
+                }
+            }
+            .el-submenu [class^=el-icon-] {
+                vertical-align: middle;
+            }
+        }
+        .el-menu-item, .el-submenu__title {
+            color: #99a3ae;
+            border-bottom: 1px solid #2c2c2c;
+            &:hover {
+                background-color: rgba(0,0,0,.13);
+            }
+        }
+        .is-opened {
+            .el-submenu__title {
+                background-color: rgba(0,0,0,.13);
+            }
+        }
+        .el-submenu.is-active .el-submenu__title {
+            border-bottom: 0;
+        }  
+        .el-menu-item-group__title {
+            padding-top: 0;
+        }
+        .is-active {
+             background-color: rgba(0,0,0,.13);
+        }
     }
 </style>

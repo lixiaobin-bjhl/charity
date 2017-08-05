@@ -12,7 +12,7 @@ var webpackConfig = require('../build/webpack.config.dev');
 var compiler = webpack(webpackConfig);
 var devMiddleware = webpackMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    quiet: true,
+    quiet: false,
     stats: {
         colors: true,
         chunks: false
