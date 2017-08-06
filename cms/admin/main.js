@@ -18,11 +18,11 @@ import {
     Message
 } from 'element-ui';
 
-
 // filter
 require('./common/filter/date');
 require('./common/filter/currency');
 require('./common/filter/compressImage');
+require('./common/filter/unitMoney');
 require('./common/filter/specification');
 
 import auth from './common/plugin/auth';

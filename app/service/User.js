@@ -30,7 +30,7 @@ module.exports = app => {
             var User = this.ctx.model.user;
             var user = new User({
                 author: {
-                    mobile: params.mobile,
+                    mobile: +params.mobile,
                 },
                 avatarUrl: params.avatarUrl,
                 city: params.city,

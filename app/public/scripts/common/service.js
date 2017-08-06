@@ -41,6 +41,7 @@ axios.interceptors.response.use(function (response) {
     }
 }, function (error) {
     toast('系统异常', 'error');
+    store.commit('HIDE_LOADING_PREGROESS');
     return Promise.reject(error);
 });
 

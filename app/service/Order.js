@@ -25,6 +25,7 @@ module.exports = app => {
          * @param {string} params.mchId 商户mchId
          * @param {string} params.outTradeNo 系统订单
          * @param {string} params.mobile 商家手机号
+         * @param {string} params.user 用户id
          * @param {string} params.expressMoney 快递费用
          * @param {number} params.totalFee 订单金额 
          *
@@ -35,6 +36,7 @@ module.exports = app => {
             var order = new Order({
                 openid: params.openid,
                 products: params.products,
+                user: params.user,
                 message: params.message,
                 expressMoney: params.expressMoney,
                 shippingAddress: params.shippingAddress,
@@ -42,7 +44,7 @@ module.exports = app => {
                 status: params.status,
                 mchId: params.mchId,
                 author: {
-                    mobile: params.mobile,
+                    mobile: +params.mobile,
                 },
                 outTradeNo: params.outTradeNo,
                 totalFee: params.totalFee
@@ -55,6 +57,21 @@ module.exports = app => {
                 }
             });
             return order;
+        }
+
+        /**
+         * 获取订单列表
+         */
+        * list () {
+            var condition = {};
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.order.find(condition)
+                .sort({createTime: -1})
+                .populate('shippingAddress', '', null)
+                .populate('user', '', null)
+                .populate('products.product', '', null);
+            return list;
         }
 
         /**

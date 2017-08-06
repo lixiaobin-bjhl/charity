@@ -14,6 +14,15 @@ exports.create = function* () {
     this.body = this.helper.success(order);
 }
 
+
+/**
+ * 获取新闻列表
+ */
+exports.index = function* () {
+    var list = yield  this.service.order.list();
+    this.body = this.helper.success(list);
+} 
+
 /**
  * 根据openid 找到订单信息
  */

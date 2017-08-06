@@ -14,6 +14,11 @@ module.exports = mongoose => {
             type: String,
             required: true
         },
+        user: {
+            type: ObjectId,
+            required: true,
+            ref: 'user'
+        },
         shippingAddress: { 
             type: ObjectId,
             ref: 'shippingAddress',

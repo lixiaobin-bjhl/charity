@@ -30,7 +30,7 @@ module.exports = app => {
                 count: params.count,
                 summary: params.summary,
                 author: {
-                    mobile: params.mobile,
+                    mobile: +params.mobile,
                 },
                 product: params.product
             });

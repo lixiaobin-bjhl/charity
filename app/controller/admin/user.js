@@ -16,7 +16,7 @@ exports.create = function* () {
     // 用户已存在就更新登录次数
     if (u) {
         var openid = yield this.service.user.updateLoginCount(openid, ++ u.loginCount);
-        this.body = this.helper.success(openid);
+        this.body = this.helper.success(u);
     } else {
         var user = yield this.service.user.add(query);
         this.body = this.helper.success(user);

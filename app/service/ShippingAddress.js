@@ -27,7 +27,7 @@ module.exports = app => {
             var shippingAddress = new ShippingAddress({
                 name: params.name,
                 author: {
-                    mobile: params.mobile,
+                    mobile: +params.mobile,
                 },
                 contactNumber: params.contactNumber,
                 address: params.address,

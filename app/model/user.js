@@ -55,5 +55,5 @@ module.exports = mongoose => {
             default: 1
         }
     });
-    return mongoose.model('User', accountSchema, 'user');
+    return mongoose.model('user', accountSchema, 'user');
 }   
