@@ -48,6 +48,10 @@ module.exports = mongoose => {
             type: Number,
             required: true
         },
+        message: {
+            type: String,
+            default: ''
+        },
         remark: {
             type: String,
             default: ''

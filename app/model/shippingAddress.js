@@ -13,6 +13,10 @@ module.exports = mongoose => {
             type: Object,
             required: true
         },
+        contactNumber: {
+            type: String,
+            required: true
+        },
         region: { type: Array },
         address: { 
             type: String,

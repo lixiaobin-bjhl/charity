@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <div class="module-wrap">user</div>
+    <div class="module-wrap">order</div>
 </template>
 
 <script>

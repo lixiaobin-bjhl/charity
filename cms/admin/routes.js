@@ -63,7 +63,7 @@ export default [
         component: require('./modules/card/index.vue')
     },
     {
-        path: '/admin/shipingAddress',
+        path: '/admin/shippingAddress',
         component: require('./modules/shippingAddress/index.vue')
     }
 ];

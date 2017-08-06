@@ -4,7 +4,7 @@
  */
 
  .list-header {
-     margin: 10px 0;
+     margin: 10px;
      .btn-group {
          @include clearfix;
          padding: 0 10px;
@@ -14,5 +14,5 @@
      }
      .el-input-group {
          width: 260px;
-     }
+    }
  }

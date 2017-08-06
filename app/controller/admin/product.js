@@ -6,8 +6,9 @@
 'use strict';
 
 
-var minus = require('../../public/scripts/function/minus');
-var currency = require('../../public/scripts/function/currency');
+var minus = require('../../public/scripts/function/minus')
+var currency = require('../../public/scripts/function/currency')
+var specification = require('../../public/scripts/function/specification')
 
 /**
  * 添加产品
@@ -73,13 +74,18 @@ exports.listByids = function* () {
 		var payPrice = minus(item.price, item.discountPrice || 0);
 		item.payPrice = payPrice;
 		item.priceStr = currency(payPrice);
+		item.specifications = item.specifications.map((item)=> {
+			return {
+				id: item.id,
+				name: specification(item.id),
+				value: item.value
+			}
+        });
 		item.count = count;
     	result.push(item);
 	});
 
-	this.body = this.helper.success({
-		list: result
-	});
+	this.body = this.helper.success(result);
 };
 
 /**

@@ -19,43 +19,45 @@
                 <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
             </div>
         </div>
-        <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="title" label="标题">
-            </el-table-column>
-            <el-table-column inline-template label="分类">
-                <div>
-                    <div v-if="row.newsSubject">
-                        {{row.newsSubject.name}}
+        <div class="list-content"> 
+            <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55"></el-table-column>
+                <el-table-column prop="title" label="标题">
+                </el-table-column>
+                <el-table-column inline-template label="分类">
+                    <div>
+                        <div v-if="row.newsSubject">
+                            {{row.newsSubject.name}}
+                        </div>
                     </div>
-                </div>
-            </el-table-column>
-            <el-table-column inline-template label="创建时间">
+                </el-table-column>
+                <el-table-column inline-template label="创建时间">
+                    <div>
+                        {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
+                    </div>
+                </el-table-column>
+                <el-table-column inline-template label="创建人">
+                    <div v-if="row.author">
+                        {{row.author.name}} 
+                    </div>
+                </el-table-column>
+                <el-table-column inline-template label="更新时间">
+                    <div>
+                        {{row.updateTime|date('yyyy-MM-dd HH:mm')}} 
+                    </div>
+                </el-table-column>
+                <el-table-column
+                fixed="right"
+                label="操作"
+                inline-template
+                width="100">
                 <div>
-                    {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
+                    <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(3, 4)">删除</el-button>
+                    <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(3, 3)">编辑</el-button>
                 </div>
-            </el-table-column>
-            <el-table-column inline-template label="创建人">
-                <div v-if="row.author">
-                    {{row.author.name}} 
-                </div>
-            </el-table-column>
-            <el-table-column inline-template label="更新时间">
-                <div>
-                    {{row.updateTime|date('yyyy-MM-dd HH:mm')}} 
-                </div>
-            </el-table-column>
-            <el-table-column
-            fixed="right"
-            label="操作"
-            inline-template
-            width="100">
-            <div>
-                <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(3, 4)">删除</el-button>
-                <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(3, 3)">编辑</el-button>
-            </div>
-            </el-table-column>
-        </el-table>
+                </el-table-column>
+            </el-table>
+        </div>
         <add v-if="addState" @save="refresh"></add>
     </div>
 </template>

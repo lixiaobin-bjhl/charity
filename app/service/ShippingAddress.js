@@ -14,7 +14,8 @@ module.exports = app => {
          * 添加配送地址
          * 
          * @param {string} params.name 收件人姓名
-         * @param {string} params.mobile 收件人手机号
+         * @param {string} params.mobile 商家手机号
+         * @param {string} params.contactNumber 收货人手机号
          * @param {string} params.address 收件地址
          * @param {string} params.openid 购买帐号
          * @param {Array} params.region 地域信息
@@ -28,6 +29,7 @@ module.exports = app => {
                 author: {
                     mobile: params.mobile,
                 },
+                contactNumber: params.contactNumber,
                 address: params.address,
                 openid: params.openid,
                 region: params.region
@@ -46,7 +48,7 @@ module.exports = app => {
          * 修改配送地址
          * 
          * @param {string} update.name 收件人姓名
-         * @param {string} update.mobile 收件人手机号
+         * @param {string} update.contactNumber 收件人手机号
          * @param {string} update.address 收件地址
          * @param {Date} update.updateTime 修改时间
          * @param {Boolean} update.isDefault 是否设置为默认收货地址

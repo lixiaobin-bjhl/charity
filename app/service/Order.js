@@ -5,13 +5,16 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+var minus = require('../public/scripts/function/minus')
+var currency = require('../public/scripts/function/currency')
+var specification = require('../public/scripts/function/specification')
 
 module.exports = app => {
 
     class Order extends app.Service {
         /**
-         * 添加到购物车
+         * 创建订单
          * 
          * @param {string} params.openid 操作人
          * @param {Array} params.products 商品信息
@@ -32,7 +35,7 @@ module.exports = app => {
             var order = new Order({
                 openid: params.openid,
                 products: params.products,
-                remark: params.remark,
+                message: params.message,
                 expressMoney: params.expressMoney,
                 shippingAddress: params.shippingAddress,
                 discountMoney: params.discountMoney,
@@ -65,38 +68,26 @@ module.exports = app => {
             .sort({createTime: -1})
             .populate('shippingAddress', '', null)
             .populate('products.product', '', null);
-
-            return list; 
-        }
-
-        /**
-         * 修改配送地址
-         * 
-         * @param {string} update.name 收件人姓名
-         * @param {string} update.mobile 收件人手机号
-         * @param {string} update.address 收件地址
-         * @param {Date} update.updateTime 修改时间
-         * @param {Boolean} update.isDefault 是否设置为默认收货地址
-         * 
-         * @reutrn {Object}
-         */
-        * put(id, update) {
-
-            var condition = {
-                _id: mongoose.Types.ObjectId(id)
-            };
-
-            this.ctx.model.order.update(condition, update, {}, (err) => {
-                if (err) {
-                    app.logger.error(err);
-                } else {
-                    app.logger.info('update order ' + id, update);
-                }
+            
+            var result = [];
+            list.forEach((item)=> {
+                item = item.toJSON();
+                item.products.forEach((n)=> {
+                    var payPrice = minus(n.product.price, n.product.discountPrice || 0);
+                    n.product.priceStr = currency(payPrice);
+                    n.product.payPrice = payPrice;
+                    n.product.specifications = n.product.specifications.map((m)=> {
+                        return {
+                            id: m.id,
+                            name: specification(m.id),
+                            value: m.value
+                        }
+                    });
+                });
+                result.push(item);
             });
-            return {
-                id
-            };
-        } 
+            return result;
+        }
     }
     return Order;
 };

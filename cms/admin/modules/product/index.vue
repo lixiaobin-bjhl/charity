@@ -29,72 +29,74 @@
                 <el-button type="text" :disabled="!multipleSelection.length" @click="batchDel">批量删除</el-button>
             </div>
         </div>
-        <el-table v-loading.body="loading" ref="table" :data="list" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column inline-template label="标题">
-                 <a href="javascript:;" @click="showDetail(row)">{{row.title}}</a>
-            </el-table-column>
-            <el-table-column inline-template label="产品图片">
-                    <div v-if="getImages(row).length">
-                        <vue-images
-                            :imgs="getImages(row)"
-                            :modalclose="modalclose"
-                            :keyinput="keyinput"
-                            :mousescroll="mousescroll"
-                            :showclosebutton="showclosebutton"
-                            :showcaption="showcaption"
-                            :imagecountseparator="imagecountseparator"
-                            :showimagecount="showimagecount"
-                            :showthumbnails="showthumbnails">
-                        </vue-images>
-                    </div>
-                    <!--
-                        <img class="radius3" :data-caption="row.title" :data-url="row.storageId|compressImage" width="60" height="60" :src="row.storageId|compressImage(60, 60)">
-                    -->
-            </el-table-column>
-            <el-table-column inline-template label="分类">
-                <div>
-                    <div v-if="row.productSubject">
-                        {{row.productSubject.name}}
-                    </div>
-                </div>
-            </el-table-column>
-            <el-table-column inline-template label="价格">
-                <div>
+        <div class="list-content">
+            <el-table v-loading.body="loading" ref="table" :data="list" @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55"></el-table-column>
+                <el-table-column inline-template label="标题">
+                    <a href="javascript:;" @click="showDetail(row)">{{row.title}}</a>
+                </el-table-column>
+                <el-table-column inline-template label="产品图片">
+                        <div v-if="getImages(row).length">
+                            <vue-images
+                                :imgs="getImages(row)"
+                                :modalclose="modalclose"
+                                :keyinput="keyinput"
+                                :mousescroll="mousescroll"
+                                :showclosebutton="showclosebutton"
+                                :showcaption="showcaption"
+                                :imagecountseparator="imagecountseparator"
+                                :showimagecount="showimagecount"
+                                :showthumbnails="showthumbnails">
+                            </vue-images>
+                        </div>
+                        <!--
+                            <img class="radius3" :data-caption="row.title" :data-url="row.storageId|compressImage" width="60" height="60" :src="row.storageId|compressImage(60, 60)">
+                        -->
+                </el-table-column>
+                <el-table-column inline-template label="分类">
                     <div>
-                        {{row.price|currency}}
+                        <div v-if="row.productSubject">
+                            {{row.productSubject.name}}
+                        </div>
                     </div>
-                </div>
-            </el-table-column>
-            <el-table-column inline-template label="优惠">
-                <div>
+                </el-table-column>
+                <el-table-column inline-template label="价格">
                     <div>
-                        {{row.discountPrice|currency}}
+                        <div>
+                            {{row.price|currency}}
+                        </div>
                     </div>
-                </div>
-            </el-table-column>
-            <el-table-column inline-template label="状态">
+                </el-table-column>
+                <el-table-column inline-template label="优惠">
+                    <div>
+                        <div>
+                            {{row.discountPrice|currency}}
+                        </div>
+                    </div>
+                </el-table-column>
+                <el-table-column inline-template label="状态">
+                    <div>
+                        {{row.isNotSale ? '已下架' : '上架' }} 
+                    </div>
+                </el-table-column>
+                <el-table-column prop="storeCount" label="库存">
+                </el-table-column>
+                <el-table-column prop="saleCount" label="销量">
+                </el-table-column>
+                <el-table-column
+                fixed="right"
+                label="操作"
+                inline-template
+                width="139">
                 <div>
-                    {{row.isNotSale ? '已下架' : '上架' }} 
+                    <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(2, 4)">删除</el-button>
+                    <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(2, 3)">编辑</el-button>
+                    <el-button @click="updateSaleStatus(row._id, 0)" v-if="row.isNotSale==1 && hasAuth(2, 3)" type="text" size="small">上架</el-button>
+                    <el-button @click="updateSaleStatus(row._id, 1)" v-if="row.isNotSale!=1 && hasAuth(2, 3)"type="text" size="small">下架</el-button>
                 </div>
-            </el-table-column>
-            <el-table-column prop="storeCount" label="库存">
-            </el-table-column>
-            <el-table-column prop="saleCount" label="销量">
-            </el-table-column>
-            <el-table-column
-            fixed="right"
-            label="操作"
-            inline-template
-            width="100">
-            <div>
-                <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(2, 4)">删除</el-button>
-                <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(2, 3)">编辑</el-button>
-                <el-button @click="updateSaleStatus(row._id, 0)" v-if="row.isNotSale==1 && hasAuth(2, 3)" type="text" size="small">上架</el-button>
-                <el-button @click="updateSaleStatus(row._id, 1)" v-if="row.isNotSale!=1 && hasAuth(2, 3)"type="text" size="small">下架</el-button>
-            </div>
-            </el-table-column>
-        </el-table>
+                </el-table-column>
+            </el-table>
+        </div>
         <add v-if="addState" @save="refresh"></add>
     </div>
 </template>

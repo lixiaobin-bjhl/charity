@@ -5,9 +5,10 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
-var minus = require('../public/scripts/function/minus');
-var currency = require('../public/scripts/function/currency');
+var mongoose = require('mongoose')
+var minus = require('../public/scripts/function/minus')
+var currency = require('../public/scripts/function/currency')
+var specification = require('../public/scripts/function/specification')
 
 module.exports = app => {
 
@@ -59,6 +60,13 @@ module.exports = app => {
                 var payPrice = minus(item.product.price, item.product.discountPrice || 0);
                 item.product.priceStr = currency(payPrice);
                 item.product.payPrice = payPrice;
+                item.product.specifications = item.product.specifications.map((item)=> {
+                    return {
+                        id: item.id,
+                        name: specification(item.id),
+                        value: item.value
+                    }
+                 });
                 result.push(item);
             });
             return result;
@@ -94,6 +102,7 @@ module.exports = app => {
                     app.logger.info('delete ' + openid + 'cards', card);
                 }
             });
+    
             return card;
         }
 
@@ -108,8 +117,7 @@ module.exports = app => {
             if (newsSubjectId) {
                 condition.newsSubjectId = mongoose.Types.ObjectId(newsSubjectId);
             } 
-            var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});
-           
+            var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});           
             return list;
         }
 

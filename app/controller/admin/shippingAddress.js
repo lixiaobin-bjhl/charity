@@ -23,9 +23,7 @@ exports.create = function* () {
 exports.listByOpenid = function* () {
     var openid = this.request.body.openid;
     var list = yield this.service.shippingAddress.listByOpenid(openid);
-    this.body = this.helper.success({
-		list	
-	});
+    this.body = this.helper.success(list);
 };
 
 /**
@@ -62,7 +60,7 @@ exports.update = function* () {
     if (query.name) {
         Object.assign(update, {
             name: query.name,
-            mobile: query.mobile,
+            contactNumber: query.contactNumber,
             address: query.address,
             region: query.region
         });

@@ -12,34 +12,36 @@
                 </div>
             </div>
         </div>
-        <el-table v-loading.body="loading" :data="list">
-            <el-table-column prop="name" label="自定义字段名称">
-            </el-table-column>
-            <el-table-column prop="typeStr" label="类型">
-            </el-table-column>
-            <el-table-column inline-template label="是否必填">
-                <div>{{row.required ? '是' : '否'}}</div>
-            </el-table-column>
-            <el-table-column prop="default" label="默认值">
-            </el-table-column>
+        <div class="list-content">
+            <el-table v-loading.body="loading" :data="list">
+                <el-table-column prop="name" label="自定义字段名称">
+                </el-table-column>
+                <el-table-column prop="typeStr" label="类型">
+                </el-table-column>
+                <el-table-column inline-template label="是否必填">
+                    <div>{{row.required ? '是' : '否'}}</div>
+                </el-table-column>
+                <el-table-column prop="default" label="默认值">
+                </el-table-column>
 
-            <el-table-column inline-template label="创建时间">
+                <el-table-column inline-template label="创建时间">
+                    <div>
+                        {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
+                    </div>
+                </el-table-column>
+
+                <el-table-column
+                fixed="right"
+                label="操作"
+                inline-template
+                width="100">
                 <div>
-                    {{row.createTime|date('yyyy-MM-dd HH:mm')}} 
+                    <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(7, 4)">删除</el-button>
+                    <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(7, 3)">编辑</el-button>
                 </div>
-            </el-table-column>
-
-            <el-table-column
-            fixed="right"
-            label="操作"
-            inline-template
-            width="100">
-            <div>
-                <el-button @click="del(row)" type="text" size="small" v-if="hasAuth(7, 4)">删除</el-button>
-                <el-button @click="modify(row)" type="text" size="small" v-if="hasAuth(7, 3)">编辑</el-button>
-            </div>
-            </el-table-column>
-        </el-table>
+                </el-table-column>
+            </el-table>
+        </div>
         <add v-if="addState" @save="refresh"></add>
     </div>
 </template>
