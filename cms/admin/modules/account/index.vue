@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <div class="module-wrap">
+    <div class="module-wrap" v-loading.fullscreen.lock="loading">
         <div class="list-header">
             <div class="btn-group">
                 <div class="right">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="list-content"> 
-            <el-table v-loading.body="loading" ref="table" :data="list">
+            <el-table ref="table" :data="list">
                 <el-table-column prop="name" label="用户姓名">
                 </el-table-column>
                 <el-table-column inline-template label="头像">

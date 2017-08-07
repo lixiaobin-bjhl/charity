@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <div>
+    <div v-loading.fullscreen.lock="loading">
         <div class="list-header">
             <div class="btn-group">
                 <div class="right">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="list-content">
-            <el-table v-loading.body="loading" :data="list">
+            <el-table :data="list">
                 <el-table-column prop="name" label="自定义字段名称">
                 </el-table-column>
                 <el-table-column prop="typeStr" label="类型">

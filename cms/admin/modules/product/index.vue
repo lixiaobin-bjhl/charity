@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <div class="module-wrap">
+    <div class="module-wrap" v-loading.fullscreen.lock="loading">
         <transition name="slide-right" :appear="true" transition="transition">
 	        <detail v-if="$store.state.product.showDetailState" :pid="pid"></detail>
 	    </transition>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="list-content">
-            <el-table v-loading.body="loading" ref="table" :data="list" @selection-change="handleSelectionChange">
+            <el-table ref="table" :data="list" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column inline-template label="标题">
                     <a href="javascript:;" @click="showDetail(row)">{{row.title}}</a>

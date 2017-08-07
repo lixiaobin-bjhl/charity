@@ -4,7 +4,7 @@
 -->
 
 <template>
-    <div>
+    <div v-loading.fullscreen.lock="loading">
         <div class="list-header">
             <el-form>
                 <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="list-content"> 
-            <el-table v-loading.body="loading" :data="list" @selection-change="handleSelectionChange">
+            <el-table :data="list" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column prop="title" label="标题">
                 </el-table-column>

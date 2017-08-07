@@ -4,8 +4,8 @@
 -->
 
 <template>
-    <div class="list-content">
-         <el-table v-loading.body="loading" :data="list">
+    <div class="list-content" v-loading.fullscreen.lock="loading">
+         <el-table :data="list">
                 <el-table-column inline-template label="用户">
                     <div>
                         {{row.user && row.user.nickName}} 

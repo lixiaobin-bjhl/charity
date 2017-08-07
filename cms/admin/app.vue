@@ -3,7 +3,7 @@
         <loading-progress :shown="$store.state.loadingProgressState"></loading-progress>
         <main-header></main-header>
         <div class="side-bar">
-            <el-menu default-active="1-0" :default-openeds="openids" class="sidebar-menu" @open="handleOpen" @close="handleClose">
+            <el-menu :default-active="active" :default-openeds="openids" class="sidebar-menu" @open="handleOpen" @close="handleClose">
                  <div v-for="(menu, index) in sidebarConfig" :key="index" v-if="menu.children">
                     <el-submenu :index="'' + index">
                         <template slot="title">
@@ -50,9 +50,24 @@
     export default {
         data () {
             return {
+                active: '',
                 openids: [],
                 sidebarConfig
             };
+        },
+        mounted () {
+            var path = this.$route.path;
+            var active = '';
+
+            sidebarConfig.forEach((m1, m)=> {
+                m1.children && m1.children.some((n1, n)=> {
+                    if (n1.url === path) {
+                        active = m + '-' + n; 
+                        return true;
+                    }
+                });
+            });
+            this.active = active;
         },
         computed: {
             breadOptions() {
@@ -95,6 +110,7 @@
         float: left;
         width: 182px;
         height: 100%;
+        z-index: 51;
         overflow: hidden;
         overflow-y: auto;
         .el-menu {
