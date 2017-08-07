@@ -18,6 +18,14 @@ exports.create = function* () {
 }
 
 /**
+ * 获取购物车列表 
+ */
+exports.index = function* () {
+    var list = yield  this.service.card.list();
+    this.body = this.helper.success(list);
+}
+
+/**
  * 删除购物车信息 
  */
 exports.destroy = function *() {

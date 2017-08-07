@@ -23,3 +23,11 @@ exports.create = function* () {
     }
 
 };
+
+/**
+ * 获取用户列表 
+ */
+exports.index = function* () {
+    var list = yield  this.service.user.list();
+    this.body = this.helper.success(list);
+}

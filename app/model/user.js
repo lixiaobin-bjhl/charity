@@ -26,10 +26,6 @@ module.exports = mongoose => {
             type: String,
             default: ''
         },
-        province: {
-            type: String,
-            default: ''
-        },
         gender: {
             type: Number,
         },
@@ -42,7 +38,7 @@ module.exports = mongoose => {
             default: ''
         },
         province: {
-            type: '',
+            type: String,
             default: ''
         },
         openid: {
@@ -53,6 +49,14 @@ module.exports = mongoose => {
         loginCount: {
             type: Number,
             default: 1
+        },
+        createTime: { 
+            type: Date,
+            default: Date.now
+        },
+        updateTime: { 
+            type: Date,
+            default: Date.now
         }
     });
     return mongoose.model('user', accountSchema, 'user');

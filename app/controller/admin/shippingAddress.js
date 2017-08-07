@@ -6,7 +6,7 @@
 'use strict';
 
 /**
- * 添加新闻分类 
+ * 添加收货地址
  */
 exports.create = function* () {
     var query = this.request.body;
@@ -15,6 +15,16 @@ exports.create = function* () {
 	this.body = this.helper.success({
 		shippingAddress	
 	});
+};
+
+
+/**
+ * 获取收货地址列表
+ */
+exports.index = function* () {
+    var query = this.query;
+	var list = yield this.service.shippingAddress.list(query);
+	this.body = this.helper.success(list);
 };
 
 /**

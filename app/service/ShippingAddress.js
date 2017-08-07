@@ -29,6 +29,7 @@ module.exports = app => {
                 author: {
                     mobile: +params.mobile,
                 },
+                user: params.user,
                 contactNumber: params.contactNumber,
                 address: params.address,
                 openid: params.openid,
@@ -42,6 +43,19 @@ module.exports = app => {
                 }
             });
             return shippingAddress;
+        }
+
+        /**
+         * 获取收货地址列表
+         */
+        * list () {
+            var condition = {};
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.shippingAddress.find(condition)
+                .sort({createTime: -1})
+                .populate('user', '', null)
+            return list;
         }
 
         /**

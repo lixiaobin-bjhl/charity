@@ -6,9 +6,16 @@
 'use strict';
 
 module.exports = mongoose => {
+
+    var ObjectId = mongoose.Schema.Types.ObjectId;
     
     const shippingAddressSchema = new mongoose.Schema({
         name: { type: String },
+        user: {
+            type: ObjectId,
+            required: true,
+            ref: 'user'
+        },
         author: { 
             type: Object,
             required: true

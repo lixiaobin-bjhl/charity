@@ -23,12 +23,11 @@ module.exports = app => {
         * add(params) {
             var Card = this.ctx.model.card;
 
-            console.log(123);
-
             var card = new Card({
                 openid: params.openid,
                 count: params.count,
                 summary: params.summary,
+                user: params.user,
                 author: {
                     mobile: +params.mobile,
                 },
@@ -107,17 +106,17 @@ module.exports = app => {
         }
 
         /**
-         * 查找新闻列表
+         * 查找购物车列表
          * @param {Object} condition 列表查询条件
          */
         * list(query = {}) {
             var condition = {};
-            var newsSubjectId = query.newsSubjectId;
-
-            if (newsSubjectId) {
-                condition.newsSubjectId = mongoose.Types.ObjectId(newsSubjectId);
-            } 
-            var list = yield this.ctx.model.news.find(condition).sort({createTime: -1});           
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.card.find(condition)
+                .sort({createTime: -1})
+                .populate('user', '', null)
+                .populate('product', '', null)
             return list;
         }
 
@@ -174,7 +173,7 @@ module.exports = app => {
         }
         
         /**
-         * 更新新闻 
+         * 更新购物车
          * @param {string} id 新闻id
          * @param {Object} update 更新内容
          */

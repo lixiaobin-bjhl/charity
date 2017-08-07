@@ -158,11 +158,51 @@ module.exports = {
         ]
     },
     user: {
-        id: 7,
+        id: 8,
         name: "用户信息",
         children: [
             {
                 name: '用户列表',
+                id: 1
+            }
+        ]
+    },
+    card: {
+        id: 9,
+        name: "购物车管理",
+        children: [
+            {
+                name: '购物车列表',
+                id: 1
+            }
+        ]
+    },
+    shippingAddress: {
+        id: 11,
+        name: "收货地址管理",
+        children: [
+            {
+                name: '收货地址列表',
+                id: 1
+            }
+        ]
+    },
+    order: {
+        id: 12,
+        name: "订单管理",
+        children: [
+            {
+                name: '订单列表',
+                id: 1
+            }
+        ]
+    },
+    schema: {
+        id: 13,
+        name: "模板中心",
+        children: [
+            {
+                name: '模板中心列表',
                 id: 1
             }
         ]

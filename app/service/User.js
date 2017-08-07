@@ -21,7 +21,6 @@ module.exports = app => {
          * @param {string} params.gender 用户姓别
          * @param {string} params.language 用户使用的微信语言版本
          * @param {string} params.nickName 用户昵称
-         * @param {string} params.province 用户所在省
          * @param {string} params.openid 用户的openid
          * 
          * @return {Object}
@@ -39,7 +38,6 @@ module.exports = app => {
                 gender: params.gender,
                 language: params.language,
                 nickName: params.nickName,
-                province: params.province,
                 openid: params.openid
             });
             user.save((err) => {
@@ -65,6 +63,19 @@ module.exports = app => {
             };
             var user = yield this.ctx.model.user.findOne(condition);
             return user;
+        }
+
+        /**
+         * 查找用户列表
+         * @param {Object} condition 列表查询条件
+         */
+        * list(query = {}) {
+            var condition = {};
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.user.find(condition)
+                .sort({createTime: -1})
+            return list;
         }
 
         /**
