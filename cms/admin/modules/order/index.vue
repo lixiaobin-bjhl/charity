@@ -76,7 +76,16 @@
              */
             deliver (row) {
                 this.selectedOrder = row;
-                this.deliverState = true;
+                if (!row.status) {
+                    this.$confirm('该订单还未支付，是否要发货?', '提示', {
+                        type: 'warning'
+                    })
+                    .then(()=> {
+                        this.deliverState = true;
+                    });
+                } else {
+                    this.deliverState = true;
+                }
             },
             
             /**
