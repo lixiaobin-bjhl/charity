@@ -97,8 +97,12 @@ module.exports = mongoose => {
             default: ''
         },
         expressType: {
-            type: Number,
-            default: 1
+            type: String,
+            default: ''
+        },
+        expressRemark: {
+            type: String,
+            default: ''
         },
         totalFee: {
             type: Number,

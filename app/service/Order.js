@@ -118,7 +118,6 @@ module.exports = app => {
          * @reutrn {Object}
          */
         * put(id, update) {
-
             var condition = {
                 _id: mongoose.Types.ObjectId(id)
             };

@@ -14,3 +14,11 @@ export function list (params = {}) {
     return get('/api/order');
 }
 
+/**
+ * 发货更改订单状态
+ */
+export function update (id, params = {}) {
+    return put('/api/order/' + id, params);
+}
+
+

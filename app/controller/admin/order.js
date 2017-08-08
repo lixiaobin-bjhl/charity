@@ -37,17 +37,38 @@ exports.listByOpenid = function* () {
  */
 exports.update = function* () {
 	var id =  this.params.id;
-	var query = this.request.body;
-	var update = {
-		updateTime: new Date(),
-        status: query.status,
-        transactionId: query.transactionId,
-        bankType: query.bankType,
-        feeType: query.feeType,
-        tradeType: query.tradeType,
-        payTime: query.timeEnd,
-        cashFee: query.cashFee
-	};
+    var query = this.request.body;
+    var update = {};
+    
+    // 发货
+    if (query.expressType) {
+        update = {
+            expressType: query.expressType,
+            expressNumber: query.expressNumber,
+            status: query.status,
+            updateTime: new Date(),
+            expressRemark: query.expressRemark
+        };
+    // 结束订单
+    } else if (query.status == 3) {
+        update = {
+            status: 3,
+            updateTime: new Date()
+        };
+    // 支付成功 
+    } else {
+        update = {
+            updateTime: new Date(),
+            status: query.status,
+            transactionId: query.transactionId,
+            bankType: query.bankType,
+            feeType: query.feeType,
+            tradeType: query.tradeType,
+            payTime: query.timeEnd,
+            cashFee: query.cashFee
+        };
+    }
+
 	var result = yield this.service.order.put(id, update);
 	this.body = this.helper.success(result);
 };

@@ -23,7 +23,17 @@ export default {
             id: 3,
             name: '已完成'
         }
-    ]
+    ],
+    deliverRules: {
+        expressType: {
+            required: true,
+            message: '请选择快递类型'
+        },
+        expressNumber: {
+            required: true,
+            message: '请填写快递单号'
+        }
+    }
 }
 
 
