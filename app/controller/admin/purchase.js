@@ -37,6 +37,7 @@ module.exports = app => {
         * getPrepayId() {
             var query = this.ctx.request.body;
             query.body = query.body.toString("utf-8");
+
             var sign = getMd5Sign(query);
 
             var formData = '<xml>';
@@ -54,6 +55,7 @@ module.exports = app => {
             formData += '<spbill_create_ip>' + query.spbill_create_ip + '</spbill_create_ip>';
             formData += '</xml>';
 
+            this.ctx.app.logger.info('prepayid', formData);
             var res = yield getUnifiedorder(formData);
             this.ctx.body = res;
         }
@@ -67,6 +69,7 @@ module.exports = app => {
                 object: true
             });
             data = data.xml;
+
             this.ctx.app.logger.info('purchase notice body', data);
             // 更新一下订单信息
             yield this.ctx.service.order.put(data.attach, {
