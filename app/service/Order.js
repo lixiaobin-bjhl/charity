@@ -105,6 +105,36 @@ module.exports = app => {
             });
             return result;
         }
+
+        /**
+         * 修改订单状态
+         * 
+         * @param {string} update.name 收件人姓名
+         * @param {string} update.mobile 收件人手机号
+         * @param {string} update.address 收件地址
+         * @param {Date} update.updateTime 修改时间
+         * @param {Boolean} update.isDefault 是否设置为默认收货地址
+         * 
+         * @reutrn {Object}
+         */
+        * put(id, update) {
+
+            var condition = {
+                _id: mongoose.Types.ObjectId(id)
+            };
+
+            this.ctx.model.order.update(condition, update, {}, (err) => {
+                if (err) {
+                    app.logger.error(err);
+                } else {
+                    app.logger.info('update order ' + id, update);
+                }
+            });
+            return {
+                id
+            };
+        } 
+
     }
     return Order;
 };
