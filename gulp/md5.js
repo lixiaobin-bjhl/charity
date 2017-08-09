@@ -19,7 +19,7 @@ gulp.task('md5:css', ['view'], function () {
         .pipe(gulp.dest('dist/public'));
 });
 
-gulp.task('md5:script', ['view', 'vendor'], function(cb) {
+gulp.task('md5:script', ['view', 'vendor'], function() {
     gulp.src([
        'dist/public/**/*.js',
     ])

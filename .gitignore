@@ -4,7 +4,7 @@ npm-debug.log
 coverage/
 .idea/
 .cache/
-dist
+#dist
 !node_modules/**/dist/
 run/
 .DS_Store
