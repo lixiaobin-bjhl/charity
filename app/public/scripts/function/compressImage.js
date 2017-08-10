@@ -43,17 +43,16 @@ var compressImage = function (storageId, options = {}) {
 
     result = 'http://opdjozubd.bkt.clouddn.com/'
         + storageId
-        + '?imageMogr2';
+        + '?imageView2/2';
 
     if (!width && !height) {
         return result;
     }
-
-    if (width || height) {
-        return result += '/crop/'
-            + (width || '')
-            + 'x'
-            + (height || '');
+    if (width) {
+        return result += '/w' + width;
+    }
+    if (height) {
+        return result = '/w' + height;
     }
 };
 
