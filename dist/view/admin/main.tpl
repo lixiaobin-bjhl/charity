@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block script %}
-    <script src="/public/scripts/main_e9fc5a09ec.js"></script>
+    <script src="/public/scripts/main_f9b60ad2df.js"></script>
 {% endblock %}
 
 </html>

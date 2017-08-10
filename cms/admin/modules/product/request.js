@@ -87,7 +87,12 @@ export function uptoken () {
  * @param {Object} params.file 上传图片本身
  */
 export function upload (params) {
-    return post('http://up-z2.qiniu.com', params)
+    var protocol = window.location.protocol;
+    var url = 'http://up-z2.qiniu.com';
+    if (protocol == 'https:') {
+        url = 'https://up.qbox.me';
+    }
+    return post(url, params)
 }
 
 
