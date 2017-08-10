@@ -90,7 +90,7 @@ export function upload (params) {
     var protocol = window.location.protocol;
     var url = 'http://up-z2.qiniu.com';
     if (protocol == 'https:') {
-        url = 'https://up.qbox.me';
+        url = 'https://up-z2.qbox.me';
     }
     return post(url, params)
 }
