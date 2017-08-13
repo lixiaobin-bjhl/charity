@@ -69,10 +69,10 @@
                     </div>
                 </li>
                 <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 ">
-                    <div class="part-5-title">相关链接</div>
+                    <div class="part-5-title">友情链接</div>
                     <div class="part-5-words2">
                         <ul class="part-5-words2-ul">
-                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/solution">解决方案</a></li>
+                            <li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="https://m.kuaidi100.com/" target="_blank">快递查询</a></li>
                             {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/product">产品中心</a></li>#}
                             {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="/case">客户案例</a></li>#}
                             {#<li class="am-u-lg-4 am-u-md-6 am-u-sm-4"><a href="service-center.html">服务中心</a></li>#}
