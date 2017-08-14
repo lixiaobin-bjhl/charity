@@ -206,5 +206,15 @@ module.exports = {
                 id: 1
             }
         ]
+    },
+    message: {
+        id: 13,
+        name: "消息中心",
+        children: [
+            {
+                name: '消息中心列表',
+                id: 1
+            }
+        ]
     }
 }

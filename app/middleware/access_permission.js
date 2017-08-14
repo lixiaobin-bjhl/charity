@@ -21,13 +21,16 @@ module.exports = (options, app) => {
         '/api/card',
         '/api/product',
         '/api/shippingAddress',
-        '/api/order'
+        '/api/order',
+        '/api/tool',
+        '/api/message'
     ];
 
     return function* (next) { 
         var request = this.request;
         var requestUrl = request.url;
         var method = request.method.toLowerCase();
+
         console.log(requestUrl);
         if (requestUrl.indexOf('api') > -1) {
 

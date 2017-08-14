@@ -7,6 +7,7 @@ module.exports = appInfo => {
     const config = {};
     var env = process.env.NODE_ENV;
     var viewPath = env === 'production' ? 'dist/view' : 'app/view';
+    console.log(appInfo.baseDir);
     var staticPath = env === 'production' ? 'dist/public' : 'app/public';
 
     // should change to your own

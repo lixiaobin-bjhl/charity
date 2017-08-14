@@ -23,6 +23,9 @@ module.exports = app => {
 
     app.get('/api/card/openid/:id', 'admin.card.getListByOpenid');
     app.get('/api/card/count/:id', 'admin.card.getCountByOpenid');
+    
+    app.get('/api/tool/getAccessToken', 'admin.tool.getAccessToken');
+    
     app.post('/api/product/l', 'admin.product.listByids');
 
     app.post('/api/shippingAddress/openid', 'admin.shippingAddress.listByOpenid');
@@ -34,6 +37,7 @@ module.exports = app => {
     
     app.resources('shippingAddress', '/api/shippingAddress/', 'admin.shippingAddress');
     app.resources('order', '/api/order/', 'admin.order');
+    app.resources('message', '/api/message/', 'admin.message');
     app.resources('account', '/api/account/', 'admin.account');
     app.resources('user', '/api/user/', 'admin.user');
     app.resources('customField', '/api/customField/', 'admin.customField');

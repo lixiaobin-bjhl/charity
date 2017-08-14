@@ -14,7 +14,6 @@ exports.create = function* () {
     this.body = this.helper.success(order);
 }
 
-
 /**
  * 获取新闻列表
  */
