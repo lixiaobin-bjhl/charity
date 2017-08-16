@@ -14,7 +14,11 @@ export function add (params) {
     return post('/api/account', {
         name: params.name,
 		remark: params.remark,
-		headPic: params.headPic,
+        headPic: params.headPic,
+        appName: params.appName,
+		appId: params.appId,
+		appSecret: params.appSecret,
+		masterOpenid: params.masterOpenid,
 		roleId: params.roleId,
 		mobile: params.mobile,
         type: params.type,

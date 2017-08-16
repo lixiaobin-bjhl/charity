@@ -15,6 +15,17 @@ module.exports = app => {
             var account = yield this.ctx.model.account.find();
             return account;
         }
+        
+        /**
+         * 根据手机号查找用户 
+         */
+        * findByMobile (mobile) {
+             var condition = {
+                mobile: +mobile
+            };
+            var account = yield this.ctx.model.account.findOne(condition);
+            return account;
+        }
 
         /**
          * 根据手机号和密码获取激活信息
@@ -52,6 +63,10 @@ module.exports = app => {
             var account = new Account({
                 name: params.name,
                 password: params.password,
+                appName: query.appName,
+			    appId: query.appId,
+			    appSecret: query.appSecret,
+			    masterOpenid: query.masterOpenid,
                 remark: params.remark,
                 mobile: params.mobile,
                 headPic: params.headPic,
@@ -76,7 +91,7 @@ module.exports = app => {
         * list(query = {}) {
             var condition = {};
             var accountSubjectId = query.accountSubjectId;
-
+            
             if (accountSubjectId) {
                 condition.accountSubjectId = mongoose.Types.ObjectId(accountSubjectId);
             } 

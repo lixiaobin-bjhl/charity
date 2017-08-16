@@ -15,6 +15,18 @@ module.exports = mongoose => {
             required: true
         },
         password: { type: String },
+        appName: {
+            type: String
+        },
+        appId: { 
+            type: String
+        },
+        appSecret: {
+            type: String
+        },
+        masterOpenid: {
+            type: String
+        },
         author: { 
             type: Object,
             required: true

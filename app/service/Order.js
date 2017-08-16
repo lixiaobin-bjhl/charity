@@ -60,6 +60,19 @@ module.exports = app => {
         }
 
         /**
+         * 根据订单id找查订单 
+         */
+        * findById (id) {
+            var id = mongoose.Types.ObjectId(id);
+            var order = yield this.ctx.model.order
+                .findById(id)
+                .populate('shippingAddress', '', null)
+                .populate('user', '', null)
+                .populate('products.product', '', null);
+            return order;
+        }
+
+        /**
          * 获取订单列表
          */
         * list () {

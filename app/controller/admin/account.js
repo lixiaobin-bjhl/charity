@@ -33,7 +33,12 @@ exports.create = function* () {
 
 	// 登录
 	if (account) {
-		this.session.account = account;
+		this.session.account = {
+			type: account.type,
+			mobile: account.mobile,
+			_id: account._id,
+			masterMobile: account.masterMobile
+		};
 		var role = yield this.service.role.findById(account.roleId)
 		var authority = role.authority;
 		// TODO(lixiaobin) authority 存储到redis中	
@@ -110,6 +115,10 @@ exports.update = function* () {
 		update = {
 			updateTime: new Date(),
 			name: query.name,
+			appName: query.appName,
+			appId: query.appId,
+			appSecret: query.appSecret,
+			masterOpenid: query.masterOpenid,
 			roleId: query.roleId,
 			mobile: query.mobile,
 			headPic: query.headPic,

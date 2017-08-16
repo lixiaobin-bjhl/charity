@@ -113,6 +113,9 @@
         z-index: 51;
         overflow: hidden;
         overflow-y: auto;
+        .sidebar-menu {
+            padding-bottom: 50px;
+        }
         .el-menu {
             background: transparent;
             > div {

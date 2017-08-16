@@ -44,10 +44,12 @@ exports.update = function* () {
         update = {
             expressType: query.expressType,
             expressNumber: query.expressNumber,
+            isSendExpressTemplate: query.isSendExpressTemplate,
             status: query.status,
             updateTime: new Date(),
             expressRemark: query.expressRemark
         };
+
     // 结束订单
     } else if (query.status == 3) {
         update = {
@@ -67,7 +69,24 @@ exports.update = function* () {
             cashFee: query.cashFee
         };
     }
+    console.log(update);
 
-	var result = yield this.service.order.put(id, update);
+    var result = yield this.service.order.put(id, update);
+    
+    // // 通知用户
+    // if (query.isSendExpressTemplate) {
+    //     var order = yield this.service.order.findById(id);
+    //     var account = yield this.service.account.findByMobile(order.author.mobile);
+    //     var token = yield this.service.tool.getAccessToken(account.appId, account.appSecret);
+    //     var result = yield this.service.message.send({
+    //         token,
+    //         touser: order.openid,
+    //         templateId: query.templateId,
+    //         data: query.data,
+    //         formId: query.formId
+	//     });
+    //     // var user =  yield 
+    // }
+
 	this.body = this.helper.success(result);
 };

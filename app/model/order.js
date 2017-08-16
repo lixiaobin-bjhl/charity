@@ -104,6 +104,10 @@ module.exports = mongoose => {
             type: String,
             default: ''
         },
+        isSendExpressTemplate: {
+            type: Boolean,
+            default: false
+        },
         totalFee: {
             type: Number,
             required: true

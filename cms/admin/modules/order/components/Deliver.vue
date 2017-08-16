@@ -27,6 +27,14 @@
                 <el-input placeholder="快递单号" v-model.trim="form.expressNumber" :maxlength="30" style="width:300px"></el-input>
             </el-form-item>
 
+            <el-form-item label="给用户发送模板消息" required>
+                <el-switch
+                    v-model="form.isSendExpressTemplate"
+                    on-text="是"
+                    off-text="否">
+                </el-switch>
+            </el-form-item>
+
             <el-form-item label="备注" prop="expressRemark">
                 <el-input placeholder="备注" v-model.trim="form.expressRemark" type="textarea" :maxlength="100" style="width:300px"></el-input>
             </el-form-item> 
@@ -62,6 +70,7 @@
         data () {
             return {
                 form: {
+                    isSendExpressTemplate: true,
                     expressType: '',
                     expressRemark: '',
                     expressNumber: '',
@@ -131,6 +140,7 @@
                             expressType: form.expressType,
                             expressNumber: form.expressNumber,
                             expressRemark: form.expressRemark,
+                            isSendExpressTemplate: form.isSendExpressTemplate,
                             status: 2
                         };
                         

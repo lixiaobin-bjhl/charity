@@ -30,8 +30,7 @@ module.exports = (options, app) => {
         var request = this.request;
         var requestUrl = request.url;
         var method = request.method.toLowerCase();
-
-        console.log(requestUrl);
+        
         if (requestUrl.indexOf('api') > -1) {
 
                 // 微信过来的api，并且是get请求，不走验证了

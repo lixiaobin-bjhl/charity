@@ -25,6 +25,30 @@ export default  {
                 message: '请选择所属角色'
             }
         ],
+        appId: [
+            {
+                required: true,
+                message: '请输入appId'
+            }
+        ],
+        appName: [
+            {
+                required: true,
+                message: '请输入appName'
+            }
+        ],
+        appSecret: [
+            {
+                required: true,
+                message: '请输入appSecret'
+            }
+        ],
+        masterOpenid: [
+            {
+                required: true,
+                message: '请输入masterOpenid'
+            }
+        ],
         type: [
             {
                 required: true,

@@ -5,7 +5,7 @@
 
 <template>
     <el-dialog :title="account ? '编辑用户' : '新增用户'" v-model="$parent.addState" size="small">
-        <el-form label-width="100px" :model="form" :rules="rules" ref="form" v-loading="loading">
+        <el-form label-width="120px" :model="form" :rules="rules" ref="form" v-loading="loading">
             <el-form-item label="用户姓名" required prop="name">
                 <el-input placeholder="请输入1-10字内的用户姓名" :maxlength="10" v-model="form.name"></el-input>
             </el-form-item>
@@ -28,6 +28,18 @@
                 <el-radio-group v-model="form.type">
                     <el-radio :label="item.id"  v-for="item in accountTypeOption" :disabled="currentAccount.type == 2 || (currentAccount.type == 1 && item.id <= 1)" :key="item.id">{{item.name}}</el-radio>
                 </el-radio-group>
+            </el-form-item>
+            <el-form-item label="app名称" required prop="appName" v-if="form.type == 1">
+                 <el-input placeholder="请输入app名称"  :maxlength="20" v-model.trim="form.appName"></el-input>
+            </el-form-item>
+            <el-form-item label="AppId" required prop="AppId" v-if="form.type == 1">
+                 <el-input placeholder="请输入appId"  :maxlength="30" v-model.trim="form.appId"></el-input>
+            </el-form-item>
+            <el-form-item label="appSecret" required prop="appSecret" v-if="form.type == 1">
+                 <el-input placeholder="请输入appSecret" :maxlength="30" v-model.trim="form.appSecret"></el-input>
+            </el-form-item>
+            <el-form-item label="masterOpenid" required prop="masterOpenid" v-if="form.type == 1">
+                 <el-input placeholder="请输入masterOpenid"  :maxlength="30" v-model.trim="form.masterOpenid"></el-input>
             </el-form-item>
             <el-form-item label="主账号手机" required prop="masterMobile" v-if="form.type == 2">
                  <el-input placeholder="请输入主账号手机" :disabled="currentAccount.type == 1 " :maxlength="11" v-model="form.masterMobile"></el-input>
@@ -64,6 +76,10 @@
                 form: {
                     name: '',
                     headPic: '',
+                    appName: '',
+                    appId: '',
+                    appSecret: '',
+                    masterOpenid: '',
                     password: '',
                     mobile: '',
                     remark: '',
@@ -95,6 +111,10 @@
                     headPic: account.headPic,
                     mobile: account.mobile,
                     type: account.type,
+                    appName: account.appName,
+			        appId: account.appId,
+			        appSecret: account.appSecret,
+			        masterOpenid: account.masterOpenid,
                     masterMobile: account.masterMobile,
                     roleId: account.roleId
                 });
@@ -158,6 +178,10 @@
                             type: form.type,
                             remark: form.remark,
                             masterMobile: form.masterMobile,
+                            appName: form.appName,
+			                appId: form.appId,
+			                appSecret: form.appSecret,
+			                masterOpenid: form.masterOpenid,
                             headPic: form.headPic,
                             roleId: form.roleId
                         };
