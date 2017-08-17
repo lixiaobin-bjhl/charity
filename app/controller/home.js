@@ -6,6 +6,8 @@
 'use strict';
 
 var abstractController = require('./abstractController');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = app => {
 	class HomeController extends abstractController(app) {
@@ -21,6 +23,16 @@ module.exports = app => {
 				page: 'home',
 				env: this.ctx.helper.env()
 			});
+		}
+
+		* qrcode () {
+
+			var res = this.ctx.res;
+			res.setHeader('Content-Type', 'image/jpeg');
+			var content = fs.readFileSync(path.join(__dirname, "../public/img/qrcode.png"), "binary"); 
+			res.writeHead(200, "ok");
+			res.write(content, "binary");
+			res.end();
 		}
 	}
 	return HomeController;

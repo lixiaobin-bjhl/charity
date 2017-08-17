@@ -2,6 +2,7 @@
 
 module.exports = app => {
     app.get('/', 'home.index');
+    app.get('/mp', 'home.qrcode');
     app.get('/news', 'news.index');
     app.get('/about', 'about.index');
     app.get('/case', 'case.index');
