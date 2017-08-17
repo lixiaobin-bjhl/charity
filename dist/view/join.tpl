@@ -50,6 +50,6 @@
 
 {% endblock %}
 {% block script %}
-<script src="/public/scripts/join_87f4749a9a.js"></script>
+<script src="/public/scripts/join_a2ea04ee1e.js"></script>
 {% endblock %}
 </html>

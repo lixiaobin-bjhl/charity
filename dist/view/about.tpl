@@ -116,7 +116,7 @@
 {% endblock %}
 
 {% block script %}
-<script src="/public/scripts/about_02f13b14f0.js"></script>
+<script src="/public/scripts/about_a5a37d91b6.js"></script>
 {% endblock %}
 
 </html>

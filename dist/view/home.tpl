@@ -203,7 +203,7 @@
 {% endblock %}
 
 {% block script %}
-<script src="/public/scripts/home_dc43bd333f.js"></script>
+<script src="/public/scripts/home_81f80b353c.js"></script>
 {% endblock %}
 
 </html>

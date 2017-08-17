@@ -9,10 +9,10 @@ var webpack = require('webpack');
 module.exports = {
     entry: {
         vendor: [
-            'vue', 'vuex', 'vue-router', 'element-ui', 'axios'
+            'vue', 'vuex', 'vue-router', 'element-ui', 'axios', 'babel-polyfill'
         ],
         cvendor: [
-            'jquery', 'amazeui', 'axios'
+            'jquery', 'amazeui', 'axios', 'babel-polyfill'
         ],
         'public/scripts/home': './app/public/scripts/home.js',
         'public/scripts/news': './app/public/scripts/news.js',

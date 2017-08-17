@@ -172,6 +172,6 @@
 {% endblock %}
 
 {% block script %}
-<script src="/public/scripts/solution_606a973797.js"></script>
+<script src="/public/scripts/solution_14e3a70a9e.js"></script>
 {% endblock %}
 </html>

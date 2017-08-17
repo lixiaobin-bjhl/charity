@@ -43,7 +43,7 @@
 {% endblock %}
 
 {% block script %}
-<script src="/public/scripts/case_5b491a6756.js"></script>
+<script src="/public/scripts/case_07d8ba69e7.js"></script>
 {% endblock %}
 
 </html>

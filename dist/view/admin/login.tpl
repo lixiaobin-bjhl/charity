@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block script %}
-     <script src="/public/scripts/cmsLogin_57709790e2.js"></script>
+     <script src="/public/scripts/cmsLogin_4d00583623.js"></script>
 {% endblock %}
 
  {% block footer %}
