@@ -16,7 +16,7 @@ function jscode2session(params) {
         request.get({
             url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' 
             + params.appid + '&secret=' 
-            + params.appSecret + 'js_code=' 
+            + params.appSecret + '&js_code=' 
             + params.code + '&grant_type=authorization_code'
         }, function (err, response, body) {
             if (!err && response.statusCode == 200) {
