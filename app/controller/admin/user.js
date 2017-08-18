@@ -5,6 +5,29 @@
 
 'use strict';
 
+var request = require('request');
+var Promise = require("bluebird");
+
+/**
+ * code 换取 session_key
+ */
+function jscode2session(params) {
+    return new Promise(function (resolve, reject) {
+        request.get({
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' 
+            + params.appid + '&secret=' 
+            + params.appSecret + 'js_code=' 
+            + params.code + '&grant_type=authorization_code'
+        }, function (err, response, body) {
+            if (!err && response.statusCode == 200) {
+                resolve(response);
+            } else {
+                reject('');
+            }
+        });
+    })
+}
+
 /**
  * 添加用户
  */
@@ -22,6 +45,15 @@ exports.create = function* () {
         this.body = this.helper.success(user);
     }
 
+};
+
+/**
+ * code 换取 session_key
+ */
+exports.jscode2session = function* () {
+    var query = this.request.body;
+    var result = yield jscode2session(query);
+    this.body = this.helper.success(result);
 };
 
 /**

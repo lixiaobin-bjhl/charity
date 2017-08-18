@@ -26,7 +26,6 @@ module.exports = app => {
     app.get('/api/card/count/:id', 'admin.card.getCountByOpenid');
     
     app.get('/api/tool/getAccessToken', 'admin.tool.getAccessToken');
-    
     app.post('/api/product/l', 'admin.product.listByids');
 
     app.post('/api/shippingAddress/openid', 'admin.shippingAddress.listByOpenid');
@@ -35,6 +34,7 @@ module.exports = app => {
     
     app.post('/purchase/prepayid', 'admin.purchase.getPrepayId');
     app.post('/purchase/notice', 'admin.purchase.notice');
+    app.post('/api/user/jscode2session', 'admin.user.jscode2session');
     
     app.resources('shippingAddress', '/api/shippingAddress/', 'admin.shippingAddress');
     app.resources('order', '/api/order/', 'admin.order');
