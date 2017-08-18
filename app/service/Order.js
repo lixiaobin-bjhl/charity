@@ -7,6 +7,7 @@
 
 var mongoose = require('mongoose')
 var minus = require('../public/scripts/function/minus')
+var divide = require('../public/scripts/function/divide')
 var currency = require('../public/scripts/function/currency')
 var specification = require('../public/scripts/function/specification')
 
@@ -69,6 +70,23 @@ module.exports = app => {
                 .populate('shippingAddress', '', null)
                 .populate('user', '', null)
                 .populate('products.product', '', null);
+
+            order = order.toJSON();
+            order.expressMoneyStr = currency(order.expressMoney);
+            order.totalFeeStr = currency(divide(order.totalFee, 100));
+            order.products.forEach((n)=> {
+                var payPrice = minus(n.product.price, n.product.discountPrice || 0);
+                n.product.priceStr = currency(payPrice);
+                n.product.payPrice = payPrice;
+                n.product.specifications = n.product.specifications.map((m)=> {
+                    return {
+                        id: m.id,
+                        name: specification(m.id),
+                        value: m.value
+                    }
+                });
+            });
+
             return order;
         }
 

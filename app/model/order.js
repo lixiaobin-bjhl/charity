@@ -77,6 +77,10 @@ module.exports = mongoose => {
             type: String,
             default: ''
         },
+        receiveType: {
+            type: Number,
+            default: 1
+        },
         payTime: {
             default: ''
         },

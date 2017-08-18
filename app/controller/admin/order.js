@@ -20,7 +20,16 @@ exports.create = function* () {
 exports.index = function* () {
     var list = yield  this.service.order.list();
     this.body = this.helper.success(list);
-} 
+}
+
+/**
+ * 获取订单详情 
+ */
+exports.show = function* () {
+    var id = this.params.id;
+    var order = yield this.service.order.findById(id);
+    this.body = this.helper.success(order);
+}
 
 /**
  * 根据openid 找到订单信息

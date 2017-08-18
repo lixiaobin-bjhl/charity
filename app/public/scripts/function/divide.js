@@ -5,8 +5,8 @@
 
 'use strict';
 
-import decimalLength from './decimalLength';
-import float2Int from './float2Int';
+var decimalLength = require('./decimalLength');
+var float2Int = require('./float2Int');
 
 /**
  * 除法
@@ -15,7 +15,7 @@ import float2Int from './float2Int';
  * @param {number} b
  * @return {number}
  */
-export default function (a, b) {
+module.exports = function(a, b) {
 
     var length = Math.max(
                     decimalLength(a),
