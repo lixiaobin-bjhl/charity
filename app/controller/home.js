@@ -38,7 +38,7 @@ module.exports = app => {
 		* code18301277911 () {
 			var res = this.ctx.res;
 			res.setHeader('Content-Type', 'image/jpeg');
-			var content = fs.readFileSync(path.join(__dirname, "../public/img/1503217299.png"), "binary"); 
+			var content = fs.readFileSync(path.join(__dirname, "../public/img/18301277911.png"), "binary"); 
 			res.writeHead(200, "ok");
 			res.write(content, "binary");
 			res.end();
@@ -46,7 +46,7 @@ module.exports = app => {
 
 		* txt () {
 			var res = this.ctx.res;
-			var content = fs.readFileSync(path.join(__dirname, "../public/txt/1503217299.png")); 
+			var content = fs.readFileSync(path.join(__dirname, "../public/txt/pY0TlJsDvU.txt")); 
 			res.writeHead(200, "ok");
 			res.write(content);
 			res.end();
