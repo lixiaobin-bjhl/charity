@@ -3,6 +3,8 @@
 module.exports = app => {
     app.get('/', 'home.index');
     app.get('/mp', 'home.qrcode');
+    app.get('/18301277911', 'home.code18301277911');
+    app.get('/pY0TlJsDvU.txt', 'home.txt');
     app.get('/news', 'news.index');
     app.get('/about', 'about.index');
     app.get('/case', 'case.index');

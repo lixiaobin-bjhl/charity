@@ -36,6 +36,8 @@ exports.create = function* () {
 		this.session.account = {
 			type: account.type,
 			mobile: account.mobile,
+			name: account.name,
+			headPic: account.headPic,
 			_id: account._id,
 			masterMobile: account.masterMobile
 		};

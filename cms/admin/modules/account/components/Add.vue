@@ -19,10 +19,10 @@
                 </div>
             </el-form-item>
             <el-form-item label="手机号" required prop="mobile">
-                <el-input placeholder="请输入用户密码" :disabled="account" :maxlength="11" v-model="form.mobile"></el-input>
+                <el-input placeholder="请输入用户密码" :disabled="account && currentAccount.type !== 0" :maxlength="11" v-model="form.mobile"></el-input>
             </el-form-item>
             <el-form-item label="密码" v-if="!account" required prop="password">
-                <el-input placeholder="请输入用户密码" :maxlength="30" v-model="form.password"></el-input>
+                <el-input placeholder="请输入用户密码" type="password" :maxlength="30" v-model="form.password"></el-input>
             </el-form-item>
             <el-form-item label="账号类型" required prop="type">
                 <el-radio-group v-model="form.type">

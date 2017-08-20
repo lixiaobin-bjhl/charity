@@ -24,12 +24,11 @@ module.exports = mongoose => {
         appSecret: {
             type: String
         },
+        mobile: {
+            type: Number
+        },
         masterOpenid: {
             type: String
-        },
-        author: { 
-            type: Object,
-            required: true
         },
         headPic: {type: String},
         isForbidden: { 

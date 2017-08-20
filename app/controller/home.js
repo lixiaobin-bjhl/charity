@@ -34,6 +34,23 @@ module.exports = app => {
 			res.write(content, "binary");
 			res.end();
 		}
+
+		* code18301277911 () {
+			var res = this.ctx.res;
+			res.setHeader('Content-Type', 'image/jpeg');
+			var content = fs.readFileSync(path.join(__dirname, "../public/img/1503217299.png"), "binary"); 
+			res.writeHead(200, "ok");
+			res.write(content, "binary");
+			res.end();
+		}
+
+		* txt () {
+			var res = this.ctx.res;
+			var content = fs.readFileSync(path.join(__dirname, "../public/txt/1503217299.png")); 
+			res.writeHead(200, "ok");
+			res.write(content);
+			res.end();
+		}
 	}
 	return HomeController;
 };

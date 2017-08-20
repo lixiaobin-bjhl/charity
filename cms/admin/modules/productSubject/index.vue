@@ -16,7 +16,8 @@
             <el-table :data="list">
                 <el-table-column prop="name" label="名称">
                 </el-table-column>
-                <el-table-column prop="remark" label="备注">
+                <el-table-column inline-template label="备注">
+                    <span>{{row.remark || '-'}}</span>
                 </el-table-column>
                 <el-table-column inline-template label="创建时间">
                     <div>
