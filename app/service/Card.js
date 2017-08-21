@@ -47,9 +47,12 @@ module.exports = app => {
          * 根据openid 查找购物车数据 
          */
         * getListByOpenid (openid) {
-            var list = yield this.ctx.model.card.find({
+            var condition = {
                 openid: openid
-            })
+            };
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.card.find(condition)
             .sort({createTime: -1})
             .populate('product', '', null);
 

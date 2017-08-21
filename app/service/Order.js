@@ -112,6 +112,8 @@ module.exports = app => {
             var condition = {
                 openid: openid
             };
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
             var list = yield this.ctx.model.order.find(condition)
             .sort({createTime: -1})
             .populate('shippingAddress', '', null)

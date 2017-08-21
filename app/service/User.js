@@ -61,6 +61,8 @@ module.exports = app => {
             var condition = {
                 openid: openid
             };
+            var compass = this.ctx.helper.compass();
+            Object.assign(condition, compass);
             var user = yield this.ctx.model.user.findOne(condition);
             return user;
         }
