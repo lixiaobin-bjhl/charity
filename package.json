@@ -7,6 +7,7 @@
     "egg": "^1.0.0",
     "egg-development-proxyworker": "^0.2.2",
     "egg-redis": "^1.0.1",
+    "egg-scripts": "^1.1.0",
     "egg-view-ejs": "^1.1.0",
     "egg-view-nunjucks": "^2.0.0",
     "element-ui": "^1.2.8",
@@ -82,7 +83,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "start": "EGG_SERVER_ENV='local' isDebug=true node index.js",
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

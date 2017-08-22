@@ -55,6 +55,14 @@ module.exports = appInfo => {
         ignore: /notice/
     };
 
+    config.cluster = {
+        baseDir: __dirname,
+        https: true,
+        workers: 1,
+        key: '../wx.56xg.com/private.key',
+        cert: '../wx.56xg.com/server.pem'
+    }
+
     config.mongoose = {
         url: 'mongodb://127.0.0.1:27017/charity',
         options: {
