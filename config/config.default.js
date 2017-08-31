@@ -13,13 +13,7 @@ module.exports = appInfo => {
     // should change to your own
     config.keys = appInfo.name + '_1491043715892_8663';
 
-    config.middleware = [
-        'isAdmin',
-        'accessPermission',
-        'gzip',
-        'responseTime',
-        'webpack'
-    ];
+    config.env = env === 'production' ? 'prod' : 'local';
 
     config.view = {
         root: [
