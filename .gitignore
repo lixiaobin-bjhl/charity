@@ -9,4 +9,6 @@ coverage/
 run/
 .DS_Store
 *.swp
+app/middleware/webpack.js
+config/config.local.js
 
