@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
     <link rel="shortcut icon" href="http://otzuzbqja.bkt.clouddn.com/favicon6.ico" />
-    <link rel="stylesheet" href="/public/scripts/common_7c635d95c6.css"/>
+    <link rel="stylesheet" href="/public/scripts/common_e3600019a8.css"/>
     {% block css %}
     {% endblock %}
 </head>

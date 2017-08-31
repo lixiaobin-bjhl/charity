@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/main_4af618aa1b.css"/>
+     <link rel="stylesheet" href="/public/scripts/main_003dde7a96.css"/>
 {% endblock %}
 
 {% block body %}

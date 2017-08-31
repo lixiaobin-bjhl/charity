@@ -2,7 +2,7 @@ var path = require('path')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function (_path) {
-    var assetsSubDirectory = 'app/'
+    var assetsSubDirectory = 'public/'
     return path.posix.join(assetsSubDirectory, _path)
 }
 
