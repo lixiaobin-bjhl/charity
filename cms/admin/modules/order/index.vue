@@ -46,7 +46,8 @@
                         <el-button type="text" @click="finish(row)" size="small">结束订单</el-button>
                     </div>
                 </el-table-column>
-         </el-table>
+        </el-table>
+        <pager :page-dto="pageDto" @currentchange="changePage" @sizechange="changeSize"></pager> 
          <deliver :order="selectedOrder" @save="getList()" v-if="deliverState"></deliver>
     </div>
 </template>
@@ -56,9 +57,11 @@
     import { list, update } from './request'
     import config from './config'
     import Deliver from './components/Deliver.vue';
+    import listMixins from '../../common/mixin/list';
     import indexBy from '../../../../app/public/scripts/function/indexBy'
 
     export default  {
+        mixins: [listMixins],
         data () {
             return {
                 loading: false,
@@ -123,13 +126,23 @@
              */
             getList () {
                 this.loading = true;
-                list(this.filter)
+                var pageDto = this.pageDto;
+                var params = Object.assign(
+                    {},
+                    {
+                        pageSize: pageDto.pageSize, 
+                        pageNum: pageDto.pageNum
+                    }
+                );
+                list(params)
                     .then((res)=> {
                         this.loading = false;
-                        this.list = res.data;
+                        var data = res.data;
+                        this.list = data.list;
+                        this.pageDto.count = data.count;
                     })
                     .catch(()=> {
-                       this.loading = false; 
+                        this.loading = false; 
                     });
             }
         },

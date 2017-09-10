@@ -39,16 +39,40 @@ module.exports = app => {
 
         /**
          * 查找新闻列表
-         * @param {Object} condition 列表查询条件
+         * 
+         * @param {Object} query 列表查询条件
          */
-        * list(query = {}) {
+        * total(query = {}) {
             var condition = {};
             var newsSubjectId = query.newsSubjectId;
+            var compass = this.ctx.helper.compass();
 
             if (newsSubjectId) {
                 condition.newsSubject = mongoose.Types.ObjectId(newsSubjectId);
             } 
+            Object.assign(condition, compass);
+            var count = yield this.ctx.model.news.count(condition)
+            return count;
+        }
+
+        /**
+         * 查找新闻列表
+         * @param {Object} query 列表查询条件
+         */
+        * list(query = {}) {
+            var condition = {};
+            var newsSubjectId = query.newsSubjectId;
+            var compass = this.ctx.helper.compass();
+            var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
+            var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
+
+            if (newsSubjectId) {
+                condition.newsSubject = mongoose.Types.ObjectId(newsSubjectId);
+            } 
+            Object.assign(condition, compass);
             var list = yield this.ctx.model.news.find(condition)
+                .skip((pageNum - 1) * pageSize)
+                .limit(+pageSize)
                 .sort({createTime: -1})
                 .populate('newsSubject', '', null);
 

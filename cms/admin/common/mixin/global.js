@@ -9,10 +9,6 @@ export default {
 	install (Vue) {
 		Vue.mixin({
             data () {
-                return {
-                    pageNum: 1,
-                    pageSize: 20
-                };
             },
 			mounted () {
 				setTimeout(()=> {

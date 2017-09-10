@@ -36,14 +36,17 @@
                     <div>{{row.province}}-{{row.city}}</div>
                 </el-table-column>
          </el-table>
+         <pager :page-dto="pageDto" @currentchange="changePage" @sizechange="changeSize"></pager> 
     </div>
 </template>
 
 <script>
 
-    import { list } from './request'
+    import { list } from './request';
+    import listMixins from '../../common/mixin/list';
 
     export default  {
+        mixins: [listMixins],
         data () {
             return {
                 loading: false,
@@ -60,10 +63,20 @@
              */
             getList () {
                 this.loading = true;
-                list (this.filter)
+                var pageDto = this.pageDto;
+                var params = Object.assign(
+                    {},
+                    {
+                        pageSize: pageDto.pageSize, 
+                        pageNum: pageDto.pageNum
+                    }
+                );
+                list (params)
                     .then((res)=> {
                         this.loading = false;
-                        this.list = res.data;
+                        var data = res.data;
+                        this.list = data.list;
+                        this.pageDto.count = data.count;
                     })
                     .catch(()=> {
                        this.loading = false; 

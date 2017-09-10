@@ -18,8 +18,14 @@ exports.create = function* () {
  * 获取新闻列表
  */
 exports.index = function* () {
-    var list = yield  this.service.order.list();
-    this.body = this.helper.success(list);
+    var query = this.query;
+    var list = yield this.service.order.list(query);
+    var count = yield this.service.order.total();
+    
+    this.body = this.helper.success({
+        list,
+        count
+    });
 }
 
 /**

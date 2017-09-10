@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="renderer" content="webkit">
     <link rel="shortcut icon" href="http://otzuzbqja.bkt.clouddn.com/favicon6.ico" />
-    <link rel="stylesheet" href="/public/scripts/ccommon_1a744dd603.css"/>
+    <link rel="stylesheet" href="/public/scripts/ccommon_e3e21e579a.css"/>
     {% block css %}
     {% endblock %}
 </head>
@@ -89,11 +89,11 @@
     {% endblock %}
     {% block commonScript %}
         {% if env === 'production' %}
-            <script src="/public/cvendor_9e5dff54cd.js"></script>
+            <script src="/public/cvendor_edd64bdd4b.js"></script>
         {% else %}
             <script src="cvendor.js"></script>
         {% endif %}
-        <script src="/public/scripts/ccommon_1467c85025.js"></script>
+        <script src="/public/scripts/ccommon_7701ee456d.js"></script>
     {% endblock %}
 
     {% block script %}

@@ -57,6 +57,11 @@ module.exports = appInfo => {
         cert: '../wx.56xg.com/server.pem'
     }
 
+    config.pageDto = {
+        pageNum: 1,
+        pageSize: 20
+    };
+
     config.mongoose = {
         url: 'mongodb://127.0.0.1:27017/charity',
         options: {

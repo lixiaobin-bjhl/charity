@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-     <link rel="stylesheet" href="/public/scripts/cmsLogin_c47dcd9dfa.css"/>
+     <link rel="stylesheet" href="/public/scripts/cmsLogin_eb2b94f8e8.css"/>
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block script %}
-     <script src="/public/scripts/cmsLogin_4d00583623.js"></script>
+     <script src="/public/scripts/cmsLogin_567afe3542.js"></script>
 {% endblock %}
 
  {% block footer %}

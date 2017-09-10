@@ -23,8 +23,10 @@ exports.create = function* () {
 exports.index = function* () {
     var query = this.query;
 	var list = yield this.service.news.list(query);
+	var count = yield this.service.news.total(query);
 	this.body = this.helper.success({
-		list
+		list,
+		count
 	});
 };
 

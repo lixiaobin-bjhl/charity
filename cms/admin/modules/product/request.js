@@ -26,12 +26,19 @@ export function add (params) {
 
 /**
  * 获取产品列表
+ * 
+ * @param {number} params.pageNum 分页码
+ * @param {number} params.pageSize 分页大小
  * @param {string=} params.productSubjectId 产品分类id
  * @param {string=} params.key 产品搜索关键字
+ * 
+ * @return {Promise}
  */
 export function list (params = {}) {
     return get('/api/product', {
         productSubjectId: params.productSubjectId,
+        pageSize: params.pageSize,
+        pageNum: params.pageNum,
         key: params.key.trim()
     });
 }

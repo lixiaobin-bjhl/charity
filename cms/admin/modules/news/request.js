@@ -20,10 +20,18 @@ export function add (params) {
 }
 
 /**
- * 添加新闻
+ * 新闻列表
+ * 
+ * @param {number} params.pageNum 分页码
+ * @param {number} params.pageSize 分页大小
+ * @param {string=} params.newsSubjectId 新闻分类id
+ * 
+ * @return {Promise}
  */
 export function list (params = {}) {
     return get('/api/news', {
+        pageSize: params.pageSize,
+        pageNum: params.pageNum,
         newsSubjectId: params.newsSubjectId
     });
 }

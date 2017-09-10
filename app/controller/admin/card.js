@@ -22,7 +22,12 @@ exports.create = function* () {
  */
 exports.index = function* () {
     var list = yield  this.service.card.list();
-    this.body = this.helper.success(list);
+    var count = yield this.service.card.total();
+    
+    this.body = this.helper.success({
+        list,
+        count
+    });
 }
 
 /**

@@ -57,6 +57,7 @@
                 </div>
                 </el-table-column>
             </el-table>
+            <pager :page-dto="pageDto" @currentchange="changePage" @sizechange="changeSize"></pager> 
         </div>
         <add v-if="addState" @save="refresh"></add>
     </div>
@@ -68,8 +69,10 @@
     import { list, remove, batchRemove} from './request';
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import Add from './components/Add.vue';
+    import listMixins from '../../common/mixin/list';
 
     export default {
+        mixins: [listMixins],
         data () {
             return {
                 addState: false,
@@ -148,10 +151,20 @@
              */
             getList () {
                 this.loading = true;
-                list (this.filter)
+                var pageDto = this.pageDto;
+                var params = Object.assign(
+                    this.filter, 
+                    {
+                        pageSize: pageDto.pageSize, 
+                        pageNum: pageDto.pageNum
+                    }
+                );
+                list (params)
                     .then((res)=> {
                         this.loading = false;
-                        this.list = this.adaptList(res.data.list);
+                        var data = res.data;
+                        this.list = this.adaptList(data.list);
+                        this.pageDto.count = data.count;
                     })
                     .catch(()=> {
                        this.loading = false; 

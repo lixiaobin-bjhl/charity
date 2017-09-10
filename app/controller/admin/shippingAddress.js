@@ -23,8 +23,12 @@ exports.create = function* () {
  */
 exports.index = function* () {
     var query = this.query;
-	var list = yield this.service.shippingAddress.list(query);
-	this.body = this.helper.success(list);
+    var list = yield this.service.shippingAddress.list(query);
+    var count = yield this.service.shippingAddress.total();
+	this.body = this.helper.success({
+        list,
+        count
+    });
 };
 
 /**

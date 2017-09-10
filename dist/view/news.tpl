@@ -40,7 +40,7 @@
  <div style="padding: 200px 100px; color: #999">新闻中心</div> 
 {% endblock %}
 {% block script %}
-<script src="/public/scripts/news_71c7d05d3f.js"></script>
+<script src="/public/scripts/news_4a0b08cc7f.js"></script>
 {% endblock %}
 
 </html>

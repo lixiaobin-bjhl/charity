@@ -83,6 +83,7 @@
                 </div>
                 </el-table-column>
             </el-table>
+            <pager :page-dto="pageDto" @currentchange="changePage" @sizechange="changeSize"></pager> 
         </div>
         <add v-if="addState" @save="refresh"></add>
         <image-preview></image-preview> 
@@ -98,9 +99,11 @@
     import compressImage from '../../../../app/public/scripts/function/compressImage';
     import Add from './components/Add.vue';
     import ImagePreview from '../../common/components/ImagePreview';
-    import ImagePreviewItem from '../../common/components/ImagePreviewItem';
+    import listMixins from '../../common/mixin/list';
+    import ImagePreviewItem from '../../common/components/ImagePreviewItem'; 
 
     export default {
+        mixins: [listMixins],
         data () {
             return {
                 addState: false,
@@ -250,10 +253,20 @@
              */
             getList () {
                 this.loading = true;
-                list (this.filter)
+                var pageDto = this.pageDto;
+                var params = Object.assign(
+                    this.filter, 
+                    {
+                        pageSize: pageDto.pageSize, 
+                        pageNum: pageDto.pageNum
+                    }
+                );
+                list (params)
                     .then((res)=> {
                         this.loading = false;
-                        this.list = this.adaptList(res.data.list);
+                        var data = res.data;
+                        this.list = this.adaptList(data.list);
+                        this.pageDto.count = data.count;
                     })
                     .catch(()=> {
                        this.loading = false; 

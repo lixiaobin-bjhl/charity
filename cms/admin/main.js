@@ -25,6 +25,9 @@ require('./common/filter/compressImage');
 require('./common/filter/unitMoney');
 require('./common/filter/specification');
 
+
+Vue.component('pager', require('./common/components/Pager'));
+
 import auth from './common/plugin/auth';
 
 const router = new VueRouter({

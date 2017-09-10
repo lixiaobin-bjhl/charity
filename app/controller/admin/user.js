@@ -60,6 +60,11 @@ exports.jscode2session = function* () {
  * 获取用户列表 
  */
 exports.index = function* () {
+    var query = this.query;
     var list = yield  this.service.user.list();
-    this.body = this.helper.success(list);
+    var count = yield this.service.user.total();
+    this.body = this.helper.success({
+        list,
+        count
+    });
 }

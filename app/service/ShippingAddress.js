@@ -46,13 +46,28 @@ module.exports = app => {
         }
 
         /**
-         * 获取收货地址列表
+         * 获取总数
          */
-        * list () {
+        * total () {
             var condition = {};
             var compass = this.ctx.helper.compass();
             Object.assign(condition, compass);
+            var count = yield this.ctx.model.shippingAddress.count(condition);
+            return count;
+        }
+
+        /**
+         * 获取收货地址列表
+         */
+        * list (query = {}) {
+            var condition = {};
+            var compass = this.ctx.helper.compass();
+            var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
+            var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
+            Object.assign(condition, compass);
             var list = yield this.ctx.model.shippingAddress.find(condition)
+                .skip((pageNum - 1) * pageSize)
+                .limit(+pageSize)
                 .sort({createTime: -1})
                 .populate('user', '', null)
             return list;

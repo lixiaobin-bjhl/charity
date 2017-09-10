@@ -80,13 +80,55 @@ module.exports = app => {
         }
 
         /**
+         * 获取总数
+         * 
+         * @param {Object} query 列表查询条件
+         */
+        * total(query) {
+            var condition = {};
+            var productSubjectId = query.productSubjectId;
+            var key = query.key;
+            var isNotSale = query.isNotSale;
+            var compass = this.ctx.helper.compass();
+            if (productSubjectId) {
+                condition.productSubject = mongoose.Types.ObjectId(productSubjectId);
+            }
+            if (typeof isNotSale != 'undefined') {
+                condition.isNotSale = isNotSale;
+            }
+            if (key) {
+                condition.title = new RegExp(key);
+            }
+            Object.assign(condition, compass);
+            var count = yield this.ctx.model.product.count(condition);
+            return count;
+        }
+
+        /**
+         * 根据产品ids 获取产品集合
+         */
+        * listByIds (ids) {
+            var condition = {
+                _id: {
+                    $in: ids.map((id)=> {
+                        return mongoose.Types.ObjectId(id)
+                    })
+                }
+            }
+            var list = yield this.ctx.model.product.find(condition);
+            return list;
+        }
+
+        /**
          * 查找产品列表
-         * @param {Object} condition 列表查询条件
+         * @param {Object} query 列表查询条件
          */
         * list(query = {}) {
             var condition = {};
             var productSubjectId = query.productSubjectId;
             var key = query.key;
+            var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
+            var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
             var isNotSale = query.isNotSale;
             var compass = this.ctx.helper.compass();
 
@@ -101,6 +143,8 @@ module.exports = app => {
             }
             Object.assign(condition, compass);
             var list = yield this.ctx.model.product.find(condition)
+                .skip((pageNum - 1) * pageSize)
+                .limit(+pageSize)
                 .sort({createTime: -1})
                 .populate('productSubject', '', null);
 

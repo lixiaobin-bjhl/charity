@@ -15,6 +15,6 @@
 
 {% endblock %}
 {% block script %}
-<script src="/public/scripts/product_27eaf99c70.js"></script>
+<script src="/public/scripts/product_8483f9a997.js"></script>
 {% endblock %}
 </html>

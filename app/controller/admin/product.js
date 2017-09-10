@@ -32,8 +32,10 @@ exports.index = function* () {
 		query.isNotSale = 0;
 	}
 	var list = yield this.service.product.list(query);
+	var count = yield this.service.product.total(query);
 	this.body = this.helper.success({
-		list
+		list,
+		count
 	});
 };
 
