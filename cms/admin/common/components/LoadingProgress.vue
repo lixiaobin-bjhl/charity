@@ -1,9 +1,9 @@
 <style lang="scss">
-    @import '../../../../app/public/css/common/color';
-    $bar-colors: ($brand-error, $brand-warning, $brand-primary, $brand-success);
+    @import '../../../../app/public/css/common/visiables';
+    $bar-colors: ($color-danger, $color-warning, $color-blue, $color-success);
     .vc-loading-bar {
         height: 3px;
-        background: $brand-warning;
+        background: $color-warning;
         background: linear-gradient(left, $bar-colors);
         box-shadow: 0 0 20px 0 #fff;
         transition: all .5s ease-in-out;

@@ -60,7 +60,6 @@
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import compressImage from '../../../../app/public/scripts/function/compressImage';
     import Add from './components/Add.vue';
-    import vueImages from 'vue-images/dist/vue-images';
 
     export default {
         data () {

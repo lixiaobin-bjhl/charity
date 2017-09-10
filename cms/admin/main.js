@@ -51,20 +51,37 @@ router.beforeEach((to, from, next) => {
  * 路由变化时，把之前的弹窗状态都清掉
  */
 function clearState(module) {
-    // var status = store.state[module];
-    // if (status) {
-    //     for (var key in status) {
-    //         var property = status[key];
-    //         if (status.hasOwnProperty(key) && property && typeof property === 'boolean') {
-    //             status[key] = false;
-    //         }
-    //     }
-    // }
+    var state = store.state;
+    // 清除所有模块的state 为ture 置为false
+    if (module === 'all') {
+        for (var key in state) {
+            var module = state[key];
+            if (typeof module  === 'object') {
+                for (var key2 in module) {
+                    var property = module[key2];
+                    if (module.hasOwnProperty(key2) && property && typeof property === 'boolean') {
+                        module[key2] = false;
+                    }
+                } 
+            }
+        }
+    }
+
+    else if (status) {
+        var status = state[module];
+        for (var key in status) {
+            var property = status[key];
+            if (status.hasOwnProperty(key) && property && typeof property === 'boolean') {
+                status[key] = false;
+            }
+        }
+    }
     $('body').css({
         overflow: ''
     });
 }
 
+window.clearState = clearState;
 Vue.use(Element);
 Vue.use(VueRouter);
 Vue.use(auth);

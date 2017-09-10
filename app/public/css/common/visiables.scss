@@ -1,0 +1,152 @@
+$brand: #0086da;
+$brand-hover: lighten($brand, 5%);
+
+// colors used across the project
+$color-gray: #666;
+$color-gray-dark: #333;
+$color-gray-light: #999;
+
+$color-white: #fff;
+
+$color-blue: #20a0ff;
+$color-blue-light: #4db3ff;
+$color-blue-lighter: #e4f1fa;
+
+$color-orange: #f19a69;
+$color-yellow: #f7ba2a;
+$color-red: #ff4949;
+$color-green: #1abc9c;
+
+$color-success: $color-green;
+$color-warning: $color-yellow;
+$color-danger: $color-red;
+
+
+
+// background for <body>
+$body-bg-color: #f2f2f2;
+
+// background for block elements
+$area-bg-color: #f8f8f8;
+
+// text colors
+$text-color: $color-gray;
+$text-light-color: $color-gray-light;
+$text-dark-color: $color-gray-dark;
+
+
+// link colors
+$link-color: $color-blue;
+$link-hover-color: $color-blue-light;
+
+// icon color
+$icon-color: #bfcbd9;
+
+// Border base
+$border-color: #e6e6e6;
+$border-radius: 4px;
+
+
+// Disable base
+$disable-border-color: #d1dbe5;
+$disable-bg-color: #eef1f6;
+$disable-text-color: #bfcbd9;
+
+
+// Font
+$font-family: PingFangSC-Regular,"Hiragino Sans GB","Helvetica Neue","微软雅黑","Microsoft Yahei",Helvetica,Arial,sans-serif;
+
+$font-size: 13px;
+$font-size-small: 12px;
+$font-size-large: 14px;
+$font-size-larger: 20px;
+
+
+// Buttons
+$btn-padding: 7px 15px;
+
+$btn-default-text-color: $text-dark-color;
+$btn-default-bg-color: $color-white;
+$btn-default-border-color: $border-color;
+$btn-default-hover-text-color: $color-blue;
+$btn-default-hover-border-color: $color-blue;
+
+$btn-plain-primary-text-color: $color-blue;
+$btn-plain-primary-bg-color: $color-white;
+$btn-plain-primary-border-color: $color-blue;
+$btn-plain-primary-hover-text-color: $color-blue-light;
+$btn-plain-primary-hover-border-color: $color-blue-light;
+
+$btn-primary-text-color: $color-white;
+$btn-primary-bg-color: $color-blue;
+$btn-primary-border-color: $color-blue;
+$btn-primary-hover-bg-color: $color-blue-light;
+$btn-primary-hover-border-color: $color-blue-light;
+
+$btn-disable-text-color: $disable-text-color;
+$btn-disable-bg-color: $disable-bg-color;
+$btn-disable-border-color: $disable-border-color;
+
+
+// Table
+$table-text-color: $text-dark-color;
+$table-font-size: $font-size;
+$table-cell-padding: 0 11px;
+$table-header-bg-color: #eef1f6;
+$table-border-color: #dfe6ec;
+
+$table-row-hover-bg-color: $table-header-bg-color;
+$table-row-active-bg-color: #edf7ff;
+
+
+// Input
+$input-bg-color: $color-white;
+$input-text-color: $text-color;
+$input-placeholder-text-color: $text-light-color;
+
+$input-disable-bg-color: $disable-bg-color;
+$input-disable-border-color: $disable-border-color;
+$input-disable-text-color: $disable-text-color;
+
+
+// Tags
+$tag-default-text-color: $text-color;
+$tag-default-bg-color: #f5f5f5;
+$tag-default-border-color: $tag-default-bg-color;
+
+$tag-warning-text-color: $color-warning;
+$tag-warning-bg-color: rgba(247,186,41,.1);
+$tag-warning-border-color: rgba(247,186,41,.2);
+
+
+// Tabs
+$tab-text-color: $text-color;
+
+$tab-item-padding: 0 16px;
+$tab-item-active-text-color: $color-blue;
+$tab-item-active-border: 3px solid $color-blue;
+
+// Loading
+$loading-bg-color: rgba(255, 255, 255, .3);
+
+// Dialog
+$dialog-header-padding: 18px 30px;
+$dialog-header-bg-color: $area-bg-color;
+$dialog-content-padding: 20px 30px;
+$dialog-footer-padding: 10px 30px;
+
+// List
+$list-item-padding: 15px 30px;
+$list-item-padding-small: 15px 20px;
+$list-item-padding-large: 20px 30px;
+$list-item-hover-bg-color: $color-blue-lighter;
+
+// Message box
+$message-box-content-padding: 30px;
+$message-box-icon-font-size: 24px;
+
+// Message
+$message-padding: 18px 20px;
+
+// Mix-Component
+$mix-component-bg-color: #fbfdff;

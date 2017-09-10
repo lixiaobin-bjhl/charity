@@ -5,28 +5,45 @@
 	z-index: 1005;
 	background: #FFF;
 	overflow-x: hidden;
-	top: 0;
+	top: -1px;
 	left: 0;
+	.detail-info {
+		padding: 20px;
+		label {
+			color: $color-gray-light;
+			float: left;
+			width: 100px;
+			text-align: right;
+			@include text-overflow;
+		}
+		.el-col {
+			margin-bottom: 10px;
+			div, 
+			pre {
+				overflow: hidden;
+			}
+		}
+	}
 	.top-tab {
 		margin-top: 30px;
-		border-top: 1px solid $gray-999;
+		border-top: 1px solid $color-gray-light;
 		padding: 10px 20px 0;
 	}
 	.top-head_div {
-		background: #F3F3F3;
+		background: $area-bg-color;
 		box-shadow: inset 0px -1px 0px 0px #E0E0E0;
 		position: relative;
 		.title_p {
 			text-align: center;
-			font-size: 18px;
+			font-size: 16px;
+			height: 36px;
+			line-height: 36px;
 			color: #393d40;
-			height: 55px;
-			line-height: 55px;
 		}
 		.el-icon-close {
 			position: absolute;
-			right: 20px;
-			top: 20px;
+			right: 16px;
+			top: 10px;
 			color: #9c9e9f;
 			cursor: pointer;
 			&:hover {

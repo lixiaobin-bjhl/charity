@@ -77,6 +77,7 @@
         methods: {
             changeBreadcrumb(item) {
                 this.$router.push(item.url);
+                window.clearState('all');
             },
             /**
              * 切换左导菜单

@@ -35,23 +35,10 @@
                 <el-table-column inline-template label="标题">
                     <a href="javascript:;" @click="showDetail(row)">{{row.title}}</a>
                 </el-table-column>
-                <el-table-column inline-template label="产品图片">
-                        <div v-if="getImages(row).length">
-                            <vue-images
-                                :imgs="getImages(row)"
-                                :modalclose="modalclose"
-                                :keyinput="keyinput"
-                                :mousescroll="mousescroll"
-                                :showclosebutton="showclosebutton"
-                                :showcaption="showcaption"
-                                :imagecountseparator="imagecountseparator"
-                                :showimagecount="showimagecount"
-                                :showthumbnails="showthumbnails">
-                            </vue-images>
-                        </div>
-                        <!--
-                            <img class="radius3" :data-caption="row.title" :data-url="row.storageId|compressImage" width="60" height="60" :src="row.storageId|compressImage(60, 60)">
-                        -->
+                <el-table-column inline-template label="产品图片" :min-width="150">
+                    <div class="image-list image-preview">
+                        <image-preview-item :height="50" v-for="(img, index) in getImages(row)" :key="index" :img="img" :show-remove="false"></image-preview-item>
+                    </div>
                 </el-table-column>
                 <el-table-column inline-template label="分类">
                     <div>
@@ -98,6 +85,7 @@
             </el-table>
         </div>
         <add v-if="addState" @save="refresh"></add>
+        <image-preview></image-preview> 
     </div>
 </template>
 
@@ -109,7 +97,8 @@
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import compressImage from '../../../../app/public/scripts/function/compressImage';
     import Add from './components/Add.vue';
-    import vueImages from 'vue-images/dist/vue-images';
+    import ImagePreview from '../../common/components/ImagePreview';
+    import ImagePreviewItem from '../../common/components/ImagePreviewItem';
 
     export default {
         data () {
@@ -226,8 +215,8 @@
                 if (storageIds && storageIds.length) {
                     storageIds.forEach((storageId)=> {
                         result.push({
-                            imageUrl: compressImage(storageId),
-                            caption: item.title
+                            u: storageId,
+                            c: ''
                         })
                     });
                 }
@@ -301,8 +290,9 @@
             }
         },
         components: {
-            vueImages,
             Add,
+            ImagePreview,
+            ImagePreviewItem,
             Detail
         }
     }

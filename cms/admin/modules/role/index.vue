@@ -55,7 +55,6 @@
     import modules from '../../../../config/modules';
     import encodeHTML from '../../../../app/public/scripts/function/encodeHTML';
     import Add from './components/Add.vue';
-    import vueImages from 'vue-images/dist/vue-images';
 
     export default {
         data () {

@@ -3,7 +3,7 @@
  * @author XiaoBin Li(lixiaobin8878@gmail.com) 
  */
 
-@import "./common/color";
+@import "./common/visiables";
 
 .company-intro {
 	text-align: left;
@@ -14,7 +14,7 @@
 	ul {
 		margin: 10px 0;
 		li {
-			color: $gray-333;
+			color: $color-gray-dark;
 			margin: 0 0 10px 47px;
 			list-style: disc;
 		}
@@ -27,11 +27,11 @@
 		width: 100%;
 		box-sizing: border-box;
 		padding: 5px;
-		background: $gray-e9;
+		background: $body-bg-color;
 	}
 	.mark {
 		text-align: center;
-		color: $gray-999;
+		color: $color-gray-light;
 		font-size: 12px;
 	}
 }
