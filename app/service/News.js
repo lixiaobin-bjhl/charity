@@ -45,11 +45,15 @@ module.exports = app => {
         * total(query = {}) {
             var condition = {};
             var newsSubjectId = query.newsSubjectId;
+            var key = query.key;
             var compass = this.ctx.helper.compass();
 
             if (newsSubjectId) {
                 condition.newsSubject = mongoose.Types.ObjectId(newsSubjectId);
-            } 
+            }
+            if (key) {
+                condition.title = new RegExp(key);
+            }
             Object.assign(condition, compass);
             var count = yield this.ctx.model.news.count(condition)
             return count;
@@ -62,13 +66,16 @@ module.exports = app => {
         * list(query = {}) {
             var condition = {};
             var newsSubjectId = query.newsSubjectId;
+            var key = query.key;
             var compass = this.ctx.helper.compass();
             var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
             var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
-
             if (newsSubjectId) {
                 condition.newsSubject = mongoose.Types.ObjectId(newsSubjectId);
-            } 
+            }
+            if (key) {
+                condition.title = new RegExp(key);
+            }
             Object.assign(condition, compass);
             var list = yield this.ctx.model.news.find(condition)
                 .skip((pageNum - 1) * pageSize)

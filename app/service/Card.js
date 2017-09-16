@@ -126,8 +126,9 @@ module.exports = app => {
         * list(query = {}) {
             var condition = {};
             var compass = this.ctx.helper.compass();
-            var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
-            var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
+            var pageDto = this.ctx.app.config.pageDto;
+            var pageNum = query.pageNum || pageDto.pageNum;
+            var pageSize = query.pageSize || pageDto.pageSize;
             Object.assign(condition, compass);
             var list = yield this.ctx.model.card.find(condition)
                 .skip((pageNum - 1) * pageSize)

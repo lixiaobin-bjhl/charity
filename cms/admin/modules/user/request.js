@@ -18,6 +18,7 @@ import { post, get, del, put } from '../../../../app/public/scripts/common/servi
 export function list (params = {}) {
     return get('/api/user', {
         pageSize: params.pageSize,
+        key: params.key,
         pageNum: params.pageNum
     });
 }

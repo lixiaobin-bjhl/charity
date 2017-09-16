@@ -5,7 +5,21 @@
 
 <template>
     <div class="list-content" v-loading.fullscreen.lock="loading">
-         <el-table :data="list">
+        <div class="list-header">
+            <el-form :inline="true">
+                <el-form-item>
+                    <el-select v-model="filter.status" placeholder="请选择订单状态" clearable @change="refresh">
+                        <el-option v-for="item in statusOptions" :value="item.id" :key="item.id" :label="item.name"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-input placeholder="输入用户名称" @keyup.enter.native="refresh" v-model.trim="filter.key">
+                        <el-button slot="append" icon="search" @click="refresh"></el-button>
+                    </el-input>
+                </el-form-item>
+            </el-form>
+        </div>
+        <el-table :data="list">
                 <el-table-column inline-template label="用户">
                     <div>
                         {{row.user && row.user.nickName}} 
@@ -64,6 +78,11 @@
         mixins: [listMixins],
         data () {
             return {
+                filter: {
+                    status: '',
+                    key: ''
+                },
+                statusOptions: config.ORDER_STATUS, 
                 loading: false,
                 selectedOrder: null,
                 deliverState: false,
@@ -74,6 +93,13 @@
             this.getList();
         },
         methods: {
+            /**
+             * 刷新页面 
+             */
+            refresh () {
+                this.pageDto.pageNum = 1;
+                this.getList();
+            },
             /**
              * 快递 
              */
@@ -128,7 +154,7 @@
                 this.loading = true;
                 var pageDto = this.pageDto;
                 var params = Object.assign(
-                    {},
+                    this.filter,
                     {
                         pageSize: pageDto.pageSize, 
                         pageNum: pageDto.pageNum

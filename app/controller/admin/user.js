@@ -61,8 +61,8 @@ exports.jscode2session = function* () {
  */
 exports.index = function* () {
     var query = this.query;
-    var list = yield  this.service.user.list();
-    var count = yield this.service.user.total();
+    var list = yield  this.service.user.list(query);
+    var count = yield this.service.user.total(query);
     this.body = this.helper.success({
         list,
         count

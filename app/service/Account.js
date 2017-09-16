@@ -85,16 +85,81 @@ module.exports = app => {
         }
 
         /**
+         * 获取账号总数
+         */
+        * total (query) {
+            var condition = {};
+            var accountSubjectId = query.accountSubjectId;
+            var account = this.ctx.session.account;
+            var type = account.type;
+            // 非管理员
+            if (type) {
+                condition.$or = [
+                    {
+                        mobile: +account.mobile
+                    },
+                    {
+                        mobile: +account.masterMobile
+                    }
+                ]
+            }
+            if (accountSubjectId) {
+                condition.accountSubjectId = mongoose.Types.ObjectId(accountSubjectId);
+            }
+            // 管理员才能搜索用户
+            if (query.key && !type) {
+                var key = new RegExp(query.key);
+                condition.$or = [
+                    {
+                        name: key
+                    },
+                    {
+                        mobile: +query.key
+                    }
+                ]
+            }
+            var acount = yield this.ctx.model.account.count(condition);
+            return acount;
+        }
+
+        /**
          * 查找帐号列表
          * @param {Object} condition 列表查询条件
          */
         * list(query = {}) {
             var condition = {};
-            var accountSubjectId = query.accountSubjectId;
-            
-            if (accountSubjectId) {
-                condition.accountSubjectId = mongoose.Types.ObjectId(accountSubjectId);
-            } 
+            var account = this.ctx.session.account;
+            var pageDto = this.ctx.app.config.pageDto;
+            var pageNum = query.pageNum || pageDto.pageNum;
+            var pageSize = query.pageSize || pageDto.pageSize;
+            var type = account.type;
+
+            // 非管理员
+            if (type) {
+                condition.$or = [
+                    {
+                        mobile: +account.mobile
+                    },
+                    {
+                        mobile: +account.masterMobile
+                    }
+                ]
+            }
+            if (query.type) {
+                condition.type = + query.type;
+            }
+            // 管理员才能搜索用户
+            if (query.key && !type) {
+                var key = new RegExp(query.key);
+                condition.$or = [
+                    {
+                        name: key
+                    },
+                    {
+                        mobile: +query.key
+                    }
+                ]
+            }
             var accounts = yield this.ctx.model.account.find(condition).sort({createTime: -1});
             return accounts;
         }

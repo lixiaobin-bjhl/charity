@@ -60,6 +60,7 @@ exports.index = function* () {
     var query = this.query;
 	var list = yield this.service.account.list(query);
 	var roles = yield this.service.role.list();
+	var count = yield this.service.account.total(query);
 	
 	list.forEach((item, index)=> {
 		roles.some((role)=> {
@@ -71,8 +72,10 @@ exports.index = function* () {
 			}
 		});
 	});
+	
 	this.body = this.helper.success({
-		list
+		list,
+		count
 	});
 	
 };

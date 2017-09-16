@@ -11,12 +11,12 @@
         <div class="list-header">
             <el-form :inline="true" :model="filter" class="demo-form-inline">
                 <el-form-item>
-                    <el-select v-model="filter.productSubjectId" placeholder="全部分类" clearable @change="filterChange">
+                    <el-select v-model="filter.productSubjectId" placeholder="请选择分类" clearable @change="filterChange">
                         <el-option v-for="item in productSubejctList" :value="item._id" :key="item._id" :label="item.name"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item>
-                    <el-input placeholder="输入产品名称" v-model="filter.key">
+                    <el-input placeholder="输入产品名称"  @keyup.enter.native="search" v-model="filter.key">
                         <el-button slot="append" icon="search" @click="search"></el-button>
                     </el-input>
                 </el-form-item>

@@ -34,7 +34,9 @@ export function add (params) {
  */
 export function list (params = {}) {
     return get('/api/account', {
-        accountSubjectId: params.accountSubjectId,
+        type: params.type,
+        pageSize: params.pageSize,
+        pageNum: params.pageNum,
         key: params.key.trim()
     });
 }

@@ -59,7 +59,8 @@ module.exports = appInfo => {
 
     config.pageDto = {
         pageNum: 1,
-        pageSize: 20
+        // 默认展示100000万，理论上不分页
+        pageSize: 100000
     };
 
     config.mongoose = {

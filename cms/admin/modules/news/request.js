@@ -32,6 +32,7 @@ export function list (params = {}) {
     return get('/api/news', {
         pageSize: params.pageSize,
         pageNum: params.pageNum,
+        key: params.key,
         newsSubjectId: params.newsSubjectId
     });
 }

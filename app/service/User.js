@@ -84,10 +84,15 @@ module.exports = app => {
          */
         * list(query = {}) {
             var condition = {};
-
-            var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
-            var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
+            var pageDto = this.ctx.app.config.pageDto;
+            var pageNum = query.pageNum || pageDto.pageNum;
+            var pageSize = query.pageSize || pageDto.pageSize;
             var compass = this.ctx.helper.compass();
+            
+            if (query.key) {
+                condition.nickName = new RegExp(query.key);
+            }
+
             Object.assign(condition, compass);
             var list = yield this.ctx.model.user.find(condition)
                 .skip((pageNum - 1) * pageSize)

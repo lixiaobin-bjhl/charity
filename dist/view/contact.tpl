@@ -70,6 +70,6 @@
 {% endblock %}
 
 {% block script %}
-<script src="/public/scripts/contact_fbde9322ae.js"></script>
+<script src="/public/scripts/contact_6af9f9aa82.js"></script>
 {% endblock %}
 </html>

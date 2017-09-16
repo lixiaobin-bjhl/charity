@@ -6,10 +6,17 @@
 <template>
     <div v-loading.fullscreen.lock="loading">
         <div class="list-header">
-            <el-form>
-                <el-select v-model="filter.newsSubjectId" placeholder="全部分类" clearable @change="filterChange">
-                    <el-option v-for="item in newsSubejctList" :value="item._id" :key="item._id" :label="item.name"></el-option>
-                </el-select>
+            <el-form :inline="true">
+                <el-form-item>
+                    <el-select v-model="filter.newsSubjectId" placeholder="请选择分类" clearable @change="refresh">
+                        <el-option v-for="item in newsSubejctList" :value="item._id" :key="item._id" :label="item.name"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-input placeholder="输入新闻名称" @keyup.enter.native="refresh" v-model.trim="filter.key">
+                        <el-button slot="append" icon="search" @click="refresh"></el-button>
+                    </el-input>
+                </el-form-item>
             </el-form>
             <div class="btn-group">
                 <div class="right">
@@ -81,7 +88,8 @@
                 list: [],
                 loading: false,
                 filter: {
-                    newsSubjectId: ''
+                    newsSubjectId: '',
+                    key: ''
                 } 
             };
         },
@@ -138,12 +146,7 @@
              * 刷新页面
              */
             refresh () {
-                this.getList();
-            },
-            /**
-             * filter 发现变化，对列表数据进行筛选
-             */
-            filterChange () {
+                this.pageDto.pageNum = 1;
                 this.getList();
             },
             /**

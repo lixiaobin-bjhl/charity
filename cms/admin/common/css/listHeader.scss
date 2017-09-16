@@ -4,9 +4,9 @@
  */
 
  .list-header {
-     margin: 10px;
+     margin: 20px 10px 0 10px;
      .btn-group {
-         @include clearfix;
+         overflow: hidden;
          padding: 0 10px;
      }
      .right {

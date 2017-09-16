@@ -63,7 +63,7 @@ module.exports = app => {
         /**
          * 根据订单id找查订单 
          */
-        * findById (id) {
+        * findById(id) {
             var id = mongoose.Types.ObjectId(id);
             var order = yield this.ctx.model.order
                 .findById(id)
@@ -74,11 +74,11 @@ module.exports = app => {
             order = order.toJSON();
             order.expressMoneyStr = currency(order.expressMoney);
             order.totalFeeStr = currency(divide(order.totalFee, 100));
-            order.products.forEach((n)=> {
+            order.products.forEach((n) => {
                 var payPrice = minus(n.product.price, n.product.discountPrice || 0);
                 n.product.priceStr = currency(payPrice);
                 n.product.payPrice = payPrice;
-                n.product.specifications = n.product.specifications.map((m)=> {
+                n.product.specifications = n.product.specifications.map((m) => {
                     return {
                         id: m.id,
                         name: specification(m.id),
@@ -94,10 +94,26 @@ module.exports = app => {
         /**
          * 获取总数
          */
-        * total () {
+        * total (query = {}) {
             var condition = {};
             var compass = this.ctx.helper.compass();
             Object.assign(condition, compass);
+
+            if (query.status) {
+                condition.status = +query.status;
+            }
+
+            // 查找用户
+            if (query.key) {
+                var users = yield this.ctx.model.user.find({
+                    nickName: new RegExp(query.key)
+                });
+                userids = users.map((item) => {
+                    return item._id;
+                });
+                condition.user = { $in: userids };
+            };
+
             var count = yield this.ctx.model.order.count(condition);
             return count;
         }
@@ -105,44 +121,64 @@ module.exports = app => {
         /**
          * 获取订单列表
          */
-        * list (query = {}) {
+        * list(query = {}) {
+
             var condition = {};
             var compass = this.ctx.helper.compass();
-            var pageNum = query.pageNum || this.ctx.app.config.pageDto.pageNum;
-            var pageSize = query.pageSize || this.ctx.app.config.pageDto.pageSize;
+            var pageDto = this.ctx.app.config.pageDto;
+            var pageNum = query.pageNum || pageDto.pageNum;
+            var pageSize = query.pageSize || pageDto.pageSize;
+            var userids = [];
+
+            if (query.status) {
+                condition.status = +query.status;
+            }
+
             Object.assign(condition, compass);
+            // 查找用户
+            if (query.key) {
+                var users = yield this.ctx.model.user.find({
+                    nickName: new RegExp(query.key)
+                });
+                userids = users.map((item) => {
+                    return item._id;
+                });
+                condition.user = { $in: userids };
+            };
+
             var list = yield this.ctx.model.order.find(condition)
                 .skip((pageNum - 1) * pageSize)
                 .limit(+pageSize)
-                .sort({createTime: -1})
+                .sort({ createTime: -1 })
                 .populate('shippingAddress', '', null)
                 .populate('user', '', null)
                 .populate('products.product', '', null);
+
             return list;
         }
 
         /**
          * 根据opendId找到订单信息
-         */ 
-        * listByOpenid (openid) {
+         */
+        * listByOpenid(openid) {
             var condition = {
                 openid: openid
             };
             var compass = this.ctx.helper.compass();
             Object.assign(condition, compass);
             var list = yield this.ctx.model.order.find(condition)
-            .sort({createTime: -1})
-            .populate('shippingAddress', '', null)
-            .populate('products.product', '', null);
-            
+                .sort({ createTime: -1 })
+                .populate('shippingAddress', '', null)
+                .populate('products.product', '', null);
+
             var result = [];
-            list.forEach((item)=> {
+            list.forEach((item) => {
                 item = item.toJSON();
-                item.products.forEach((n)=> {
+                item.products.forEach((n) => {
                     var payPrice = minus(n.product.price, n.product.discountPrice || 0);
                     n.product.priceStr = currency(payPrice);
                     n.product.payPrice = payPrice;
-                    n.product.specifications = n.product.specifications.map((m)=> {
+                    n.product.specifications = n.product.specifications.map((m) => {
                         return {
                             id: m.id,
                             name: specification(m.id),
@@ -181,7 +217,7 @@ module.exports = app => {
             return {
                 id
             };
-        } 
+        }
 
     }
     return Order;

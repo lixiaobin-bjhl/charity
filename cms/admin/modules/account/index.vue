@@ -6,6 +6,18 @@
 <template>
     <div class="module-wrap" v-loading.fullscreen.lock="loading">
         <div class="list-header">
+            <el-form :inline="true">
+                <el-form-item>
+                    <el-select v-model="filter.type" placeholder="请选择类型" clearable @change="refresh">
+                        <el-option v-for="item in typeOptions" :value="item.id" :key="item.id" :label="item.name"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <el-input :disabled="currentAccount && currentAccount.type" placeholder="输入名称或手机号" @keyup.enter.native="refresh" v-model.trim="filter.key">
+                        <el-button slot="append" icon="search" @click="refresh"></el-button>
+                    </el-input>
+                </el-form-item>
+            </el-form>
             <div class="btn-group">
                 <div class="right">
                     <el-button type="primary" v-if="hasAuth(1, 2)" @click="add">新增用户</el-button>
@@ -49,6 +61,7 @@
                 </div>
                 </el-table-column>
             </el-table>
+            <pager :page-dto="pageDto" @currentchange="changePage" @sizechange="changeSize"></pager> 
         </div>
         <add v-if="addState" @save="refresh"></add>
     </div>
@@ -60,18 +73,23 @@
     import indexBy from '../../../../app/public/scripts/function/indexBy';
     import compressImage from '../../../../app/public/scripts/function/compressImage';
     import Add from './components/Add.vue';
+    import listMixins from '../../common/mixin/list';
+    import config from './config';
 
     export default {
+        mixins: [listMixins],
         data () {
             return {
                 addState: false,
+                currentAccount: window.account,
                 accountSubejctList: [],
                 multipleSelection: [],
                 list: [],
+                typeOptions: config.accountTypeOption,
                 pid: null,
                 loading: false,
                 filter: {
-                    accountSubjectId: '',
+                    type: '',
                     key: ''
                 }
             };
@@ -150,10 +168,20 @@
              */
             getList () {
                 this.loading = true;
-                list (this.filter)
+                var pageDto = this.pageDto;
+                var params = Object.assign(
+                    this.filter, 
+                    {
+                        pageSize: pageDto.pageSize, 
+                        pageNum: pageDto.pageNum
+                    }
+                );
+                list (params)
                     .then((res)=> {
                         this.loading = false;
-                        this.list = this.adaptList(res.data.list);
+                        var data = res.data;
+                        this.list = this.adaptList(data.list);
+                        this.pageDto.count = data.count;
                     })
                     .catch(()=> {
                         this.loading = false;

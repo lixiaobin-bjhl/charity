@@ -29,7 +29,7 @@
         </div>
         <div class="main" :class="{'home': $route.path == '/admin/home'}">
             <div class="breadcrumb" v-if="$route.path!='/admin/home'">
-                <el-breadcrumb separator=".">
+                <el-breadcrumb separator="-">
                     <el-breadcrumb-item v-for="(item, index) in breadOptions" :key="index"  @click.native="changeBreadcrumb(item)">
                         {{item.name}}
                     </el-breadcrumb-item>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+
     import sidebarConfig from './config/sidebar';
     import MainHeader from './common/components/MainHeader.vue';
     import LoadingProgress from './common/components/LoadingProgress.vue';

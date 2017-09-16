@@ -36,7 +36,10 @@ module.exports = app => {
          * 查找新闻分类列表 
          */
         * list() {
-            var list = yield this.ctx.model.newsSubject.find({});
+            var compass = this.ctx.helper.compass();
+            var condition = {};
+            Object.assign(condition, compass);
+            var list = yield this.ctx.model.newsSubject.find(condition);
             return list;
         }
         /**

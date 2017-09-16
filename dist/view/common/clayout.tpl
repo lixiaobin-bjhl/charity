@@ -89,11 +89,11 @@
     {% endblock %}
     {% block commonScript %}
         {% if env === 'production' %}
-            <script src="/public/cvendor_edd64bdd4b.js"></script>
+            <script src="/public/cvendor_a855ec6ed4.js"></script>
         {% else %}
             <script src="cvendor.js"></script>
         {% endif %}
-        <script src="/public/scripts/ccommon_7701ee456d.js"></script>
+        <script src="/public/scripts/ccommon_0b3b33baf7.js"></script>
     {% endblock %}
 
     {% block script %}
