@@ -7,13 +7,16 @@
     <div class="list-content" v-loading.fullscreen.lock="loading">
          <el-table :data="list">
             <el-table-column inline-template label="用户">
-                <div>
+                <div v-if="row.user">
                     {{ row.user.nickName}} 
                 </div>
             </el-table-column>
             <el-table-column inline-template label="头像">
-                <div v-if="row.user">
-                    <img width="50" height="50" class="headPic" :src="row.user.avatarUrl">
+                <div>
+                    <div v-if="row.user && row.user.avatarUrl">
+                        <img width="50" height="50" class="headPic" :src="row.user.avatarUrl">
+                    </div>
+                    <div v-else>未知</div>
                 </div>
             </el-table-column>
             <el-table-column inline-template label="创建时间">

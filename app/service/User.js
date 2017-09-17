@@ -40,7 +40,7 @@ module.exports = app => {
                 nickName: params.nickName,
                 openid: params.openid
             });
-            user.save((err) => {
+            yield user.save((err) => {
                 if (err) {
                     app.logger.error(err);
                 } else {

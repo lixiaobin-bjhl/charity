@@ -40,7 +40,7 @@
 
     {% block commonScript %}
         {% if env === 'production' %}
-            <script src="/public/vendor_1f79e76dcc.js"></script>
+            <script src="/public/vendor_d703d18dfd.js"></script>
         {% else %}
             <script src="/public/scripts/vendor.dll.js"></script>
         {% endif %}
